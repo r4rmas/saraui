@@ -1,7 +1,7 @@
 <script lang="ts">
   export let name: string
   export let imageURL: string | null = null
-  export let icon: ConstructorOfATypedSvelteComponent
+  export let icon: ConstructorOfATypedSvelteComponent | null = null
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
 
   let inputElement: HTMLInputElement
@@ -63,6 +63,10 @@
 </div>
 
 <style>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
   .imaged {
     background-image: var(--img);
     @apply
