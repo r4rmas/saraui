@@ -7,6 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/r4rmas/saraui.git"
   },
+  "license": "MIT",
   "keywords": [
     "svelte",
     "sveltekit",
