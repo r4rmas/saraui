@@ -1,3 +1,3 @@
-<div id="saraui" class="relative">
+<div id="saraui">
   <slot></slot>
 </div>

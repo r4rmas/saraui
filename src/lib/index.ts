@@ -1,12 +1,13 @@
 // Reexport your entry components here
 import ImageUploader from "./components/ImageUploader.svelte";
 import RadioSelector from "./components/RadioSelector.svelte";
-import Provider from "./components/Provider.svelte";
 import type { RadioSelectorOption } from "./types.js";
+import Notificator from "./components/Notificator.svelte";
+import { showNotification } from "./utils.js";
+import type { NotificationDirection, NotificationHorizontalDirection, NotificationIcons } from "$lib/types.js"
 
 export {
-  Provider,
   ImageUploader,
-  type RadioSelectorOption,
-  RadioSelector
+  RadioSelector, type RadioSelectorOption,
+  Notificator, type NotificationDirection, type NotificationHorizontalDirection, type NotificationIcons, showNotification
 }

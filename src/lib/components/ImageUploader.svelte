@@ -1,9 +1,11 @@
 <script lang="ts">
   export let name: string
-  export let imageURL: string | null = null
-  export let icon: ConstructorOfATypedSvelteComponent | null = null
+  export let imageURL: string | undefined = undefined
+  export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let rounded: "none" | "sm" | "md" | "lg" | "xl"  |"2xl" | "3xl" | "full"  = "full"
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
+  export let isEditable = true
+  export let onChange: ((image: File) => void) | undefined = undefined
 
   const roundedStyle = {
     none: "rounded-none",
@@ -18,13 +20,14 @@
 
   let inputElement: HTMLInputElement
 
-  $: isImaged = imageURL !== null
+  $: isImaged = imageURL !== undefined
 
-  function onChange(e: Event) {
+  function handleChange(e: Event) {
     const { files } = <HTMLInputElement>e.currentTarget
     if (files) {
       const file = files[0]
       imageURL = URL.createObjectURL(file)
+      if (onChange) onChange(file)
     }
   }
   function onClick() {
@@ -34,8 +37,9 @@
 
 <input {name}
   bind:this={inputElement}
-  on:change={onChange}
+  on:change={handleChange}
   id={name}
+  disabled={!isEditable}
   type="file"
   accept={acceptedFileExtensions}
   class="hidden"
@@ -62,33 +66,32 @@
     justify-center
     items-center
   ">
-    <button on:click={onClick}
-      type="button"  
-      class="
-        p-1
-        rounded-full
-        bg-base-200
-    ">
-      {#if icon}
-        <svelte:component this={icon} />
-      {:else}
-        <div class="
-          flex 
-          w-5 h-5 
-          items-center justify-center
-        ">
-          +
-        </div>
-      {/if}
-    </button>
+    {#if isEditable}
+      <button on:click={onClick}
+        type="button"  
+        class="
+          p-1
+          rounded-full
+          bg-base-200
+      ">
+          {#if icon}
+            <svelte:component this={icon} />
+          {:else}
+            <div class="
+              flex 
+              w-5 h-5 
+              items-center justify-center
+              text-xl
+            ">
+              +
+            </div>
+          {/if}
+      </button>
+    {/if}
   </div>
 </div>
 
 <style>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
   .imaged {
     background-image: var(--img);
     @apply
