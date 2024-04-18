@@ -2,7 +2,19 @@
   export let name: string
   export let imageURL: string | null = null
   export let icon: ConstructorOfATypedSvelteComponent | null = null
+  export let rounded: "none" | "sm" | "md" | "lg" | "xl"  |"2xl" | "3xl" | "full"  = "full"
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
+
+  const roundedStyle = {
+    none: "rounded-none",
+    sm: "rounded-sm",
+    md: "rounded-md",
+    lg: "rounded-lg",
+    xl: "rounded-xl",
+    "2xl": "rounded-2xl",
+    "3xl": "rounded-3xl",
+    full: "rounded-full",
+  }
 
   let inputElement: HTMLInputElement
 
@@ -21,9 +33,9 @@
 </script>
 
 <input {name}
-  id={name}
   bind:this={inputElement}
   on:change={onChange}
+  id={name}
   type="file"
   accept={acceptedFileExtensions}
   class="hidden"
@@ -32,9 +44,9 @@
   class={`
     relative 
     w-28 h-28
-    rounded-full
     border
     border-base-300
+    ${roundedStyle[rounded]}
     ${isImaged
       ? "imaged"
       : "bg-base-200"
@@ -57,7 +69,17 @@
         rounded-full
         bg-base-200
     ">
-      <svelte:component this={icon} />
+      {#if icon}
+        <svelte:component this={icon} />
+      {:else}
+        <div class="
+          flex 
+          w-5 h-5 
+          items-center justify-center
+        ">
+          +
+        </div>
+      {/if}
     </button>
   </div>
 </div>
