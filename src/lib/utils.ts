@@ -9,12 +9,32 @@ export function showNotification(type: NotificationType, content: string) {
   notificationData.set({ visible: true, type, content })
 }
 
-export function showModal(id: string) {
+function showModal(id: string) {
   const dialog = <HTMLDialogElement>document.getElementById(id)
   if (dialog) dialog.showModal()
 }
+export function useActionModal() {
+  const id = `saraui-actionmodal-${uuidv4().replaceAll("-", "")}`
+  return { id, show: () => showModal(id) }
+}
+export function useInformationModal() {
+  const id = `saraui-informationmodal-${uuidv4().replaceAll("-", "")}`
+  return { 
+    id, 
+    show: () => showModal(id), 
+    close: () => {
+      const closeButton = <HTMLButtonElement>document.getElementById(`${id}-close`)
+      if (closeButton) {
+        closeButton.disabled = false
+        closeButton.click()
+      }
+    } 
+  }
+}
 
-export function useModal() {
-  const id = `saraui-modal-${uuidv4().replaceAll("-", "")}`
-  return { id, showModal: () => showModal(id) }
+export function timeout(seconds: number) {
+  return new Promise(res => setTimeout(res, (seconds * 1000)))
+}
+export async function sleep(seconds: number) {
+  await timeout(seconds)
 }
