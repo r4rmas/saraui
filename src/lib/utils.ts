@@ -7,3 +7,8 @@ export function showNotification(type: NotificationType, content: string) {
   }, 3500)
   notificationData.set({ visible: true, type, content })
 }
+
+export function showModal(id: string) {
+  const dialog = <HTMLDialogElement>document.getElementById(id)
+  if (dialog) dialog.showModal()
+}

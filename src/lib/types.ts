@@ -23,3 +23,5 @@ export type NotificationData = {
   type: NotificationType
   content: string
 }
+
+export type Loader = "spinner" | "dots" | "ring" | "ball" | "bars" | "infinity"
