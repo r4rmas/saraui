@@ -5,8 +5,10 @@
   export let canAccept = true
   export let isDangerous = false
   export let acceptText = "Accept"
+  export let acceptIcon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let onAccept: () => Promise<void> | void
   export let closeText = "Close"
+  export let closeIcon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let onClose: (() => void) | undefined = undefined
 
   let closeButton: HTMLButtonElement
@@ -29,12 +31,14 @@
           bind:this={closeButton}
           class="
             btn
-            btn-neutral
             focus:outline-none
             focus:border-none
             active:border-none
             active:outline-none
         ">
+          {#if closeIcon}
+            <svelte:component this={closeIcon} class="mr-1" />
+          {/if}
           {closeText}
         </button>
       </form>
@@ -50,6 +54,9 @@
         {#if isLoading}
           <Loader />
         {:else}
+          {#if acceptIcon}
+            <svelte:component this={acceptIcon} class="mr-1" />
+          {/if}
           {acceptText}
         {/if}
       </button>

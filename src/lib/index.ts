@@ -4,7 +4,7 @@ import ImageUploader from "./components/ImageUploader.svelte";
 import RadioSelector from "./components/RadioSelector.svelte";
 import type { RadioSelectorOption } from "./types.js";
 import Notificator from "./components/Notificator.svelte";
-import { showNotification, showModal } from "./utils.js";
+import { showNotification, showModal, useModal } from "./utils.js";
 import type { NotificationDirection, NotificationHorizontalDirection, NotificationIcons } from "$lib/types.js"
 import ActionModal from "./components/ActionModal.svelte";
 
@@ -13,5 +13,5 @@ export {
   ImageUploader,
   RadioSelector, type RadioSelectorOption,
   Notificator, type NotificationDirection, type NotificationHorizontalDirection, type NotificationIcons, showNotification,
-  ActionModal, showModal
+  ActionModal, showModal, useModal
 }

@@ -3,10 +3,10 @@
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import Notificator from "$lib/components/Notificator.svelte"
   import type { NotificationDirection, NotificationHorizontalDirection, NotificationIcons } from "$lib/types.js"
-  import { showModal, showNotification } from "$lib/utils.js"
+  import { showNotification, useModal } from "$lib/utils.js"
   import Icon from "./lib/Icon.svelte"
   import ActionModal from "$lib/components/ActionModal.svelte"
-    import Provider from "$lib/components/Provider.svelte"
+  import Provider from "$lib/components/Provider.svelte"
 
   const icons: NotificationIcons = {
     success: Icon,
@@ -21,6 +21,8 @@
     sm: 8, md: 16
   }
 
+  const { id, showModal } = useModal()
+
   onMount(() => {
     showNotification("success", "HOLA")
   })
@@ -30,12 +32,21 @@
   <Notificator {icons} {horizontalDirection} {topDirection}>
     <div class="flex flex-col w-screen h-screen">
       <ImageUploader name="profile" />
-      <button on:click={() => { showModal("modal") }} class="btn btn-primary">
+      <button on:click={() => { showModal() }} 
+        class="btn btn-primary"
+      >
         Show modal
       </button>
     </div>
-    <ActionModal id="modal" onAccept={() => {}} isDangerous>
-      <p class="font-semibold mb-2 text-lg">Are you sure that you want to leave?</p>
+    <ActionModal {id}
+      onAccept={() => {}} 
+      acceptText="Leave" 
+      closeText="Cancel" 
+      isDangerous
+    >
+      <p class="font-semibold mb-2 text-lg">
+        Are you sure that you want to leave?
+      </p>
       <p>If you leave your data will be removed</p>
     </ActionModal>
   </Notificator>
