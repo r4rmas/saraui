@@ -1,11 +1,12 @@
 <script lang="ts">
   export let name: string
   export let imageURL: string | undefined = undefined
+  export let size: "sm" | "md" | "lg" = "md"
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
+  export let onChange: ((image: File) => void) | undefined = undefined
   export let rounded: "none" | "sm" | "md" | "lg" | "xl"  |"2xl" | "3xl" | "full"  = "full"
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
   export let isEditable = true
-  export let onChange: ((image: File) => void) | undefined = undefined
 
   const roundedStyle = {
     none: "rounded-none",
@@ -16,6 +17,11 @@
     "2xl": "rounded-2xl",
     "3xl": "rounded-3xl",
     full: "rounded-full",
+  }
+  const sizeStyle = {
+    sm: "w-[96px] h-[96px]",
+    md: "w-[128px] h-[128px]",
+    lg: "w-[156px] h-[156px]"
   }
 
   let inputElement: HTMLInputElement
@@ -47,10 +53,10 @@
 <div 
   class={`
     relative 
-    w-28 h-28
     border
     border-base-300
     ${roundedStyle[rounded]}
+    ${sizeStyle[size]}
     ${isImaged
       ? "imaged"
       : "bg-base-200"
@@ -80,7 +86,8 @@
             <div class="
               flex 
               w-5 h-5 
-              items-center justify-center
+              items-center
+              justify-center
               text-xl
             ">
               +

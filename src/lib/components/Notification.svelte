@@ -176,6 +176,11 @@
   class={styles[type]}
   role="alert"
 >
+  {#if horizontalDirection[0] === "right"}
+    <svelte:component this={icon} />
+  {/if}
   <span>{content}</span>
-  <svelte:component this={icon} />
+  {#if horizontalDirection[0] === "left"}
+    <svelte:component this={icon} />
+  {/if}
 </div>

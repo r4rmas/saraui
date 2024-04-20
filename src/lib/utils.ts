@@ -5,8 +5,5 @@ export function showNotification(type: NotificationType, content: string) {
   setTimeout(() => {
     notificationData.update(old => ({ ...old, visible: false }))
   }, 3500)
-  notificationData.set({ 
-    visible: true, 
-    type, content 
-  })
+  notificationData.set({ visible: true, type, content })
 }
