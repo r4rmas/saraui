@@ -1,11 +1,11 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
   import { notificationData } from "$lib/stores.js"
-  import type { NotificationDirection, NotificationHorizontalDirection } from "$lib/types.js"
+  import type { NotificationTopPosition, NotificationHorizontalData, NotificationTopPositionStyle } from "$lib/types.js"
 
-  export let icon: ConstructorOfATypedSvelteComponent
-  export let horizontalDirection: NotificationHorizontalDirection
-  export let topDirection: NotificationDirection
+  export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
+  export let horizontal: NotificationHorizontalData
+  export let top: NotificationTopPosition
 
   const right = {
     2: "right-2",
@@ -87,7 +87,7 @@
     14: "xl:left-14",
     16: "xl:left-16",
   }
-  const top = {
+  const _top: NotificationTopPositionStyle = {
     2: "top-2",
     4: "top-4",
     6: "top-6",
@@ -96,8 +96,12 @@
     12: "top-12",
     14: "top-14",
     16: "top-16",
+    20: "top-20",
+    24: "top-24",
+    28: "top-28",
+    32: "top-32"
   }
-  const topMD = {
+  const topMD: NotificationTopPositionStyle = {
     2: "md:top-2",
     4: "md:top-4",
     6: "md:top-6",
@@ -106,8 +110,12 @@
     12: "md:top-12",
     14: "md:top-14",
     16: "md:top-16",
+    20: "md:top-20",
+    24: "md:top-24",
+    28: "md:top-28",
+    32: "md:top-32"
   }
-  const topLG = {
+  const topLG: NotificationTopPositionStyle = {
     2: "lg:top-2",
     4: "lg:top-4",
     6: "lg:top-6",
@@ -116,8 +124,12 @@
     12: "lg:top-12",
     14: "lg:top-14",
     16: "lg:top-16",
+    20: "lg:top-20",
+    24: "lg:top-24",
+    28: "lg:top-28",
+    32: "lg:top-32"
   }
-  const topXL = {
+  const topXL: NotificationTopPositionStyle = {
     2: "xl:top-2",
     4: "xl:top-4",
     6: "xl:top-6",
@@ -126,39 +138,43 @@
     12: "xl:top-12",
     14: "xl:top-14",
     16: "xl:top-16",
+    20: "xl:top-20",
+    24: "xl:top-24",
+    28: "xl:top-28",
+    32: "xl:top-32"
   }
 
-  $: ({ type, content } = $notificationData)
+  $: ({ cause, content } = $notificationData)
 
   const transition: FlyParams = {
     duration: 500,
-    x: horizontalDirection[0] === "right" ? 400 : -400
+    x: horizontal.direction === "right" ? 400 : -400
   }
   
   const directionStyle = {
     right: `
-      ${right[horizontalDirection[1].sm]}
-      ${horizontalDirection[1].md ? rightMD[horizontalDirection[1].md] : ""} 
-      ${horizontalDirection[1].lg ? rightLG[horizontalDirection[1].lg] : ""} 
-      ${horizontalDirection[1].xl ? rightXL[horizontalDirection[1].xl] : ""}
+      ${right[horizontal.position.sm]}
+      ${horizontal.position.md ? rightMD[horizontal.position.md] : ""} 
+      ${horizontal.position.lg ? rightLG[horizontal.position.lg] : ""} 
+      ${horizontal.position.xl ? rightXL[horizontal.position.xl] : ""}
     `,
     left: `
-      ${left[horizontalDirection[1].sm]}
-      ${horizontalDirection[1].md ? leftMD[horizontalDirection[1].md] : ""} 
-      ${horizontalDirection[1].lg ? leftLG[horizontalDirection[1].lg] : ""} 
-      ${horizontalDirection[1].xl ? leftXL[horizontalDirection[1].xl] : ""}
+      ${left[horizontal.position.sm]}
+      ${horizontal.position.md ? leftMD[horizontal.position.md] : ""} 
+      ${horizontal.position.lg ? leftLG[horizontal.position.lg] : ""} 
+      ${horizontal.position.xl ? leftXL[horizontal.position.xl] : ""}
     `,
     top: `
-      ${top[topDirection.sm]}
-      ${topDirection.md ? topMD[topDirection.md] : ""}
-      ${topDirection.lg ? topLG[topDirection.lg] : ""}
-      ${topDirection.xl ? topXL[topDirection.xl] : ""}
+      ${_top[top.sm]}
+      ${top.md ? topMD[top.md] : ""}
+      ${top.lg ? topLG[top.lg] : ""}
+      ${top.xl ? topXL[top.xl] : ""}
     `
   }
   const baseStyle = `
     flex 
     fixed z-10 
-    ${directionStyle[horizontalDirection[0]]}
+    ${directionStyle[horizontal.direction]}
     ${directionStyle.top}
     shadow-lg 
     alert
@@ -173,14 +189,14 @@
 </script>
 
 <div transition:fly={transition}
-  class={styles[type]}
+  class={styles[cause]}
   role="alert"
 >
-  {#if horizontalDirection[0] === "right"}
+  {#if icon && horizontal.direction === "right"}
     <svelte:component this={icon} />
   {/if}
   <span>{content}</span>
-  {#if horizontalDirection[0] === "left"}
+  {#if icon && horizontal.direction === "left"}
     <svelte:component this={icon} />
   {/if}
 </div>

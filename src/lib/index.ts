@@ -1,19 +1,25 @@
 // Reexport your entry components here
-import Provider from "./components/Provider.svelte"
+import type { 
+  SaraProviderConfig,
+  RadioSelectorOption,
+  LoaderProps,
+  NotificationTopPosition, NotificationHorizontalData, NotificationIcons, NotificationProps,
+} from "$lib/types.js"
+import { showNotification, useActionModal, useInformationModal } from "./utils.js";
+import SaraProvider from "./components/SaraProvider.svelte"
 import ImageUploader from "./components/ImageUploader.svelte";
 import RadioSelector from "./components/RadioSelector.svelte";
-import type { RadioSelectorOption } from "./types.js";
+import Loader from "./components/Loader.svelte";
 import Notificator from "./components/Notificator.svelte";
-import { showNotification, useActionModal, useInformationModal } from "./utils.js";
-import type { NotificationDirection, NotificationHorizontalDirection, NotificationIcons } from "$lib/types.js"
 import ActionModal from "./components/ActionModal.svelte";
 import InformationModal from "./components/InformationModal.svelte";
 
 export {
-  Provider,
+  SaraProvider, type SaraProviderConfig,
+  Loader, type LoaderProps,
   ImageUploader,
   RadioSelector, type RadioSelectorOption,
-  Notificator, type NotificationDirection, type NotificationHorizontalDirection, type NotificationIcons, showNotification,
-  ActionModal, useActionModal as useModal,
+  Notificator, type NotificationTopPosition, type NotificationHorizontalData, type NotificationIcons, type NotificationProps, showNotification,
+  ActionModal, useActionModal,
   InformationModal, useInformationModal
 }

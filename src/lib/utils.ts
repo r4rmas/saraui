@@ -1,12 +1,12 @@
 import { notificationData } from "./stores.js"
-import type { NotificationType } from "./types.js"
+import type { NotificationCauseString } from "./types.js"
 import { v4 as uuidv4 } from "uuid"
 
-export function showNotification(type: NotificationType, content: string) {
+export function showNotification(cause: NotificationCauseString, content: string) {
   setTimeout(() => {
     notificationData.update(old => ({ ...old, visible: false }))
   }, 3500)
-  notificationData.set({ visible: true, type, content })
+  notificationData.set({ visible: true, cause, content })
 }
 
 function showModal(id: string) {

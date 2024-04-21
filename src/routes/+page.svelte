@@ -2,24 +2,27 @@
   import { onMount } from "svelte"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import Notificator from "$lib/components/Notificator.svelte"
-  import type { NotificationDirection, NotificationHorizontalDirection, NotificationIcons } from "$lib/types.js"
+  import type { SaraProviderConfig } from "$lib/types.js"
   import { showNotification, sleep, useActionModal, useInformationModal } from "$lib/utils.js"
   import Icon from "./lib/Icon.svelte"
   import ActionModal from "$lib/components/ActionModal.svelte"
-  import Provider from "$lib/components/Provider.svelte"
+  import SaraProvider from "$lib/components/SaraProvider.svelte"
   import InformationModal from "$lib/components/InformationModal.svelte"
 
-  const icons: NotificationIcons = {
-    success: Icon,
-    info: Icon,
-    warning: Icon,
-    error: Icon,
-  }
-  const horizontalDirection: NotificationHorizontalDirection = [
-    "right", { sm: 2, md: 16 }
-  ]
-  const topDirection: NotificationDirection = {
-    sm: 8, md: 16
+  const config: SaraProviderConfig = { 
+    notifications: { 
+      icons: {
+        success: Icon,
+        info: Icon,
+        warning: Icon,
+        error: Icon,
+      }, 
+      horizontal: { 
+        direction: 'left',
+        position: { sm: 4 } 
+      },
+      top: { sm: 32 }
+    } 
   }
 
   const actionModal = useActionModal()
@@ -40,8 +43,8 @@
   })
 </script>
 
-<Provider>
-  <Notificator {icons} {horizontalDirection} {topDirection}>
+<SaraProvider {config}>
+  <Notificator>
     <div class="flex flex-col items-center p-4 w-screen h-screen">
       <ImageUploader name="profile" />
       <button on:click={actionModal.show} 
@@ -73,4 +76,4 @@
       <p>{time}</p>
     </InformationModal>
   </Notificator>
-</Provider>
+</SaraProvider>
