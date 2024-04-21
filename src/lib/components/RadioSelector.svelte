@@ -7,7 +7,7 @@
   export let state: string | undefined = undefined
   export let cols: 1 | 2 | 3 | 4 | undefined = undefined
   
-  const baseStyle = "grid "
+  const baseStyle = "grid gap-6 "
   const gridStyle = {
     1: baseStyle + "grid-cols-1",
     2: baseStyle + "grid-cols-2",
@@ -79,7 +79,7 @@
         {#if o.emoji}
           <span class="
             ml-2
-            mr-1.5
+            text-lg
           ">
             {o.emoji}
           </span>
@@ -87,7 +87,6 @@
         <span class="
           text-start
           ml-2
-          mr-4
         ">
           {o.value}
         </span>

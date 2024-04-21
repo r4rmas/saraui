@@ -64,7 +64,7 @@ export type NotificationProps = {
   top?: NotificationTopPosition
 }
 
-type ColorString = "primary" | "secondary" | "accent" | "neutral" | "info" | "success" | "warning" | "error"
+export type ColorString = "primary" | "secondary" | "accent" | "neutral" | "info" | "success" | "warning" | "error"
 export type Color = {
   [k: string]: string
   primary: string, 
@@ -76,7 +76,7 @@ export type Color = {
   error: string
 }
 
-type LoaderString = "spinner" | "dots" | "ring" | "ball" | "bars" | "infinity"
+export type LoaderString = "spinner" | "dots" | "ring" | "ball" | "bars" | "infinity"
 export type LoaderProps = {
   option: LoaderString
   color?: ColorString 

@@ -28,11 +28,10 @@
   const options: RadioSelectorOption[] = [{
     name: "user",
     value: "User",
-    emoji: " "
+    emoji: "👩🏻‍⚕️"
   }, {
     name: "admin",
     value: "Admin",
-    emoji: " "
   }]
   const actionModal = useActionModal()
   const informationModal = useInformationModal()
@@ -55,7 +54,7 @@
 
 <SaraProvider {config}>
   <Notificator>
-    <div class="flex flex-col items-center p-4 gap-4 w-screen h-screen">
+    <div class="flex flex-col items-center p-4 gap-4 w-full">
       <ImageUploader name="profile" />
       <RadioSelector {options} bind:state={optionSelected} />
       <button on:click={actionModal.show} 
