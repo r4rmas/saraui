@@ -6,8 +6,6 @@
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let position: NotificationPositionProps
 
-  const { horizontal: { direction, space }, topSpace } = position
-
   const right = {
     2: "right-2",
     4: "right-4",
@@ -144,14 +142,9 @@
     28: "xl:top-28",
     32: "xl:top-32"
   }
-
-  $: ({ cause, content } = $notificationData)
-
-  const transition: FlyParams = {
-    duration: 500,
-    x: position.horizontal?.direction === "right" ? 400 : -400
-  }
   
+  const { horizontal: { direction, space }, topSpace } = position
+
   const directionStyle = {
     right: `
       ${right[space.sm]}
@@ -174,7 +167,7 @@
   }
   const baseStyle = `
     flex 
-    fixed z-10 
+    absolute z-20 
     ${directionStyle[direction]}
     ${directionStyle.top}
     shadow-lg 
@@ -187,6 +180,13 @@
     warning: baseStyle + "alert-warning",
     error: baseStyle + "alert-error"
   }
+
+  const transition: FlyParams = {
+    duration: 500,
+    x: position.horizontal?.direction === "right" ? 100 : -100
+  }
+
+  $: ({ cause, content } = $notificationData)
 </script>
 
 <div transition:fly={transition}

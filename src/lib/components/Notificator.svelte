@@ -15,7 +15,7 @@
 
 </script>
 
-<div class="relative">
+<div class="relative w-full">
   <slot></slot>
   {#if visible}
     <Notification

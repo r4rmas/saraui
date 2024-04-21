@@ -20,8 +20,8 @@
       }, 
       position: {
         horizontal: { 
-          direction: "left",
-          space: { sm: 4, md: 8, lg: 16 } 
+          direction: "right",
+          space: { sm: 4, md: 6, lg: 16 } 
         },
       }
     } 
@@ -54,35 +54,39 @@
 </script>
 
 <SaraProvider {config}>
-  <Notificator>
-    <div class="flex flex-col items-center p-4 gap-4 w-full">
-      <ImageUploader name="profile" />
-      <RadioSelector {options} bind:state={optionSelected} />
-      <button on:click={actionModal.show} 
-        class="btn btn-primary"
-      >
-        Show action modal
-      </button>
-      <button on:click={handleInforModal} 
-        class="btn btn-secondary"
-      >
-        Show information modal
-      </button>
+  <div class="flex w-full justify-center">
+    <div class="flex w-full justify-center max-w-screen-lg">
+      <Notificator>
+        <div class="flex flex-col w-full gap-4 justify-center items-center">
+          <ImageUploader name="profile" />
+          <RadioSelector {options} bind:state={optionSelected} />
+          <button on:click={actionModal.show} 
+            class="btn btn-primary"
+          >
+            Show action modal
+          </button>
+          <button on:click={handleInforModal} 
+            class="btn btn-secondary"
+          >
+            Show information modal
+          </button>
+        </div>
+        <ActionModal id={actionModal.id}
+          onAccept={() => {}} 
+          isDangerous
+        >
+          <p class="font-semibold mb-4 text-lg">
+            Are you sure you want to leave?
+          </p>
+          <p>If you leave your data will be removed</p>
+        </ActionModal>
+        <InformationModal id={informationModal.id} 
+          onClose={() => { time = 1 }}
+          isClosable={false}
+        >
+          <p>{time}</p>
+        </InformationModal>
+      </Notificator>
     </div>
-    <ActionModal id={actionModal.id}
-      onAccept={() => {}} 
-      isDangerous
-    >
-      <p class="font-semibold mb-4 text-lg">
-        Are you sure you want to leave?
-      </p>
-      <p>If you leave your data will be removed</p>
-    </ActionModal>
-    <InformationModal id={informationModal.id} 
-      onClose={() => { time = 1 }}
-      isClosable={false}
-    >
-      <p>{time}</p>
-    </InformationModal>
-  </Notificator>
+  </div>
 </SaraProvider>

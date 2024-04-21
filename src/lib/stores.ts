@@ -8,7 +8,7 @@ export const notificationProps = writable<NotificationStore>({
   position: {
     horizontal: <NotificationHorizontalData>{
       direction: "right",
-      space: { sm: 2, md: 8 }
+      space: { sm: 2, md: 4 }
     },
     topSpace: { sm: 8, md: 16 }
   }
