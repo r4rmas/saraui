@@ -183,7 +183,7 @@
 
   const transition: FlyParams = {
     duration: 500,
-    x: position.horizontal?.direction === "right" ? 100 : -100
+    x: position.horizontal?.direction === "right" ? 200 : -200
   }
 
   $: ({ cause, content } = $notificationData)

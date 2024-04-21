@@ -3,7 +3,7 @@ import type {
   SaraProviderConfig,
   RadioSelectorOption,
   LoaderProps,
-  NotificationPosition, NotificationPositionProps, NotificationTopSpace, NotificationHorizontalData, NotificationIcons, NotificationConfig,
+  NotificationPosition, NotificationPositionProps, NotificationHorizontalSpace, NotificationTopSpace, NotificationHorizontalData, NotificationIcons, NotificationConfig,
 } from "$lib/types.js"
 import { showNotification, useActionModal, useInformationModal } from "./utils.js";
 import SaraProvider from "./components/SaraProvider.svelte"
@@ -19,7 +19,7 @@ export {
   Loader, type LoaderProps,
   ImageUploader,
   RadioSelector, type RadioSelectorOption,
-  Notificator, type NotificationPosition, type NotificationPositionProps, type NotificationTopSpace, type NotificationHorizontalData, type NotificationIcons, type NotificationConfig as NotificationProps, showNotification,
+  Notificator, type NotificationPosition, type NotificationPositionProps, type NotificationTopSpace, type NotificationHorizontalSpace, type NotificationHorizontalData, type NotificationIcons, type NotificationConfig as NotificationProps, showNotification,
   ActionModal, useActionModal,
   InformationModal, useInformationModal
 }

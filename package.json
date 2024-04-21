@@ -1,6 +1,6 @@
 {
   "name": "saraui",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "author": "Raul Armas",
   "description": "daisyUI components for Svelte/Sveltekit",
   "repository": {

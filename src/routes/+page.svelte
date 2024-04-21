@@ -57,7 +57,7 @@
   <div class="flex w-full justify-center">
     <div class="flex w-full justify-center max-w-screen-lg">
       <Notificator>
-        <div class="flex flex-col w-full gap-4 justify-center items-center">
+        <div class="flex flex-col w-full gap-4 p-4 justify-center items-center">
           <ImageUploader name="profile" />
           <RadioSelector {options} bind:state={optionSelected} />
           <button on:click={actionModal.show} 
