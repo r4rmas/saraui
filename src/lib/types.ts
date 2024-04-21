@@ -11,19 +11,19 @@ export type NotificationIcons = {
   warning: ConstructorOfATypedSvelteComponent
   error: ConstructorOfATypedSvelteComponent
 }
-export type NotificationHorizontalPosition = {
+export type NotificationHorizontalSpace = {
   sm:  2 | 4 | 6 | 8 | 10 | 12 | 14 | 16  
   md?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 
   lg?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 
   xl?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 
 }
-export type NotificationTopPosition = {
+export type NotificationTopSpace = {
   sm:  2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 28 | 32  
   md?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 28 | 32 
   lg?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 28 | 32 
   xl?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 28 | 32 
 }
-export type NotificationHorizontalPositionStyle = {
+export type NotificationHorizontalSpaceStyle = {
   [k: number]: string
   2: string
   4: string
@@ -34,7 +34,7 @@ export type NotificationHorizontalPositionStyle = {
   14: string
   16: string
 }
-export type NotificationTopPositionStyle = {
+export type NotificationTopSpaceStyle = {
   [k: number]: string
   2: string
   4: string
@@ -51,17 +51,27 @@ export type NotificationTopPositionStyle = {
 }
 export type NotificationHorizontalData = {
   direction: "right" | "left", 
-  position: NotificationHorizontalPosition
+  space: NotificationHorizontalSpace
 }
 export type NotificationData = {
   visible: boolean
   cause: NotificationCauseString
   content: string
 }
-export type NotificationProps = {
-  icons?: NotificationIcons
+export type NotificationPosition = {
   horizontal?: NotificationHorizontalData
-  top?: NotificationTopPosition
+  topSpace?: NotificationTopSpace
+}
+export type NotificationPositionProps = {
+  [k in keyof NotificationPosition]-?: NotificationPosition[k] 
+}
+export type NotificationConfig = {
+  icons?: NotificationIcons
+  position?: NotificationPosition
+}
+export type NotificationStore = {
+  icons?: NotificationIcons
+  position: NotificationPositionProps
 }
 
 export type ColorString = "primary" | "secondary" | "accent" | "neutral" | "info" | "success" | "warning" | "error"
@@ -84,5 +94,5 @@ export type LoaderProps = {
 
 export type SaraProviderConfig = {
   loader?: LoaderProps
-  notifications?: NotificationProps
+  notification?: NotificationConfig
 }

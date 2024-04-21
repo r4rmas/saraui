@@ -7,10 +7,16 @@
 
   onMount(() => {
     if (config) {
-      const { loader, notifications } = config
+      const { loader, notification } = config
       if (loader) $chosenLoader = loader
-      if (notifications) $notificationProps = { 
-        ...$notificationProps, ...notifications 
+      if (notification) {
+        const { icons, position } = notification
+        if (position) {
+          const { horizontal, topSpace } = position
+          if (horizontal) $notificationProps.position.horizontal = horizontal
+          if (topSpace) $notificationProps.position.topSpace = topSpace
+        }
+        if (icons) $notificationProps.icons = icons
       }
     }
   })

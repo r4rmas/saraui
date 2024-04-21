@@ -1,11 +1,12 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
   import { notificationData } from "$lib/stores.js"
-  import type { NotificationTopPosition, NotificationHorizontalData, NotificationTopPositionStyle } from "$lib/types.js"
+  import type { NotificationTopSpaceStyle, NotificationPositionProps } from "$lib/types.js"
 
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
-  export let horizontal: NotificationHorizontalData
-  export let top: NotificationTopPosition
+  export let position: NotificationPositionProps
+
+  const { horizontal: { direction, space }, topSpace } = position
 
   const right = {
     2: "right-2",
@@ -87,7 +88,7 @@
     14: "xl:left-14",
     16: "xl:left-16",
   }
-  const _top: NotificationTopPositionStyle = {
+  const _top: NotificationTopSpaceStyle = {
     2: "top-2",
     4: "top-4",
     6: "top-6",
@@ -101,7 +102,7 @@
     28: "top-28",
     32: "top-32"
   }
-  const topMD: NotificationTopPositionStyle = {
+  const topMD: NotificationTopSpaceStyle = {
     2: "md:top-2",
     4: "md:top-4",
     6: "md:top-6",
@@ -115,7 +116,7 @@
     28: "md:top-28",
     32: "md:top-32"
   }
-  const topLG: NotificationTopPositionStyle = {
+  const topLG: NotificationTopSpaceStyle = {
     2: "lg:top-2",
     4: "lg:top-4",
     6: "lg:top-6",
@@ -129,7 +130,7 @@
     28: "lg:top-28",
     32: "lg:top-32"
   }
-  const topXL: NotificationTopPositionStyle = {
+  const topXL: NotificationTopSpaceStyle = {
     2: "xl:top-2",
     4: "xl:top-4",
     6: "xl:top-6",
@@ -148,33 +149,33 @@
 
   const transition: FlyParams = {
     duration: 500,
-    x: horizontal.direction === "right" ? 400 : -400
+    x: position.horizontal?.direction === "right" ? 400 : -400
   }
   
   const directionStyle = {
     right: `
-      ${right[horizontal.position.sm]}
-      ${horizontal.position.md ? rightMD[horizontal.position.md] : ""} 
-      ${horizontal.position.lg ? rightLG[horizontal.position.lg] : ""} 
-      ${horizontal.position.xl ? rightXL[horizontal.position.xl] : ""}
+      ${right[space.sm]}
+      ${space.md ? rightMD[space.md] : ""} 
+      ${space.lg ? rightLG[space.lg] : ""} 
+      ${space.xl ? rightXL[space.xl] : ""}
     `,
     left: `
-      ${left[horizontal.position.sm]}
-      ${horizontal.position.md ? leftMD[horizontal.position.md] : ""} 
-      ${horizontal.position.lg ? leftLG[horizontal.position.lg] : ""} 
-      ${horizontal.position.xl ? leftXL[horizontal.position.xl] : ""}
+      ${left[space.sm]}
+      ${space.md ? leftMD[space.md] : ""} 
+      ${space.lg ? leftLG[space.lg] : ""} 
+      ${space.xl ? leftXL[space.xl] : ""}
     `,
     top: `
-      ${_top[top.sm]}
-      ${top.md ? topMD[top.md] : ""}
-      ${top.lg ? topLG[top.lg] : ""}
-      ${top.xl ? topXL[top.xl] : ""}
+      ${_top[topSpace.sm]}
+      ${topSpace.md ? topMD[topSpace.md] : ""}
+      ${topSpace.lg ? topLG[topSpace.lg] : ""}
+      ${topSpace.xl ? topXL[topSpace.xl] : ""}
     `
   }
   const baseStyle = `
     flex 
     fixed z-10 
-    ${directionStyle[horizontal.direction]}
+    ${directionStyle[direction]}
     ${directionStyle.top}
     shadow-lg 
     alert
@@ -192,11 +193,11 @@
   class={styles[cause]}
   role="alert"
 >
-  {#if icon && horizontal.direction === "right"}
+  {#if icon && direction === "right"}
     <svelte:component this={icon} />
   {/if}
   <span>{content}</span>
-  {#if icon && horizontal.direction === "left"}
+  {#if icon && direction === "left"}
     <svelte:component this={icon} />
   {/if}
 </div>

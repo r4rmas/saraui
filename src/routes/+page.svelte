@@ -11,18 +11,19 @@
   import RadioSelector from "$lib/components/RadioSelector.svelte"
 
   const config: SaraProviderConfig = { 
-    notifications: { 
+    notification: { 
       icons: {
         success: Icon,
         info: Icon,
         warning: Icon,
         error: Icon,
       }, 
-      horizontal: { 
-        direction: "right",
-        position: { sm: 4, md: 8, lg: 16 } 
-      },
-      top: { sm: 8, md: 16 }
+      position: {
+        horizontal: { 
+          direction: "left",
+          space: { sm: 4, md: 8, lg: 16 } 
+        },
+      }
     } 
   }
   const options: RadioSelectorOption[] = [{
