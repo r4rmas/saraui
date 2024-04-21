@@ -2,12 +2,13 @@
   import { onMount } from "svelte"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import Notificator from "$lib/components/Notificator.svelte"
-  import type { SaraProviderConfig } from "$lib/types.js"
+  import type { RadioSelectorOption, SaraProviderConfig } from "$lib/types.js"
   import { showNotification, sleep, useActionModal, useInformationModal } from "$lib/utils.js"
   import Icon from "./lib/Icon.svelte"
   import ActionModal from "$lib/components/ActionModal.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import InformationModal from "$lib/components/InformationModal.svelte"
+  import RadioSelector from "$lib/components/RadioSelector.svelte"
 
   const config: SaraProviderConfig = { 
     notifications: { 
@@ -24,10 +25,20 @@
       top: { sm: 8, md: 16 }
     } 
   }
+  const options: RadioSelectorOption[] = [{
+    name: "user",
+    value: "User",
+    emoji: " "
+  }, {
+    name: "admin",
+    value: "Admin",
+    emoji: " "
+  }]
   const actionModal = useActionModal()
   const informationModal = useInformationModal()
 
   let time = 1
+  let optionSelected: string
 
   async function handleInforModal() {
     informationModal.show()
@@ -44,15 +55,16 @@
 
 <SaraProvider {config}>
   <Notificator>
-    <div class="flex flex-col items-center p-4 w-screen h-screen">
+    <div class="flex flex-col items-center p-4 gap-4 w-screen h-screen">
       <ImageUploader name="profile" />
+      <RadioSelector {options} bind:state={optionSelected} />
       <button on:click={actionModal.show} 
-        class="btn btn-primary mt-4"
+        class="btn btn-primary"
       >
         Show action modal
       </button>
       <button on:click={handleInforModal} 
-        class="btn btn-secondary mt-4"
+        class="btn btn-secondary"
       >
         Show information modal
       </button>

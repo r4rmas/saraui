@@ -1,10 +1,10 @@
 <script lang="ts">
   export let name: string
-  export let imageURL: string | undefined = undefined
+  export let state: string | undefined = undefined
   export let size: "sm" | "md" | "lg" = "md"
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let onChange: ((image: File) => void) | undefined = undefined
-  export let rounded: "none" | "sm" | "md" | "lg" | "xl"  |"2xl" | "3xl" | "full"  = "full"
+  export let rounded: "none" | "sm" | "md" | "lg" | "xl"  |"2xl" | "3xl" | "full" = "full"
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
   export let isEditable = true
 
@@ -26,13 +26,13 @@
 
   let inputElement: HTMLInputElement
 
-  $: isImaged = imageURL !== undefined
+  $: isImaged = state !== undefined
 
   function handleChange(e: Event) {
     const { files } = <HTMLInputElement>e.currentTarget
     if (files) {
       const file = files[0]
-      imageURL = URL.createObjectURL(file)
+      state = URL.createObjectURL(file)
       if (onChange) onChange(file)
     }
   }
@@ -62,7 +62,7 @@
       : "bg-base-200"
   }`}
   style={isImaged
-    ? `--img: url(${imageURL});`
+    ? `--img: url(${state});`
     : ""
 }>
   <div class="
