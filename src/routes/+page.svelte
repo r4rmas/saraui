@@ -18,13 +18,12 @@
         error: Icon,
       }, 
       horizontal: { 
-        direction: 'left',
-        position: { sm: 4 } 
+        direction: "right",
+        position: { sm: 4, md: 8, lg: 16 } 
       },
-      top: { sm: 32 }
+      top: { sm: 8, md: 16 }
     } 
   }
-
   const actionModal = useActionModal()
   const informationModal = useInformationModal()
 
@@ -39,7 +38,7 @@
   }
 
   onMount(() => {
-    showNotification("success", "HOLA")
+    showNotification("success", "Success")
   })
 </script>
 
@@ -60,8 +59,6 @@
     </div>
     <ActionModal id={actionModal.id}
       onAccept={() => {}} 
-      acceptText="Leave" 
-      closeText="Cancel" 
       isDangerous
     >
       <p class="font-semibold mb-4 text-lg">
@@ -71,7 +68,7 @@
     </ActionModal>
     <InformationModal id={informationModal.id} 
       onClose={() => { time = 1 }}
-      closable={false}
+      isClosable={false}
     >
       <p>{time}</p>
     </InformationModal>

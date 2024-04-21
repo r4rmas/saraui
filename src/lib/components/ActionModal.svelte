@@ -7,7 +7,7 @@
   export let acceptText = "Accept"
   export let acceptIcon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let onAccept: () => Promise<void> | void
-  export let closeText = "Close"
+  export let cancelText = "Cancel"
   export let closeIcon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let onClose: (() => void) | undefined = undefined
 
@@ -39,7 +39,7 @@
           {#if closeIcon}
             <svelte:component this={closeIcon} class="mr-1" />
           {/if}
-          {closeText}
+          {cancelText}
         </button>
       </form>
       <button on:click={handleClick}

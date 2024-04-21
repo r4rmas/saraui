@@ -1,6 +1,6 @@
 <script lang="ts">
   export let id: string
-  export let closable = true
+  export let isClosable = true
   export let onClose: (() => void) | undefined = undefined
 </script>
 
@@ -11,7 +11,7 @@
   <form method="dialog" class="modal-backdrop">
     <button id={`${id}-close`} 
       on:click={onClose ? onClose : () => {}}
-      disabled={!closable} 
+      disabled={!isClosable} 
     />
   </form>
 </dialog>
