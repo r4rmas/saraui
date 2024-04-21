@@ -167,7 +167,7 @@
   }
   const baseStyle = `
     flex 
-    absolute z-20 
+    fixed z-20 
     ${directionStyle[direction]}
     ${directionStyle.top}
     shadow-lg 
@@ -183,7 +183,7 @@
 
   const transition: FlyParams = {
     duration: 500,
-    x: position.horizontal?.direction === "right" ? 200 : -200
+    x: position.horizontal?.direction === "right" ? 40 : -40
   }
 
   $: ({ cause, content } = $notificationData)

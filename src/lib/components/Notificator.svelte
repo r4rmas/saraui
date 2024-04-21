@@ -17,23 +17,19 @@
 
 <div class="relative w-full">
   <slot></slot>
-    {#if visible}
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="relative w-full">
-          <Notification
-            icon={
-              icons 
-                ? icons[cause] 
-                : _icons
-                  ? _icons[cause]
-                  : undefined
-            }
-            position={{
-              horizontal: horizontal ?? _horizontal,
-              topSpace: topSpace ?? _topSpace
-            }}
-          />
-        </div>
-      </div>
-    {/if}
+  {#if visible}
+    <Notification
+      icon={
+        icons 
+          ? icons[cause] 
+          : _icons
+            ? _icons[cause]
+            : undefined
+      }
+      position={{
+        horizontal: horizontal ?? _horizontal,
+        topSpace: topSpace ?? _topSpace
+      }}
+    />
+  {/if}
 </div>
