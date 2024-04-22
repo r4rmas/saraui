@@ -1,80 +1,54 @@
+import type { Colors, Loaders, NotificationCauses, Sizes, TransitionDirections } from "./enums.js"
+
 export type RadioSelectorOption = {
   name: string
   value: string
   emoji?: string
 }
 
-export type NotificationCauseString = "info" | "success" | "warning" | "error"
 export type NotificationIcons = {
   success: ConstructorOfATypedSvelteComponent
   info: ConstructorOfATypedSvelteComponent
   warning: ConstructorOfATypedSvelteComponent
   error: ConstructorOfATypedSvelteComponent
 }
-export type NotificationHorizontalSpace = {
-  sm:  2 | 4 | 6 | 8 | 10 | 12 | 14 | 16  
-  md?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 
-  lg?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 
-  xl?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 
+export type Rem = `${number}rem`
+export type NotificationHorizontalDistance = {
+  sm:  Rem
+  md?: Rem
+  lg?: Rem
+  xl?: Rem
 }
-export type NotificationTopSpace = {
-  sm:  2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 28 | 32  
-  md?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 28 | 32 
-  lg?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 28 | 32 
-  xl?: 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 28 | 32 
-}
-export type NotificationHorizontalSpaceStyle = {
-  [k: number]: string
-  2: string
-  4: string
-  6: string
-  8: string
-  10: string
-  12: string
-  14: string
-  16: string
-}
-export type NotificationTopSpaceStyle = {
-  [k: number]: string
-  2: string
-  4: string
-  6: string
-  8: string
-  10: string
-  12: string
-  14: string
-  16: string
-  20: string
-  24: string
-  28: string
-  32: string
-}
-export type NotificationHorizontalData = {
-  direction: "right" | "left", 
-  space: NotificationHorizontalSpace
+export type NotificationVerticalDistance = {
+  sm:  Rem
+  md?: Rem
+  lg?: Rem
+  xl?: Rem
 }
 export type NotificationData = {
   visible: boolean
   cause: NotificationCauseString
   content: string
 }
-export type NotificationPosition = {
-  horizontal?: NotificationHorizontalData
-  topSpace?: NotificationTopSpace
+export type NotificationDistance = {
+  top?: NotificationVerticalDistance
+  right?: NotificationHorizontalDistance
+  bottom?: NotificationVerticalDistance
+  left?: NotificationHorizontalDistance
 }
-export type NotificationPositionProps = {
-  [k in keyof NotificationPosition]-?: NotificationPosition[k] 
+export type NotificationDirection = `${TransitionDirections}`
+export type NotificationTransition = {
+  direction: NotificationDirection,
+  distance: NotificationDistance
 }
 export type NotificationConfig = {
-  icons?: NotificationIcons
-  position?: NotificationPosition
+  icons?: NotificationIcons,
+  transition?: NotificationTransition
 }
 export type NotificationStore = {
   icons?: NotificationIcons
-  position: NotificationPositionProps
+  transition: NotificationTransition
 }
-
-export type ColorString = "primary" | "secondary" | "accent" | "neutral" | "info" | "success" | "warning" | "error"
 export type Color = {
   [k: string]: string
   primary: string, 
@@ -86,13 +60,15 @@ export type Color = {
   error: string
 }
 
-export type LoaderString = "spinner" | "dots" | "ring" | "ball" | "bars" | "infinity"
 export type LoaderProps = {
-  option: LoaderString
-  color?: ColorString 
+  option: `${Loaders}`
+  color?: `${Colors}`
 }
 
 export type SaraProviderConfig = {
   loader?: LoaderProps
   notification?: NotificationConfig
 }
+
+export type SizeString = `${Sizes}`
+export type NotificationCauseString = `${NotificationCauses}`

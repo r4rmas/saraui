@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { chosenLoader } from "$lib/stores.js"
+  import { loader } from "$lib/stores.js"
   import { TextColor } from "$lib/constants.js";
-  import type { ColorString, LoaderString } from "$lib/types.js"
+  import type { Colors, Loaders } from "$lib/enums.js"
 
-  export let option: LoaderString | undefined = undefined
-  export let color: ColorString | undefined = undefined
+  export let option: `${Loaders}` | undefined = undefined
+  export let color: `${Colors}` | undefined = undefined
   
   const loaderStyle = {
     spinner: "loading-spinner",
@@ -15,7 +15,7 @@
     infinity: "loading-infinity"
   }
 
-  $: ({ option: _option, color: _color } = $chosenLoader)
+  $: ({ option: _option, color: _color } = $loader)
 </script>
 
 <span class={`

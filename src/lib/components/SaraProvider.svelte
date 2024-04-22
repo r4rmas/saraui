@@ -1,25 +1,50 @@
 <script lang="ts">
   import { onMount } from "svelte"
-  import { chosenLoader, notificationProps } from "$lib/stores.js"
-  import type { SaraProviderConfig } from "$lib/types.js"
+  import { breakpoint, loader, notificationData } from "$lib/stores.js"
+  import type { SaraProviderConfig, SizeString } from "$lib/types.js"
+  import Notification from "./Notification.svelte"
 
   export let config: SaraProviderConfig | undefined = undefined
 
+  const { loader: _loader, notification } = config ?? {}
+  const { icons, transition } = notification ?? {}
+  const { direction, distance } = transition ?? {}
+
+  $loader = _loader ? _loader : $loader
+
+  $: ({ visible, cause } = $notificationData)
+  
   onMount(() => {
-    if (config) {
-      const { loader, notification } = config
-      if (loader) $chosenLoader = loader
-      if (notification) {
-        const { icons, position } = notification
-        if (position) {
-          const { horizontal, topSpace } = position
-          if (horizontal) $notificationProps.position.horizontal = horizontal
-          if (topSpace) $notificationProps.position.topSpace = topSpace
-        }
-        if (icons) $notificationProps.icons = icons
+    if (document) {
+      const getCurrentBreakpoint = () => {
+        const breakpointSM: SizeString | null = document.getElementById('saraui-sm')?.offsetParent === null ? null : "sm"
+        const breakpointMD: SizeString | null = document.getElementById('saraui-md')?.offsetParent === null ? null : "md"
+        const breakpointLG: SizeString | null = document.getElementById('saraui-lg')?.offsetParent === null ? null : "lg"
+        const breakpointXL: SizeString | null = document.getElementById('saraui-xl')?.offsetParent === null ? null : "xl"
+        // const breakpoint2XL = document.getElementById('saraui-2xl')?.offsetParent === null ? null : "2xl"
+        return breakpointSM ?? breakpointMD ?? breakpointLG ?? breakpointXL /*?? breakpoint2XL*/
       }
+      $breakpoint = getCurrentBreakpoint() ?? "sm"
     }
   })
 </script>
 
-<slot></slot>
+<div class="relative w-full">
+  <slot></slot>
+  {#if visible}
+    <Notification
+      icon={icons ? icons[cause] : undefined}
+      direction={direction ?? "right-to-left"}
+      distance={distance ?? {
+        top: { sm: "2rem", lg: "4rem" },
+        right: { sm: "2rem", lg: "8rem" }
+      }}
+    />
+  {/if}
+  <div id="saraui-sm" class="inline md:hidden lg:hidden xl:hidden 2xl:hidden"></div>
+  <div id="saraui-md" class="hidden md:inline lg:hidden xl:hidden 2xl:hidden"></div>
+  <div id="saraui-lg" class="hidden lg:inline xl:hidden 2xl:hidden"></div>
+  <div id="saraui-xl" class="hidden xl:inline 2xl:inline"></div>
+</div>
+<!-- <div id="saraui-xl" class="hidden xl:inline 2xl:hidden"></div> -->
+<!-- <div id="saraui-2xl" class="hidden 2xl:inline"></div> -->
