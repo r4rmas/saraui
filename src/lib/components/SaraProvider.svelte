@@ -29,22 +29,20 @@
   })
 </script>
 
-<div class="relative w-full">
-  <slot></slot>
-  {#if visible}
-    <Notification
-      icon={icons ? icons[cause] : undefined}
-      direction={direction ?? "right-to-left"}
-      distance={distance ?? {
-        top: { sm: "2rem", lg: "4rem" },
-        right: { sm: "2rem", lg: "8rem" }
-      }}
-    />
-  {/if}
-  <div id="saraui-sm" class="inline md:hidden lg:hidden xl:hidden 2xl:hidden"></div>
-  <div id="saraui-md" class="hidden md:inline lg:hidden xl:hidden 2xl:hidden"></div>
-  <div id="saraui-lg" class="hidden lg:inline xl:hidden 2xl:hidden"></div>
-  <div id="saraui-xl" class="hidden xl:inline 2xl:inline"></div>
-</div>
+<slot></slot>
+{#if visible}
+  <Notification
+    icon={icons ? icons[cause] : undefined}
+    direction={direction ?? "right-to-left"}
+    distance={distance ?? {
+      top: { sm: "2rem", lg: "4rem" },
+      right: { sm: "2rem", lg: "8rem" }
+    }}
+  />
+{/if}
+<div id="saraui-sm" class="inline md:hidden lg:hidden xl:hidden 2xl:hidden"></div>
+<div id="saraui-md" class="hidden md:inline lg:hidden xl:hidden 2xl:hidden"></div>
+<div id="saraui-lg" class="hidden lg:inline xl:hidden 2xl:hidden"></div>
+<div id="saraui-xl" class="hidden xl:inline 2xl:inline"></div>
 <!-- <div id="saraui-xl" class="hidden xl:inline 2xl:hidden"></div> -->
 <!-- <div id="saraui-2xl" class="hidden 2xl:inline"></div> -->

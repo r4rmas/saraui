@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import type { RadioSelectorOption, SaraProviderConfig } from "$lib/types.js"
   import { showNotification, useActionModal, useInformationModal } from "$lib/utils.js"
@@ -32,12 +31,6 @@
 
   const actionModal = useActionModal()
   const informationModal = useInformationModal()
-
-  let optionSelected: string
-
-  onMount(() => {
-    showNotification("success", "Success")
-  })
 </script>
 
 <SaraProvider {config}>
@@ -45,7 +38,7 @@
     <div class="flex w-full justify-center max-w-screen-lg">
       <div class="flex flex-col w-full gap-4 p-4 justify-center items-center">
         <ImageUploader name="profile" />
-        <RadioSelector {options} bind:state={optionSelected} />
+        <RadioSelector {options} />
         <button on:click={actionModal.show} 
           class="btn btn-primary"
         >
@@ -55,6 +48,11 @@
           class="btn btn-secondary"
         >
           Show information modal
+        </button>
+        <button on:click={() => { showNotification("success", "Success") }}
+          class="btn btn-accent"  
+        >
+          Show notification
         </button>
         <button class="btn btn-outline" disabled>
           <Loader />
