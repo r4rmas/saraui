@@ -9,7 +9,7 @@
 
 # Sara UI
 
-Sara UI is a Typescript and Javascript compatible library that provides a collection of Svelte components styled with daisyUI
+Sara UI is a Typescript and Javascript compatible library that provides a collection of daisyUI components for Svelte/Sveltekit.
 ## Installation
 
 ```
