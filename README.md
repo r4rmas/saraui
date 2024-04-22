@@ -11,6 +11,7 @@ Add Sara UI to _tailwind.config.cjs_:
 ```
 const config = {
   content: [
+    ...
     "./node_modules/saraui/**/*.{html,js,svelte,ts}"
     ...
   ],

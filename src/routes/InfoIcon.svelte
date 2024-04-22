@@ -1,0 +1,1 @@
+<iconify-icon icon="heroicons:information-circle-16-solid"></iconify-icon>

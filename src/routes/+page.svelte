@@ -1,22 +1,25 @@
 <script lang="ts">
-  import ImageUploader from "$lib/components/ImageUploader.svelte"
   import type { RadioSelectorOption, SaraProviderConfig } from "$lib/types.js"
   import { showNotification, useActionModal, useInformationModal } from "$lib/utils.js"
-  import Icon from "./lib/Icon.svelte"
+  import { breakpoint } from "$lib/stores.js"
   import ActionModal from "$lib/components/ActionModal.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import InformationModal from "$lib/components/InformationModal.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
-  import { breakpoint } from "$lib/stores.js"
   import Loader from "$lib/components/Loader.svelte"
+  import ImageUploader from "$lib/components/ImageUploader.svelte"
+  import SuccessIcon from "./SuccessIcon.svelte"
+  import InfoIcon from "./InfoIcon.svelte"
+  import WarningIcon from "./WarningIcon.svelte"
+  import ErrorIcon from "./ErrorIcon.svelte"
 
   const config: SaraProviderConfig = { 
     notification: { 
       icons: {
-        success: Icon,
-        info: Icon,
-        warning: Icon,
-        error: Icon,
+        success: SuccessIcon,
+        info: InfoIcon,
+        warning: WarningIcon,
+        error: ErrorIcon,
       }
     } 
   }
@@ -49,7 +52,7 @@
         >
           Show information modal
         </button>
-        <button on:click={() => { showNotification("success", "Success") }}
+        <button on:click={() => { showNotification("error", "Error") }}
           class="btn btn-accent"  
         >
           Show notification

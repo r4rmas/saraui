@@ -1,0 +1,1 @@
+<iconify-icon icon="heroicons:check-badge-16-solid"></iconify-icon>
