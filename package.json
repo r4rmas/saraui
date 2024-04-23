@@ -1,12 +1,13 @@
 {
   "name": "saraui",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "author": "Raul Armas",
   "description": "daisyUI components for Svelte/Sveltekit",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/r4rmas/saraui.git"
   },
+  "homepage": "https://saraui.com",
   "license": "MIT",
   "keywords": [
     "svelte",

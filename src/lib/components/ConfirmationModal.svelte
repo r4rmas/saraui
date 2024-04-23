@@ -2,8 +2,10 @@
   import Loader from "./Loader.svelte"
 
   export let id: string
+  export let title: string
+  export let content: string
   export let canAccept = true
-  export let isDangerous = false
+  export let isDangerous = true
   export let acceptText = "Accept"
   export let acceptIcon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let onAccept: () => Promise<void> | void
@@ -24,10 +26,17 @@
 
 <dialog {id} class="modal">
   <div class="modal-box">
+    <p class="font-semibold mb-4 text-lg">
+      {title}
+    </p>
+    <p>
+      {content}
+    </p>
     <slot />
     <div class="modal-action">
       <form method="dialog">
-        <button on:click={onClose}
+        <button id={`${id}-close`}
+          on:click={onClose}
           bind:this={closeButton}
           class="
             btn

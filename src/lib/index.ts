@@ -5,13 +5,13 @@ import type {
   LoaderProps,
   NotificationHorizontalDistance, NotificationVerticalDistance, NotificationIcons, NotificationConfig,
 } from "$lib/types.js"
-import { showNotification, useActionModal, useInformationModal } from "./utils.js";
+import { showNotification, useAnyModal } from "./utils.js";
 import SaraProvider from "./components/SaraProvider.svelte"
 import ImageUploader from "./components/ImageUploader.svelte";
 import RadioSelector from "./components/RadioSelector.svelte";
 import Loader from "./components/Loader.svelte";
-import ActionModal from "./components/ActionModal.svelte";
-import InformationModal from "./components/InformationModal.svelte";
+import ConfirmationModal from "./components/ConfirmationModal.svelte";
+import Modal from "./components/Modal.svelte";
 
 export {
   SaraProvider, type SaraProviderConfig,
@@ -19,6 +19,6 @@ export {
   ImageUploader,
   RadioSelector, type RadioSelectorOption,
   type NotificationVerticalDistance as NotificationTopSpace, type NotificationHorizontalDistance as NotificationHorizontalSpace, type NotificationIcons, type NotificationConfig as NotificationProps, showNotification,
-  ActionModal, useActionModal,
-  InformationModal, useInformationModal
+  ConfirmationModal,
+  Modal, useAnyModal as useInformationModal
 }

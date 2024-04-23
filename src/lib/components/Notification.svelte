@@ -1,10 +1,10 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
   import { breakpoint, notificationData } from "$lib/stores.js"
-  import type { NotificationDistance, NotificationDirection, SizeString, Rem } from "$lib/types.js"
+  import type { NotificationDistance, NotificationDirectionString, SizeString, RemString } from "$lib/types.js"
 
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
-  export let direction: NotificationDirection
+  export let direction: NotificationDirectionString
   export let distance: NotificationDistance
 
   const baseClasses = `
@@ -35,7 +35,7 @@
   function getStyles(breakpoint: SizeString) {
     const styles: string[] = []
     const getStyle = (position: "top" | "right" | "bottom" | "left") => {
-      const append = (value: Rem) => styles.push(`${position}: ${value}`)
+      const append = (value: RemString) => styles.push(`${position}: ${value}`)
       const _position = distance[position]
       switch (breakpoint) {
         case "xl":

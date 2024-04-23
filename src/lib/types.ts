@@ -1,5 +1,10 @@
 import type { Colors, Loaders, NotificationCauses, Sizes, TransitionDirections } from "./enums.js"
 
+export type SizeString = `${Sizes}`
+export type NotificationCauseString = `${NotificationCauses}`
+export type NotificationDirectionString = `${TransitionDirections}`
+export type ColorString = `${Colors}`
+
 export type RadioSelectorOption = {
   name: string
   value: string
@@ -12,18 +17,18 @@ export type NotificationIcons = {
   warning: ConstructorOfATypedSvelteComponent
   error: ConstructorOfATypedSvelteComponent
 }
-export type Rem = `${number}rem`
+export type RemString = `${number}rem`
 export type NotificationHorizontalDistance = {
-  sm:  Rem
-  md?: Rem
-  lg?: Rem
-  xl?: Rem
+  sm:  RemString
+  md?: RemString
+  lg?: RemString
+  xl?: RemString
 }
 export type NotificationVerticalDistance = {
-  sm:  Rem
-  md?: Rem
-  lg?: Rem
-  xl?: Rem
+  sm:  RemString
+  md?: RemString
+  lg?: RemString
+  xl?: RemString
 }
 export type NotificationData = {
   visible: boolean
@@ -36,9 +41,8 @@ export type NotificationDistance = {
   bottom?: NotificationVerticalDistance
   left?: NotificationHorizontalDistance
 }
-export type NotificationDirection = `${TransitionDirections}`
 export type NotificationTransition = {
-  direction: NotificationDirection,
+  direction: NotificationDirectionString,
   distance: NotificationDistance
 }
 export type NotificationConfig = {
@@ -62,13 +66,10 @@ export type Color = {
 
 export type LoaderProps = {
   option: `${Loaders}`
-  color?: `${Colors}`
+  color?: ColorString
 }
 
 export type SaraProviderConfig = {
   loader?: LoaderProps
   notification?: NotificationConfig
 }
-
-export type SizeString = `${Sizes}`
-export type NotificationCauseString = `${NotificationCauses}`

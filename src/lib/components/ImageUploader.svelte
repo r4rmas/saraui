@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let name: string
+  export let name: string | undefined = undefined
   export let state: string | undefined = undefined
   export let size: "sm" | "md" | "lg" = "md"
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined

@@ -13,11 +13,7 @@ function showModal(id: string) {
   const dialog = <HTMLDialogElement>document.getElementById(id)
   if (dialog) dialog.showModal()
 }
-export function useActionModal() {
-  const id = `saraui-actionmodal-${uuidv4().replaceAll("-", "")}`
-  return { id, show: () => showModal(id) }
-}
-export function useInformationModal() {
+export function useAnyModal() {
   const id = `saraui-informationmodal-${uuidv4().replaceAll("-", "")}`
   return { 
     id, 

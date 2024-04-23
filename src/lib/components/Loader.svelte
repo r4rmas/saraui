@@ -4,7 +4,7 @@
   import type { Colors, Loaders } from "$lib/enums.js"
 
   export let option: `${Loaders}` | undefined = undefined
-  export let color: `${Colors}` | undefined = undefined
+  export let color: ColorString | undefined = undefined
   
   const loaderStyle = {
     spinner: "loading-spinner",
