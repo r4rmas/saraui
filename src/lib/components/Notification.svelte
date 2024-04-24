@@ -1,24 +1,24 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
-  import { breakpoint, notificationData } from "$lib/stores.js"
-  import type { NotificationDistance, NotificationDirectionString, SizeString, RemString } from "$lib/types.js"
+  import { currentBreakpoint, notificationData } from "$lib/stores.js"
+  import type { NotificationDistance, NotificationDirectionString, BreakpointString, RemString } from "$lib/types.js"
 
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let direction: NotificationDirectionString
   export let distance: NotificationDistance
 
-  const baseClasses = `
+  const baseClass = `
     flex 
     fixed z-20 
     shadow-lg 
     alert
     w-fit 
   `
-  const classes = {
-    info:  baseClasses + "alert-info" ,
-    success: baseClasses + "alert-success",
-    warning: baseClasses + "alert-warning",
-    error: baseClasses + "alert-error"
+  const fullClass = {
+    info:  baseClass + "alert-info" ,
+    success: baseClass + "alert-success",
+    warning: baseClass + "alert-warning",
+    error: baseClass + "alert-error"
   }
 
   const transition: FlyParams = {
@@ -30,9 +30,9 @@
 
   const { top, right, bottom, left } = distance
   const { cause, content } = $notificationData
-  const styles = getStyles($breakpoint ?? "sm")
+  const styles = getStyles($currentBreakpoint ?? "sm")
 
-  function getStyles(breakpoint: SizeString) {
+  function getStyles(breakpoint: BreakpointString) {
     const styles: string[] = []
     const getStyle = (position: "top" | "right" | "bottom" | "left") => {
       const append = (value: RemString) => styles.push(`${position}: ${value}`)
@@ -66,7 +66,7 @@
 </script>
 
 <div transition:fly={transition}
-  class={classes[cause]}
+  class={fullClass[cause]}
   style={styles.join(";")}
   role="alert"
 >

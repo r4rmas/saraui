@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte"
-  import { breakpoint, loader, notificationData } from "$lib/stores.js"
-  import type { SaraProviderConfig, SizeString } from "$lib/types.js"
+  import { currentBreakpoint, loader, notificationData } from "$lib/stores.js"
+  import type { SaraProviderConfig, BreakpointString } from "$lib/types.js"
   import Notification from "./Notification.svelte"
 
   export let config: SaraProviderConfig | undefined = undefined
@@ -17,14 +17,14 @@
   onMount(() => {
     if (document) {
       const getCurrentBreakpoint = () => {
-        const breakpointSM: SizeString | null = document.getElementById('saraui-sm')?.offsetParent === null ? null : "sm"
-        const breakpointMD: SizeString | null = document.getElementById('saraui-md')?.offsetParent === null ? null : "md"
-        const breakpointLG: SizeString | null = document.getElementById('saraui-lg')?.offsetParent === null ? null : "lg"
-        const breakpointXL: SizeString | null = document.getElementById('saraui-xl')?.offsetParent === null ? null : "xl"
+        const breakpointSM: BreakpointString | null = document.getElementById('saraui-sm')?.offsetParent === null ? null : "sm"
+        const breakpointMD: BreakpointString | null = document.getElementById('saraui-md')?.offsetParent === null ? null : "md"
+        const breakpointLG: BreakpointString | null = document.getElementById('saraui-lg')?.offsetParent === null ? null : "lg"
+        const breakpointXL: BreakpointString | null = document.getElementById('saraui-xl')?.offsetParent === null ? null : "xl"
         // const breakpoint2XL = document.getElementById('saraui-2xl')?.offsetParent === null ? null : "2xl"
         return breakpointSM ?? breakpointMD ?? breakpointLG ?? breakpointXL /*?? breakpoint2XL*/
       }
-      $breakpoint = getCurrentBreakpoint() ?? "sm"
+      $currentBreakpoint = getCurrentBreakpoint() ?? "sm"
     }
   })
 </script>

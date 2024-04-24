@@ -1,14 +1,13 @@
 <script lang="ts">
   import { afterUpdate } from "svelte"
   import { v4 as uuidv4 } from 'uuid'
-  import type { ColorString, RadioSelectorOption } from "$lib/types.js"
+  import type { ColorString, RadioSelectorOption, SizeString } from "$lib/types.js"
 
-  type RadioSize = "xs" | "sm" | "md" | "lg" 
   type RadioCols = 1 | 2 | 3 | 4
 
   export let options: RadioSelectorOption[]
   export let required = false
-  export let size :RadioSize = "md"
+  export let size :SizeString = "md"
   export let color: ColorString | undefined = undefined
   export let state: string | undefined = undefined
   export let cols: RadioCols | undefined = undefined
@@ -60,7 +59,7 @@
     else if ([1, 2, 3, 4].includes(_cols)) return _cols
     return 4
   }
-  function getColorClass(color?: ColorString) {
+  function getColorClass() {
     switch (color) {
       case "primary":
         return "radio-primary"
@@ -82,7 +81,7 @@
         return ""
     }
   }
-  function getSizeClass(size: RadioSize) {
+  function getSizeClass() {
     switch (size) {
       case "xs":
         return "radio-xs"
@@ -117,8 +116,8 @@
           type="radio"
           class={`
             radio
-            ${getSizeClass(size)}
-            ${getColorClass(color)}
+            ${getSizeClass()}
+            ${getColorClass()}
           `}
           {required}
         >

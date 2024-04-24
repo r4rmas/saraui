@@ -1,5 +1,5 @@
 import { notificationData } from "./stores.js"
-import type { NotificationCauseString } from "./types.js"
+import type { ButtonModifierString, ColorString, NotificationCauseString, SizeString } from "./types.js"
 import { v4 as uuidv4 } from "uuid"
 
 export function showNotification(cause: NotificationCauseString, content: string) {
@@ -33,4 +33,47 @@ export function timeout(seconds: number) {
 }
 export async function sleep(seconds: number) {
   await timeout(seconds)
+}
+
+export function getButtonSizeClass(size?: SizeString) {
+  switch (size) {
+    case "xs":
+      return "btn-xs"
+    case "sm":
+      return "btn-sm"
+    case "md":
+      return "btn-md"
+    case "lg":
+      return "btn-lg"
+    }
+}
+export function getButtonColorClass(color?: ColorString) {
+  switch (color) {
+    case "primary":
+      return "btn-primary"
+    case "secondary":
+      return "btn-secondary"
+    case "accent":
+      return "btn-accent"
+    case "neutral":
+      return "btn-neutral"
+    case "success":
+      return "btn-success"
+    case "info":
+      return "btn-info"
+    case "warning":
+      return "btn-warning"
+    case "error":
+      return "btn-error"
+  }
+}
+export function getButtonModifierClass(modifier?: ButtonModifierString) {
+  switch (modifier) {
+    case "link":
+      return "btn-link"
+    case "ghost":
+      return "btn-ghost"
+    case "glass":
+      return "btn-glass"
+  }
 }

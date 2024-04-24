@@ -1,9 +1,9 @@
 <script lang="ts">
   export let name: string | undefined = undefined
   export let state: string | undefined = undefined
-  export let size: "sm" | "md" | "lg" = "md"
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let onChange: ((image: File) => void) | undefined = undefined
+  export let size: "sm" | "md" | "lg" = "md"
   export let rounded: "none" | "sm" | "md" | "lg" | "xl"  |"2xl" | "3xl" | "full" = "full"
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
   export let isEditable = true
@@ -98,7 +98,7 @@
   </div>
 </div>
 
-<style>
+<style lang="postcss">
   .imaged {
     background-image: var(--img);
     @apply

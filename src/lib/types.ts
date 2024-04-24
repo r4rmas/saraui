@@ -1,14 +1,30 @@
-import type { Colors, Loaders, NotificationCauses, Sizes, TransitionDirections } from "./enums.js"
+import type { Colors, Loaders, NotificationCauses, Breakpoints, TransitionDirections, Sizes, ButtonModifiers, ButtonTypes } from "./enums.js"
 
-export type SizeString = `${Sizes}`
+export type BreakpointString = `${Breakpoints}`
 export type NotificationCauseString = `${NotificationCauses}`
 export type NotificationDirectionString = `${TransitionDirections}`
 export type ColorString = `${Colors}`
+export type SizeString = `${Sizes}`
+export type ButtonModifierString = `${ButtonModifiers}`
+export type ButtonTypeString = `${ButtonTypes}`
+export type IconPositionString = "right" | "left"
 
 export type RadioSelectorOption = {
   name: string
   value: string
   emoji?: string
+}
+
+export type ButtonIconProps = {
+  component: ConstructorOfATypedSvelteComponent,
+  position?: IconPositionString
+}
+export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
+
+export type ConfirmationModalIcons = {
+  position: IconPositionString
+  accept?: ConstructorOfATypedSvelteComponent
+  cancel?: ConstructorOfATypedSvelteComponent
 }
 
 export type NotificationIcons = {
@@ -64,11 +80,11 @@ export type Color = {
   error: string
 }
 
+
 export type LoaderProps = {
   option: `${Loaders}`
   color?: ColorString
 }
-
 export type SaraProviderConfig = {
   loader?: LoaderProps
   notification?: NotificationConfig

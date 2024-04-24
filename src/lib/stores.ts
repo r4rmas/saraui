@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
-import type { LoaderProps, NotificationData, SizeString } from "./types.js";
+import type { LoaderProps, NotificationData, BreakpointString } from "./types.js";
 
-export const breakpoint = writable<SizeString | undefined>(undefined)
+export const currentBreakpoint = writable<BreakpointString | undefined>(undefined)
 
 export const loader = writable<LoaderProps>({ option: "ring" })
 

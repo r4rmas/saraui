@@ -1,20 +1,22 @@
 <script lang="ts">
+  import type { ConfirmationModalIcons, OnEvent } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
   export let id: string
   export let title: string
   export let content: string
+  export let onAccept: OnEvent
+  export let onCancel: OnEvent | undefined = undefined
+  export let icons: ConfirmationModalIcons | undefined = undefined
   export let canAccept = true
   export let isDangerous = true
   export let acceptText = "Accept"
-  export let acceptIcon: ConstructorOfATypedSvelteComponent | undefined = undefined
-  export let onAccept: () => Promise<void> | void
   export let cancelText = "Cancel"
-  export let closeIcon: ConstructorOfATypedSvelteComponent | undefined = undefined
-  export let onClose: (() => void) | undefined = undefined
 
   let closeButton: HTMLButtonElement
   let isLoading = false
+
+  const { position: iconPosition, accept: acceptIcon, cancel: cancelIcon } = icons ?? {}
 
   async function handleClick() {
     isLoading = true
@@ -36,7 +38,7 @@
     <div class="modal-action">
       <form method="dialog">
         <button id={`${id}-close`}
-          on:click={onClose}
+          on:click={onCancel}
           bind:this={closeButton}
           class="
             btn
@@ -45,10 +47,13 @@
             active:border-none
             active:outline-none
         ">
-          {#if closeIcon}
-            <svelte:component this={closeIcon} class="mr-1" />
+          {#if cancelIcon && iconPosition === "left"}
+            <svelte:component this={cancelIcon} class="mr-1" />
           {/if}
           {cancelText}
+          {#if cancelIcon && iconPosition === "right"}
+            <svelte:component this={cancelIcon} class="mr-1" />
+          {/if}
         </button>
       </form>
       <button on:click={handleClick}
@@ -63,10 +68,13 @@
         {#if isLoading}
           <Loader />
         {:else}
-          {#if acceptIcon}
+          {#if acceptIcon && iconPosition === "left"}
             <svelte:component this={acceptIcon} class="mr-1" />
           {/if}
           {acceptText}
+          {#if acceptIcon && iconPosition === "right"}
+            <svelte:component this={acceptIcon} class="mr-1" />
+          {/if}
         {/if}
       </button>
     </div>
