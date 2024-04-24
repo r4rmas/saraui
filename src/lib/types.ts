@@ -15,14 +15,10 @@ export type RadioSelectorOption = {
   emoji?: string
 }
 
-export type ButtonIconProps = {
-  component: ConstructorOfATypedSvelteComponent,
-  position?: IconPositionString
-}
 export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
 
 export type ConfirmationModalIcons = {
-  position: IconPositionString
+  position?: IconPositionString
   accept?: ConstructorOfATypedSvelteComponent
   cancel?: ConstructorOfATypedSvelteComponent
 }
@@ -86,6 +82,6 @@ export type LoaderProps = {
   color?: ColorString
 }
 export type SaraProviderConfig = {
-  loader?: LoaderProps
-  notification?: NotificationConfig
+  loaders?: LoaderProps
+  notifications?: NotificationConfig
 }

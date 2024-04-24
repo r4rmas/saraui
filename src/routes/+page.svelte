@@ -15,7 +15,7 @@
   import IconButton from "$lib/components/IconButton.svelte"
 
   const config: SaraProviderConfig = { 
-    notification: { 
+    notifications: { 
       icons: {
         success: SuccessIcon,
         info: InfoIcon,
@@ -28,8 +28,8 @@
           bottom: { sm: "2rem" },
           left: { sm: "2rem" }
         }
-      }
-    } 
+      },
+    },
   }
   const options: RadioSelectorOption[] = [{
     name: "user",
@@ -55,24 +55,16 @@
         >
           Show confirmation modal
         </button>
-        <Button onClick={modal.show}
-          text="Show modal"
-          icon={{
-            component: InfoIcon,
-            position: "right"
-          }}
-        />
-
-        <button on:click={modal.show} 
-          class="btn btn-secondary"
-        >
+        <Button onClick={modal.show}>
           Show modal
-        </button>
+        </Button>
+
         <Button onClick={() => { showNotification("success", "Success") }} 
-          text="Show notification" 
           color="neutral" 
-          icon={{ component: SuccessIcon }}
-        />
+        >
+          Show notification
+          <InfoIcon />
+        </Button>
         <IconButton 
           tooltip="information"
           icon={InfoIcon}
@@ -87,6 +79,10 @@
       </div>
       <ConfirmationModal id={confirmationModal.id}
         onAccept={() => {}} 
+        icons={{
+          cancel: ErrorIcon,
+          accept: SuccessIcon
+        }} 
         title="Are you sure you want to leave?"
         content="If you leave all your data will be removed"
       />

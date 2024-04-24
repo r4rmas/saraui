@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { ButtonIconProps, ButtonModifierString, ButtonTypeString, ColorString, OnEvent, RemString, SizeString } from "$lib/types.js"
+  import type { ButtonModifierString, ButtonTypeString, ColorString, IconPositionString, OnEvent, RemString, SizeString } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
-  export let text: string
   export let type: ButtonTypeString = "button"
   export let isDisabled = false
   export let isOutlined = false
@@ -10,7 +9,6 @@
   export let color: ColorString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
   export let width: RemString | "full" | undefined = undefined
-  export let icon: ButtonIconProps | undefined = undefined
   export let onClick: OnEvent | undefined = undefined
 
   let isLoading = false
@@ -88,16 +86,6 @@
   {#if isLoading}
     <Loader />
   {:else}
-    {#if icon}
-      {#if !icon.position || icon.position === "left"}
-        <svelte:component this={icon.component} />
-      {/if}
-      {text}
-      {#if icon.position === "right"}
-        <svelte:component this={icon.component} />
-      {/if}
-    {:else}
-      {text}
-    {/if}
+    <slot></slot>
   {/if}
 </button>

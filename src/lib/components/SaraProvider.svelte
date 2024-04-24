@@ -6,11 +6,11 @@
 
   export let config: SaraProviderConfig | undefined = undefined
 
-  const { loader: _loader, notification } = config ?? {}
+  const { loaders: _loader, notifications: notification } = config ?? {}
   const { icons, transition } = notification ?? {}
   const { direction, distance } = transition ?? {}
 
-  $loader = _loader ? _loader : $loader
+  $loader = _loader ?? $loader
 
   $: ({ visible, cause } = $notificationData)
   
