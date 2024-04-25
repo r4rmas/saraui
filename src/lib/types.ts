@@ -7,7 +7,8 @@ export type ColorString = `${Colors}`
 export type SizeString = `${Sizes}`
 export type ButtonModifierString = `${ButtonModifiers}`
 export type ButtonTypeString = `${ButtonTypes}`
-export type IconPositionString = "right" | "left"
+export type PositionString = "top" | "right" | "bottom" | "left"
+export type HorizontalPositionString = "right" | "left"
 export type IdentifiableComponentString = "modal" | "radioselector"
 export type RemString = `${number}rem`
 
@@ -33,7 +34,7 @@ export type ModalIdentifier = {
   id: `saraui-modal.${string}`
 }
 export type ConfirmationModalIcons = {
-  position?: IconPositionString
+  position?: HorizontalPositionString
   accept?: ConstructorOfATypedSvelteComponent
   cancel?: ConstructorOfATypedSvelteComponent
 }
@@ -44,32 +45,28 @@ export type NotificationIcons = {
   warning: ConstructorOfATypedSvelteComponent
   error: ConstructorOfATypedSvelteComponent
 }
-export type NotificationHorizontalDistance = {
-  sm:  RemString
-  md?: RemString
-  lg?: RemString
-  xl?: RemString
-}
-export type NotificationVerticalDistance = {
-  sm:  RemString
-  md?: RemString
-  lg?: RemString
-  xl?: RemString
+export type NotificationDistance = {
+  [k: string]: RemString | undefined
+  top?:  RemString
+  right?: RemString
+  bottom?: RemString
+  left?: RemString
 }
 export type NotificationData = {
   visible: boolean
   cause: NotificationCauseString
   content: string
 }
-export type NotificationDistance = {
-  top?: NotificationVerticalDistance
-  right?: NotificationHorizontalDistance
-  bottom?: NotificationVerticalDistance
-  left?: NotificationHorizontalDistance
+export type NotificationBreakpointDistance = {
+  [k: string]: NotificationDistance | undefined
+  sm?: NotificationDistance
+  md?: NotificationDistance
+  lg?: NotificationDistance
+  xl?: NotificationDistance
 }
 export type NotificationTransition = {
   direction: NotificationDirectionString,
-  distance: NotificationDistance
+  distance: NotificationBreakpointDistance
 }
 export type NotificationConfig = {
   icons?: NotificationIcons,

@@ -34,7 +34,7 @@
 </script>
 
 <button {type} on:click={handleClick}
-  title={tooltip}
+  title={`  ${tooltip} `}
   disabled={isLoading || isDisabled}
   class={`
     btn

@@ -3,6 +3,7 @@
   export let state: string | undefined = undefined
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let onChange: ((image: File) => void) | undefined = undefined
+  // TODO: size: { sm: "string", md: "string" }
   export let size: "sm" | "md" | "lg" = "md"
   export let rounded: "none" | "sm" | "md" | "lg" | "xl"  |"2xl" | "3xl" | "full" = "full"
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"

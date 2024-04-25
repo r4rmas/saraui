@@ -50,12 +50,12 @@ export function getButtonSizeClass(size?: SizeString) {
       return "btn-md"
     case "lg":
       return "btn-lg"
+    default: 
+      return ""
     }
 }
 export function getButtonColorClass(color?: ColorString) {
   switch (color) {
-    case "primary":
-      return "btn-primary"
     case "secondary":
       return "btn-secondary"
     case "accent":
@@ -70,6 +70,8 @@ export function getButtonColorClass(color?: ColorString) {
       return "btn-warning"
     case "error":
       return "btn-error"
+    default:
+      return "btn-primary"
   }
 }
 export function getButtonModifierClass(modifier?: ButtonModifierString) {
@@ -80,5 +82,7 @@ export function getButtonModifierClass(modifier?: ButtonModifierString) {
       return "btn-ghost"
     case "glass":
       return "btn-glass"
+    default:
+      return ""
   }
 }

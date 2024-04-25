@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import type { LoaderProps, NotificationData, BreakpointString, IconPositionString } from "./types.js";
+import type { LoaderProps, NotificationData, BreakpointString, HorizontalPositionString } from "./types.js";
 
 export const currentBreakpoint = writable<BreakpointString | undefined>(undefined)
 

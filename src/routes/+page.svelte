@@ -21,14 +21,7 @@
         info: InfoIcon,
         warning: WarningIcon,
         error: ErrorIcon,
-      },
-      transition: {
-        direction: "left-to-right",
-        distance: {
-          bottom: { sm: "2rem" },
-          left: { sm: "2rem" }
-        }
-      },
+      }
     },
   }
   const options: SelectorOption[] = [{
@@ -43,8 +36,7 @@
   const modal = useAnyModal()
 
   let radio: string
-  $: console.log(radio)
-
+  
   async function showConfirmationModal() {
     await sleep(3)
     confirmationModal.show()
@@ -70,31 +62,25 @@
             </Button>
           </div>
         </form>
-        <div class="flex w-full gap-2">
-          <Button onClick={showConfirmationModal} width="full">
+        <div class="flex w-full justify-center gap-2">
+          <Button onClick={showConfirmationModal}>
             Show confirmation modal
           </Button>
-          <Button onClick={modal.show} color="secondary" width="full">
+          <Button onClick={modal.show} color="secondary">
             Show modal
           </Button>
         </div>
-        <Button onClick={() => { showNotification("success", "Success") }} 
-          color="neutral" 
-        >
-          Show notification
-          <InfoIcon />
-        </Button>
-        <IconButton 
-          tooltip="information"
+        <IconButton onClick={() => { showNotification("success", "Success") }} 
+          tooltip="Show notification"
           icon={InfoIcon}
           color="accent"
         />
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p> -->
       </div>
       <ConfirmationModal id={confirmationModal.id}
         onAccept={() => {}} 

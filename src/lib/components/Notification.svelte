@@ -1,11 +1,11 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
   import { currentBreakpoint, notificationData } from "$lib/stores.js"
-  import type { NotificationDistance, NotificationDirectionString, BreakpointString, RemString } from "$lib/types.js"
+  import type { NotificationBreakpointDistance, NotificationDirectionString, BreakpointString, RemString, NotificationDistance } from "$lib/types.js"
 
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let direction: NotificationDirectionString
-  export let distance: NotificationDistance
+  export let distance: NotificationBreakpointDistance
 
   const baseClass = `
     flex 
@@ -28,39 +28,31 @@
      : undefined
   }
 
-  const { top, right, bottom, left } = distance
   const { cause, content } = $notificationData
-  const styles = getStyles($currentBreakpoint ?? "sm")
+  const styles = getStyles()
 
-  function getStyles(breakpoint: BreakpointString) {
+  function getStyles() {
     const styles: string[] = []
-    const getStyle = (position: "top" | "right" | "bottom" | "left") => {
-      const append = (value: RemString) => styles.push(`${position}: ${value}`)
-      const _position = distance[position]
-      switch (breakpoint) {
-        case "xl":
-          if (_position?.xl) append(_position.xl)
-          else if (_position?.lg) append(_position.lg)
-          else if (_position?.md) append(_position.md)
-          else append(_position?.sm ?? "0rem")
-          break
-        case "lg":
-          if (_position?.lg) append(_position.lg)
-          else if (_position?.md) append(_position.md)
-          else append(_position?.sm ?? "0rem")
-          break
-        case "md":
-          if (_position?.md) append(_position.md)
-          else append(_position?.sm ?? "0rem")
-          break
-        default:
-          append(_position?.sm ?? "0rem")
-      } 
+    const breakpoints = ["sm", "md", "lg", "xl"]
+    const positions = ["top", "right", "bottom", "left"]
+    const distanceIndex = breakpoints.indexOf($currentBreakpoint ?? "sm")
+    const addedPositions: string[] = []
+    let _positions = [ ...positions ]
+    for (let i = distanceIndex; i >= 0; i--) {
+      const _distance = distance[breakpoints[i]]
+      if (_distance) {
+        _positions.forEach(p => {
+          const position = _distance[p]
+          if (position) {
+            styles.push(`${p}: ${position}`)
+            addedPositions.push(p)
+          }
+        })
+        console.log(addedPositions)
+        _positions = positions.filter(p => !addedPositions.includes(p))
+        if (!_positions.length) break
+      }
     }
-    if (top) getStyle("top")
-    if (right) getStyle("right")
-    if (bottom) getStyle("bottom")
-    if (left) getStyle("left")
     return styles
   }
 </script>

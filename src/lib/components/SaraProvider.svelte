@@ -35,8 +35,9 @@
     icon={icons ? icons[cause] : undefined}
     direction={direction ?? "right-to-left"}
     distance={distance ?? {
-      top: { sm: "2rem", lg: "4rem" },
-      right: { sm: "2rem", lg: "8rem" }
+      sm: { top: "2rem", right: "1rem" },
+      md: { top: "3rem", right: "3rem" },
+      lg: { top: "4rem", right: "4rem" }
     }}
   />
 {/if}
