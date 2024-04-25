@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ButtonModifierString, ButtonTypeString, ColorString, HorizontalPositionString, OnEvent, RemString, SizeString } from "$lib/types.js"
+  import type { ButtonModifierString, ButtonTypeString, ColorString, OnEvent, RemString, SizeString } from "$lib/types.js"
   import { getButtonColorClass, getButtonModifierClass, getButtonSizeClass } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
@@ -18,18 +18,21 @@
   let buttonWidth: string
 
   async function handleClick(e: Event) {
-    const { width } = button.getBoundingClientRect()
-    buttonWidth = `${Math.round(width) + 9}px`
     if (onClick) {
       isLoading = true
       await onClick(e)
       isLoading = false
     }
   }
+  function setButtonWidth() {
+    const { width } = button.getBoundingClientRect()
+    buttonWidth = `${Math.round(width)}px`
+  }
 </script>
 
 <button {type} 
   on:click={handleClick} 
+  on:mouseenter={setButtonWidth}
   bind:this={button}
   disabled={isLoading || isDisabled}
   class={`

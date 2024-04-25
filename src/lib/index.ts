@@ -3,11 +3,11 @@ import type {
   SaraProviderConfig,
   SelectorOption,
   LoaderProps,
-  NotificationHorizontalDistance, NotificationVerticalDistance, NotificationIcons, NotificationConfig,
+  NotificationDistance, NotificationIcons, NotificationConfig, NotificationTransition, NotificationBreakpointDistance,
   ConfirmationModalIcons,
   OnEvent
 } from "$lib/types.js"
-import { showNotification, useAnyModal } from "./utils.js";
+import { showNotification, useModal, sleep } from "./utils.js";
 import { currentBreakpoint } from "./stores.js";
 import SaraProvider from "./components/SaraProvider.svelte"
 import ImageUploader from "./components/ImageUploader.svelte";
@@ -20,12 +20,12 @@ import IconButton from "./components/IconButton.svelte";
 
 export {
   SaraProvider, type SaraProviderConfig,
-  currentBreakpoint, type OnEvent,
+  currentBreakpoint, sleep, type OnEvent,
   Loader, type LoaderProps,
   ImageUploader,
   RadioSelector, type SelectorOption,
-  type NotificationVerticalDistance, type NotificationHorizontalDistance, type NotificationIcons, type NotificationConfig, showNotification,
+  type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, showNotification,
   ConfirmationModal, type ConfirmationModalIcons,
-  Modal, useAnyModal,
+  Modal, useModal,
   Button, IconButton  
 }

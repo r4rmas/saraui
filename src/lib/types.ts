@@ -65,7 +65,7 @@ export type NotificationBreakpointDistance = {
   xl?: NotificationDistance
 }
 export type NotificationTransition = {
-  direction: NotificationDirectionString,
+  direction?: NotificationDirectionString,
   distance: NotificationBreakpointDistance
 }
 export type NotificationConfig = {

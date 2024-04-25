@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { SelectorOption, SaraProviderConfig } from "$lib/types.js"
-  import { showNotification, sleep, useAnyModal } from "$lib/utils.js"
+  import { showNotification, sleep, useModal } from "$lib/utils.js"
   import { currentBreakpoint } from "$lib/stores.js"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
@@ -21,6 +21,14 @@
         info: InfoIcon,
         warning: WarningIcon,
         error: ErrorIcon,
+      },
+      transition: {
+        direction:  "left-to-right",
+        distance: {
+          sm: {
+            top: "2rem", left: "4rem"
+          }
+        }
       }
     },
   }
@@ -32,8 +40,8 @@
     label: "🤖 Admin"
   }]
 
-  const confirmationModal = useAnyModal()
-  const modal = useAnyModal()
+  const confirmationModal = useModal()
+  const modal = useModal()
 
   let radio: string
   

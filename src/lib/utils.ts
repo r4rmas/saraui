@@ -17,7 +17,7 @@ function showModal(id: string) {
   const dialog = <HTMLDialogElement>document.getElementById(id)
   if (dialog) dialog.showModal()
 }
-export function useAnyModal() {
+export function useModal() {
   const _id = getComponentID("modal")
   const id = <ModalIdentifier>{ id: _id }
   return { 
