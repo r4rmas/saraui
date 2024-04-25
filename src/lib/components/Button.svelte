@@ -26,7 +26,7 @@
   }
   function setButtonWidth() {
     const { width } = button.getBoundingClientRect()
-    buttonWidth = `${Math.round(width)}px`
+    buttonWidth = `${width}px`
   }
 </script>
 
