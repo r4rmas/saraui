@@ -1,5 +1,5 @@
 import { notificationData } from "./stores.js"
-import type { ButtonModifierString, ColorString, NotificationCauseString, SizeString } from "./types.js"
+import type { ButtonModifierString, ColorString, IdentifiableComponentString, NotificationCauseString, SizeString } from "./types.js"
 import { v4 as uuidv4 } from "uuid"
 
 export function showNotification(cause: NotificationCauseString, content: string) {
@@ -9,12 +9,16 @@ export function showNotification(cause: NotificationCauseString, content: string
   notificationData.set({ visible: true, cause, content })
 }
 
+export function getComponentID(component: IdentifiableComponentString) {
+  return `saraui-${component}.${uuidv4().replaceAll("-", "")}`
+}
+
 function showModal(id: string) {
   const dialog = <HTMLDialogElement>document.getElementById(id)
   if (dialog) dialog.showModal()
 }
 export function useAnyModal() {
-  const id = `saraui-informationmodal-${uuidv4().replaceAll("-", "")}`
+  const id = getComponentID("modal")
   return { 
     id, 
     show: () => showModal(id), 
@@ -28,10 +32,10 @@ export function useAnyModal() {
   }
 }
 
-export function timeout(seconds: number) {
-  return new Promise(res => setTimeout(res, (seconds * 1000)))
-}
 export async function sleep(seconds: number) {
+  const timeout = (seconds: number) => {
+    return new Promise(res => setTimeout(res, (seconds * 1000)))
+  }
   await timeout(seconds)
 }
 

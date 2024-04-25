@@ -1,7 +1,8 @@
 <script lang="ts">
   import { loader } from "$lib/stores.js"
   import { TextColor } from "$lib/constants.js";
-  import type { Colors, Loaders } from "$lib/enums.js"
+  import type { Loaders } from "$lib/enums.js"
+  import type { ColorString } from "$lib/types.js"
 
   export let option: `${Loaders}` | undefined = undefined
   export let color: ColorString | undefined = undefined

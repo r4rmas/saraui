@@ -1,7 +1,7 @@
 // Reexport your entry components here
 import type { 
   SaraProviderConfig,
-  RadioSelectorOption,
+  SelectorOption,
   LoaderProps,
   NotificationHorizontalDistance, NotificationVerticalDistance, NotificationIcons, NotificationConfig,
   ConfirmationModalIcons,
@@ -24,7 +24,7 @@ export {
   currentBreakpoint, type OnEvent,
   Loader, type LoaderProps,
   ImageUploader,
-  RadioSelector, type RadioSelectorOption,
+  RadioSelector, type SelectorOption as RadioSelectorOption,
   type NotificationVerticalDistance as NotificationTopSpace, type NotificationHorizontalDistance as NotificationHorizontalSpace, type NotificationIcons, type NotificationConfig as NotificationProps, showNotification,
   ConfirmationModal, type ConfirmationModalIcons,
   Modal, useAnyModal,

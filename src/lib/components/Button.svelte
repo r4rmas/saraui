@@ -12,8 +12,12 @@
   export let onClick: OnEvent | undefined = undefined
 
   let isLoading = false
+  let button: HTMLButtonElement
+  let buttonWidth: string
 
   async function handleClick(e: Event) {
+    const { width } = button.getBoundingClientRect()
+    buttonWidth = `${Math.round(width)}px`
     if (onClick) {
       isLoading = true
       await onClick(e)
@@ -67,20 +71,22 @@
 
 <button {type} 
   on:click={handleClick} 
+  bind:this={button}
   disabled={isLoading || isDisabled}
   class={`
     btn
+    ${width === "full" ? "btn-block flex-shrink" : ""}
     ${isOutlined ? "btn-outline" : ""}
-    ${getSizeClass()}
-    ${getColorClass()}
-    ${getModifierClass()}
+    ${getSizeClass() ?? ""}
+    ${getColorClass() ?? ""}
+    ${getModifierClass() ?? ""}
   `}
   style={
-    width 
-      ? width !== "full" 
-          ? width 
-          : undefined 
-      : undefined
+    width
+      ? width !== "full"
+        ? `with: ${width}`
+        : ""
+      : buttonWidth
   }
 >
   {#if isLoading}

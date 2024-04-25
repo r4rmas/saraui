@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { RadioSelectorOption, SaraProviderConfig } from "$lib/types.js"
-  import { showNotification, useAnyModal } from "$lib/utils.js"
+  import type { SelectorOption, SaraProviderConfig } from "$lib/types.js"
+  import { showNotification, sleep, useAnyModal } from "$lib/utils.js"
   import { currentBreakpoint } from "$lib/stores.js"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
@@ -31,17 +31,24 @@
       },
     },
   }
-  const options: RadioSelectorOption[] = [{
-    name: "user",
-    value: "User",
-    emoji: "👩🏻‍⚕️"
+  const options: SelectorOption[] = [{
+    value: "user",
+    label: "👦🏻 User"
   }, {
-    name: "admin",
-    value: "Admin",
+    value: "admin",
+    label: "🤖 Admin"
   }]
 
   const confirmationModal = useAnyModal()
   const modal = useAnyModal()
+
+  let radio: string
+  $: console.log(radio)
+
+  async function showConfirmationModal() {
+    await sleep(3)
+    confirmationModal.show()
+  }
 </script>
 
 <SaraProvider {config}>
@@ -49,16 +56,28 @@
     <div class="flex w-full justify-center max-w-screen-lg">
       <div class="flex flex-col w-full gap-4 p-4 justify-center items-center">
         <ImageUploader />
-        <RadioSelector {options} />
-        <button on:click={confirmationModal.show} 
-          class="btn btn-primary"
-        >
-          Show confirmation modal
-        </button>
-        <Button onClick={modal.show}>
-          Show modal
-        </Button>
-
+        <form>
+          <div class="grid grid-cols-2 gap-2">
+            <RadioSelector {options} 
+              bind:state={radio}
+              name="role"
+              required 
+            />
+          </div>
+          <div class="flex justify-center mt-4">
+            <Button type="submit" color="info">
+              Actualizar
+            </Button>
+          </div>
+        </form>
+        <div class="flex w-full gap-2">
+          <Button onClick={showConfirmationModal} width="full">
+            Show confirmation modal
+          </Button>
+          <Button onClick={modal.show} color="secondary" width="full">
+            Show modal
+          </Button>
+        </div>
         <Button onClick={() => { showNotification("success", "Success") }} 
           color="neutral" 
         >

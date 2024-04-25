@@ -8,11 +8,11 @@ export type SizeString = `${Sizes}`
 export type ButtonModifierString = `${ButtonModifiers}`
 export type ButtonTypeString = `${ButtonTypes}`
 export type IconPositionString = "right" | "left"
+export type IdentifiableComponentString = "modal" | "radioselector"
 
-export type RadioSelectorOption = {
-  name: string
+export type SelectorOption = {
   value: string
-  emoji?: string
+  label: string
 }
 
 export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
