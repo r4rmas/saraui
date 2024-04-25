@@ -9,14 +9,29 @@ export type ButtonModifierString = `${ButtonModifiers}`
 export type ButtonTypeString = `${ButtonTypes}`
 export type IconPositionString = "right" | "left"
 export type IdentifiableComponentString = "modal" | "radioselector"
+export type RemString = `${number}rem`
+
+export type Color = {
+  [k: string]: string
+  primary: string, 
+  secondary: string 
+  neutral: string 
+  info: string 
+  success: string 
+  warning: string 
+  error: string
+}
+
+export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
 
 export type SelectorOption = {
   value: string
   label: string
 }
 
-export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
-
+export type ModalIdentifier = {
+  id: `saraui-modal.${string}`
+}
 export type ConfirmationModalIcons = {
   position?: IconPositionString
   accept?: ConstructorOfATypedSvelteComponent
@@ -29,7 +44,6 @@ export type NotificationIcons = {
   warning: ConstructorOfATypedSvelteComponent
   error: ConstructorOfATypedSvelteComponent
 }
-export type RemString = `${number}rem`
 export type NotificationHorizontalDistance = {
   sm:  RemString
   md?: RemString
@@ -65,17 +79,6 @@ export type NotificationStore = {
   icons?: NotificationIcons
   transition: NotificationTransition
 }
-export type Color = {
-  [k: string]: string
-  primary: string, 
-  secondary: string 
-  neutral: string 
-  info: string 
-  success: string 
-  warning: string 
-  error: string
-}
-
 
 export type LoaderProps = {
   option: `${Loaders}`

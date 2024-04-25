@@ -1,5 +1,5 @@
 import { notificationData } from "./stores.js"
-import type { ButtonModifierString, ColorString, IdentifiableComponentString, NotificationCauseString, SizeString } from "./types.js"
+import type { ModalIdentifier, ButtonModifierString, ColorString, IdentifiableComponentString, NotificationCauseString, SizeString } from "./types.js"
 import { v4 as uuidv4 } from "uuid"
 
 export function showNotification(cause: NotificationCauseString, content: string) {
@@ -18,12 +18,13 @@ function showModal(id: string) {
   if (dialog) dialog.showModal()
 }
 export function useAnyModal() {
-  const id = getComponentID("modal")
+  const _id = getComponentID("modal")
+  const id = <ModalIdentifier>{ id: _id }
   return { 
     id, 
-    show: () => showModal(id), 
+    show: () => showModal(_id), 
     close: () => {
-      const closeButton = <HTMLButtonElement>document.getElementById(`${id}-close`)
+      const closeButton = <HTMLButtonElement>document.getElementById(`${_id}-close`)
       if (closeButton) {
         closeButton.disabled = false
         closeButton.click()

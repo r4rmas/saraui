@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { ConfirmationModalIcons, OnEvent } from "$lib/types.js"
+  import type { ModalIdentifier, ConfirmationModalIcons, OnEvent } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
-  export let id: string
+  export let id: ModalIdentifier
   export let title: string
   export let content: string
   export let onAccept: OnEvent
@@ -17,6 +17,7 @@
   let isLoading = false
 
   const { position: iconPosition, accept: acceptIcon, cancel: cancelIcon } = icons ?? {}
+  const { id: _id } = id
 
   async function handleClick() {
     isLoading = true
@@ -26,7 +27,7 @@
   }
 </script>
 
-<dialog {id} class="modal">
+<dialog id={_id} class="modal">
   <div class="modal-box">
     <p class="font-semibold mb-4 text-lg">
       {title}
@@ -37,7 +38,7 @@
     <slot />
     <div class="modal-action">
       <form method="dialog">
-        <button id={`${id}-close`}
+        <button id={`${_id}-close`}
           on:click={onCancel}
           bind:this={closeButton}
           class="

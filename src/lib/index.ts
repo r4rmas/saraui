@@ -5,7 +5,6 @@ import type {
   LoaderProps,
   NotificationHorizontalDistance, NotificationVerticalDistance, NotificationIcons, NotificationConfig,
   ConfirmationModalIcons,
-  ButtonIconProps,
   OnEvent
 } from "$lib/types.js"
 import { showNotification, useAnyModal } from "./utils.js";
@@ -24,9 +23,9 @@ export {
   currentBreakpoint, type OnEvent,
   Loader, type LoaderProps,
   ImageUploader,
-  RadioSelector, type SelectorOption as RadioSelectorOption,
-  type NotificationVerticalDistance as NotificationTopSpace, type NotificationHorizontalDistance as NotificationHorizontalSpace, type NotificationIcons, type NotificationConfig as NotificationProps, showNotification,
+  RadioSelector, type SelectorOption,
+  type NotificationVerticalDistance, type NotificationHorizontalDistance, type NotificationIcons, type NotificationConfig, showNotification,
   ConfirmationModal, type ConfirmationModalIcons,
   Modal, useAnyModal,
-  Button, IconButton, type ButtonIconProps
+  Button, IconButton  
 }
