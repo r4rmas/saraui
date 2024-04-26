@@ -33,11 +33,13 @@
 {#if visible}
   <Notification
     icon={icons ? icons[cause] : undefined}
-    direction={direction ?? "right-to-left"}
+    direction={direction ?? {
+      sm: "left-to-right",
+      lg: "right-to-left"
+    }}
     distance={distance ?? {
-      sm: { top: "2", right: "2" },
-      md: { top: "3", right: "3" },
-      lg: { top: "4", right: "4" }
+      sm: { top: "2", left: "2" },
+      lg: { top: "4", left: "auto", right: "4" }
     }}
   />
 {/if}

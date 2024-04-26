@@ -1,11 +1,12 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
-  import { notificationData } from "$lib/stores.js"
-  import type { NotificationBreakpointDistance, NotificationDirectionString } from "$lib/types.js"
+  import { currentBreakpoint, notificationData } from "$lib/stores.js"
+  import type { NotificationBreakpointDistance, NotificationDirection, NotificationDirectionString } from "$lib/types.js"
   import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/constants.js"
+  import { Breakpoints } from "$lib/enums.js"
 
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
-  export let direction: NotificationDirectionString
+  export let direction: NotificationDirectionString | NotificationDirection
   export let distance: NotificationBreakpointDistance
 
   const baseClass = `
@@ -24,13 +25,29 @@
 
   const transition: FlyParams = {
     duration: 500,
-    x: direction === "left-to-right" ? -400
-     : direction === "right-to-left" ? 400
-     : undefined
+    x: getResponsiveDirection(direction) 
   }
 
   const { cause, content } = $notificationData
 
+  function getResponsiveDirection(direction: NotificationDirectionString | NotificationDirection) {
+    const getDirection = (direction: NotificationDirectionString) => {
+      return direction === "left-to-right" ? -400
+           : direction === "right-to-left" ? 400
+           : undefined 
+    }
+    if (typeof direction !== "string") {
+      const breakpoints = <`${Breakpoints}`[]>Object.values(Breakpoints)
+      const currentBreakpointIndex = breakpoints.indexOf($currentBreakpoint ?? "sm")
+      for (let i = currentBreakpointIndex; i >= 0; i--) {
+        const _direction = direction[breakpoints[i]]
+        if (_direction) return getDirection(_direction)
+      }
+    }
+    return direction === "left-to-right" ? -400
+         : direction === "right-to-left" ? 400
+         : undefined
+  }
   function getResponsiveClass() {
     let responsiveClass = ""
     const { sm, md, lg, xl } = distance
@@ -62,7 +79,6 @@
       if (bottom) responsiveClass += `${bottomPositionClassXL[bottom]} `
       if (left) responsiveClass += `${leftPositionClassXL[left]} `
     }
-    console.log(responsiveClass)
     return responsiveClass
   }
 </script>

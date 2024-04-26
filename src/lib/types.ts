@@ -57,6 +57,9 @@ export type NotificationIcons = {
 export type NotificationDistance = {
   [k in Positions]?: SpacingString
 }
+export type NotificationDirection = {
+  [k in Breakpoints]?: NotificationDirectionString
+}
 export type NotificationData = {
   visible: boolean
   cause: NotificationCauseString
