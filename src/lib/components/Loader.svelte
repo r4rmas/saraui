@@ -7,7 +7,6 @@
   export let option: `${Loaders}` | undefined = undefined
   export let color: ColorString | undefined = undefined
   
-
   $: ({ option: _option, color: _color } = $loader)
 </script>
 

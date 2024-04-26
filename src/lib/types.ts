@@ -18,7 +18,7 @@ export type RoundedString = `${Roundeds}`
 export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
 
 export type SaraProviderConfig = {
-  loaders?: Loader
+  loaders?: LoaderProps
   notifications?: NotificationConfig
 }
 
@@ -29,7 +29,7 @@ export type WidthSpacing = {
   [k in keyof Spacing]: Spacing[k] | WidthString
 }
 
-export type Loader = {
+export type LoaderProps = {
   option: `${Loaders}`
   color?: ColorString
 }
@@ -49,10 +49,10 @@ export type ConfirmationModalIcons = {
 }
 
 export type NotificationIcons = {
-  success: ConstructorOfATypedSvelteComponent
-  info: ConstructorOfATypedSvelteComponent
-  warning: ConstructorOfATypedSvelteComponent
-  error: ConstructorOfATypedSvelteComponent
+  success?: ConstructorOfATypedSvelteComponent
+  info?: ConstructorOfATypedSvelteComponent
+  warning?: ConstructorOfATypedSvelteComponent
+  error?: ConstructorOfATypedSvelteComponent
 }
 export type NotificationDistance = {
   [k in Positions]?: SpacingString
@@ -60,10 +60,14 @@ export type NotificationDistance = {
 export type NotificationDirection = {
   [k in Breakpoints]?: NotificationDirectionString
 }
+export type TitleNotificationContent = {
+  title: string
+  content: string
+}
 export type NotificationData = {
   visible: boolean
   cause: NotificationCauseString
-  content: string
+  content: string | TitleNotificationContent
 }
 export type NotificationBreakpointDistance = {
   [k in Breakpoints]?: NotificationDistance

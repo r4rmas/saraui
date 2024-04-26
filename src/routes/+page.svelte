@@ -15,14 +15,14 @@
   import IconButton from "$lib/components/IconButton.svelte"
 
   const config: SaraProviderConfig = { 
-    notifications: { 
-      icons: {
-        success: SuccessIcon,
-        info: InfoIcon,
-        warning: WarningIcon,
-        error: ErrorIcon,
-      },
-    },
+    // notifications: { 
+    //   icons: {
+    //     success: SuccessIcon,
+    //     info: InfoIcon,
+    //     warning: WarningIcon,
+    //     error: ErrorIcon,
+    //   },
+    // },
   }
   const options: SelectorOption[] = [{
     value: "user",
@@ -70,7 +70,7 @@
             Show modal
           </Button>
         </div>
-        <IconButton onClick={() => { showNotification("success", "Success") }} 
+        <IconButton onClick={() => { showNotification("success", { title: "Success", content: "Hello, world!" }) }} 
           tooltip="Show notification"
           icon={InfoIcon}
           color="accent"

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { buttonColorClass } from "$lib/constants.js"
+  import { buttonColorClass } from "$lib/constants.js"
   import type { ModalIdentifier, ConfirmationModalIcons, OnEvent, ColorString } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 

@@ -37,8 +37,8 @@ export enum Spacings {
 }
 
 export enum Widths {
-"FULL" = "full",
- "FIT" = "fit",
+  FULL = "full",
+  FIT =  "fit",
   // "PX"= "px",
  // "SCREEN" = "screen",
  // "LVW" = "lvw",

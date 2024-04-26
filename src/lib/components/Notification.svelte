@@ -23,30 +23,31 @@
     error: baseClass + "alert-error"
   }
 
+  const { cause, content } = $notificationData
+  const title =  typeof content !== "string" ? content.title : undefined
+  const _content = typeof content === "string" ? content : content.content
+  const _direction = getResponsiveDirection(direction)
+
   const transition: FlyParams = {
     duration: 500,
-    x: getResponsiveDirection(direction) 
+    x: _direction
   }
 
-  const { cause, content } = $notificationData
-
-  function getResponsiveDirection(direction: NotificationDirectionString | NotificationDirection) {
-    const getDirection = (direction: NotificationDirectionString) => {
-      return direction === "left-to-right" ? -400
-           : direction === "right-to-left" ? 400
+  function getResponsiveDirection(_direction: typeof direction) {
+    const getDirection = (_direction: NotificationDirectionString) => {
+      return _direction === "left-to-right" ? -400
+           : _direction === "right-to-left" ? 400
            : undefined 
     }
-    if (typeof direction !== "string") {
+    if (typeof _direction !== "string" && Object.values(_direction).length) {
       const breakpoints = <`${Breakpoints}`[]>Object.values(Breakpoints)
       const currentBreakpointIndex = breakpoints.indexOf($currentBreakpoint ?? "sm")
       for (let i = currentBreakpointIndex; i >= 0; i--) {
-        const _direction = direction[breakpoints[i]]
-        if (_direction) return getDirection(_direction)
+        const _direction_ = _direction[breakpoints[i]]
+        if (_direction_) return getDirection(_direction_)
       }
     }
-    return direction === "left-to-right" ? -400
-         : direction === "right-to-left" ? 400
-         : undefined
+    return getDirection(<NotificationDirectionString>_direction)
   }
   function getResponsiveClass() {
     let responsiveClass = ""
@@ -87,11 +88,18 @@
   class="{alertClass[cause]} {getResponsiveClass()}"
   role="alert"
 >
-  {#if icon && direction === "right-to-left"}
+  {#if icon && _direction && _direction > 0}
     <svelte:component this={icon} />
   {/if}
-  <span>{content}</span>
-  {#if icon && direction === "left-to-right"}
+  {#if title}
+    <div>
+      <h3 class="font-semibold">{title}</h3>
+      <div class="text-sm">{_content}</div>
+    </div>
+  {:else}
+    <span>{_content}</span>
+  {/if}
+  {#if icon && _direction && _direction < 0}
     <svelte:component this={icon} />
   {/if}
 </div>
