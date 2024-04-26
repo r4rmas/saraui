@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { buttonColorClass } from "$lib/constants.js"
   import type { ModalIdentifier, ConfirmationModalIcons, OnEvent, ColorString } from "$lib/types.js"
-  import { getButtonColorClass } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
   export let id: ModalIdentifier
@@ -63,7 +63,7 @@
         class={`
           btn 
           w-28
-          ${getButtonColorClass(color)}
+          ${buttonColorClass[color]}
         `}>
         {#if isLoading}
           <Loader />

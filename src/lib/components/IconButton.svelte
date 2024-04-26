@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { buttonColorClass, buttonModifierClass, buttonSizeClass } from "$lib/constants.js"
   import type { ButtonModifierString, ButtonTypeString, ColorString, OnEvent, SizeString } from "$lib/types.js"
-  import { getButtonColorClass, getButtonModifierClass, getButtonSizeClass } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
   export let icon: ConstructorOfATypedSvelteComponent
@@ -40,9 +40,9 @@
     btn
     ${isOutlined ? "btn-outline" : ""}
     ${getShapeClass()}
-    ${getButtonSizeClass(size)}
-    ${getButtonColorClass(color)}
-    ${getButtonModifierClass(modifier)}
+    ${buttonSizeClass[size ?? "md"]}
+    ${buttonColorClass[color ?? "primary"]}
+    ${modifier ? buttonModifierClass[modifier] : ""}
   `}
 >
   {#if isLoading}

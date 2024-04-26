@@ -1,7 +1,7 @@
 <script lang="ts">
   import { roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
   import type { ColorString, RoundedString, Spacing } from "$lib/types.js"
-  import { getWidthClass } from "$lib/utils.js"
+  import { getResponsiveClass } from "$lib/utils.js"
 
   export let name: string | undefined = undefined
   export let state: File | undefined = undefined
@@ -18,8 +18,8 @@
   $: [ file ] = files ?? []
   $: if (state) state = file
 
-  function _getWidthClass() {
-    if (width) return getWidthClass(width, {
+  function _getResponsiveClass() {
+    if (width) return getResponsiveClass(width, {
       sm: widthClass,
       md: widthClassMD,
       lg: widthClassLG,
@@ -40,7 +40,7 @@
 />
 <div class="relative">
   <div class="avatar">
-    <div class="{_getWidthClass()} {roundedClass[rounded]}">
+    <div class="{_getResponsiveClass()} {roundedClass[rounded]}">
       <img src="{file && URL.createObjectURL(file)}" alt={file ? file.name : ""} />
     </div>
   </div>

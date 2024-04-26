@@ -1,30 +1,46 @@
-import type { ButtonWidthClass, ButtonWidthClassLG, ButtonWidthClassMD, ButtonWidthClassXL, ColorClass, RoundedClass, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
+import type { ButtonColorClass, ButtonModifierClass, ButtonSizeClass, ButtonWidthClass, ButtonWidthClassLG, ButtonWidthClassMD, ButtonWidthClassXL, ColorClass, RoundedClass, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
 
 export const textColor: ColorClass = {
-  primary: "text-primary",
-  secondary: "text-secondary",
-  neutral: "text-neutral",
-  accent: "text-accent",
-  success: "text-success",
-  info: "text-info",
-  warning: "text-warning",
-  error: "text-error",
-  "base-100": "text-base-100",
-  "base-200": "text-base-200",
-  "base-300": "text-base-300"
+  primary:    "text-primary",
+  secondary:  "text-secondary",
+  neutral:    "text-neutral",
+  accent:     "text-accent",
+  success:    "text-success",
+  info:       "text-info",
+  warning:    "text-warning",
+  error:      "text-error",
 }
 export const backgroundColor: ColorClass = {
-  primary: "bg-primary",
-  secondary: "bg-secondary",
-  neutral: "bg-neutral",
-  accent: "bg-accent",
-  success: "bg-success",
-  info: "bg-info",
-  warning: "bg-warning",
-  error: "bg-error",
-  "base-100": "bg-base-100",
-  "base-200": "bg-base-200",
-  "base-300": "bg-base-300"
+  primary:    "bg-primary",
+  secondary:  "bg-secondary",
+  neutral:    "bg-neutral",
+  accent:     "bg-accent",
+  success:    "bg-success",
+  info:       "bg-info",
+  warning:    "bg-warning",
+  error:      "bg-error",
+}
+
+export const buttonSizeClass: ButtonSizeClass = {
+  xs: "btn-xs",
+  sm: "btn-sm",
+  md: "btn-md",
+  lg: "btn-lg"
+}
+export const buttonColorClass: ButtonColorClass = {
+  primary:   "btn-primary",
+  secondary: "btn-secondary",
+  neutral:   "btn-neutral",
+  accent:    "btn-accent",
+  success:   "btn-success",
+  info:      "btn-info",
+  warning:   "btn-warning",
+  error:     "btn-error"
+}
+export const buttonModifierClass: ButtonModifierClass = {
+  link:  "btn-link",
+  ghost: "btn-ghost",
+  glass: "btn-glass"
 }
 
 export const widthClass: WidthSpacingClass = {
@@ -185,25 +201,25 @@ export const roundedClass: RoundedClass = {
 
 export const buttonWidthClass: ButtonWidthClass = {
   ...widthClass,
-  auto:   "w-auto",
-  fit:    "w-fit",
-  full:   "w-full flex-shrink"
+  auto: "w-auto",
+  fit:  "w-fit",
+  full: "w-full flex-shrink"
 }
 export const buttonWidthClassMD: ButtonWidthClassMD = {
   ...widthClassMD,
-  auto:   "md:w-auto",
-  fit:    "md:w-fit",
-  full:   "md:w-full flex-shrink"
+  auto: "md:w-auto",
+  fit:  "md:w-fit",
+  full: "md:w-full flex-shrink"
 }
 export const buttonWidthClassLG: ButtonWidthClassLG = {
   ...widthClassLG,
-  auto:   "lg:w-auto",
-  fit:    "lg:w-fit",
-  full:   "lg:w-full flex-shrink"
+  auto: "lg:w-auto",
+  fit:  "lg:w-fit",
+  full: "lg:w-full flex-shrink"
 }
 export const buttonWidthClassXL: ButtonWidthClassXL = {
   ...widthClassXL,
-  auto:   "xl:w-auto",
-  fit:    "xl:w-fit",
-  full:   "xl:w-full flex-shrink"
+  auto: "xl:w-auto",
+  fit:  "xl:w-fit",
+  full: "xl:w-full flex-shrink"
 }

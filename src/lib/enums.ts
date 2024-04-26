@@ -92,9 +92,6 @@ export enum Colors {
   SUCCESS = "success",
   WARNING = "warning",
   ERROR = "error",
-  BASE100 = "base-100",
-  BASE200 = "base-200",
-  BASE300 = "base-300"
 }
 
 export enum Loaders {

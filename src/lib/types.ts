@@ -30,6 +30,10 @@ export type SelectorOption = {
   label: string
 }
 
+export type BreakPointClass = {
+  [k in Breakpoints]?: any
+}
+
 export type RoundedClass = {
   [k in Roundeds]: `rounded-${k}`
 }
@@ -61,6 +65,15 @@ type _ButtonWidthClassLG = {
 }
 type _ButtonWidthClassXL = {
   [k in keyof _ButtonWidthClass]: `xl:w-${k}` | `xl:w-${k} flex-shrink`
+}
+export type ButtonSizeClass = {
+  [k in Sizes]: `btn-${k}`
+}
+export type ButtonColorClass = {
+  [k in Colors]: `btn-${k}`
+}
+export type ButtonModifierClass = {
+  [k in ButtonModifiers]: `btn-${k}`
 }
 export type ButtonWidthClass = WidthSpacingClass & _ButtonWidthClass
 export type ButtonWidthClassMD = WidthSpacingClassMD & _ButtonWidthClassMD

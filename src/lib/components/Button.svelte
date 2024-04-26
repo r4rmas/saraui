@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte"
-  import { buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL } from "$lib/constants.js"
+  import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL } from "$lib/constants.js"
   import type { ButtonModifierString, ButtonTypeString, WidthSpacing, ColorString, OnEvent, SizeString } from "$lib/types.js"
-  import { getButtonColorClass, getButtonModifierClass, getButtonSizeClass, getWidthClass, sleep } from "$lib/utils.js"
+  import { getResponsiveClass, sleep } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
   export let type: ButtonTypeString = "button"
@@ -31,20 +31,18 @@
     const { width } = button.getBoundingClientRect()
     buttonWidth = `width: ${width}px`
   }
-  // function getWidthClass() {
-  //   let widthClass = ""
-  //   if (width) {
-  //     const { sm, md, lg, xl } = width
-  //     if (sm) widthClass += `${buttonWidthClass[sm]} `
-  //     if (md) widthClass += `${buttonWidthClassMD[md]} `
-  //     if (lg) widthClass += `${buttonWidthClassLG[lg]} `
-  //     if (xl) widthClass += `${buttonWidthClassXL[xl]} `
-  //   }
-  //   return widthClass
-  // }
+  function _getResponsiveClass() {
+    if (width) return getResponsiveClass(width, {
+      sm: buttonWidthClass,
+      md: buttonWidthClassMD,
+      lg: buttonWidthClassLG,
+      xl: buttonWidthClassXL
+    })
+    return ""
+  }
 
   onMount(async () => {
-    await sleep(1)
+    await sleep(0.3)
     setButtonWidth()
   })
 </script>
@@ -56,15 +54,10 @@
   class={`
     btn
     ${isOutlined ? "btn-outline" : ""}
-    ${width ? getWidthClass(width, {
-      sm: buttonWidthClass,
-      md: buttonWidthClassMD,
-      lg: buttonWidthClassLG,
-      xl: buttonWidthClassXL,
-    }) : ""}
-    ${getButtonSizeClass(size)}
-    ${getButtonColorClass(color)}
-    ${getButtonModifierClass(modifier)}
+    ${_getResponsiveClass()}
+    ${buttonSizeClass[size ?? "md"]}
+    ${buttonColorClass[color ?? "primary"]}
+    ${modifier ? buttonModifierClass[modifier] : ""}
   `}
   style={_buttonWidth}
 >
