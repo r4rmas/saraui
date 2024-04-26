@@ -5,11 +5,11 @@
   export let isClosable = true
   export let onClose: (() => void) | undefined = undefined
 
-  const { id: _id } = id
+  const { _id } = id
 </script>
 
 <dialog id={_id} class="modal">
-  <div class="modal-box">
+  <div class="modal-box relative">
     <slot></slot>
   </div>
   <form method="dialog" class="modal-backdrop">

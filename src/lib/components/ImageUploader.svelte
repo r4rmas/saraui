@@ -1,111 +1,85 @@
 <script lang="ts">
+  import { roundedClass, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
+  import type { RoundedString, Spacing } from "$lib/types.js"
+  import { getWidthClass } from "$lib/utils.js"
+
   export let name: string | undefined = undefined
-  export let state: string | undefined = undefined
-  export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
-  export let onChange: ((image: File) => void) | undefined = undefined
-  // TODO: size: { sm: "string", md: "string" }
-  export let size: "sm" | "md" | "lg" = "md"
-  export let rounded: "none" | "sm" | "md" | "lg" | "xl"  |"2xl" | "3xl" | "full" = "full"
+  export let state: File | undefined = undefined
+  export let width: Spacing | undefined = undefined
+  export let rounded: RoundedString = "full"
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
   export let isEditable = true
-
-  const roundedStyle = {
-    none: "rounded-none",
-    sm: "rounded-sm",
-    md: "rounded-md",
-    lg: "rounded-lg",
-    xl: "rounded-xl",
-    "2xl": "rounded-2xl",
-    "3xl": "rounded-3xl",
-    full: "rounded-full",
-  }
-  const sizeStyle = {
-    sm: "w-[96px] h-[96px]",
-    md: "w-[128px] h-[128px]",
-    lg: "w-[156px] h-[156px]"
-  }
-
+  
   let inputElement: HTMLInputElement
+  let files: FileList
 
-  $: isImaged = state !== undefined
+  $: [ file ] = files ?? []
+  $: if (state) state = file
 
-  function handleChange(e: Event) {
-    const { files } = <HTMLInputElement>e.currentTarget
-    if (files) {
-      const file = files[0]
-      state = URL.createObjectURL(file)
-      if (onChange) onChange(file)
-    }
-  }
-  function onClick() {
-    inputElement.click()
+  function _getWidthClass() {
+    if (width) return getWidthClass(width, {
+      sm: widthClass,
+      md: widthClassMD,
+      lg: widthClassLG,
+      xl: widthClassXL
+    })
+    return ""
   }
 </script>
 
 <input {name}
+  bind:files
   bind:this={inputElement}
-  on:change={handleChange}
   id={name}
   disabled={!isEditable}
-  type="file"
   accept={acceptedFileExtensions}
+  type="file"
   class="hidden"
 />
-<div 
-  class={`
-    relative 
-    border
-    border-base-300
-    ${roundedStyle[rounded]}
-    ${sizeStyle[size]}
-    ${isImaged
-      ? "imaged"
-      : "bg-base-200"
-  }`}
-  style={isImaged
-    ? `--img: url(${state});`
-    : ""
-}>
-  <div class="
-    flex
-    absolute
-    inset-0
-    justify-center
-    items-center
-  ">
-    {#if isEditable}
-      <button on:click={onClick}
-        type="button"  
-        class="
-          p-1
-          rounded-full
-          bg-base-200
-      ">
-          {#if icon}
-            <svelte:component this={icon} />
-          {:else}
-            <div class="
-              flex 
-              w-5 h-5 
-              items-center
-              justify-center
-              text-xl
-            ">
-              +
-            </div>
-          {/if}
-      </button>
-    {/if}
+<div class="relative">
+  <div class="avatar">
+    <div class="{_getWidthClass()} {roundedClass[rounded]}">
+      <img src="{file && URL.createObjectURL(file)}" alt={file ? file.name : ""} />
+    </div>
   </div>
+    <div class={`
+      plus-container 
+      ${roundedClass[rounded]}
+      ${file ? "inset-0" : `
+        bg-base-200
+        -top-0.5
+        -bottom-0.5
+        -right-1
+        -left-1
+      `}
+    `}>
+      <button on:click={() => inputElement.click()} 
+        class="text-primary"
+      >
+        <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
 </div>
 
 <style lang="postcss">
-  .imaged {
-    background-image: var(--img);
-    @apply
-      bg-cover
-      bg-center
-      bg-no-repeat
-    ;
+  .plus {
+    @apply 
+    flex
+    items-center
+    justify-center
+    rounded-full 
+    bg-base-100 
+    text-2xl
+    w-8
+    h-8
+  }
+  .plus-container {
+    @apply 
+    absolute  
+    flex 
+    justify-center 
+    items-center
   }
 </style>

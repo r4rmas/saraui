@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { ModalIdentifier, ConfirmationModalIcons, OnEvent } from "$lib/types.js"
+  import type { ModalIdentifier, ConfirmationModalIcons, OnEvent, ColorString } from "$lib/types.js"
+  import { getButtonColorClass } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
   export let id: ModalIdentifier
@@ -8,8 +9,8 @@
   export let onAccept: OnEvent
   export let onCancel: OnEvent | undefined = undefined
   export let icons: ConfirmationModalIcons | undefined = undefined
+  export let color: ColorString = "error"
   export let canAccept = true
-  export let isDangerous = true
   export let acceptText = "Accept"
   export let cancelText = "Cancel"
 
@@ -17,7 +18,7 @@
   let isLoading = false
 
   const { position: iconPosition, accept: acceptIcon, cancel: cancelIcon } = icons ?? {}
-  const { id: _id } = id
+  const { _id } = id
 
   async function handleClick() {
     isLoading = true
@@ -62,10 +63,8 @@
         class={`
           btn 
           w-28
-          ${isDangerous 
-            ? "btn-error" 
-            : "btn-primary"
-      }`}>
+          ${getButtonColorClass(color)}
+        `}>
         {#if isLoading}
           <Loader />
         {:else}

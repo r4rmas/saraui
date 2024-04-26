@@ -6,7 +6,8 @@ const config = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themeRoot: "#saraui"
+    themeRoot: "#saraui",
+    themes: ["emerald"]
   },
 };
 

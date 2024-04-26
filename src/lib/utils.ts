@@ -1,5 +1,6 @@
+import type { Breakpoints } from "./enums.js"
 import { notificationData } from "./stores.js"
-import type { ModalIdentifier, ButtonModifierString, ColorString, IdentifiableComponentString, NotificationCauseString, SizeString } from "./types.js"
+import type { ModalIdentifier, ButtonModifierString, ColorString, IdentifiableComponentString, NotificationCauseString, SizeString, WidthSpacing } from "./types.js"
 import { v4 as uuidv4 } from "uuid"
 
 export function showNotification(cause: NotificationCauseString, content: string) {
@@ -19,9 +20,8 @@ function showModal(id: string) {
 }
 export function useModal() {
   const _id = getComponentID("modal")
-  const id = <ModalIdentifier>{ id: _id }
   return { 
-    id, 
+    id: <ModalIdentifier>{ _id },
     show: () => showModal(_id), 
     close: () => {
       const closeButton = <HTMLButtonElement>document.getElementById(`${_id}-close`)
@@ -38,6 +38,22 @@ export async function sleep(seconds: number) {
     return new Promise(res => setTimeout(res, (seconds * 1000)))
   }
   await timeout(seconds)
+}
+
+type BreakPointClass = {
+  [k in Breakpoints]?: any
+}
+//TODO: ESTA FUNCION EN REALIDAD PUEDE APLICAR CUALQUIER ESTILO NO SOLO WIDTH
+//LO QUE SE DEBE HACER ES GENERALIZAR UN POCO: width: BreakPointClass,
+//TODO: rename to getResponsiveClass
+export function getWidthClass(responsive: WidthSpacing, fromClasses: { [k in Breakpoints]: any }) {
+  let responsiveClass = ""
+  const { sm, md, lg, xl } = responsive
+  if (sm) responsiveClass += `${fromClasses.sm[sm]} `
+  if (md) responsiveClass += `${fromClasses.md[md]} `
+  if (lg) responsiveClass += `${fromClasses.lg[lg]} `
+  if (xl) responsiveClass += `${fromClasses.xl[xl]} `
+  return responsiveClass
 }
 
 export function getButtonSizeClass(size?: SizeString) {

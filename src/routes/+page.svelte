@@ -55,7 +55,7 @@
   <div class="flex w-full justify-center">
     <div class="flex w-full justify-center max-w-screen-lg">
       <div class="flex flex-col w-full gap-4 p-4 justify-center items-center">
-        <ImageUploader />
+        <ImageUploader width={{ sm: "28" }} />
         <form>
           <div class="grid grid-cols-2 gap-2">
             <RadioSelector {options} 
@@ -92,6 +92,7 @@
       </div>
       <ConfirmationModal id={confirmationModal.id}
         onAccept={() => {}} 
+        color="warning"
         icons={{
           cancel: ErrorIcon,
           accept: SuccessIcon

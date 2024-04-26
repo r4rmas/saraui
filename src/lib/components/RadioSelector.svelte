@@ -5,7 +5,7 @@
   export let name: string
   export let options: SelectorOption[]
   export let required = false
-  export let size :SizeString = "md"
+  export let size: SizeString = "md"
   export let color: ColorString | undefined = undefined
   export let state: string | undefined = undefined
 

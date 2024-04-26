@@ -1,7 +1,8 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
   import { currentBreakpoint, notificationData } from "$lib/stores.js"
-  import type { NotificationBreakpointDistance, NotificationDirectionString, BreakpointString, RemString, NotificationDistance } from "$lib/types.js"
+  import type { NotificationBreakpointDistance, NotificationDirectionString } from "$lib/types.js"
+  import { Breakpoints, Positions } from "$lib/enums.js"
 
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let direction: NotificationDirectionString
@@ -33,8 +34,8 @@
 
   function getStyles() {
     const styles: string[] = []
-    const breakpoints = ["sm", "md", "lg", "xl"]
-    const positions = ["top", "right", "bottom", "left"]
+    const breakpoints = <`${Breakpoints}`[]>Object.values(Breakpoints)
+    const positions = Object.values(Positions)
     const distanceIndex = breakpoints.indexOf($currentBreakpoint ?? "sm")
     const addedPositions: string[] = []
     let _positions = [ ...positions ]
