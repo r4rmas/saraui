@@ -1,6 +1,6 @@
 <script lang="ts">
   import { loader } from "$lib/stores.js"
-  import { TextColor } from "$lib/constants.js";
+  import { textColor } from "$lib/constants.js";
   import type { Loaders } from "$lib/enums.js"
   import type { ColorString } from "$lib/types.js"
 
@@ -23,9 +23,9 @@
   loading 
   ${loaderStyle[option ? option : _option]} 
   ${color 
-    ? TextColor[color] 
+    ? textColor[color] 
     : _color 
-      ? TextColor[_color] 
+      ? textColor[_color] 
       : ""
   }
 `}/>

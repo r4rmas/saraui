@@ -7,7 +7,7 @@ const config = {
   plugins: [require("daisyui")],
   daisyui: {
     themeRoot: "#saraui",
-    themes: ["emerald"]
+    themes: ["dracula"]
   },
 };
 

@@ -1,22 +1,30 @@
 import type { ButtonWidthClass, ButtonWidthClassLG, ButtonWidthClassMD, ButtonWidthClassXL, ColorClass, RoundedClass, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
 
-export const TextColor: ColorClass = {
+export const textColor: ColorClass = {
   primary: "text-primary",
   secondary: "text-secondary",
   neutral: "text-neutral",
+  accent: "text-accent",
   success: "text-success",
   info: "text-info",
   warning: "text-warning",
-  error: "text-error"
+  error: "text-error",
+  "base-100": "text-base-100",
+  "base-200": "text-base-200",
+  "base-300": "text-base-300"
 }
-export const BackgroundColor: ColorClass = {
+export const backgroundColor: ColorClass = {
   primary: "bg-primary",
   secondary: "bg-secondary",
   neutral: "bg-neutral",
+  accent: "bg-accent",
   success: "bg-success",
   info: "bg-info",
   warning: "bg-warning",
-  error: "bg-error"
+  error: "bg-error",
+  "base-100": "bg-base-100",
+  "base-200": "bg-base-200",
+  "base-300": "bg-base-300"
 }
 
 export const widthClass: WidthSpacingClass = {

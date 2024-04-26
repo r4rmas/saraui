@@ -16,14 +16,7 @@ export type WidthString = `${Widths}`
 export type RoundedString = `${Roundeds}`
 
 export type ColorClass = {
-  [k: string]: string
-  primary: string, 
-  secondary: string 
-  neutral: string 
-  info: string 
-  success: string 
-  warning: string 
-  error: string
+  [k in Colors]: string
 }
 
 export type Spacing = {
