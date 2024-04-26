@@ -32,17 +32,17 @@ export enum Spacings {
   SIXTY_FOUR = 64,
   SEVENTY_TWO = 72,
   EIGHTY = 80,
-  NINETY_SIX = 96
+  NINETY_SIX = 96,
+  AUTO = "auto",
 }
 
 export enum Widths {
-"AUTO" = "auto",
 "FULL" = "full",
+ "FIT" = "fit",
+  // "PX"= "px",
  // "SCREEN" = "screen",
  // "LVW" = "lvw",
  // "MIN" = "min",
- "FIT" = "fit",
-// "PX"= "px",
 }
 
 export enum Sizes {

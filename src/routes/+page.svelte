@@ -25,9 +25,9 @@
       transition: {
         direction:  "left-to-right",
         distance: {
-          sm: {
-            top: "2rem", left: "4rem"
-          }
+          sm: { top: "8", left: "4" },
+          //TODO: AGREGAR auto (esto elimina la clase del breakpoint anterior)
+          lg: { top: "auto", bottom: "8", left: "8" }
         }
       }
     },

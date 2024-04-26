@@ -2,7 +2,7 @@
 import type { 
   SaraProviderConfig,
   SelectorOption,
-  LoaderProps,
+  Loader,
   NotificationDistance, NotificationIcons, NotificationConfig, NotificationTransition, NotificationBreakpointDistance,
   ConfirmationModalIcons,
   OnEvent
@@ -21,7 +21,7 @@ import IconButton from "./components/IconButton.svelte";
 export {
   SaraProvider, type SaraProviderConfig,
   currentBreakpoint, sleep, type OnEvent,
-  Loader, type LoaderProps,
+  Loader, type Loader as LoaderProps,
   ImageUploader,
   RadioSelector, type SelectorOption,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, showNotification,

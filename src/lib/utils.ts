@@ -4,9 +4,9 @@ import type { ModalIdentifier, IdentifiableComponentString, NotificationCauseStr
 import { v4 as uuidv4 } from "uuid"
 
 export function showNotification(cause: NotificationCauseString, content: string) {
-  setTimeout(() => {
-    notificationData.update(old => ({ ...old, visible: false }))
-  }, 3500)
+  setTimeout(() => notificationData.update(old => ({
+    ...old, visible: false 
+  })), 3500)
   notificationData.set({ visible: true, cause, content })
 }
 
