@@ -1,32 +1,32 @@
 import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds } from "./enums.js"
 
-export type BreakpointString = `${Breakpoints}`
-export type NotificationCauseString = `${NotificationCauses}`
+export type BreakpointString            = `${Breakpoints}`
+export type NotificationCauseString     = `${NotificationCauses}`
 export type NotificationDirectionString = `${TransitionDirections}`
-export type ColorString = `${Colors}`
-export type SizeString = `${Sizes}`
-export type ButtonModifierString = `${ButtonModifiers}`
-export type ButtonTypeString = `${ButtonTypes}`
-export type PositionString = `${Positions}`
-export type HorizontalPositionString = "right" | "left"
+export type ColorString                 = `${Colors}`
+export type SizeString                  = `${Sizes}`
+export type ButtonModifierString        = `${ButtonModifiers}`
+export type ButtonTypeString            = `${ButtonTypes}`
+export type PositionString              = `${Positions}`
+export type HorizontalPositionString    = "right" | "left"
 export type IdentifiableComponentString = "modal" | "radioselector"
-export type RemString = `${number}rem`
-export type SpacingString = `${Spacings}`
-export type WidthString = `${Widths}`
-export type RoundedString = `${Roundeds}`
+export type RemString                   = `${number}rem`
+export type SpacingString               = `${Spacings}`
+export type WidthString                 = `${Widths}`
+export type RoundedString               = `${Roundeds}`
 
 export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
 
 export type SaraProviderConfig = {
-  loaders?: LoaderProps
+  loaders?      : LoaderProps
   notifications?: NotificationConfig
 }
 
-export type Spacing = {
-  [k in Breakpoints]?: SpacingString  
+export type ResponsiveSpacing = {
+  [k in BreakpointString]?: SpacingString  
 }
 export type WidthSpacing = {
-  [k in keyof Spacing]: Spacing[k] | WidthString
+  [k in keyof ResponsiveSpacing]: ResponsiveSpacing[k] | WidthString
 }
 
 export type LoaderProps = {
@@ -44,21 +44,21 @@ export type ModalIdentifier = {
 }
 export type ConfirmationModalIcons = {
   position?: HorizontalPositionString
-  accept?: ConstructorOfATypedSvelteComponent
-  cancel?: ConstructorOfATypedSvelteComponent
+  accept?  : ConstructorOfATypedSvelteComponent
+  cancel?  : ConstructorOfATypedSvelteComponent
 }
 
 export type NotificationIcons = {
   success?: ConstructorOfATypedSvelteComponent
-  info?: ConstructorOfATypedSvelteComponent
+  info?   : ConstructorOfATypedSvelteComponent
   warning?: ConstructorOfATypedSvelteComponent
-  error?: ConstructorOfATypedSvelteComponent
+  error?  : ConstructorOfATypedSvelteComponent
 }
 export type NotificationDistance = {
-  [k in Positions]?: SpacingString
+  [k in PositionString]?: SpacingString
 }
 export type NotificationDirection = {
-  [k in Breakpoints]?: NotificationDirectionString
+  [k in BreakpointString]?: NotificationDirectionString
 }
 export type TitledNotificationContent = {
   title: string
@@ -66,7 +66,7 @@ export type TitledNotificationContent = {
 }
 export type NotificationData = {
   visible: boolean
-  cause: NotificationCauseString
+  cause  : NotificationCauseString
   content: string | TitledNotificationContent
 }
 export type NotificationBreakpointDistance = {
@@ -74,29 +74,53 @@ export type NotificationBreakpointDistance = {
 }
 export type NotificationTransition = {
   direction?: NotificationDirectionString,
-  distance: NotificationBreakpointDistance
+  distance  : NotificationBreakpointDistance
 }
 export type NotificationConfig = {
-  icons?: NotificationIcons,
+  icons?     : NotificationIcons,
   transition?: NotificationTransition
 }
 export type NotificationStore = {
-  icons?: NotificationIcons
+  icons?    : NotificationIcons
   transition: NotificationTransition
 }
 
+export type IconifyIcon = {
+  classname: string,
+  size?    : SpacingString
+  color?   : ColorString
+}
+
 export type BreakPointClass = {
-  [k in Breakpoints]?: any
+  [k in BreakpointString]?: any
 }
-export type ColorClass = {
-  [k in Colors]: string
+
+export type TextColorClass = {
+  [k in ColorString]: `text-${k}`
 }
+export type BackgroundColorClass = {
+  [k in ColorString]: `bg-${k}`
+}
+
 export type RoundedClass = {
-  [k in Roundeds]: `rounded-${k}`
+  [k in RoundedString]: `rounded-${k}`
+}
+
+export type HeightSpacingClass = {
+  [k in SpacingString]: `h-${k}`
+}
+export type HeightSpacingClassMD = {
+  [k in keyof HeightSpacingClass]: `md:h-${k}`
+}
+export type HeightSpacingClassLG = {
+  [k in keyof HeightSpacingClass]: `lg:h-${k}`
+}
+export type HeightSpacingClassXL = {
+  [k in keyof HeightSpacingClass]: `xl:h-${k}`
 }
 
 export type WidthSpacingClass = {
-  [k in Spacings]: `w-${k}`
+  [k in SpacingString]: `w-${k}`
 }
 export type WidthSpacingClassMD = {
   [k in keyof WidthSpacingClass]: `md:w-${k}`
@@ -109,20 +133,20 @@ export type WidthSpacingClassXL = {
 }
 
 export type TopPositionClass = {
-  [k in Spacings]: `top-${k}`
+  [k in SpacingString]: `top-${k}`
 }
 export type TopPositionClassMD = {
   [k in keyof TopPositionClass]: `md:top-${k}`
 }
 export type TopPositionClassLG = {
   [k in keyof TopPositionClass]: `lg:top-${k}`
-} & { auto: `lg:top-auto` }
+}
 export type TopPositionClassXL = {
   [k in keyof TopPositionClass]: `xl:top-${k}`
 }
 
 export type BottomPositionClass = {
-  [k in Spacings]: `bottom-${k}`
+  [k in SpacingString]: `bottom-${k}`
 }
 export type BottomPositionClassMD = {
   [k in keyof BottomPositionClass]: `md:bottom-${k}`
@@ -135,7 +159,7 @@ export type BottomPositionClassXL = {
 }
 
 export type RightPositionClass = {
-  [k in Spacings]: `right-${k}`
+  [k in SpacingString]: `right-${k}`
 }
 export type RightPositionClassMD = {
   [k in keyof RightPositionClass]: `md:right-${k}`
@@ -148,7 +172,7 @@ export type RightPositionClassXL = {
 }
 
 export type LeftPositionClass = {
-  [k in Spacings]: `left-${k}`
+  [k in SpacingString]: `left-${k}`
 }
 export type LeftPositionClassMD = {
   [k in keyof LeftPositionClass]: `md:left-${k}`
@@ -161,20 +185,20 @@ export type LeftPositionClassXL = {
 }
 
 export type ButtonSizeClass = {
-  [k in Sizes]: `btn-${k}`
+  [k in SizeString]: `btn-${k}`
 }
 export type ButtonColorClass = {
-  [k in Colors]: `btn-${k}`
+  [k in ColorString]: `btn-${k}`
 }
 export type ButtonModifierClass = {
-  [k in ButtonModifiers]: `btn-${k}`
+  [k in ButtonModifierString]: `btn-${k}`
 }
 export type ButtonWidthClass = WidthSpacingClass & _ButtonWidthClass
 export type ButtonWidthClassMD = WidthSpacingClassMD & _ButtonWidthClassMD
 export type ButtonWidthClassLG = WidthSpacingClassLG & _ButtonWidthClassLG
 export type ButtonWidthClassXL = WidthSpacingClassXL & _ButtonWidthClassXL
 type _ButtonWidthClass = {
-  [k in Widths]: `w-${k}` | `w-${k} flex-shrink`
+  [k in WidthString]: `w-${k}` | `w-${k} flex-shrink`
 }
 type _ButtonWidthClassMD = {
   [k in keyof _ButtonWidthClass]: `md:w-${k}` | `md:w-${k} flex-shrink`
@@ -187,8 +211,8 @@ type _ButtonWidthClassXL = {
 }
 
 export type RadioSizeClass = {
-  [k in Sizes]: `radio-${k}`
+  [k in SizeString]: `radio-${k}`
 }
 export type RadioColorClass = {
-  [k in Colors]: `radio-${k}`
+  [k in ColorString]: `radio-${k}`
 }

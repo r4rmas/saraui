@@ -7,11 +7,13 @@
   import Modal from "$lib/components/Modal.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
-  import SuccessIcon from "./SuccessIcon.svelte"
-  import InfoIcon from "./InfoIcon.svelte"
-  import ErrorIcon from "./ErrorIcon.svelte"
+  import SuccessIcon from "$lib/components/private/SuccessIcon.svelte"
+  import InfoIcon from "$lib/components/private/InfoIcon.svelte"
+  import ErrorIcon from "$lib/components/private/ErrorIcon.svelte"
   import Button from "$lib/components/Button.svelte"
   import IconButton from "$lib/components/IconButton.svelte"
+  import SidebarNav from "$lib/components/SidebarNav.svelte"
+  import type { ComponentProps, ComponentType } from "svelte"
 
   const options: SelectorOption[] = [{
     value: "user",
@@ -25,6 +27,11 @@
   const modal = useModal()
 
   let radio: string
+  const infoIcon: ComponentType<InfoIcon> = InfoIcon
+  
+  const prueba: ComponentProps<Button> = {
+    color: "secondary"
+  }
   
   async function showConfirmationModal() {
     await sleep(3)
@@ -55,7 +62,7 @@
           <Button onClick={showConfirmationModal}>
             Show confirmation modal
           </Button>
-          <Button onClick={modal.show} color="secondary">
+          <Button { ...prueba }>
             Show modal
           </Button>
         </div>
@@ -65,15 +72,11 @@
             }) 
           }} 
           tooltip="Show notification"
-          icon={InfoIcon}
+          icon=""
           color="accent"
         />
-        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consectetur deleniti tempora aperiam dolor sit labore possimus deserunt! Voluptates quis cumque, autem temporibus harum assumenda illo ipsa quia consequuntur doloremque?</p> -->
+        <span class="">hola</span>
+        <SidebarNav />
       </div>
       <ConfirmationModal id={confirmationModal.id}
         onAccept={() => {}} 

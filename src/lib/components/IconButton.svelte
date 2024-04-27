@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { buttonColorClass, buttonModifierClass, buttonSizeClass } from "$lib/constants.js"
-  import type { ButtonModifierString, ButtonTypeString, ColorString, OnEvent, SizeString } from "$lib/types.js"
+  import { buttonColorClass, buttonModifierClass, buttonSizeClass, heightClass, textColor, widthClass } from "$lib/constants.js"
+  import type { ButtonModifierString, ButtonTypeString, ColorString, IconifyIcon, OnEvent, SizeString } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
-  export let icon: ConstructorOfATypedSvelteComponent
+  export let icon: IconifyIcon | string
   export let tooltip: string
   export let type: ButtonTypeString = "button"
   export let shape: "square" | "circle" = "circle"
@@ -31,6 +31,16 @@
         return "btn-square"
     }
   }
+  function getIconClass() {
+    if (typeof icon !== "string") {
+      const { classname, size, color } = icon
+      let iconClass = classname
+      if (size) iconClass += ` ${widthClass[size]} ${heightClass[size]}`
+      if (color) iconClass += ` ${textColor[color]}`
+      return iconClass
+    }
+    return `${icon} text-lg`
+  }
 </script>
 
 <button {type} on:click={handleClick}
@@ -38,16 +48,17 @@
   disabled={isLoading || isDisabled}
   class={`
     btn
-    ${isOutlined ? "btn-outline" : ""}
     ${getShapeClass()}
+    ${getIconClass()}
     ${buttonSizeClass[size ?? "md"]}
     ${buttonColorClass[color ?? "primary"]}
+    ${isOutlined ? "btn-outline" : ""}
     ${modifier ? buttonModifierClass[modifier] : ""}
   `}
 >
   {#if isLoading}
     <Loader />
   {:else}
-    <svelte:component this={icon} />
+    <span class=""></span>
   {/if}
 </button>

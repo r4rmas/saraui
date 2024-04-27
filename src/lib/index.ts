@@ -6,7 +6,7 @@ import type {
   NotificationDistance, NotificationIcons, NotificationConfig, NotificationTransition, NotificationBreakpointDistance, NotificationDirection, TitledNotificationContent,
   ConfirmationModalIcons,
   OnEvent,
-  WidthSpacing, Spacing
+  WidthSpacing, ResponsiveSpacing
 } from "$lib/types.js"
 import { showNotification, useModal, sleep } from "./utils.js";
 import { currentBreakpoint } from "./stores.js";
@@ -22,7 +22,7 @@ import IconButton from "./components/IconButton.svelte";
 export {
   SaraProvider, type SaraProviderConfig,
   currentBreakpoint, sleep, type OnEvent,
-  type WidthSpacing, type Spacing,
+  type WidthSpacing, type ResponsiveSpacing as Spacing,
   Loader, type LoaderProps,
   Button, IconButton,
   ImageUploader,

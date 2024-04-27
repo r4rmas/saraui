@@ -68,6 +68,9 @@ export enum Colors {
   SUCCESS = "success",
   WARNING = "warning",
   ERROR = "error",
+  INHERIT = "inherit",
+  CURRENT = "current",
+  TRANSPARENT = "transparent"
 }
 
 export enum Roundeds {

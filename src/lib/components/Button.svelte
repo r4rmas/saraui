@@ -8,13 +8,13 @@
   export let type: ButtonTypeString = "button"
   export let isDisabled = false
   export let isOutlined = false
+  export let isLoading = false
   export let size: SizeString | undefined = undefined
   export let color: ColorString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
   export let width: WidthSpacing | undefined = undefined
   export let onClick: OnEvent | undefined = undefined
-
-  let isLoading = false
+  
   let button: HTMLButtonElement
   let buttonWidth: string | undefined = undefined
   let _buttonWidth: string | undefined = undefined

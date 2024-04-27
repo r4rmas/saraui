@@ -1,8 +1,10 @@
 <script lang="ts">
   export let d: string
+  export let width: number | undefined = 32
+  export let height: number | undefined = 32
 </script>
 
-<svg class="w-8 h-8"
+<svg {width} {height}
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
   fill="currentColor" 

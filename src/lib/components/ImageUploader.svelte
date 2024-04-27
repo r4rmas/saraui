@@ -1,11 +1,11 @@
 <script lang="ts">
   import { roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
-  import type { ColorString, RoundedString, Spacing } from "$lib/types.js"
+  import type { ColorString, RoundedString, ResponsiveSpacing } from "$lib/types.js"
   import { getResponsiveClass } from "$lib/utils.js"
 
   export let name: string | undefined = undefined
   export let state: File | undefined = undefined
-  export let width: Spacing | undefined = undefined
+  export let width: ResponsiveSpacing | undefined = undefined
   export let color: ColorString | undefined = undefined
   export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
   export let rounded: RoundedString = "full"
