@@ -1,9 +1,9 @@
 import type { Breakpoints } from "./enums.js"
 import { notificationData } from "./stores.js"
-import type { ModalIdentifier, IdentifiableComponentString, NotificationCauseString, BreakPointClass, TitleNotificationContent } from "./types.js"
+import type { ModalIdentifier, IdentifiableComponentString, NotificationCauseString, BreakPointClass, TitledNotificationContent } from "./types.js"
 import { v4 as uuidv4 } from "uuid"
 
-export function showNotification(cause: NotificationCauseString, content: string | TitleNotificationContent) {
+export function showNotification(cause: NotificationCauseString, content: string | TitledNotificationContent) {
   setTimeout(() => notificationData.update(old => ({
     ...old, visible: false 
   })), 3500)

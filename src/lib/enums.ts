@@ -40,10 +40,17 @@ export enum Widths {
   FULL = "full",
   FIT =  "fit",
   // "PX"= "px",
- // "SCREEN" = "screen",
- // "LVW" = "lvw",
- // "MIN" = "min",
+  // "SCREEN" = "screen",
+  // "LVW" = "lvw",
+  // "MIN" = "min",
 }
+
+export enum Breakpoints {
+  SM = "sm",
+  MD = "md",
+  LG = "lg",
+  Xl = "xl"
+ }
 
 export enum Sizes {
   XS = "xs",
@@ -52,12 +59,17 @@ export enum Sizes {
   LG = "lg"
 }
 
-export enum Breakpoints {
- SM = "sm",
- MD = "md",
- LG = "lg",
- Xl = "xl"
+export enum Colors {
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  ACCENT = "accent",
+  NEUTRAL = "neutral",
+  INFO = "info",
+  SUCCESS = "success",
+  WARNING = "warning",
+  ERROR = "error",
 }
+
 export enum Roundeds {
   NONE = "none",
   SM =  "sm",
@@ -82,16 +94,9 @@ export enum NotificationCauses {
   WARNING = "warning",
   ERROR = "error"
 }
-
-export enum Colors {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  ACCENT = "accent",
-  NEUTRAL = "neutral",
-  INFO = "info",
-  SUCCESS = "success",
-  WARNING = "warning",
-  ERROR = "error",
+export enum TransitionDirections {
+  LEFT_TO_RIGHT = "left-to-right",
+  RIGHT_TO_LEFT = "right-to-left",
 }
 
 export enum Loaders {
@@ -101,11 +106,6 @@ export enum Loaders {
   BALL = "ball",
   BARS = "bars",
   INFINITY = "infinity"
-}
-
-export enum TransitionDirections {
-  LEFT_TO_RIGHT = "left-to-right",
-  RIGHT_TO_LEFT = "right-to-left",
 }
 
 export enum ButtonTypes {

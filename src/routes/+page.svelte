@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SelectorOption, SaraProviderConfig } from "$lib/types.js"
+  import type { SelectorOption } from "$lib/types.js"
   import { showNotification, sleep, useModal } from "$lib/utils.js"
   import { currentBreakpoint } from "$lib/stores.js"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
@@ -9,21 +9,10 @@
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import SuccessIcon from "./SuccessIcon.svelte"
   import InfoIcon from "./InfoIcon.svelte"
-  import WarningIcon from "./WarningIcon.svelte"
   import ErrorIcon from "./ErrorIcon.svelte"
   import Button from "$lib/components/Button.svelte"
   import IconButton from "$lib/components/IconButton.svelte"
 
-  const config: SaraProviderConfig = { 
-    // notifications: { 
-    //   icons: {
-    //     success: SuccessIcon,
-    //     info: InfoIcon,
-    //     warning: WarningIcon,
-    //     error: ErrorIcon,
-    //   },
-    // },
-  }
   const options: SelectorOption[] = [{
     value: "user",
     label: "👦🏻 User"
@@ -43,7 +32,7 @@
   }
 </script>
 
-<SaraProvider {config}>
+<SaraProvider>
   <div class="flex w-full justify-center">
     <div class="flex w-full justify-center max-w-screen-lg">
       <div class="flex flex-col w-full gap-4 p-4 justify-center items-center">
@@ -70,7 +59,11 @@
             Show modal
           </Button>
         </div>
-        <IconButton onClick={() => { showNotification("success", { title: "Success", content: "Hello, world!" }) }} 
+        <IconButton onClick={() => { 
+            showNotification("success", { 
+              title: "Success", content: "Hello, world!" 
+            }) 
+          }} 
           tooltip="Show notification"
           icon={InfoIcon}
           color="accent"
@@ -84,7 +77,6 @@
       </div>
       <ConfirmationModal id={confirmationModal.id}
         onAccept={() => {}} 
-        color="warning"
         icons={{
           cancel: ErrorIcon,
           accept: SuccessIcon

@@ -25,7 +25,7 @@
       lg: widthClassLG,
       xl: widthClassXL
     })
-    return ""
+    return "w-28"
   }
 </script>
 

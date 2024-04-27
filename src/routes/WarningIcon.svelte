@@ -1,1 +1,0 @@
-<iconify-icon icon="heroicons:exclamation-triangle-16-solid"></iconify-icon>

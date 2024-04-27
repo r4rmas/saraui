@@ -1,4 +1,4 @@
-import type { BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, ButtonWidthClass, ButtonWidthClassLG, ButtonWidthClassMD, ButtonWidthClassXL, ColorClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
+import type { BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, ButtonWidthClass, ButtonWidthClassLG, ButtonWidthClassMD, ButtonWidthClassXL, ColorClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
 
 export const textColor: ColorClass = {
   primary:    "text-primary",
@@ -831,4 +831,21 @@ export const leftPositionClassXL: LeftPositionClassXL = {
   "9":    "xl:left-9",
   "96":   "xl:left-96",
   auto:   "xl:left-auto"
+}
+
+export const radioSizeClass: RadioSizeClass = {
+  xs: "radio-xs",
+  sm: "radio-sm",
+  md: "radio-md",
+  lg: "radio-lg"
+}
+export const radioColorClass: RadioColorClass = {
+  primary:    "radio-primary",
+  secondary:  "radio-secondary",
+  accent:     "radio-accent",
+  neutral:    "radio-neutral",
+  success:    "radio-success",
+  info:       "radio-info",
+  warning:    "radio-warning",
+  error:      "radio-error"
 }

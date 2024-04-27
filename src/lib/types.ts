@@ -60,14 +60,14 @@ export type NotificationDistance = {
 export type NotificationDirection = {
   [k in Breakpoints]?: NotificationDirectionString
 }
-export type TitleNotificationContent = {
+export type TitledNotificationContent = {
   title: string
   content: string
 }
 export type NotificationData = {
   visible: boolean
   cause: NotificationCauseString
-  content: string | TitleNotificationContent
+  content: string | TitledNotificationContent
 }
 export type NotificationBreakpointDistance = {
   [k in Breakpoints]?: NotificationDistance
@@ -108,6 +108,67 @@ export type WidthSpacingClassXL = {
   [k in keyof WidthSpacingClass]: `xl:w-${k}`
 }
 
+export type TopPositionClass = {
+  [k in Spacings]: `top-${k}`
+}
+export type TopPositionClassMD = {
+  [k in keyof TopPositionClass]: `md:top-${k}`
+}
+export type TopPositionClassLG = {
+  [k in keyof TopPositionClass]: `lg:top-${k}`
+} & { auto: `lg:top-auto` }
+export type TopPositionClassXL = {
+  [k in keyof TopPositionClass]: `xl:top-${k}`
+}
+
+export type BottomPositionClass = {
+  [k in Spacings]: `bottom-${k}`
+}
+export type BottomPositionClassMD = {
+  [k in keyof BottomPositionClass]: `md:bottom-${k}`
+}
+export type BottomPositionClassLG = {
+  [k in keyof BottomPositionClass]: `lg:bottom-${k}`
+}
+export type BottomPositionClassXL = {
+  [k in keyof BottomPositionClass]: `xl:bottom-${k}`
+}
+
+export type RightPositionClass = {
+  [k in Spacings]: `right-${k}`
+}
+export type RightPositionClassMD = {
+  [k in keyof RightPositionClass]: `md:right-${k}`
+}
+export type RightPositionClassLG = {
+  [k in keyof RightPositionClass]: `lg:right-${k}`
+}
+export type RightPositionClassXL = {
+  [k in keyof RightPositionClass]: `xl:right-${k}`
+}
+
+export type LeftPositionClass = {
+  [k in Spacings]: `left-${k}`
+}
+export type LeftPositionClassMD = {
+  [k in keyof LeftPositionClass]: `md:left-${k}`
+}
+export type LeftPositionClassLG = {
+  [k in keyof LeftPositionClass]: `lg:left-${k}`
+}
+export type LeftPositionClassXL = {
+  [k in keyof LeftPositionClass]: `xl:left-${k}`
+}
+
+export type ButtonSizeClass = {
+  [k in Sizes]: `btn-${k}`
+}
+export type ButtonColorClass = {
+  [k in Colors]: `btn-${k}`
+}
+export type ButtonModifierClass = {
+  [k in ButtonModifiers]: `btn-${k}`
+}
 export type ButtonWidthClass = WidthSpacingClass & _ButtonWidthClass
 export type ButtonWidthClassMD = WidthSpacingClassMD & _ButtonWidthClassMD
 export type ButtonWidthClassLG = WidthSpacingClassLG & _ButtonWidthClassLG
@@ -124,61 +185,10 @@ type _ButtonWidthClassLG = {
 type _ButtonWidthClassXL = {
   [k in keyof _ButtonWidthClass]: `xl:w-${k}` | `xl:w-${k} flex-shrink`
 }
-export type ButtonSizeClass = {
-  [k in Sizes]: `btn-${k}`
-}
-export type ButtonColorClass = {
-  [k in Colors]: `btn-${k}`
-}
-export type ButtonModifierClass = {
-  [k in ButtonModifiers]: `btn-${k}`
-}
 
-export type TopPositionClass = {
-  [k in Spacings]: `top-${k}`
+export type RadioSizeClass = {
+  [k in Sizes]: `radio-${k}`
 }
-export type TopPositionClassMD = {
-  [k in keyof TopPositionClass]: `md:top-${k}`
-}
-export type TopPositionClassLG = {
-  [k in keyof TopPositionClass]: `lg:top-${k}`
-} & { auto: `lg:top-auto` }
-export type TopPositionClassXL = {
-  [k in keyof TopPositionClass]: `xl:top-${k}`
-}
-export type BottomPositionClass = {
-  [k in Spacings]: `bottom-${k}`
-}
-export type BottomPositionClassMD = {
-  [k in keyof BottomPositionClass]: `md:bottom-${k}`
-}
-export type BottomPositionClassLG = {
-  [k in keyof BottomPositionClass]: `lg:bottom-${k}`
-}
-export type BottomPositionClassXL = {
-  [k in keyof BottomPositionClass]: `xl:bottom-${k}`
-}
-export type RightPositionClass = {
-  [k in Spacings]: `right-${k}`
-}
-export type RightPositionClassMD = {
-  [k in keyof RightPositionClass]: `md:right-${k}`
-}
-export type RightPositionClassLG = {
-  [k in keyof RightPositionClass]: `lg:right-${k}`
-}
-export type RightPositionClassXL = {
-  [k in keyof RightPositionClass]: `xl:right-${k}`
-}
-export type LeftPositionClass = {
-  [k in Spacings]: `left-${k}`
-}
-export type LeftPositionClassMD = {
-  [k in keyof LeftPositionClass]: `md:left-${k}`
-}
-export type LeftPositionClassLG = {
-  [k in keyof LeftPositionClass]: `lg:left-${k}`
-}
-export type LeftPositionClassXL = {
-  [k in keyof LeftPositionClass]: `xl:left-${k}`
+export type RadioColorClass = {
+  [k in Colors]: `radio-${k}`
 }

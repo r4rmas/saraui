@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { radioColorClass, radioSizeClass } from "$lib/constants.js"
   import type { ColorString, SelectorOption, SizeString } from "$lib/types.js"
   import { getComponentID } from "$lib/utils.js"
 
@@ -11,47 +12,12 @@
 
   const identifiedOptions = options.length 
     ? options.map(o => ({ 
-      ...o, id: getComponentID("radioselector") 
+        ...o, id: getComponentID("radioselector") 
       })) 
     : []
   
   function check(value: string) {
     state = value
-  }
-  
-  function getColorClass() {
-    switch (color) {
-      case "primary":
-        return "radio-primary"
-      case "secondary":
-        return "radio-secondary"
-      case "neutral":
-        return "radio-neutral"
-      case "success":
-        return "radio-success"
-      case "info":
-        return "radio-info"
-      case "accent":
-        return "radio-accent"
-      case "warning":
-        return "radio-warning"
-      case "error":
-        return "radio-error"
-      default:
-        return ""
-    }
-  }
-  function getSizeClass() {
-    switch (size) {
-      case "xs":
-        return "radio-xs"
-      case "sm":
-        return "radio-sm"
-      case "md":
-        return "radio-md"
-      case "lg":
-        return "radio-lg"
-    }
   }
 </script>
 
@@ -65,7 +31,7 @@
             ? "mb-2" 
             : ""
     }`}>
-      <input {name}
+      <input {name} {required}
         id={o.id}
         on:click={() => check(o.value)}
         value={o.value}
@@ -73,10 +39,9 @@
         class={`
           radio
           mr-2
-          ${getSizeClass()}
-          ${getColorClass()}
+          ${radioSizeClass[size]}
+          ${color ? radioColorClass[color] : ""}
         `}
-        {required}
       >
       <label for={o.id}>
         <span class="text-start">

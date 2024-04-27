@@ -34,7 +34,6 @@
         const breakpointMD: BreakpointString | null = document.getElementById('saraui-md')?.offsetParent === null ? null : "md"
         const breakpointLG: BreakpointString | null = document.getElementById('saraui-lg')?.offsetParent === null ? null : "lg"
         const breakpointXL: BreakpointString | null = document.getElementById('saraui-xl')?.offsetParent === null ? null : "xl"
-        // const breakpoint2XL = document.getElementById('saraui-2xl')?.offsetParent === null ? null : "2xl"
         return breakpointSM ?? breakpointMD ?? breakpointLG ?? breakpointXL /*?? breakpoint2XL*/
       }
       $currentBreakpoint = getCurrentBreakpoint() ?? "sm"
@@ -61,5 +60,3 @@
 <div id="saraui-md" class="hidden md:inline lg:hidden xl:hidden 2xl:hidden"></div>
 <div id="saraui-lg" class="hidden lg:inline xl:hidden 2xl:hidden"></div>
 <div id="saraui-xl" class="hidden xl:inline 2xl:inline"></div>
-<!-- <div id="saraui-xl" class="hidden xl:inline 2xl:hidden"></div> -->
-<!-- <div id="saraui-2xl" class="hidden 2xl:inline"></div> -->
