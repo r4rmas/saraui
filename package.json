@@ -1,6 +1,6 @@
 {
   "name": "saraui",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": "Raul Armas",
   "description": "daisyUI components for Svelte/Sveltekit",
   "repository": {
@@ -47,6 +47,8 @@
     "tailwindcss": "^3.3.6"
   },
   "devDependencies": {
+    "@egoist/tailwindcss-icons": "^1.7.4",
+    "@iconify-json/heroicons": "^1.1.20",
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/package": "^2.0.0",

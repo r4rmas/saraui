@@ -1,7 +1,7 @@
-import { heightClass, textColor, widthClass } from "./constants.js"
+import { heightClass, textColor, textSize, widthClass } from "./constants.js"
 import type { Breakpoints } from "./enums.js"
 import { notificationData } from "./stores.js"
-import type { ModalIdentifier, IdentifiableComponentString, NotificationCauseString, BreakPointClass, TitledNotificationContent, IconifyIcon } from "./types.js"
+import type { ModalIdentifier, IdentifiableComponentString, NotificationCauseString, BreakPointClass, TitledNotificationContent, Icon } from "./types.js"
 import { v4 as uuidv4 } from "uuid"
 
 export function showNotification(cause: NotificationCauseString, content: string | TitledNotificationContent) {
@@ -50,13 +50,16 @@ export function getResponsiveClass(responsive: BreakPointClass, fromClasses: { [
   if (xl) responsiveClass += `${fromClasses.xl[xl]} `
   return responsiveClass
 }
-export function getIconClass(icon : IconifyIcon | string) {
-  if (typeof icon !== "string") {
-    const { classname, size, color } = icon
-    let iconClass = classname
-    if (size) iconClass += ` ${widthClass[size]} ${heightClass[size]}`
-    if (color) iconClass += ` ${textColor[color]}`
-    return iconClass
+export function getIconClass(icon : Icon | string | undefined) {
+  if (icon) {
+    if (typeof icon !== "string") {
+      const { classname, size, color } = icon
+      let iconClass = classname
+      if (size) iconClass += ` ${textSize[size]}`
+      if (color) iconClass += ` ${textColor[color]}`
+      return iconClass
+    }
+    return `${icon} text-xl`
   }
-  return `${icon} text-lg`
+  return ""
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
-  import type { ColorString, RoundedString, ResponsiveSpacing, IconifyIcon } from "$lib/types.js"
+  import type { ColorString, RoundedString, ResponsiveSpacing, Icon } from "$lib/types.js"
   import { getIconClass, getResponsiveClass } from "$lib/utils.js"
   import AddIcon from "./private/icons/Add.svelte"
 
@@ -8,7 +8,7 @@
   export let state: File | undefined = undefined
   export let width: ResponsiveSpacing | undefined = undefined
   export let color: ColorString | undefined = undefined
-  export let icon: IconifyIcon | string | undefined = undefined
+  export let icon: Icon | string | undefined = undefined
   export let rounded: RoundedString = "full"
   export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
   export let isEditable = true

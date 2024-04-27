@@ -1,4 +1,4 @@
-import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds } from "./enums.js"
+import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds, TextSizes } from "./enums.js"
 
 export type BreakpointString            = `${Breakpoints}`
 export type NotificationCauseString     = `${NotificationCauses}`
@@ -14,7 +14,8 @@ export type RemString                   = `${number}rem`
 export type SpacingString               = `${Spacings}`
 export type WidthString                 = `${Widths}`
 export type RoundedString               = `${Roundeds}`
-export type IconifyClassString          = `icon-[${string}--${string}]`
+export type TextSizeString              = `${TextSizes}`
+export type IconClassString             = `i-${string}-${string}`
 
 export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
 
@@ -50,7 +51,7 @@ export type ConfirmationModalIcons = {
 }
 
 export type NotificationIcons = {
-  [k in NotificationCauseString] : IconifyIcon | "string"
+  [k in NotificationCauseString] : Icon | "string"
 }
 export type NotificationDistance = {
   [k in PositionString]?: SpacingString
@@ -83,9 +84,9 @@ export type NotificationStore = {
   transition: NotificationTransition
 }
 
-export type IconifyIcon = {
-  classname: IconifyClassString,
-  size?    : SpacingString
+export type Icon = {
+  classname: IconClassString,
+  size?    : TextSizeString
   color?   : ColorString
 }
 
@@ -213,4 +214,8 @@ export type RadioSizeClass = {
 }
 export type RadioColorClass = {
   [k in ColorString]: `radio-${k}`
+}
+
+export type TextSizeClass = {
+  [k in TextSizeString]: `text-${k}`
 }

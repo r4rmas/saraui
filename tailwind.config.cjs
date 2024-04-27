@@ -1,3 +1,4 @@
+const { iconsPlugin, getIconCollections } = require("@egoist/tailwindcss-icons")
 /** @type {import('tailwindcss').Config}*/
 const config = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
@@ -5,6 +6,9 @@ const config = {
     extend: {},
   },
   plugins: [
+    iconsPlugin({
+      collections: getIconCollections(["heroicons"])
+    }),
     require("daisyui"),
   ],
   daisyui: {

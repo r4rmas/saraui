@@ -7,8 +7,6 @@
   import Modal from "$lib/components/Modal.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
-  import SuccessIcon from "$lib/components/private/icons/Success.svelte"
-  import ErrorIcon from "$lib/components/private/icons/Error.svelte"
   import Button from "$lib/components/Button.svelte"
   import IconButton from "$lib/components/IconButton.svelte"
   import SideNav from "$lib/components/SideNav.svelte"
@@ -62,7 +60,7 @@
               content: "Hello, world!" 
           })} 
           tooltip="Show notification"
-          icon="icon-[heroicons--home]"
+          icon="i-heroicons-home-16-solid"
           color="accent"
         />
         <SideNav />

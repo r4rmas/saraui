@@ -1,10 +1,10 @@
 <script lang="ts">
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, heightClass, textColor, widthClass } from "$lib/constants.js"
-  import type { ButtonModifierString, ButtonTypeString, ColorString, IconifyIcon, OnEvent, SizeString } from "$lib/types.js"
+  import type { ButtonModifierString, ButtonTypeString, ColorString, Icon, OnEvent, SizeString } from "$lib/types.js"
   import { getIconClass } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
-  export let icon: IconifyIcon | string
+  export let icon: Icon | string
   export let tooltip: string
   export let type: ButtonTypeString = "button"
   export let shape: "square" | "circle" = "circle"

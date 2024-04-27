@@ -1,5 +1,20 @@
-import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, ButtonWidthClass, ButtonWidthClassLG, ButtonWidthClassMD, ButtonWidthClassXL, HeightSpacingClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, TextColorClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
+import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, ButtonWidthClass, ButtonWidthClassLG, ButtonWidthClassMD, ButtonWidthClassXL, HeightSpacingClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
 
+export const textSize: TextSizeClass = {
+  sm   : "text-sm",
+  md   : "text-md",
+  lg   : "text-lg",
+  xl   : "text-xl",
+  xs   : "text-xs",
+  "2xl": "text-2xl",
+  "3xl": "text-3xl",
+  "4xl": "text-4xl",
+  "5xl": "text-5xl",
+  "6xl": "text-6xl",
+  "7xl": "text-7xl",
+  "8xl": "text-8xl",
+  "9xl": "text-9xl"
+}
 export const textColor: TextColorClass = {
   primary    : "text-primary",
   secondary  : "text-secondary",

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte"
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL } from "$lib/constants.js"
-  import type { ButtonModifierString, ButtonTypeString, WidthSpacing, ColorString, OnEvent, SizeString, IconifyIcon, HorizontalPositionString } from "$lib/types.js"
+  import type { ButtonModifierString, ButtonTypeString, WidthSpacing, ColorString, OnEvent, SizeString, Icon, HorizontalPositionString } from "$lib/types.js"
   import { getResponsiveClass, sleep } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
