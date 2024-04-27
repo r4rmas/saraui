@@ -3,10 +3,6 @@
   import { currentBreakpoint, loader, notificationData } from "$lib/stores.js"
   import type { SaraProviderConfig, BreakpointString } from "$lib/types.js"
   import Notification from "./Notification.svelte"
-  import SuccessIcon from "./private/SuccessIcon.svelte"
-  import InfoIcon from "./private/InfoIcon.svelte"
-  import WarningIcon from "./private/WarningIcon.svelte"
-  import ErrorIcon from "./private/ErrorIcon.svelte"
 
   export let config: SaraProviderConfig | undefined = undefined
 
@@ -14,21 +10,12 @@
   const { icons, transition } = notification ?? {}
   const { direction, distance } = transition ?? {}
 
-  const defaultIcons = {
-    success: SuccessIcon,
-    info: InfoIcon,
-    warning: WarningIcon,
-    error: ErrorIcon
-  }
-  const _icons = icons ? { ...defaultIcons, ...icons } : defaultIcons
-
   $loader = _loader ?? $loader
 
   $: ({ visible, cause } = $notificationData)
   
   onMount(() => {
     if (document) {
-      console.log(_icons.error)
       const getCurrentBreakpoint = () => {
         const breakpointSM: BreakpointString | null = document.getElementById('saraui-sm')?.offsetParent === null ? null : "sm"
         const breakpointMD: BreakpointString | null = document.getElementById('saraui-md')?.offsetParent === null ? null : "md"
@@ -44,7 +31,7 @@
 <slot></slot>
 {#if visible}
   <Notification
-    icon={_icons ? _icons[cause] : undefined}
+    icon={icons ? icons[cause] : undefined}
     direction={direction ?? {
       sm: "left-to-right",
       lg: "right-to-left"

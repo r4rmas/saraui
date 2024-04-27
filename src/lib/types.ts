@@ -14,6 +14,7 @@ export type RemString                   = `${number}rem`
 export type SpacingString               = `${Spacings}`
 export type WidthString                 = `${Widths}`
 export type RoundedString               = `${Roundeds}`
+export type IconifyClassString          = `icon-[${string}--${string}]`
 
 export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
 
@@ -49,10 +50,7 @@ export type ConfirmationModalIcons = {
 }
 
 export type NotificationIcons = {
-  success?: ConstructorOfATypedSvelteComponent
-  info?   : ConstructorOfATypedSvelteComponent
-  warning?: ConstructorOfATypedSvelteComponent
-  error?  : ConstructorOfATypedSvelteComponent
+  [k in NotificationCauseString] : IconifyIcon | "string"
 }
 export type NotificationDistance = {
   [k in PositionString]?: SpacingString
@@ -86,7 +84,7 @@ export type NotificationStore = {
 }
 
 export type IconifyIcon = {
-  classname: string,
+  classname: IconifyClassString,
   size?    : SpacingString
   color?   : ColorString
 }

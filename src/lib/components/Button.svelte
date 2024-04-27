@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte"
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL } from "$lib/constants.js"
-  import type { ButtonModifierString, ButtonTypeString, WidthSpacing, ColorString, OnEvent, SizeString } from "$lib/types.js"
+  import type { ButtonModifierString, ButtonTypeString, WidthSpacing, ColorString, OnEvent, SizeString, IconifyIcon, HorizontalPositionString } from "$lib/types.js"
   import { getResponsiveClass, sleep } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
@@ -9,12 +9,12 @@
   export let isDisabled = false
   export let isOutlined = false
   export let isLoading = false
-  export let size: SizeString | undefined = undefined
   export let color: ColorString | undefined = undefined
+  export let size: SizeString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
   export let width: WidthSpacing | undefined = undefined
   export let onClick: OnEvent | undefined = undefined
-  
+
   let button: HTMLButtonElement
   let buttonWidth: string | undefined = undefined
   let _buttonWidth: string | undefined = undefined
@@ -64,6 +64,6 @@
   {#if isLoading}
     <Loader />
   {:else}
-    <slot></slot>
+    <slot />
   {/if}
 </button>

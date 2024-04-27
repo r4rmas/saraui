@@ -1,6 +1,7 @@
 <script lang="ts">
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, heightClass, textColor, widthClass } from "$lib/constants.js"
   import type { ButtonModifierString, ButtonTypeString, ColorString, IconifyIcon, OnEvent, SizeString } from "$lib/types.js"
+  import { getIconClass } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
   export let icon: IconifyIcon | string
@@ -31,16 +32,6 @@
         return "btn-square"
     }
   }
-  function getIconClass() {
-    if (typeof icon !== "string") {
-      const { classname, size, color } = icon
-      let iconClass = classname
-      if (size) iconClass += ` ${widthClass[size]} ${heightClass[size]}`
-      if (color) iconClass += ` ${textColor[color]}`
-      return iconClass
-    }
-    return `${icon} text-lg`
-  }
 </script>
 
 <button {type} on:click={handleClick}
@@ -49,7 +40,6 @@
   class={`
     btn
     ${getShapeClass()}
-    ${getIconClass()}
     ${buttonSizeClass[size ?? "md"]}
     ${buttonColorClass[color ?? "primary"]}
     ${isOutlined ? "btn-outline" : ""}
@@ -59,6 +49,6 @@
   {#if isLoading}
     <Loader />
   {:else}
-    <span class=""></span>
+    <span class={getIconClass(icon)}></span>
   {/if}
 </button>

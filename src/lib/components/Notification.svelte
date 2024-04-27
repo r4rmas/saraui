@@ -1,11 +1,16 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
   import { currentBreakpoint, notificationData } from "$lib/stores.js"
-  import type { NotificationBreakpointDistance, NotificationDirection, NotificationDirectionString } from "$lib/types.js"
+  import type { IconifyIcon, NotificationBreakpointDistance, NotificationDirection, NotificationDirectionString } from "$lib/types.js"
   import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/constants.js"
   import { Breakpoints } from "$lib/enums.js"
+  import { getIconClass } from "$lib/utils.js"
+  import SuccessIcon from "./private/icons/Success.svelte"
+  import InfoIcon from "./private/icons/Info.svelte"
+  import WarningIcon from "./private/icons/Warning.svelte"
+  import ErrorIcon from "./private/icons/Error.svelte"
 
-  export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined
+  export let icon: IconifyIcon | string | undefined = undefined
   export let direction: NotificationDirectionString | NotificationDirection
   export let distance: NotificationBreakpointDistance
 
@@ -21,6 +26,12 @@
     success: baseClass + "alert-success",
     warning: baseClass + "alert-warning",
     error: baseClass + "alert-error"
+  }
+  const defaultIcons = {
+    success: SuccessIcon,
+    info: InfoIcon,
+    warning: WarningIcon,
+    error: ErrorIcon
   }
 
   const { cause, content } = $notificationData
@@ -88,8 +99,12 @@
   class="{alertClass[cause]} {getResponsiveClass()}"
   role="alert"
 >
-  {#if icon && _direction && _direction > 0}
-    <svelte:component this={icon} />
+  {#if _direction && _direction > 0}
+    {#if icon}
+      <span class={getIconClass(icon)}></span>
+    {:else}
+      <svelte:component this={defaultIcons[cause]} />
+    {/if}
   {/if}
   {#if title}
     <div>
@@ -99,7 +114,11 @@
   {:else}
     <span>{_content}</span>
   {/if}
-  {#if icon && _direction && _direction < 0}
-    <svelte:component this={icon} />
+  {#if _direction && _direction < 0}
+    {#if icon}
+      <span class={getIconClass(icon)}></span>
+    {:else}
+      <svelte:component this={defaultIcons[cause]} />
+    {/if}
   {/if}
 </div>

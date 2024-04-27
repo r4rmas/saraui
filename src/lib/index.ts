@@ -6,7 +6,8 @@ import type {
   NotificationDistance, NotificationIcons, NotificationConfig, NotificationTransition, NotificationBreakpointDistance, NotificationDirection, TitledNotificationContent,
   ConfirmationModalIcons,
   OnEvent,
-  WidthSpacing, ResponsiveSpacing
+  WidthSpacing, ResponsiveSpacing,
+  IconifyIcon
 } from "$lib/types.js"
 import { showNotification, useModal, sleep } from "./utils.js";
 import { currentBreakpoint } from "./stores.js";
@@ -24,7 +25,7 @@ export {
   currentBreakpoint, sleep, type OnEvent,
   type WidthSpacing, type ResponsiveSpacing as Spacing,
   Loader, type LoaderProps,
-  Button, IconButton,
+  Button, IconButton, type IconifyIcon,
   ImageUploader,
   RadioSelector, type SelectorOption,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationDirection, type TitledNotificationContent, showNotification,

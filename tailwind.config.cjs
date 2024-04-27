@@ -4,7 +4,9 @@ const config = {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+  ],
   daisyui: {
     themeRoot: "#saraui",
     themes: ["dracula"]

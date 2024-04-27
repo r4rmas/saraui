@@ -7,13 +7,11 @@
   import Modal from "$lib/components/Modal.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
-  import SuccessIcon from "$lib/components/private/SuccessIcon.svelte"
-  import InfoIcon from "$lib/components/private/InfoIcon.svelte"
-  import ErrorIcon from "$lib/components/private/ErrorIcon.svelte"
+  import SuccessIcon from "$lib/components/private/icons/Success.svelte"
+  import ErrorIcon from "$lib/components/private/icons/Error.svelte"
   import Button from "$lib/components/Button.svelte"
   import IconButton from "$lib/components/IconButton.svelte"
-  import SidebarNav from "$lib/components/SidebarNav.svelte"
-  import type { ComponentProps, ComponentType } from "svelte"
+  import SideNav from "$lib/components/SideNav.svelte"
 
   const options: SelectorOption[] = [{
     value: "user",
@@ -27,11 +25,6 @@
   const modal = useModal()
 
   let radio: string
-  const infoIcon: ComponentType<InfoIcon> = InfoIcon
-  
-  const prueba: ComponentProps<Button> = {
-    color: "secondary"
-  }
   
   async function showConfirmationModal() {
     await sleep(3)
@@ -54,7 +47,7 @@
           </div>
           <div class="flex justify-center mt-4">
             <Button type="submit" color="info">
-              Actualizar
+              Accept
             </Button>
           </div>
         </form>
@@ -62,28 +55,20 @@
           <Button onClick={showConfirmationModal}>
             Show confirmation modal
           </Button>
-          <Button { ...prueba }>
-            Show modal
-          </Button>
         </div>
-        <IconButton onClick={() => { 
-            showNotification("success", { 
-              title: "Success", content: "Hello, world!" 
-            }) 
-          }} 
+        <IconButton onClick={() => showNotification(
+            "success", { 
+              title: "Information", 
+              content: "Hello, world!" 
+          })} 
           tooltip="Show notification"
-          icon=""
+          icon="icon-[heroicons--home]"
           color="accent"
         />
-        <span class="">hola</span>
-        <SidebarNav />
+        <SideNav />
       </div>
       <ConfirmationModal id={confirmationModal.id}
         onAccept={() => {}} 
-        icons={{
-          cancel: ErrorIcon,
-          accept: SuccessIcon
-        }} 
         title="Are you sure you want to leave?"
         content="If you leave all your data will be removed"
       />
