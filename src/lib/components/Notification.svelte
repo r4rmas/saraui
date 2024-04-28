@@ -5,10 +5,10 @@
   import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/constants.js"
   import { Breakpoints } from "$lib/enums.js"
   import { getIconClass } from "$lib/utils.js"
-  import SuccessIcon from "./private/icons/Success.svelte"
-  import InfoIcon from "./private/icons/Info.svelte"
-  import WarningIcon from "./private/icons/Warning.svelte"
-  import ErrorIcon from "./private/icons/Error.svelte"
+  import SuccessIcon from "./private/notification/SuccessIcon.svelte"
+  import InfoIcon from "./private/notification/InfoIcon.svelte"
+  import WarningIcon from "./private/notification/WarningIcon.svelte"
+  import ErrorIcon from "./private/notification/ErrorIcon.svelte"
 
   export let icon: Icon | IconClassString | undefined = undefined
   export let direction: NotificationDirectionString | NotificationDirection
