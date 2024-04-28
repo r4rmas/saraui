@@ -20,22 +20,13 @@ export type IconClassString             = `i-${string}`
 
 export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
 
+export type TailwindBreakpointPixels = {
+  [k in BreakpointString]: number
+}
+
 export type SaraProviderConfig = {
   loaders?      : LoaderProps
   notifications?: NotificationConfig
-}
-
-export type Icon = {
-  is   : IconClassString,
-  size?: TextSizeString
-}
-
-type ResponsiveSpacing = {
-  [k in BreakpointString]?: SpacingString  
-}
-export type WidthSpacing = SpacingString | WidthString
-export type WidthResponsiveSpacing = {
-  [k in keyof ResponsiveSpacing]: WidthSpacing
 }
 
 export type LoaderProps = {
@@ -43,11 +34,9 @@ export type LoaderProps = {
   color?: ColorString
 }
 
-export type Sidenav = {
-  isOpen: boolean,
-  open  : () => void,
-  close : () => void,
-  toggle: () => void
+export type Icon = {
+  is   : IconClassString,
+  size?: TextSizeString
 }
 
 export type SelectorOption = {
@@ -96,6 +85,22 @@ export type NotificationConfig = {
 export type NotificationStore = {
   icons?    : NotificationIcons
   transition: NotificationTransition
+}
+
+export type Sidenav = {
+  isOpen: boolean,
+  open  : () => void,
+  close : () => void,
+  toggle: () => void
+}
+
+type ResponsiveSpacing = {
+  [k in BreakpointString]?: SpacingString  
+}
+
+export type WidthSpacing = SpacingString | WidthString
+export type WidthResponsiveSpacing = {
+  [k in keyof ResponsiveSpacing]: WidthSpacing
 }
 
 export type BreakPointClass = {
