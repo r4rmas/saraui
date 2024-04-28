@@ -15,13 +15,19 @@ export type SpacingString               = `${Spacings}`
 export type WidthString                 = `${Widths}`
 export type RoundedString               = `${Roundeds}`
 export type TextSizeString              = `${TextSizes}`
-export type IconClassString             = `i-${string}-${string}`
+export type IconClassString             = `i-${string}`
 
 export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
 
 export type SaraProviderConfig = {
   loaders?      : LoaderProps
   notifications?: NotificationConfig
+}
+
+export type Icon = {
+  classname: IconClassString,
+  size?    : TextSizeString
+  color?   : ColorString
 }
 
 export type ResponsiveSpacing = {
@@ -46,12 +52,12 @@ export type ModalIdentifier = {
 }
 export type ConfirmationModalIcons = {
   position?: HorizontalPositionString
-  accept?  : ConstructorOfATypedSvelteComponent
-  cancel?  : ConstructorOfATypedSvelteComponent
+  accept?  : Icon | IconClassString
+  cancel?  : Icon | IconClassString
 }
 
 export type NotificationIcons = {
-  [k in NotificationCauseString] : Icon | "string"
+  [k in NotificationCauseString] : Icon | IconClassString
 }
 export type NotificationDistance = {
   [k in PositionString]?: SpacingString
@@ -82,12 +88,6 @@ export type NotificationConfig = {
 export type NotificationStore = {
   icons?    : NotificationIcons
   transition: NotificationTransition
-}
-
-export type Icon = {
-  classname: IconClassString,
-  size?    : TextSizeString
-  color?   : ColorString
 }
 
 export type BreakPointClass = {

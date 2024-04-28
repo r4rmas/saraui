@@ -1,6 +1,7 @@
 <script lang="ts">
   import { buttonColorClass } from "$lib/constants.js"
   import type { ModalIdentifier, ConfirmationModalIcons, OnEvent, ColorString } from "$lib/types.js"
+    import { getIconClass } from "$lib/utils.js"
   import Loader from "./Loader.svelte"
 
   export let id: ModalIdentifier
@@ -50,11 +51,11 @@
             active:outline-none
         ">
           {#if cancelIcon && iconPosition === "left"}
-            <svelte:component this={cancelIcon} class="mr-1" />
+            <span class={getIconClass(cancelIcon)}></span>
           {/if}
           {cancelText}
           {#if cancelIcon && iconPosition === "right"}
-            <svelte:component this={cancelIcon} class="mr-1" />
+            <span class={getIconClass(cancelIcon)}></span>
           {/if}
         </button>
       </form>
@@ -69,11 +70,11 @@
           <Loader />
         {:else}
           {#if acceptIcon && iconPosition === "left"}
-            <svelte:component this={acceptIcon} class="mr-1" />
+            <span class={getIconClass(acceptIcon)}></span>
           {/if}
           {acceptText}
           {#if acceptIcon && iconPosition === "right"}
-            <svelte:component this={acceptIcon} class="mr-1" />
+            <span class={getIconClass(acceptIcon)}></span>
           {/if}
         {/if}
       </button>

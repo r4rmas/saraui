@@ -23,9 +23,9 @@ import IconButton from "./components/IconButton.svelte";
 export {
   SaraProvider, type SaraProviderConfig,
   currentBreakpoint, sleep, type OnEvent,
-  type WidthSpacing, type ResponsiveSpacing as Spacing,
+  type WidthSpacing, type ResponsiveSpacing,
   Loader, type LoaderProps,
-  Button, IconButton, type Icon as IconifyIcon,
+  Button, IconButton, type Icon,
   ImageUploader,
   RadioSelector, type SelectorOption,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationDirection, type TitledNotificationContent, showNotification,

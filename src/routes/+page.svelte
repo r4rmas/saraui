@@ -28,6 +28,12 @@
     await sleep(3)
     confirmationModal.show()
   }
+  function handleInforClick() {
+    showNotification("success", { 
+      title: "Information", 
+      content: "Hello, world!" 
+    })
+  }
 </script>
 
 <SaraProvider>
@@ -54,15 +60,13 @@
             Show confirmation modal
           </Button>
         </div>
-        <IconButton onClick={() => showNotification(
-            "success", { 
-              title: "Information", 
-              content: "Hello, world!" 
-          })} 
+        <IconButton onClick={handleInforClick} 
           tooltip="Show notification"
-          icon="i-heroicons-home-16-solid"
           color="accent"
-        />
+        >
+          <span class="i-heroicons-information-circle text-2xl"></span>
+        </IconButton>
+        <span class="i-heroicons- text-lg text-white"></span>
         <SideNav />
       </div>
       <ConfirmationModal id={confirmationModal.id}

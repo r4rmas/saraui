@@ -1,10 +1,8 @@
 <script lang="ts">
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, heightClass, textColor, widthClass } from "$lib/constants.js"
-  import type { ButtonModifierString, ButtonTypeString, ColorString, Icon, OnEvent, SizeString } from "$lib/types.js"
-  import { getIconClass } from "$lib/utils.js"
+  import type { ButtonModifierString, ButtonTypeString, ColorString, Icon, IconClassString, OnEvent, SizeString } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
-  export let icon: Icon | string
   export let tooltip: string
   export let type: ButtonTypeString = "button"
   export let shape: "square" | "circle" = "circle"
@@ -49,6 +47,6 @@
   {#if isLoading}
     <Loader />
   {:else}
-    <span class={getIconClass(icon)}></span>
+    <slot />
   {/if}
 </button>
