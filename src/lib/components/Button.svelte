@@ -18,8 +18,10 @@
 
   let button: HTMLButtonElement
   let buttonWidth: string | undefined = undefined
+  let _buttonWidth: string | undefined = undefined
 
   async function handleClick(e: Event) {
+    _buttonWidth = buttonWidth
     if (onClick) {
       isLoading = true
       await onClick(e)
@@ -44,8 +46,10 @@
   }
 
   onMount(async () => {
-    await sleep(0.4)
-    setButtonWidth()
+    if (!width || width !== "full") {
+      await sleep(0.31)
+      setButtonWidth()
+    }
   })
 </script>
 
@@ -53,15 +57,15 @@
   on:click={handleClick} 
   bind:this={button}
   disabled={isLoading || isDisabled}
-  class={`
+  class="
     btn flex-shrink
-    ${isOutlined ? "btn-outline" : ""}
-    ${_getResponsiveClass()}
-    ${buttonSizeClass[size]}
-    ${buttonColorClass[color]}
-    ${modifier ? buttonModifierClass[modifier] : ""}
-  `}
-  style={buttonWidth}
+    {isOutlined ? "btn-outline" : ""}
+    {_getResponsiveClass()}
+    {buttonSizeClass[size]}
+    {buttonColorClass[color]}
+    {modifier ? buttonModifierClass[modifier] : ""}
+  "
+  style={_buttonWidth}
 >
   {#if isLoading}
     <Loader />

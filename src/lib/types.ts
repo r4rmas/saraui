@@ -1,4 +1,4 @@
-import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds, TextSizes } from "./enums.js"
+import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds, TextSizes, IconButtonShapes } from "./enums.js"
 
 export type BreakpointString            = `${Breakpoints}`
 export type NotificationCauseString     = `${NotificationCauses}`
@@ -7,6 +7,7 @@ export type ColorString                 = `${Colors}`
 export type SizeString                  = `${Sizes}`
 export type ButtonModifierString        = `${ButtonModifiers}`
 export type ButtonTypeString            = `${ButtonTypes}`
+export type IconButtonShapeString       = `${IconButtonShapes}`
 export type PositionString              = `${Positions}`
 export type HorizontalPositionString    = "right" | "left"
 export type IdentifiableComponentString = "modal" | "radioselector"
@@ -73,7 +74,7 @@ export type NotificationDirection = {
   [k in BreakpointString]?: NotificationDirectionString
 }
 export type TitledNotificationContent = {
-  title: string
+  title  : string
   content: string
 }
 export type NotificationData = {
@@ -198,6 +199,9 @@ export type ButtonColorClass = {
 }
 export type ButtonModifierClass = {
   [k in ButtonModifierString]: `btn-${k}`
+}
+export type IconButtonShapeClass = {
+  [k in IconButtonShapeString]: `btn-${k}`
 }
 
 export type RadioSizeClass = {

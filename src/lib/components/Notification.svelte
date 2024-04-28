@@ -14,13 +14,7 @@
   export let direction: NotificationDirectionString | NotificationDirection
   export let distance: NotificationBreakpointDistance
 
-  const baseClass = `
-    flex 
-    fixed z-50
-    shadow-lg 
-    alert
-    w-fit 
-  `
+  const baseClass = "flex fixed z-50 shadow-lg alert w-fit"
   const alertClass = {
     info:  baseClass + "alert-info" ,
     success: baseClass + "alert-success",

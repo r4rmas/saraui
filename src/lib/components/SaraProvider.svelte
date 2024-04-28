@@ -44,6 +44,7 @@
     }}
   />
 {/if}
+<!-- TODO: ADD PXLS FROM TAILWIND DOCS -->
 <div id="saraui-sm" class="inline md:hidden lg:hidden xl:hidden 2xl:hidden"></div>
 <div id="saraui-md" class="hidden md:inline lg:hidden xl:hidden 2xl:hidden"></div>
 <div id="saraui-lg" class="hidden lg:inline xl:hidden 2xl:hidden"></div>

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { buttonColorClass, buttonModifierClass, buttonSizeClass } from "$lib/constants.js"
+  import { buttonColorClass, buttonModifierClass, buttonSizeClass, iconButtonShapeClass } from "$lib/constants.js"
   import { sidenav } from "$lib/stores.js"
-  import type { ButtonModifierString, ColorString, SizeString } from "$lib/types.js"
+  import type { ButtonModifierString, ColorString, IconButtonShapeString, SizeString } from "$lib/types.js"
 
   export let tooltip: string
-  export let shape: "square" | "circle" = "circle"
+  export let shape: IconButtonShapeString = "circle"
   export let modifier: ButtonModifierString = "ghost"
   export let size: SizeString = "md"
   export let color: ColorString = "primary"
@@ -13,21 +13,12 @@
   let isOpen = false
 
   $: isOpen = $sidenav?.isOpen ?? false
-
-  function getShapeClass() {
-    switch (shape) {
-      case "circle":
-        return "btn-circle"
-      case "square":
-        return "btn-square"
-    }
-  }
 </script>
 
 <div class="relative lg:hidden">
   <label class="
     btn swap swap-rotate
-    {getShapeClass()}
+    {iconButtonShapeClass[shape]}
     {buttonSizeClass[size]}
     {buttonColorClass[color]}
     {isOutlined ? "btn-outline" : ""}

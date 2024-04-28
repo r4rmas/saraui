@@ -47,24 +47,18 @@
       <img src="{file && URL.createObjectURL(file)}" alt={file ? file.name : ""} />
     </div>
   </div>
-    <div class={`
-      plus-container 
-      ${roundedClass[rounded]}
-      ${file ? "inset-0" : `
-        bg-base-200
-        -top-0.5
-        -bottom-0.5
-        -right-1
-        -left-1
-      `}
-    `}>
+    <div class="
+      btn-container 
+      {roundedClass[rounded]}
+      {file ? "inset-0" : "backgrounded"}
+    ">
       {#if isEditable}
         <button on:click={() => inputElement.click()} 
-          class={`
+          class="
             rounded-full p-1
-            ${textColor[color]}
-            ${file ? "bg-base-100 bg-opacity-60" : ""}
-          `}
+            {textColor[color]}
+            {file ? "bg-base-100 bg-opacity-60" : ""}
+          "
         >
           {#if icon}
             <span class={getIconClass(icon, "3xl")}></span>
@@ -87,22 +81,19 @@
 </div>
 
 <style lang="postcss">
-  .plus {
-    @apply 
-    flex
-    items-center
-    justify-center
-    rounded-full 
-    bg-base-100 
-    text-2xl
-    w-8
-    h-8
-  }
-  .plus-container {
+  .btn-container {
     @apply 
     absolute  
     flex 
     justify-center 
     items-center
+  }
+  .backgrounded {
+    @apply
+    bg-base-200 
+    -top-0.5 
+    -bottom-0.5 
+    -right-1 
+    -left-1
   }
 </style>

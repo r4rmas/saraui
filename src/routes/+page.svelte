@@ -50,7 +50,7 @@
         </div>
       </form>
       <div class="flex w-full justify-center gap-2">
-        <Button onClick={() => { confirmationModal.show() }}>
+        <Button onClick={async () => { await sleep(3) }}>
           Show confirmation modal
         </Button>
         <Button onClick={modal.show} color="secondary">
