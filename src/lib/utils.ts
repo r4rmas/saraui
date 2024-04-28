@@ -1,7 +1,7 @@
-import { heightClass, textColor, textSize, widthClass } from "./constants.js"
+import { textSize } from "./constants.js"
 import type { Breakpoints } from "./enums.js"
 import { notificationData } from "./stores.js"
-import type { ModalIdentifier, IdentifiableComponentString, NotificationCauseString, BreakPointClass, TitledNotificationContent, Icon } from "./types.js"
+import type { ModalIdentifier, IdentifiableComponentString, NotificationCauseString, BreakPointClass, TitledNotificationContent, Icon, SizeString, TextSizeString } from "./types.js"
 import { v4 as uuidv4 } from "uuid"
 
 export function showNotification(cause: NotificationCauseString, content: string | TitledNotificationContent) {
@@ -50,16 +50,15 @@ export function getResponsiveClass(responsive: BreakPointClass, fromClasses: { [
   if (xl) responsiveClass += `${fromClasses.xl[xl]} `
   return responsiveClass
 }
-export function getIconClass(icon : Icon | string | undefined) {
+export function getIconClass(icon : Icon | string | undefined, size?: TextSizeString) {
   if (icon) {
     if (typeof icon !== "string") {
-      const { classname, size, color } = icon
-      let iconClass = classname
+      const { is , size } = icon
+      let iconClass = is
       if (size) iconClass += ` ${textSize[size]}`
-      if (color) iconClass += ` ${textColor[color]}`
       return iconClass
     }
-    return `${icon} text-xl`
+    return `${icon} ${textSize[size ?? "lg"]}`
   }
   return ""
 }

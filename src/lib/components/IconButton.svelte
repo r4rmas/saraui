@@ -6,10 +6,10 @@
   export let tooltip: string
   export let type: ButtonTypeString = "button"
   export let shape: "square" | "circle" = "circle"
+  export let size: SizeString = "md"
+  export let color: ColorString = "primary"
   export let isDisabled = false
   export let isOutlined = false
-  export let size: SizeString | undefined = undefined
-  export let color: ColorString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
   export let onClick: OnEvent | undefined = undefined
 
@@ -38,8 +38,8 @@
   class={`
     btn
     ${getShapeClass()}
-    ${buttonSizeClass[size ?? "md"]}
-    ${buttonColorClass[color ?? "primary"]}
+    ${buttonSizeClass[size]}
+    ${buttonColorClass[color]}
     ${isOutlined ? "btn-outline" : ""}
     ${modifier ? buttonModifierClass[modifier] : ""}
   `}

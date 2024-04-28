@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte"
   import { currentBreakpoint, loader, notificationData } from "$lib/stores.js"
   import type { SaraProviderConfig, BreakpointString } from "$lib/types.js"
   import Notification from "./Notification.svelte"
@@ -10,25 +9,27 @@
   const { icons, transition } = notification ?? {}
   const { direction, distance } = transition ?? {}
 
-  $loader = _loader ?? $loader
+  let width: number
 
+  $loader = _loader ?? $loader
   $: ({ visible, cause } = $notificationData)
-  
-  onMount(() => {
-    if (document) {
-      const getCurrentBreakpoint = () => {
-        const breakpointSM: BreakpointString | null = document.getElementById('saraui-sm')?.offsetParent === null ? null : "sm"
-        const breakpointMD: BreakpointString | null = document.getElementById('saraui-md')?.offsetParent === null ? null : "md"
-        const breakpointLG: BreakpointString | null = document.getElementById('saraui-lg')?.offsetParent === null ? null : "lg"
-        const breakpointXL: BreakpointString | null = document.getElementById('saraui-xl')?.offsetParent === null ? null : "xl"
-        return breakpointSM ?? breakpointMD ?? breakpointLG ?? breakpointXL /*?? breakpoint2XL*/
-      }
-      $currentBreakpoint = getCurrentBreakpoint() ?? "sm"
+  $: $currentBreakpoint = getCurrentBreakpoint(width)
+
+  function getCurrentBreakpoint (width: number) {
+    if (width && width > 0) {
+      const breakpointSM: BreakpointString | null = document.getElementById('saraui-sm')?.offsetParent === null ? null : "sm"
+      const breakpointMD: BreakpointString | null = document.getElementById('saraui-md')?.offsetParent === null ? null : "md"
+      const breakpointLG: BreakpointString | null = document.getElementById('saraui-lg')?.offsetParent === null ? null : "lg"
+      const breakpointXL: BreakpointString | null = document.getElementById('saraui-xl')?.offsetParent === null ? null : "xl"
+      return breakpointSM ?? breakpointMD ?? breakpointLG ?? breakpointXL ?? "sm"
     }
-  })
+    return "sm"
+  } 
 </script>
 
-<slot></slot>
+<div bind:clientWidth={width}>
+  <slot></slot>
+</div>
 {#if visible}
   <Notification
     icon={icons ? icons[cause] : undefined}

@@ -25,21 +25,28 @@ export type SaraProviderConfig = {
 }
 
 export type Icon = {
-  classname: IconClassString,
-  size?    : TextSizeString
-  color?   : ColorString
+  is   : IconClassString,
+  size?: TextSizeString
 }
 
-export type ResponsiveSpacing = {
+type ResponsiveSpacing = {
   [k in BreakpointString]?: SpacingString  
 }
-export type WidthSpacing = {
-  [k in keyof ResponsiveSpacing]: ResponsiveSpacing[k] | WidthString
+export type WidthSpacing = SpacingString | WidthString
+export type WidthResponsiveSpacing = {
+  [k in keyof ResponsiveSpacing]: WidthSpacing
 }
 
 export type LoaderProps = {
   option: `${Loaders}`
   color?: ColorString
+}
+
+export type Sidenav = {
+  isOpen: boolean,
+  open  : () => void,
+  close : () => void,
+  toggle: () => void
 }
 
 export type SelectorOption = {
@@ -119,7 +126,7 @@ export type HeightSpacingClassXL = {
 }
 
 export type WidthSpacingClass = {
-  [k in SpacingString]: `w-${k}`
+  [k in WidthSpacing]: `w-${k}`
 }
 export type WidthSpacingClassMD = {
   [k in keyof WidthSpacingClass]: `md:w-${k}`
@@ -191,22 +198,6 @@ export type ButtonColorClass = {
 }
 export type ButtonModifierClass = {
   [k in ButtonModifierString]: `btn-${k}`
-}
-export type ButtonWidthClass = WidthSpacingClass & _ButtonWidthClass
-export type ButtonWidthClassMD = WidthSpacingClassMD & _ButtonWidthClassMD
-export type ButtonWidthClassLG = WidthSpacingClassLG & _ButtonWidthClassLG
-export type ButtonWidthClassXL = WidthSpacingClassXL & _ButtonWidthClassXL
-type _ButtonWidthClass = {
-  [k in WidthString]: `w-${k}` | `w-${k} flex-shrink`
-}
-type _ButtonWidthClassMD = {
-  [k in keyof _ButtonWidthClass]: `md:w-${k}` | `md:w-${k} flex-shrink`
-}
-type _ButtonWidthClassLG = {
-  [k in keyof _ButtonWidthClass]: `lg:w-${k}` | `lg:w-${k} flex-shrink`
-}
-type _ButtonWidthClassXL = {
-  [k in keyof _ButtonWidthClass]: `xl:w-${k}` | `xl:w-${k} flex-shrink`
 }
 
 export type RadioSizeClass = {

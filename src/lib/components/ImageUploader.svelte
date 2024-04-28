@@ -1,17 +1,17 @@
 <script lang="ts">
   import { roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
-  import type { ColorString, RoundedString, ResponsiveSpacing, Icon, IconClassString } from "$lib/types.js"
+  import type { ColorString, RoundedString, Icon, IconClassString, WidthSpacing, WidthResponsiveSpacing } from "$lib/types.js"
   import { getIconClass, getResponsiveClass } from "$lib/utils.js"
-  import AddIcon from "./private/icons/Add.svelte"
+  import Camera from "./private/icons/Camera.svelte"
 
+  export let color: ColorString  = "secondary"
+  export let rounded: RoundedString = "full"
+  export let acceptedFileExtensions = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
+  export let isEditable = true
   export let name: string | undefined = undefined
   export let state: File | undefined = undefined
-  export let width: ResponsiveSpacing | undefined = undefined
-  export let color: ColorString | undefined = undefined
+  export let width: WidthSpacing |  WidthResponsiveSpacing | undefined = undefined
   export let icon: Icon | IconClassString | undefined = undefined
-  export let rounded: RoundedString = "full"
-  export let acceptedFileExtensions: string = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
-  export let isEditable = true
   
   let inputElement: HTMLInputElement
   let files: FileList
@@ -20,12 +20,15 @@
   $: if (state) state = file
 
   function _getResponsiveClass() {
-    if (width) return getResponsiveClass(width, {
-      sm: widthClass,
-      md: widthClassMD,
-      lg: widthClassLG,
-      xl: widthClassXL
-    })
+    if (width) {
+      if (typeof width !== "string") return getResponsiveClass(width, {
+        sm: widthClass,
+        md: widthClassMD,
+        lg: widthClassLG,
+        xl: widthClassXL
+      })
+      else return widthClass[width]
+    }
     return "w-28"
   }
 </script>
@@ -56,15 +59,21 @@
         -left-1
       `}
     `}>
-      <button on:click={() => inputElement.click()} 
-        class={textColor[color ?? "secondary"]}
-      >
-        {#if icon}
-          <span class={getIconClass(icon)}></span>
-        {:else}
-          <AddIcon />
-        {/if}
-      </button>
+      {#if isEditable}
+        <button on:click={() => inputElement.click()} 
+          class={`
+            rounded-full p-1
+            ${textColor[color]}
+            ${file ? "bg-base-100 bg-opacity-60" : ""}
+          `}
+        >
+          {#if icon}
+            <span class={getIconClass(icon, "3xl")}></span>
+          {:else}
+            <Camera />
+          {/if}
+        </button>
+      {/if}
     </div>
 </div>
 

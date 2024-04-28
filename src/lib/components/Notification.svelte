@@ -16,7 +16,7 @@
 
   const baseClass = `
     flex 
-    fixed z-20 
+    fixed z-50
     shadow-lg 
     alert
     w-fit 
