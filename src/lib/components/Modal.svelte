@@ -1,19 +1,19 @@
 <script lang="ts">
-  import type { ModalIdentifier } from "$lib/types.js"
+  import type { ModalRef } from "$lib/types.js"
 
-  export let id: ModalIdentifier
+  export let ref: ModalRef
   export let isClosable = true
   export let onClose: (() => void) | undefined = undefined
 
-  const { _id } = id
+  $: ({ dialog, closeButton } = ref)
 </script>
 
-<dialog id={_id} class="modal">
+<dialog bind:this={$dialog} class="modal">
   <div class="modal-box relative">
     <slot></slot>
   </div>
   <form method="dialog" class="modal-backdrop">
-    <button id={`${_id}-close`} 
+    <button bind:this={$closeButton}
       on:click={onClose ? onClose : () => {}}
       disabled={!isClosable} 
     />

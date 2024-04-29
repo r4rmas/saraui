@@ -1,6 +1,6 @@
 {
   "name": "saraui",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "author": "Raul Armas",
   "description": "daisyUI components for Svelte/Sveltekit",
   "repository": {
@@ -66,8 +66,5 @@
   },
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "type": "module",
-  "dependencies": {
-    "uuid": "^9.0.1"
-  }
+  "type": "module"
 }

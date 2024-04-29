@@ -1,9 +1,10 @@
 <script lang="ts">
-  import type { ModalIdentifier, ConfirmationModalIcons, OnEvent, ColorString } from "$lib/types.js"
+  import type { Writable } from "svelte/store"
+  import type { ConfirmationModalIcons, OnEvent, ColorString, ModalRef } from "$lib/types.js"
   import { getIconClass } from "$lib/utils.js"
   import Button from "./Button.svelte"
 
-  export let id: ModalIdentifier
+  export let ref: ModalRef
   export let title: string
   export let content: string
   export let onAccept: OnEvent
@@ -15,7 +16,7 @@
   let closeButton: HTMLButtonElement
 
   const { position: iconPosition, accept: acceptIcon, cancel: cancelIcon } = icons ?? {}
-  const { _id } = id
+  $: ({ dialog } = ref)
 
   async function handleClick() {
     await onAccept()
@@ -23,7 +24,7 @@
   }
 </script>
 
-<dialog id={_id} class="modal">
+<dialog bind:this={$dialog} class="modal">
   <div class="modal-box">
     <p class="font-semibold mb-4 text-lg">
       {title}
@@ -34,8 +35,7 @@
     <slot />
     <div class="modal-action">
       <form method="dialog">
-        <button id={`${_id}-close`}
-          bind:this={closeButton}
+        <button bind:this={closeButton}
           class="
             btn
             focus:outline-none

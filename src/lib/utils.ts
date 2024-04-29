@@ -1,8 +1,8 @@
+import { writable } from "svelte/store"
 import { textSize } from "./constants.js"
 import type { Breakpoints } from "./enums.js"
 import { notificationData } from "./stores.js"
-import type { ModalIdentifier, IdentifiableComponentString, NotificationCauseString, BreakPointClass, TitledNotificationContent, Icon, SizeString, TextSizeString } from "./types.js"
-import { v4 as uuidv4 } from "uuid"
+import type { NotificationCauseString, BreakPointClass, TitledNotificationContent, Icon, SizeString, TextSizeString, ModalRef } from "./types.js"
 
 export function showNotification(cause: NotificationCauseString, content: string | TitledNotificationContent) {
   setTimeout(() => notificationData.update(old => ({
@@ -11,26 +11,21 @@ export function showNotification(cause: NotificationCauseString, content: string
   notificationData.set({ visible: true, cause, content })
 }
 
-export function getComponentID(component: IdentifiableComponentString) {
-  return `saraui-${component}.${uuidv4().replaceAll("-", "")}`
-}
-
-function showModal(id: string) {
-  const dialog = <HTMLDialogElement>document.getElementById(id)
-  if (dialog) dialog.showModal()
-}
 export function useModal() {
-  const _id = getComponentID("modal")
+  const dialog = writable<HTMLDialogElement>()
+  const closeButton = writable<HTMLButtonElement>()
   return { 
-    id: <ModalIdentifier>{ _id },
-    show: () => showModal(_id), 
-    close: () => {
-      const closeButton = <HTMLButtonElement>document.getElementById(`${_id}-close`)
-      if (closeButton) {
-        closeButton.disabled = false
-        closeButton.click()
+    ref: <ModalRef>{ dialog, closeButton },
+    show: () => dialog.subscribe(el => { 
+      if (el) el.showModal() 
+    }), 
+    close: () => closeButton.subscribe(el => {
+      if (el) {
+        el.disabled = false
+        el.click()
+        el.disabled = true
       }
-    } 
+    })
   }
 }
 

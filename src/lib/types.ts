@@ -1,3 +1,4 @@
+import type { Writable } from "svelte/store"
 import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds, TextSizes, IconButtonShapes } from "./enums.js"
 
 export type BreakpointString            = `${Breakpoints}`
@@ -10,7 +11,6 @@ export type ButtonTypeString            = `${ButtonTypes}`
 export type IconButtonShapeString       = `${IconButtonShapes}`
 export type PositionString              = `${Positions}`
 export type HorizontalPositionString    = "right" | "left"
-export type IdentifiableComponentString = "modal" | "radioselector"
 export type RemString                   = `${number}rem`
 export type SpacingString               = `${Spacings}`
 export type WidthString                 = `${Widths}`
@@ -44,8 +44,9 @@ export type SelectorOption = {
   label: string
 }
 
-export type ModalIdentifier = {
-  _id: `saraui-modal.${string}`
+export type ModalRef = {
+  dialog: Writable<HTMLDialogElement>,
+  closeButton: Writable<HTMLButtonElement>
 }
 export type ConfirmationModalIcons = {
   position?: HorizontalPositionString

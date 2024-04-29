@@ -50,7 +50,7 @@
         </div>
       </form>
       <div class="flex w-full justify-center gap-2">
-        <Button onClick={async () => { await sleep(3) }}>
+        <Button onClick={confirmationModal.show}>
           Show confirmation modal
         </Button>
         <Button onClick={modal.show} color="secondary">
@@ -67,14 +67,12 @@
         <SidenavButton tooltip="Menu" modifier="glass" />
       </div>
     </div>
-    <ConfirmationModal id={confirmationModal.id}
-      onAccept={async () => { await sleep(3) }} 
+    <ConfirmationModal ref={confirmationModal.ref}
+      onAccept={() => {}} 
       title="Are you sure you want to leave?"
       content="If you leave all your data will be removed"
     />
-    <Modal id={modal.id} 
-      isClosable={false}
-    >
+    <Modal ref={modal.ref} isClosable={false}>
       <p class="text-lg font-semibold mb-4">Current breakpoint</p>
       <p>{$currentBreakpoint}</p>
       <div class="flex justify-end">
