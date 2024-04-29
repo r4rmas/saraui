@@ -19,7 +19,7 @@ import ConfirmationModal from "./components/ConfirmationModal.svelte";
 import Modal from "./components/Modal.svelte";
 import Button from "./components/Button.svelte";
 import IconButton from "./components/IconButton.svelte";
-import SidenavProvider from "./components/SidenavProvider.svelte";
+import Scaffold from "./components/Scaffold.svelte";
 import SidenavButton from "./components/SidenavButton.svelte";
 
 export {
@@ -32,5 +32,5 @@ export {
   RadioSelector, type SelectorOption,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationDirection, type TitledNotificationContent, showNotification,
   Modal, ConfirmationModal, type ConfirmationModalIcons, useModal,
-  SidenavProvider, SidenavButton, sidenav
+  Scaffold, SidenavButton, sidenav
 }

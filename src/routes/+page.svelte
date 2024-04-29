@@ -1,87 +1,92 @@
 <script lang="ts">
-  import type { SelectorOption } from "$lib/types.js"
-  import { showNotification, sleep, useModal } from "$lib/utils.js"
-  import { currentBreakpoint } from "$lib/stores.js"
-  import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
-  import Modal from "$lib/components/Modal.svelte"
-  import RadioSelector from "$lib/components/RadioSelector.svelte"
-  import ImageUploader from "$lib/components/ImageUploader.svelte"
+  import type { NotificationCauseString, SelectorOption } from "$lib/types.js"
   import Button from "$lib/components/Button.svelte"
-  import IconButton from "$lib/components/IconButton.svelte"
+  import ImageUploader from "$lib/components/ImageUploader.svelte"
+  import RadioSelector from "$lib/components/RadioSelector.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
+  import { showNotification, useModal } from "$lib/utils.js"
+  import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
 
-  const options: SelectorOption[] = [{
-    value: "user",
-    label: "👦🏻 User"
+  const radioOptions: SelectorOption[] = [{
+    label: "success",
+    value: "success",
+    isSelected: true
   }, {
-    value: "admin",
-    label: "🤖 Admin"
+    label: "info",
+    value: "info"
+  }, {
+    label: "warning",
+    value: "warning"
+  }, {
+    label: "error",
+    value: "error"
   }]
 
-  const confirmationModal = useModal()
-  const modal = useModal()
+  const { ref, show } = useModal()
 
-  let radio: string
-  
-  function handleInforClick() {
-    showNotification("success", { 
-      title: "Information", 
-      content: "Hello, world!" 
-    })
-  }
+  let selectedRadio: NotificationCauseString = "success"
 </script>
 
-<div class="flex w-full justify-center">
-  <div class="flex w-full justify-center max-w-screen-lg">
-    <div class="flex flex-col w-full gap-4 p-4 justify-center items-center">
-      <ImageUploader />
-      <form>
-        <div class="grid grid-cols-2 gap-2">
-          <RadioSelector {options} 
-            bind:state={radio}
-            name="role"
-            required 
-          />
-        </div>
-        <div class="flex justify-center mt-4">
-          <Button type="submit" color="info">
-            Accept
-          </Button>
-        </div>
-      </form>
-      <div class="flex w-full justify-center gap-2">
-        <Button onClick={confirmationModal.show}>
-          Show confirmation modal
-        </Button>
-        <Button onClick={modal.show} color="secondary">
-          Show modal
-        </Button>
-      </div>
-      <IconButton onClick={handleInforClick} 
-        tooltip="Show notification"
-        color="accent"
-      >
-        <span class="i-heroicons-information-circle-16-solid text-xl"></span>
-      </IconButton>
-      <div>
-        <SidenavButton tooltip="Menu" modifier="glass" />
-      </div>
-    </div>
-    <ConfirmationModal ref={confirmationModal.ref}
-      onAccept={() => {}} 
-      title="Are you sure you want to leave?"
-      content="If you leave all your data will be removed"
-    />
-    <Modal ref={modal.ref} isClosable={false}>
-      <p class="text-lg font-semibold mb-4">Current breakpoint</p>
-      <p>{$currentBreakpoint}</p>
-      <div class="flex justify-end">
-        <button on:click={modal.close}
-          class="btn"
-        >
-          Close
-        </button>
-      </div>
-    </Modal>
+<div class="flex flex-wrap justify-center bg-base-200 p-6 rounded-box">
+  <span class="mr-3 text-xl">
+    🎨
+  </span>
+  <div class="bg-gradient-to-br from-accent via-primary to-secondary bg-clip-text">
+    <a href="https://daisyui.com">
+      <span class="text-transparent font-medium mr-2">
+        daisyUI
+      </span>
+    </a>
+  </div>
+  <span>components for</span>
+  <span class="text-orange-500 ml-2">
+    Svelte
+  </span>
+  <span>/</span>
+  <span class="text-orange-500">
+    Svelte
+  </span>
+  <span>Kit</span>
+</div>
+
+<ImageUploader />
+<div class="flex flex-col items-center gap-4">
+  <div class="grid grid-cols-2 gap-4">
+    <RadioSelector name="notification" options={radioOptions} bind:state={selectedRadio} />
+  </div>
+  <div class="flex gap-2">
+    <Button onClick={() => showNotification(selectedRadio, {
+      title: selectedRadio,
+      content: "Hello, world! 👋🏼"
+    })}>
+      Show notification
+    </Button>
+    <Button onClick={show} color="secondary">
+      Show modal
+    </Button>
+  </div>
+  <div class="flex w-full justify-center mt-4">
+    <SidenavButton tooltip="Menu" color="accent" modifier="glass" />
   </div>
 </div>
+
+<div>
+  <h2 class="text-lg mb-2 font-medium">Get Sarisfied!</h2>
+  <p>Sara UI is a new Svelte library built on top of daisyUI.</p>
+  <p>Its mission is to provide components that need javascript for their interaction and make them easy to use.</p>
+</div>
+
+<div class="mockup-code">
+  <pre data-prefix="$"><code>npm i saraui</code></pre>
+</div>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
+
+<ConfirmationModal {ref} onAccept={() => {}} 
+  title="This is a Confirmation Modal"  
+  content="Quickly build confirmation modals to confirm sensible actions"
+/>

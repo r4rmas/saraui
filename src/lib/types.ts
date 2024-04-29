@@ -40,8 +40,9 @@ export type Icon = {
 }
 
 export type SelectorOption = {
-  value: string
-  label: string
+  value      : string
+  label      : string
+  isSelected?: boolean
 }
 
 export type ModalRef = {

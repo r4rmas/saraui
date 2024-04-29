@@ -5,7 +5,7 @@
   export let isClosable = true
   export let onClose: (() => void) | undefined = undefined
 
-  $: ({ dialog, closeButton } = ref)
+  const { dialog, closeButton } = ref
 </script>
 
 <dialog bind:this={$dialog} class="modal">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
+  import { heightClass, heightClassLG, heightClassMD, heightClassXL, roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
   import type { ColorString, RoundedString, Icon, IconClassString, WidthSpacing, WidthResponsiveSpacing } from "$lib/types.js"
   import { getIconClass, getResponsiveClass } from "$lib/utils.js"
 
@@ -16,19 +16,29 @@
   let files: FileList
 
   $: [ file ] = files ?? []
+  $: isImaged = file !== undefined
   $: if (state) state = file
 
   function _getResponsiveClass() {
     if (width) {
-      if (typeof width !== "string") return getResponsiveClass(width, {
-        sm: widthClass,
-        md: widthClassMD,
-        lg: widthClassLG,
-        xl: widthClassXL
-      })
+      if (typeof width !== "string") {
+        const _widthClass = getResponsiveClass(width, {
+          sm: widthClass,
+          md: widthClassMD,
+          lg: widthClassLG,
+          xl: widthClassXL
+        })
+        const _heightClass = getResponsiveClass(width, {
+          sm: heightClass,
+          md: heightClassMD,
+          lg: heightClassLG,
+          xl: heightClassXL
+        })
+        return `${_widthClass} ${_heightClass}`
+      }
       else return widthClass[width]
     }
-    return "w-28"
+    return "w-28 h-28"
   }
 </script>
 
@@ -41,59 +51,61 @@
   type="file"
   class="hidden"
 />
-<div class="relative">
-  <div class="avatar">
-    <div class="{_getResponsiveClass()} {roundedClass[rounded]}">
-      <img src="{file && URL.createObjectURL(file)}" alt={file ? file.name : ""} />
-    </div>
+<div 
+  class="
+    relative
+    {_getResponsiveClass()}
+    {roundedClass[rounded]}
+    {isImaged
+      ? "imaged"
+      : "bg-base-200"
+    }
+  "
+  style={isImaged
+    ? `--img: url(${URL.createObjectURL(file)});`
+    : ""
+}>
+  <div class="
+    flex
+    absolute
+    inset-0
+    justify-center
+    items-center
+  ">
+    {#if isEditable}
+      <button on:click={() => inputElement.click()} 
+        class="
+          rounded-full p-1
+          {textColor[color]}
+          {file ? "bg-base-100 bg-opacity-60" : ""}
+        "
+      >
+        {#if icon}
+          <span class={getIconClass(icon, "3xl")}></span>
+        {:else}
+          <svg xmlns="http://www.w3.org/2000/svg" 
+            aria-hidden="true" 
+            width="34" height="34" 
+            fill="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path d="M7.5 4.586A2 2 0 0 1 8.914 4h6.172a2 2 0 0 1 1.414.586L17.914 6H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1.086L7.5 4.586ZM10 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm2-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" 
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            />
+          </svg>
+        {/if}
+      </button>
+    {/if}
   </div>
-    <div class="
-      btn-container 
-      {roundedClass[rounded]}
-      {file ? "inset-0" : "backgrounded"}
-    ">
-      {#if isEditable}
-        <button on:click={() => inputElement.click()} 
-          class="
-            rounded-full p-1
-            {textColor[color]}
-            {file ? "bg-base-100 bg-opacity-60" : ""}
-          "
-        >
-          {#if icon}
-            <span class={getIconClass(icon, "3xl")}></span>
-          {:else}
-            <svg xmlns="http://www.w3.org/2000/svg" 
-              aria-hidden="true" 
-              width="34" height="34" 
-              fill="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path d="M7.5 4.586A2 2 0 0 1 8.914 4h6.172a2 2 0 0 1 1.414.586L17.914 6H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1.086L7.5 4.586ZM10 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm2-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" 
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              />
-            </svg>
-          {/if}
-        </button>
-      {/if}
-    </div>
 </div>
 
 <style lang="postcss">
-  .btn-container {
-    @apply 
-    absolute  
-    flex 
-    justify-center 
-    items-center
-  }
-  .backgrounded {
+  .imaged {
+    background-image: var(--img);
     @apply
-    bg-base-200 
-    -top-0.5 
-    -bottom-0.5 
-    -right-1 
-    -left-1
+    bg-cover
+    bg-center
+    bg-no-repeat
   }
 </style>

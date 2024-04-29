@@ -15,22 +15,15 @@
 </script>
 
 {#if options.length}
-  {#each options as o, i}
-    <div class="
-      flex
-      items-center
-      {i < options.length
-        && options.length > 2 
-          ? "mb-2" 
-          : ""
-      }
-    ">
+  {#each options as o}
+    <div class="flex">
       <input {name} {required}
         on:click={() => check(o.value)}
+        checked={o.isSelected}
         value={o.value}
         type="radio"
         class="
-          radio mr-2
+          radio mr-3
           {radioSizeClass[size]}
           {color ? radioColorClass[color] : ""}
         "

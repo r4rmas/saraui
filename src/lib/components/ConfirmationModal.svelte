@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Writable } from "svelte/store"
   import type { ConfirmationModalIcons, OnEvent, ColorString, ModalRef } from "$lib/types.js"
   import { getIconClass } from "$lib/utils.js"
   import Button from "./Button.svelte"
@@ -16,7 +15,7 @@
   let closeButton: HTMLButtonElement
 
   const { position: iconPosition, accept: acceptIcon, cancel: cancelIcon } = icons ?? {}
-  $: ({ dialog } = ref)
+  const { dialog } = ref
 
   async function handleClick() {
     await onAccept()

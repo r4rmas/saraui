@@ -13,7 +13,7 @@ const config = {
   ],
   daisyui: {
     themeRoot: "#saraui",
-    themes: ["dracula"]
+    themes: ["cupcake"]
   },
 };
 

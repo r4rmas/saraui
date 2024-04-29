@@ -102,7 +102,7 @@
   {/if}
   {#if title}
     <div>
-      <h3 class="font-semibold">{title}</h3>
+      <h3 class="font-semibold text-start">{title}</h3>
       <div class="text-sm">{_content}</div>
     </div>
   {:else}
