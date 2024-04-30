@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
   import { currentBreakpoint, notificationData } from "$lib/stores.js"
-  import type { Icon, IconClassString, NotificationBreakpointDistance, NotificationDirection, NotificationDirectionString } from "$lib/types.js"
+  import type { Icon, IconClassString, NotificationBreakpointDistance, NotificationBreakpointDirection, NotificationDirectionString } from "$lib/types.js"
   import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/constants.js"
   import { Breakpoints } from "$lib/enums.js"
   import { getIconClass } from "$lib/utils.js"
@@ -11,8 +11,21 @@
   import ErrorIcon from "./private/notification/ErrorIcon.svelte"
 
   export let icon: Icon | IconClassString | undefined = undefined
-  export let direction: NotificationDirectionString | NotificationDirection
-  export let distance: NotificationBreakpointDistance
+  export let direction: NotificationDirectionString | NotificationBreakpointDirection | undefined = undefined
+  export let distance: NotificationBreakpointDistance | undefined = undefined
+
+  const defaultIcons = {
+    success: SuccessIcon,
+    info: InfoIcon,
+    warning: WarningIcon,
+    error: ErrorIcon
+  }
+  const defaultDistance: NotificationBreakpointDistance = {
+    sm: { top: "8", right: "4" },
+    md: { top: "10", right: "8" },
+    lg: { top: "14", right: "20" }
+  }
+  const defaultDirection: NotificationDirectionString = "right-to-left" 
 
   const baseClass = "flex fixed z-50 shadow-lg alert w-fit "
   const alertClass = {
@@ -21,42 +34,35 @@
     warning: baseClass + "alert-warning",
     error: baseClass + "alert-error"
   }
-  const defaultIcons = {
-    success: SuccessIcon,
-    info: InfoIcon,
-    warning: WarningIcon,
-    error: ErrorIcon
-  }
 
   const { cause, content } = $notificationData
   const title =  typeof content !== "string" ? content.title : undefined
   const _content = typeof content === "string" ? content : content.content
-  const _direction = getResponsiveDirection(direction)
 
-  const transition: FlyParams = {
-    duration: 500,
-    x: _direction
-  }
+  const _direction = getResponsiveDirection(direction ?? defaultDirection)
+  const transition: FlyParams = { duration: 500, x: _direction }
 
   function getResponsiveDirection(_direction: typeof direction) {
-    const getDirection = (_direction: NotificationDirectionString) => {
-      return _direction === "left-to-right" ? -400
-           : _direction === "right-to-left" ? 400
-           : undefined 
-    }
-    if (typeof _direction !== "string" && Object.values(_direction).length) {
-      const breakpoints = <`${Breakpoints}`[]>Object.values(Breakpoints)
-      const currentBreakpointIndex = breakpoints.indexOf($currentBreakpoint ?? "sm")
-      for (let i = currentBreakpointIndex; i >= 0; i--) {
-        const _direction_ = _direction[breakpoints[i]]
-        if (_direction_) return getDirection(_direction_)
+    if (_direction) {
+      const getDirection = (_direction: NotificationDirectionString) => {
+        return _direction === "left-to-right" ? -400
+             : _direction === "right-to-left" ? 400
+             : undefined 
       }
+      if (typeof _direction !== "string" && Object.values(_direction).length) {
+        const breakpoints = <`${Breakpoints}`[]>Object.values(Breakpoints)
+        const currentBreakpointIndex = breakpoints.indexOf($currentBreakpoint ?? "sm")
+        for (let i = currentBreakpointIndex; i >= 0; i--) {
+          const _direction_ = _direction[breakpoints[i]]
+          if (_direction_) return getDirection(_direction_)
+        }
+      }
+      return getDirection(<NotificationDirectionString>_direction)
     }
-    return getDirection(<NotificationDirectionString>_direction)
   }
   function getResponsiveClass() {
     let responsiveClass = ""
-    const { sm, md, lg, xl } = distance
+    const { sm, md, lg, xl } = distance ?? defaultDistance
     if (sm) {
       const { top, right, bottom, left } = sm
       if (top) responsiveClass += `${topPositionClass[top]} `

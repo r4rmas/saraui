@@ -61,7 +61,7 @@ export type NotificationIcons = {
 export type NotificationDistance = {
   [k in PositionString]?: SpacingString
 }
-export type NotificationDirection = {
+export type NotificationBreakpointDirection = {
   [k in BreakpointString]?: NotificationDirectionString
 }
 export type TitledNotificationContent = {

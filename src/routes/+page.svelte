@@ -4,7 +4,7 @@
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
-  import { showNotification, useModal } from "$lib/utils.js"
+  import { showNotification, sleep, useModal } from "$lib/utils.js"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
 
   const radioOptions: SelectorOption[] = [{
@@ -27,66 +27,81 @@
   let selectedRadio: NotificationCauseString = "success"
 </script>
 
-<div class="flex flex-wrap justify-center bg-base-200 p-6 rounded-box">
-  <span class="mr-3 text-xl">
-    🎨
-  </span>
-  <div class="bg-gradient-to-br from-accent via-primary to-secondary bg-clip-text">
-    <a href="https://daisyui.com">
-      <span class="text-transparent font-medium mr-2">
-        daisyUI
-      </span>
-    </a>
-  </div>
+<div></div>
+<p class="bg-gradient-to-br from-accent via-primary to-secondary bg-clip-text text-center mb-4">
+  <span class="text-xl">🎨</span>
+  <span>Enhanced</span>
+  <span class="font-medium text-transparent">daisyUI</span>
   <span>components for</span>
-  <span class="text-orange-500 ml-2">
-    Svelte
-  </span>
-  <span>/</span>
-  <span class="text-orange-500">
-    Svelte
-  </span>
-  <span>Kit</span>
-</div>
+  <span class="svelte">Svelte</span>/<span class="svelte">Svelte</span>Kit
+</p>
 
 <ImageUploader />
 <div class="flex flex-col items-center gap-4">
-  <div class="grid grid-cols-2 gap-4">
-    <RadioSelector name="notification" options={radioOptions} bind:state={selectedRadio} />
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <RadioSelector name="notification" 
+      options={radioOptions} 
+      bind:state={selectedRadio} 
+    />
   </div>
   <div class="flex gap-2">
-    <Button onClick={() => showNotification(selectedRadio, {
-      title: selectedRadio,
-      content: "Hello, world! 👋🏼"
+    <Button color="secondary"
+      onClick={() => showNotification(selectedRadio, {
+        title: selectedRadio,
+        content: "Hello, world! 👋🏼"
     })}>
       Show notification
     </Button>
-    <Button onClick={show} color="secondary">
+    <Button onClick={show} color="accent">
       Show modal
     </Button>
   </div>
+  <Button onClick={async () => { await sleep(3) }} isOutlined>
+    Async action
+  </Button>
   <div class="flex w-full justify-center mt-4">
-    <SidenavButton tooltip="Menu" color="accent" modifier="glass" />
+    <SidenavButton tooltip="Menu" 
+      color="secondary" 
+      modifier="glass"
+      isOutlined 
+    />
   </div>
 </div>
 
-<div>
-  <h2 class="text-lg mb-2 font-medium">Get Sarisfied!</h2>
-  <p>Sara UI is a new Svelte library built on top of daisyUI.</p>
-  <p>Its mission is to provide components that need javascript for their interaction and make them easy to use.</p>
+<div class="mt-2">
+  <div class="logo-gradient">
+    <h2 class="text-xl mb-4 font-bold text-transparent">
+      Get Sarisfied!
+    </h2>
+  </div>
+  <p>
+    <span class="text-primary font-medium">Sara UI</span>'s 
+    mission is a) to provide new
+    <span class="text-accent font-medium">enhanced-by-javascript</span>
+    <span class="text-secondary link font-medium"><a href="https://daisyui.com">daisyUI</a></span>
+    components and b) improve the development experience, by making them easy to use 🚀.
+  </p>
 </div>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, accusamus. Eius facere reprehenderit, consequuntur dolorem laboriosam adipisci nihil, veniam amet saepe vitae molestiae libero suscipit mollitia maxime cum. Eligendi, laborum?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, accusamus. Eius facere reprehenderit, consequuntur dolorem laboriosam adipisci nihil, veniam amet saepe vitae molestiae libero suscipit mollitia maxime cum. Eligendi, laborum?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, accusamus. Eius facere reprehenderit, consequuntur dolorem laboriosam adipisci nihil, veniam amet saepe vitae molestiae libero suscipit mollitia maxime cum. Eligendi, laborum?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, accusamus. Eius facere reprehenderit, consequuntur dolorem laboriosam adipisci nihil, veniam amet saepe vitae molestiae libero suscipit mollitia maxime cum. Eligendi, laborum?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, accusamus. Eius facere reprehenderit, consequuntur dolorem laboriosam adipisci nihil, veniam amet saepe vitae molestiae libero suscipit mollitia maxime cum. Eligendi, laborum?</p>
 
 <div class="mockup-code">
   <pre data-prefix="$"><code>npm i saraui</code></pre>
 </div>
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos eaque, recusandae asperiores quibusdam quos incidunt sequi reiciendis laboriosam doloribus? Doloremque magni eum placeat laboriosam voluptatum animi, similique hic? Deleniti!</p>
-
 <ConfirmationModal {ref} onAccept={() => {}} 
   title="This is a Confirmation Modal"  
   content="Quickly build confirmation modals to confirm sensible actions"
 />
+
+<style lang="postcss">
+  .svelte {
+    @apply 
+    font-medium
+    text-orange-400
+  }
+</style>

@@ -3,7 +3,7 @@ import type {
   SaraProviderConfig,
   SelectorOption,
   LoaderProps,
-  NotificationDistance, NotificationIcons, NotificationConfig, NotificationTransition, NotificationBreakpointDistance, NotificationDirection, TitledNotificationContent,
+  NotificationDistance, NotificationIcons, NotificationConfig, NotificationTransition, NotificationBreakpointDistance, NotificationBreakpointDirection, TitledNotificationContent,
   ConfirmationModalIcons,
   OnEvent,
   WidthResponsiveSpacing,
@@ -30,7 +30,7 @@ export {
   Button, IconButton, type Icon,
   ImageUploader,
   RadioSelector, type SelectorOption,
-  type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationDirection, type TitledNotificationContent, showNotification,
+  type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationBreakpointDirection as NotificationDirection, type TitledNotificationContent, showNotification,
   Modal, ConfirmationModal, type ConfirmationModalIcons, useModal,
   Scaffold, SidenavButton, sidenav
 }

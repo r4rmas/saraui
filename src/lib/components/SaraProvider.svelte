@@ -29,13 +29,7 @@
   <slot></slot>
 </div>
 {#if visible}
-  <Notification
+  <Notification {direction} {distance}
     icon={icons ? icons[cause] : undefined}
-    direction={direction ?? "right-to-left"}
-    distance={distance ?? {
-      sm: { top: "8", right: "4" },
-      md: { top: "10", right: "8" },
-      lg: { top: "14", right: "20" }
-    }}
   />
 {/if}
