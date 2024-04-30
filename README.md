@@ -2,14 +2,14 @@
 
 ![logo](https://cdn.icon-icons.com/icons2/1465/PNG/128/199princess2_100395.png)
 
-### daisyUI components for Svelte/Sveltekit
+### Enhanced daisyUI components for Svelte/Sveltekit
 
 </div>
 
 
 # Sara UI
 
-Sara UI is a Typescript and Javascript compatible library that provides a collection of daisyUI components for Svelte/Sveltekit.
+Sara UI is a Typescript and Javascript compatible library that provides a collection of enhanced-by-javascript daisyUI components for Svelte/Sveltekit.
 ## Installation
 
 ```

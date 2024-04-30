@@ -28,9 +28,7 @@
     <p class="font-semibold mb-4 text-lg">
       {title}
     </p>
-    <p>
-      {content}
-    </p>
+    <p>{content}</p>
     <slot />
     <div class="modal-action">
       <form method="dialog">
