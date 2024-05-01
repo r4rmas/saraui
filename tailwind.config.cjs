@@ -12,7 +12,10 @@ const config = {
   ],
   daisyui: {
     themeRoot: "#saraui",
-    themes: ["cupcake"]
+    themes: ["dim", //default
+      "cupcake", "valentine", "retro", "autumn", "lemonade", "winter", "garden", "emerald",
+      "dracula", "night", "sunset", "business", "forest"
+    ]
   },
 };
 
