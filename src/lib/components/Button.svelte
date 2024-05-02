@@ -10,10 +10,10 @@
   //else the loading feedbkack will continue after navigation, in Safari iPhone
 
   export let type: ButtonTypeString = "button"
-  export let color: ColorString = "primary"
   export let isDisabled = false
   export let isLink = false
   export let isLoading = false
+  export let color: ColorString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
   export let width: WidthSpacing |  WidthResponsiveSpacing | undefined = undefined
   export let size: SizeString | undefined = undefined
@@ -62,9 +62,9 @@
   disabled={isLoading || isDisabled}
   class="
     flex-shrink
-    {isLink ? `btn-link font-medium ${textColor[color]}` : "btn"}
     {_getResponsiveClass()}
-    {buttonColorClass[color]}
+    {isLink ? `btn-link font-medium ${textColor[color ? color : "primary"]}` : "btn"}
+    {color ? buttonColorClass[color] : ""}
     {size ? buttonSizeClass[size] : ""}
     {modifier ? buttonModifierClass[modifier] : ""}
   "
