@@ -36,6 +36,8 @@
     document
       .querySelector(":root")
       ?.setAttribute("data-theme", "forest")
+
+    showNotification("success", selectedTheme)
   }
 
   afterUpdate(() => {
@@ -132,9 +134,9 @@
   </p>
 </div>
 
-<Button onClick={() => { selectedTheme = "dim" }}>
+<!-- <Button onClick={() => { selectedTheme = "dim" }}>
   Update theme
-</Button>
+</Button> -->
 
 <div class="flex gap-2 justify-start w-full">
   <div class="dropdown">
