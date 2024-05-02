@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { afterUpdate } from "svelte"
   import type { NotificationCauseString, SelectorOption } from "$lib/types.js"
   import Button from "$lib/components/Button.svelte"
   import { showNotification, sleep, useModal } from "$lib/utils.js"
@@ -8,7 +9,6 @@
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
   import CodeCard from "$lib/components/private/CodeCard.svelte"
-    import { afterUpdate } from "svelte"
 
   const radioOptions: SelectorOption[] = [{
     label: "success",
@@ -32,11 +32,10 @@
 
   // $: updateTheme(selectedTheme)
 
-  function updateTheme(selectedTheme: string | undefined) {
-    if (selectedTheme) {
-      const html = document.querySelector(":root")
-      if (html) html.setAttribute("data-theme", selectedTheme)
-    }
+  function updateTheme(selectedTheme: string) {
+    document
+      .querySelector(":root")
+      ?.setAttribute("data-theme", selectedTheme)
   }
 
   afterUpdate(() => {
@@ -145,14 +144,14 @@
       <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
     </div>
     <ul class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
-      <li><input type="radio" bind:group={selectedTheme} name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Autumn" value="autumn"/></li>
-      <li><input type="radio" bind:group={selectedTheme} name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Cupcake" value="cupcake"/></li>
-      <li><input type="radio" bind:group={selectedTheme} name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Emerald" value="emerald"/></li>
-      <li><input type="radio" bind:group={selectedTheme} name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Garden" value="garden"/></li>
-      <li><input type="radio" bind:group={selectedTheme} name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Lemonade" value="lemonade"/></li>
-      <li><input type="radio" bind:group={selectedTheme} name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Retro" value="retro"/></li>
-      <li><input type="radio" bind:group={selectedTheme} name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Valentine" value="valentine"/></li>
-      <li><input type="radio" bind:group={selectedTheme} name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Winter" value="winter"/></li>
+      <li><input type="radio" bind:group={selectedTheme} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Autumn" value="autumn"/></li>
+      <li><input type="radio" bind:group={selectedTheme} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Cupcake" value="cupcake"/></li>
+      <li><input type="radio" bind:group={selectedTheme} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Emerald" value="emerald"/></li>
+      <li><input type="radio" bind:group={selectedTheme} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Garden" value="garden"/></li>
+      <li><input type="radio" bind:group={selectedTheme} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Lemonade" value="lemonade"/></li>
+      <li><input type="radio" bind:group={selectedTheme} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Retro" value="retro"/></li>
+      <li><input type="radio" bind:group={selectedTheme} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Valentine" value="valentine"/></li>
+      <li><input type="radio" bind:group={selectedTheme} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Winter" value="winter"/></li>
     </ul>
   </div>
   <div class="dropdown">
@@ -162,12 +161,12 @@
       <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
     </div>
     <ul class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
-      <li><input bind:group={selectedTheme} type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Business" value="business"/></li>
-      <li><input bind:group={selectedTheme} type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Dim" value="dim"/></li>
-      <li><input bind:group={selectedTheme} type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Dracula" value="dracula"/></li>
-      <li><input bind:group={selectedTheme} type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Forest" value="forest"/></li>
-      <li><input bind:group={selectedTheme} type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Night" value="night"/></li>
-      <li><input bind:group={selectedTheme} type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Sunset" value="sunset"/></li>
+      <li><input bind:group={selectedTheme} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Business" value="business"/></li>
+      <li><input bind:group={selectedTheme} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Dim" value="dim"/></li>
+      <li><input bind:group={selectedTheme} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Dracula" value="dracula"/></li>
+      <li><input bind:group={selectedTheme} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Forest" value="forest"/></li>
+      <li><input bind:group={selectedTheme} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Night" value="night"/></li>
+      <li><input bind:group={selectedTheme} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Sunset" value="sunset"/></li>
     </ul>
   </div>
 </div>
