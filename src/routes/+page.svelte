@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { afterUpdate } from "svelte"
+  import { afterUpdate, onMount } from "svelte"
   import type { NotificationCauseString, SelectorOption } from "$lib/types.js"
   import Button from "$lib/components/Button.svelte"
   import { showNotification, sleep, useModal } from "$lib/utils.js"
@@ -33,6 +33,7 @@
   // $: updateTheme(selectedTheme)
 
   function updateTheme(selectedTheme: string) {
+    console.log("selected theme")
     document
       .querySelector(":root")
       ?.setAttribute("data-theme", "forest")
@@ -40,7 +41,11 @@
     showNotification("success", selectedTheme)
   }
 
+  onMount(() => {
+    console.log("mounting...", selectedTheme)
+  })
   afterUpdate(() => {
+    console.log("updating...", selectedTheme)
     if (selectedTheme) updateTheme(selectedTheme)
   })
 </script>
