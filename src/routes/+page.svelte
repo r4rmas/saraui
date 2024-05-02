@@ -8,6 +8,7 @@
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
   import CodeCard from "$lib/components/private/CodeCard.svelte"
+    import { afterUpdate } from "svelte"
 
   const radioOptions: SelectorOption[] = [{
     label: "success",
@@ -29,16 +30,18 @@
   let selectedRadio: NotificationCauseString = "success"
   let selectedTheme: string | undefined
 
-  $: updateTheme(selectedTheme)
+  // $: updateTheme(selectedTheme)
 
   function updateTheme(selectedTheme: string | undefined) {
     if (selectedTheme) {
-      const html = document.querySelector("html")
-      //TODO: PROBABLEMTE DAISY FUNCIONE IGUAL QUE TAILWIND
-      //Y SEA NECESARIO PASAR EL NOMBRE DE CADA TEMA EXPLICITAMENTE
-      if (html) html.setAttribute("data-theme", "dim")
+      const html = document.querySelector(":root")
+      if (html) html.setAttribute("data-theme", selectedTheme)
     }
   }
+
+  afterUpdate(() => {
+    if (selectedTheme) updateTheme(selectedTheme)
+  })
 </script>
 
 <div></div>
@@ -115,7 +118,7 @@
       </div>
       <div class="code-card-body flex justify-center w-full">
         <div class="py-2">
-          <Button onClick={async () => { await sleep(3) }}>
+          <Button onClick={() => sleep(3)}>
             Async action
           </Button>
         </div>
@@ -129,6 +132,10 @@
     As Sara is made with daisyUI, every componente will get instantly <span class="text-primary">themed</span>!
   </p>
 </div>
+
+<Button onClick={() => { selectedTheme = "dim" }}>
+  Update theme
+</Button>
 
 <div class="flex gap-2 justify-start w-full">
   <div class="dropdown">
