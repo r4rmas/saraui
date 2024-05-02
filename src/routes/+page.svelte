@@ -207,7 +207,7 @@
 </div>
 <div class="flex w-full">
   <Button onClick={() => goto("/components")} isLink>
-    <p>Check all the provided components</p>
+    Check all the provided components
   </Button>
 </div>
 <div></div>

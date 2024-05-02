@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte"
+  import { onDestroy, onMount } from "svelte"
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL, textColor, widthClass } from "$lib/constants.js"
   import type { ButtonModifierString, ButtonTypeString, WidthResponsiveSpacing, ColorString, OnEvent, SizeString, Icon, HorizontalPositionString } from "$lib/types.js"
   import { getResponsiveClass, sleep } from "$lib/utils.js"
@@ -50,6 +50,9 @@
       await sleep(0.31)
       setButtonWidth()
     }
+  })
+  onDestroy(() => {
+    isLoading = false
   })
 </script>
 
