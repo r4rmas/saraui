@@ -5,6 +5,7 @@
   import { getResponsiveClass, sleep } from "$lib/utils.js"
   import type { WidthSpacing } from "$lib/types.js"
   import Loader from "./Loader.svelte"
+    import { afterNavigate } from "$app/navigation"
 
   export let type: ButtonTypeString = "button"
   export let color: ColorString = "primary"
@@ -21,7 +22,7 @@
   let _buttonWidth: string | undefined = undefined
 
   async function handleClick(e: Event) {
-    _buttonWidth = buttonWidth
+    if (!_buttonWidth) _buttonWidth = buttonWidth
     if (onClick) {
       isLoading = true
       await onClick(e)
@@ -45,6 +46,9 @@
     return "w-fit"
   }
 
+  afterNavigate(() => {
+    isLoading = false
+  })
   onMount(async () => {
     if (!width || width !== "full") {
       await sleep(0.31)
