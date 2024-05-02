@@ -25,14 +25,6 @@
     label: "error",
     value: "error"
   }]
-// ="Autumn" value="autumn"/></
-// ="Cupcake" value="cupcake"/>
-// ="Emerald" value="emerald"/>
-// ="Garden" value="garden"/></
-// ="Lemonade" value="lemonade"
-// ="Retro" value="retro"/></li
-// ="Valentine" value="valentin
-// ="Winter" value="winter"/></  
 
   const lightThemeOptions: SelectorOption[] = [{
     label: "Autumn",
@@ -45,14 +37,13 @@
   const { ref, show } = useModal()
 
   let selectedRadio: NotificationCauseString = "success"
-  let selectedTheme: string | undefined
   let areLightThemesVisible = false
 
   function handleClick(e: EventTarget | null) {
-    console.log(e)
     if (e) {
       const input = <HTMLInputElement>e
       updateTheme(input.value)
+      areLightThemesVisible = false
     }
   }
   function updateTheme(selectedTheme: string) {
@@ -60,10 +51,6 @@
       .querySelector(":root")
       ?.setAttribute("data-theme", selectedTheme)
   }
-
-  afterUpdate(() => {
-    if (selectedTheme) updateTheme(selectedTheme)
-  })
 </script>
 
 <div></div>
@@ -140,7 +127,7 @@
       </div>
       <div class="code-card-body flex justify-center w-full">
         <div class="py-2">
-          <Button onClick={() => sleep(3)}>
+          <Button onClick={() => sleep(3)} color="primary">
             Async action
           </Button>
         </div>
@@ -155,52 +142,21 @@
   </p>
 </div>
 
-<!-- <Button onClick={() => { selectedTheme = "dim" }}>
-  Update theme
-</Button> -->
-
 <div class="relative">
-  <!-- <div class="dropdown"> -->
-    <!-- <div tabindex="0" role="button" class="btn"> -->
-    <!-- <Button modifier="ghost"> -->
-      <Button onClick={() => { areLightThemesVisible = true }}>
-        <span>☀️</span>
-        Light theme
-        <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
-      </Button>
-    <!-- </Button> -->
-    <!-- </div> -->
-    {#if areLightThemesVisible}
-      <div class="absolute -bottom-24">
-        <ButtonSelector name="theme" options={lightThemeOptions} />
-      </div>
-    {/if}
-    <!-- <ul class="z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
-      <li><input type="radio" on:click={({ target }) => handleClick(target)} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Autumn" value="autumn"/></li>
-      <li><input type="radio" on:click={({ target }) => handleClick(target)} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Cupcake" value="cupcake"/></li>
-      <li><input type="radio" on:click={({ target }) => handleClick(target)} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Emerald" value="emerald"/></li>
-      <li><input type="radio" on:click={({ target }) => handleClick(target)} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Garden" value="garden"/></li>
-      <li><input type="radio" on:click={({ target }) => handleClick(target)} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Lemonade" value="lemonade"/></li>
-      <li><input type="radio" on:click={({ target }) => handleClick(target)} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Retro" value="retro"/></li>
-      <li><input type="radio" on:click={({ target }) => handleClick(target)} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Valentine" value="valentine"/></li>
-      <li><input type="radio" on:click={({ target }) => handleClick(target)} name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Winter" value="winter"/></li>
-    </ul> -->
-  <!-- </div> -->
-  <!-- <div class="dropdown">
-    <div tabindex="0" role="button" class="btn">
-      <span>🌙</span>
-      Dark theme
-      <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
+  <Button onClick={() => { areLightThemesVisible = true }}>
+    <span>☀️</span>
+    Light theme
+    <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
+  </Button>
+  {#if areLightThemesVisible}
+    <div class="absolute left-0 right-0">
+      <div class="h-1"></div>
+      <ButtonSelector onClick={({ target }) => handleClick(target)}
+        name="theme" 
+        options={lightThemeOptions} 
+      />
     </div>
-    <ul class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
-      <li><input on:click={({ target }) => handleClick(target)} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Business" value="business"/></li>
-      <li><input on:click={({ target }) => handleClick(target)} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Dim" value="dim"/></li>
-      <li><input on:click={({ target }) => handleClick(target)} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Dracula" value="dracula"/></li>
-      <li><input on:click={({ target }) => handleClick(target)} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Forest" value="forest"/></li>
-      <li><input on:click={({ target }) => handleClick(target)} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Night" value="night"/></li>
-      <li><input on:click={({ target }) => handleClick(target)} type="radio" name="theme" class="btn btn-sm btn-block btn-ghost justify-start" aria-label="Sunset" value="sunset"/></li>
-    </ul>        
-  </div>          -->
+  {/if}
 </div>
 
 <div></div>
