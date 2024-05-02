@@ -192,12 +192,9 @@
       <div class="flex w-full border border-accent rounded-box">
         <div class="flex flex-col items-center justify-center px-4 py-8">
           <p>You can configure Sara by providing a valid config value to its provider.</p>
-          <!-- <a href="/provider" class="link text-primary font-medium">
+          <a href="/provider" class="link text-primary font-medium">
             Check SaraProvider
-          </a> -->
-          <Button onClick={() => goto("/provider")} isLink>
-            Check SaraProvider
-          </Button>
+          </a>
         </div>
       </div>
     </div>

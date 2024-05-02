@@ -11,7 +11,6 @@ const config = {
     require("daisyui"),
   ],
   daisyui: {
-    themeRoot: "#saraui",
     themes: ["dracula", //default
       "cupcake", "valentine", "retro", "autumn", "lemonade", "winter", "garden", "emerald",
       "dracula", "dim", "night", "sunset", "business", "forest"

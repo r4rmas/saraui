@@ -6,6 +6,9 @@
   import type { WidthSpacing } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
+  //If you want to use Button with goto(endpoint), you may provide a valid endpoint destination
+  //else the loading feedbkack will continue after navigation, in Safari iPhone
+
   export let type: ButtonTypeString = "button"
   export let color: ColorString = "primary"
   export let isDisabled = false
@@ -47,7 +50,7 @@
 
   onMount(async () => {
     if (!width || width !== "full") {
-      await sleep(0.31)
+      await sleep(0.3)
       setButtonWidth()
     }
   })
