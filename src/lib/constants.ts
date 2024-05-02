@@ -80,9 +80,9 @@ export const buttonColorClass: ButtonColorClass = {
   transparent: "btn-transparent"
 }
 export const buttonModifierClass: ButtonModifierClass = {
-  link : "btn-link",
-  ghost: "btn-ghost",
-  glass: "btn-glass"
+  outline: "btn-outline",
+  ghost  : "btn-ghost",
+  glass  : "btn-glass"
 }
 export const iconButtonShapeClass: IconButtonShapeClass = {
   circle: "btn-circle",

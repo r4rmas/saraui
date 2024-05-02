@@ -1,12 +1,14 @@
 <script lang="ts">
+  import { goto } from "$app/navigation"
   import type { NotificationCauseString, SelectorOption } from "$lib/types.js"
   import Button from "$lib/components/Button.svelte"
   import { showNotification, sleep, useModal } from "$lib/utils.js"
-  import { daisyButton, saraButton } from "./buttonCode.js"
+  import { daisyButton, saraButton, tailwindConfig, layoutFile } from "./DisplayableCode.js"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
+  import CodeCard from "$lib/components/private/CodeCard.svelte"
 
   const radioOptions: SelectorOption[] = [{
     label: "success",
@@ -68,7 +70,7 @@
 
 <div class="mt-2">
   <div class="logo-gradient">
-    <h2 class="text-xl mb-4 font-bold text-transparent">
+    <h2 class="title text-transparent">
       Get Sarisfied!
     </h2>
   </div>
@@ -81,51 +83,45 @@
   </p>
 </div>
 
-<div class="grid gap-2 grid-cols-1 lg:grid-cols-3">
-  <div class="row">
-    <div class="row-title">
-      daisyUI
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_2fr] gap-2 w-full">
+  <CodeCard title="daiysUI" content={daisyButton} />
+  <div class="grid grid-cols-1 grid-flow-row md:grid-rows-[1fr_2fr] xl:grid-cols-2 gap-2">
+    <div class="w-full">
+      <div class="code-card-title flex justify-center items-center">
+        Sara UI 
+        <img src="https://cdn.icon-icons.com/icons2/1465/PNG/32/199princess2_100395.png" 
+          alt="logo"
+          class="w-6 h-6 ml-2"
+        /> 
+      </div>
+      <div class="code-card-body w-full">
+        <pre><code>{saraButton}</code></pre>
+      </div>
     </div>
-    <div class="row-body">
-      <pre><code>{daisyButton}</code></pre>
-    </div>
-  </div>
-  <div class="row">
-    <div class="row-title flex justify-center items-center">
-      Sara UI 
-      <img src="https://cdn.icon-icons.com/icons2/1465/PNG/32/199princess2_100395.png" 
-        alt="logo"
-        class="w-6 h-6 ml-2"
-      /> 
-    </div>
-    <div class="row-body">
-      <pre><code>{saraButton}</code></pre>
-    </div>
-  </div>
-  <div class="row">
-    <div class="row-title">
-      Result
-    </div>
-    <div class="row-body flex justify-center">
-      <div class="py-2">
-        <Button onClick={async () => { await sleep(3) }}>
-          Async action
-        </Button>
+    <div class="code-card w-full">
+      <div class="code-card-title">
+        Result
+      </div>
+      <div class="code-card-body flex justify-center w-full">
+        <div class="py-2">
+          <Button onClick={async () => { await sleep(3) }}>
+            Async action
+          </Button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div></div>
 <div class="flex w-full tex-start">
   <p>
-    As Sara UI is built on top of daisyUI, every componente will get instantly themed!
+    As Sara is made with daisyUI, every componente will get instantly <span class="text-primary">themed</span>!
   </p>
 </div>
 
-<div class="flex">
+<div class="flex gap-2 justify-start w-full">
   <div class="dropdown">
-    <div tabindex="0" role="button" class="btn m-1">
+    <div tabindex="0" role="button" class="btn">
       <span>☀️</span>
       Light theme
       <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
@@ -142,7 +138,7 @@
     </ul>
   </div>
   <div class="dropdown">
-    <div tabindex="0" role="button" class="btn m-1">
+    <div tabindex="0" role="button" class="btn">
       <span>🌙</span>
       Dark theme
       <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
@@ -158,12 +154,63 @@
   </div>
 </div>
 
+<div></div>
+<div class="flex flex-col w-full">
+  <h2 id="installation" class="title">
+    Installation ☝️<span class="text-2xl">🤓</span>
+  </h2>
+  <ol>
+    <li>1. Install & set up tailwindcss</li>
+    <li>2. Install daisyUI</li>
+    <li>3. Install Sara</li>
+    <li>4. Update the tailwind's config file</li>
+  </ol>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
+  <div class="mockup-code h-fit">
+    <pre data-prefix="1." class="text-accent"><code>npx svelte-add@latest tailwindcss</code></pre>
+    <pre data-prefix="2." class="text-secondary"><code>npm i -D daisyui</code></pre>
+    <pre data-prefix="3." class="text-primary"><code>npm i saraui</code></pre>
+  </div>
+  <div class="flex w-full">
+    <CodeCard title="4. tailwind.config.cjs" 
+      content={tailwindConfig} 
+    />
+  </div> 
+</div>
+
+<div></div>
+<div class="flex flex-col w-full">
+  <h2 class="title">First step</h2>
+  <p>Set up the SaraProvider at the root of your application:</p>
+</div>
 <div class="flex w-full">
-  <p>To start with Sara UI, first you need to install and configure Tailwindcss:</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+      <CodeCard title="src/routes/+layout.svelte"
+        content={layoutFile}
+      />
+      <div class="flex w-full border border-accent rounded-box">
+        <div class="flex flex-col items-center justify-center px-4 py-8">
+          <p>You can configure Sara by providing a valid config value to its provider.</p>
+          <Button onClick={() => goto("/provider")} isLink>
+            Check SaraProvider
+          </Button>
+        </div>
+      </div>
+    </div>
 </div>
-<div class="mockup-code">
-  <pre data-prefix="$"><code>npm i saraui</code></pre>
+
+<div class="flex flex-col w-full">
+  <p>
+    Now, you can start building 🤖
+  </p>
 </div>
+<div class="flex w-full">
+  <Button onClick={() => goto("/components")} isLink>
+    <p>Check all the provided components</p>
+  </Button>
+</div>
+<div></div>
 
 <ConfirmationModal {ref} onAccept={() => {}} 
   title="This is a Confirmation Modal"  
@@ -175,26 +222,5 @@
     @apply 
     font-medium
     text-orange-400
-  }
-  .row {
-    @apply
-    grid-rows-3
-  }
-  .row-title {
-    @apply
-    row-span-1
-    rounded-t-box
-    font-medium
-    bg-base-300
-    p-2
-    text-center
-  }
-  .row-body {
-    @apply
-    row-span-2
-    bg-base-200
-    py-2
-    px-6
-    rounded-b-box
   }
 </style>

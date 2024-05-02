@@ -3,7 +3,7 @@ export const daisyButton = `<script>
 
   async function handleClick() {
     isLoading = true
-    await someAsyncFunction()
+    await asyncFunction()
     isLoading = false
   }
 </script>
@@ -28,6 +28,28 @@ export const saraButton = `<script>
   import { Button } from "saraui"
 </script>
 
-<Button onClick={someAsyncFunction}>
+<Button onClick={asyncFunction}>
   Async function
 </Button>`
+
+export const tailwindConfig = `const config = {
+  content: [
+    //👇 add Sara UI
+    "./node_modules/saraui/**/*.{html,js,svelte,ts}",
+    ...
+  ],
+  plugins: [
+    //👇 add daisyUI
+    require("daisyui"),
+    ...
+  ],
+  ...
+}`
+
+export const layoutFile = `<script>
+  import { SaraProvider } from "saraui"
+</script>
+
+<SaraProvider>
+  <slot></slot>
+</SaraProvider>`

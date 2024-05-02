@@ -18,7 +18,7 @@ npm i saraui
 
 ## Configuration
 
-Sara UI is built on top of **daisyui**, which in turn uses **tailwindcss**. Therefore, in order for Sara UI to function correctly, you need to have these packages installed and configured in your project. If that's the case, all you have to do is add Sara UI to _tailwind.config.cjs_:
+Sara UI is built with **daisyui**, which in turn uses **tailwindcss**. Therefore, in order for Sara UI to function correctly, you need to have these packages installed and set up in your project. If that's the case, all you have to do is add Sara UI to _tailwind.config.cjs_:
 
 ```
 const config = {
