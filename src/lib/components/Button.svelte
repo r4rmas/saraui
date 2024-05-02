@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { onDestroy, onMount } from "svelte"
+  import { onMount } from "svelte"
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL, textColor, widthClass } from "$lib/constants.js"
-  import type { ButtonModifierString, ButtonTypeString, WidthResponsiveSpacing, ColorString, OnEvent, SizeString, Icon, HorizontalPositionString } from "$lib/types.js"
+  import type { ButtonModifierString, ButtonTypeString, WidthResponsiveSpacing, ColorString, OnEvent, SizeString } from "$lib/types.js"
   import { getResponsiveClass, sleep } from "$lib/utils.js"
   import type { WidthSpacing } from "$lib/types.js"
   import Loader from "./Loader.svelte"
-    import { afterNavigate } from "$app/navigation"
 
   export let type: ButtonTypeString = "button"
   export let color: ColorString = "primary"
@@ -20,8 +19,6 @@
   let button: HTMLButtonElement
   let buttonWidth: string | undefined = undefined
   let _buttonWidth: string | undefined = undefined
-
-  $: console.log(isLoading)
 
   async function handleClick(e: Event) {
     if (!_buttonWidth) _buttonWidth = buttonWidth
@@ -48,17 +45,11 @@
     return "w-fit"
   }
 
-  afterNavigate(() => {
-    isLoading = false
-  })
   onMount(async () => {
     if (!width || width !== "full") {
       await sleep(0.31)
       setButtonWidth()
     }
-  })
-  onDestroy(() => {
-    isLoading = false
   })
 </script>
 
