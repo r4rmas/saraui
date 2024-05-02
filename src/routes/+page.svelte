@@ -31,6 +31,7 @@
   let selectedTheme: string | undefined
 
   function handleClick(e: EventTarget | null) {
+    console.log(e)
     if (e) {
       const input = <HTMLInputElement>e
       updateTheme(input.value)
