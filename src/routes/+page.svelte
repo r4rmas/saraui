@@ -34,7 +34,9 @@
   function updateTheme(selectedTheme: string | undefined) {
     if (selectedTheme) {
       const html = document.querySelector("html")
-      if (html) html.setAttribute("data-theme", selectedTheme)
+      //TODO: PROBABLEMTE DAISY FUNCIONE IGUAL QUE TAILWIND
+      //Y SEA NECESARIO PASAR EL NOMBRE DE CADA TEMA EXPLICITAMENTE
+      if (html) html.setAttribute("data-theme", "dim")
     }
   }
 </script>
