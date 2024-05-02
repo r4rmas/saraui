@@ -21,6 +21,8 @@
   let buttonWidth: string | undefined = undefined
   let _buttonWidth: string | undefined = undefined
 
+  $: console.log(isLoading)
+
   async function handleClick(e: Event) {
     if (!_buttonWidth) _buttonWidth = buttonWidth
     if (onClick) {
