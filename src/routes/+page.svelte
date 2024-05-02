@@ -35,7 +35,7 @@
   function updateTheme(selectedTheme: string) {
     document
       .querySelector(":root")
-      ?.setAttribute("data-theme", selectedTheme)
+      ?.setAttribute("data-theme", "forest")
   }
 
   afterUpdate(() => {
