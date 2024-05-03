@@ -18,7 +18,7 @@ export type RoundedString               = `${Roundeds}`
 export type TextSizeString              = `${TextSizes}`
 export type IconClassString             = `i-${string}`
 
-export type OnEvent = ((e?: Event) => void) | ((e?: Event) => Promise<void>)
+export type OnEvent = ((e: Event) => void) | ((e: Event) => Promise<void>)
 
 export type TailwindBreakpointPixels = {
   [k in BreakpointString]: number

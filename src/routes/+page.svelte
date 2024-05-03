@@ -6,9 +6,8 @@
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
   import CodeCard from "$lib/components/private/CodeCard.svelte"
-  import ButtonSelector from "$lib/components/private/ButtonSelector.svelte"
   import Button from "$lib/components/Button.svelte"
-  import ThemeController from "$lib/components/private/ThemeController.svelte"
+  import Dropdown from "$lib/components/Dropdown.svelte"
 
   const radioOptions: SelectorOption[] = [
     { label: "success", value: "success", isSelected: true }, 
@@ -40,7 +39,7 @@
   let selectedRadio: NotificationCauseString = "success"
   let areLightThemesVisible = false
 
-  function handleClick(e: EventTarget | null) {
+  function handleDropdown(e: EventTarget | null) {
     if (e) {
       const input = <HTMLInputElement>e
       updateTheme(input.value)
@@ -130,13 +129,13 @@
   </div>
 </div>
 
+<div></div>
 <div class="flex w-full tex-start">
   <p>
     As Sara is made with daisyUI, every componente will get instantly <span class="text-primary">themed</span>!
   </p>
 </div>
 
-<div class="relative">
   <!-- <Button onClick={() => { areLightThemesVisible = true }}>
     <span>☀️</span>
     Light theme
@@ -148,10 +147,13 @@
       <!-- <ButtonSelector name="theme" placeholder="Select a light theme"
         options={lightThemeOptions} 
       /> -->
-      <ThemeController options={lightThemeOptions} />
+      <Dropdown label="☀️ Light themes"
+        onClick={({ target }) => handleDropdown(target)}
+        options={lightThemeOptions} 
+        name="lightTheme"
+      />
     <!-- </div>
   {/if} -->
-</div>
 
 <div></div>
 <div class="flex flex-col w-full">
