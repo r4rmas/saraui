@@ -27,7 +27,7 @@
   }
   const defaultDirection: NotificationDirectionString = "right-to-left" 
 
-  const baseClass = "flex fixed z-50 shadow-lg alert w-fit "
+  const baseClass = "flex fixed z-[49] shadow-lg alert w-fit "
   const alertClass = {
     info:  baseClass + "alert-info" ,
     success: baseClass + "alert-success",

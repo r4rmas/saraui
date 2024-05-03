@@ -28,7 +28,9 @@ export const saraButton = `<script>
   import { Button } from "saraui"
 </script>
 
-<Button onClick={asyncFunction}>
+<Button onClick={asyncFunction}
+  color="primary"
+>
   Async function
 </Button>`
 

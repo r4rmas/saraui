@@ -12,7 +12,7 @@ const config = {
   ],
   daisyui: {
     themes: ["dracula", //default
-      "cupcake", "valentine", "retro", "autumn", "lemonade", "winter", "garden", "emerald",
+      "cupcake", "valentine", "retro", "lemonade", "winter", "garden", "emerald",
       "dracula", "dim", "night", "sunset", "business", "forest"
     ]
   },
