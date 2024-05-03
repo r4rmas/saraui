@@ -135,7 +135,8 @@ export enum ButtonTypes {
 export enum ButtonModifiers {
   GHOST   = "ghost",
   GLASS   = "glass",
-  OUTLINE = "outline"
+  OUTLINE = "outline",
+  LINK    = "link"
 }
 export enum IconButtonShapes {
   CIRCLE = "circle",

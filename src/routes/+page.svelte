@@ -9,29 +9,28 @@
   import Button from "$lib/components/Button.svelte"
   import Dropdown from "$lib/components/Dropdown.svelte"
 
-  const radioOptions: SelectorOption[] = [
+  const notificationCauses: SelectorOption[] = [
     { label: "success", value: "success", isSelected: true }, 
-    { label: "info", value: "info"}, 
+    { label: "info", value: "info" }, 
     { label: "warning", value: "warning" }, 
     { label: "error", value: "error" }
   ]
 
-  const lightThemeOptions: SelectorOption[] = [
+  const lightThemes: SelectorOption[] = [
+    { label: "Bumblebee", value: "bumblebee" }, 
     { label: "Emerald", value: "emerald" }, 
     { label: "Cupcake", value: "cupcake" }, 
-    { label: "Garden", value: "garden" }, 
     { label: "Lemonade", value: "lemonade" }, 
     { label: "Retro", value: "retro" }, 
     { label: "Valentine", value: "valentine" }, 
-    { label: "Winter", value: "winter" }
   ]
-  const darkThemeOptions: SelectorOption[] = [
-    { label: "Business", value: "business" }, 
+  const darkThemes: SelectorOption[] = [
+    { label: "Dark", value: "dark" }, 
     { label: "Dim", value: "dim" }, 
-    { label: "Dracula", value: "dracula" }, 
     { label: "Forest", value: "forest" }, 
     { label: "Night", value: "night" }, 
     { label: "Sunset", value: "sunset" }, 
+    { label: "Synthwave", value: "synthwave" }, 
   ]
 
   const { ref, show } = useModal()
@@ -39,12 +38,6 @@
   let selectedRadio: NotificationCauseString = "success"
   let selectedTheme: string | undefined = undefined
 
-  // function handleDropdown(target: EventTarget | null) {
-  //   if (target) {
-  //     const input = <HTMLInputElement>target
-  //     updateTheme(input.value)
-  //   }
-  // }
   $: selectedTheme ? updateTheme(selectedTheme) : undefined
 
   function updateTheme(selectedTheme: string) {
@@ -55,36 +48,36 @@
 </script>
 
 <div></div>
-<p class="bg-gradient-to-br from-accent via-primary to-secondary bg-clip-text text-center mb-4">
-  <span class="text-xl">🎨</span>
+<p class="bg-gradient-to-br from-accent via-primary to-secondary bg-clip-text text-center text-lg">
+  <span class="text-xl">🤖</span>
   <span>Enhanced</span>
   <span class="font-medium text-transparent">daisyUI</span>
   <span>components for</span>
   <span class="svelte">Svelte</span>/<span class="svelte">Svelte</span>Kit
 </p>
 
+<div class="hidden md:block"></div>
 <ImageUploader />
-<div class="flex flex-col items-center gap-4">
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-    <RadioSelector name="notification" 
-      options={radioOptions} 
-      bind:state={selectedRadio} 
-    />
-  </div>
-  <div class="flex gap-2">
-    <Button color="secondary"
-      onClick={() => showNotification(selectedRadio, {
-        title: selectedRadio,
-        content: "Hello, world! 👋🏼"
-    })}>
-      Show notification
-    </Button>
-    <Button onClick={show} color="accent">
-      Show modal
-    </Button>
-  </div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <RadioSelector name="notification" 
+    options={notificationCauses} 
+    bind:state={selectedRadio} 
+  />
+</div>
+<div class="flex gap-2">
+  <Button color="secondary"
+    onClick={() => showNotification(selectedRadio, {
+      title: selectedRadio,
+      content: "Hello, world! 👋🏼"
+  })}>
+    Show notification
+  </Button>
+  <Button onClick={show} color="accent">
+    Show modal
+  </Button>
 </div>
 
+<div></div>
 <div class="mt-2">
   <div class="logo-gradient">
     <h2 class="title text-transparent">
@@ -100,63 +93,89 @@
   </p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_2fr] gap-2 w-full">
+<div class="
+  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_2fr] xl:grid-cols-2 2xl:grid-cols-[1fr_2fr]
+  gap-2 md:gap-4
+  w-full
+">
   <CodeCard title="daiysUI" content={daisyButton} />
-  <div class="grid grid-cols-1 grid-flow-row md:grid-rows-[1fr_2fr] xl:grid-rows-1 xl:grid-cols-2 gap-2">
-    <div class="w-full">
-      <div class="code-card-title flex justify-center items-center">
-        Sara UI 
-        <img src="https://cdn.icon-icons.com/icons2/1465/PNG/32/199princess2_100395.png" 
-          alt="logo"
-          class="w-6 h-6 ml-2"
-        /> 
+  <div class="grid grid-cols-1 xl:grid-rows-1 2xl:grid-rows-2 gap-2">
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-2 md:gap-4">
+      <div class="flex flex-col w-full md:h-full lg:h-fit xl:h-full 2xl:h-fit">
+        <div class="code-card-title flex justify-center items-center">
+          Sara UI 
+          <img src="https://cdn.icon-icons.com/icons2/1465/PNG/32/199princess2_100395.png" 
+            alt="logo"
+            class="w-6 h-6 ml-2"
+          /> 
+        </div>
+        <div class="code-card-body w-full md:h-full lg:h-fit xl:h-full 2xl:h-fit">
+          <pre><code>{saraButton}</code></pre>
+        </div>
       </div>
-      <div class="code-card-body w-full">
-        <pre><code>{saraButton}</code></pre>
+      <div class="code-card w-full">
+        <div class="code-card-title">
+          Result
+        </div>
+        <div class="code-card-body flex items-center justify-center w-full">
+          <div class="py-2">
+            <Button onClick={() => sleep(3)} color="primary">
+              Async action
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="code-card w-full">
-      <div class="code-card-title">
-        Result
-      </div>
-      <div class="code-card-body flex justify-center w-full">
-        <div class="py-2">
-          <Button onClick={() => sleep(3)} color="primary">
-            Async action
-          </Button>
+    <div class="hidden lg:flex xl:hidden 2xl:flex w-full h-full items-center px-20 pb-10">
+      <div class="flex flex-col gap-4 w-full h-fit items-center text-center border border-accent px-4 py-10 rounded-box">
+        <p class="font-medium">
+          As Sara is made with daisyUI, every componente will get instantly 
+          <span class="text-primary">themed</span>!
+        </p>
+        <div>
+          <Dropdown label="☀️ Light themes"
+            options={lightThemes} 
+            bind:state={selectedTheme}
+            name="theme"
+          />
+          <Dropdown label="🌙 Dark themes"
+            options={darkThemes} 
+            bind:state={selectedTheme}
+            name="theme"
+          />
         </div>
+        <a href="https://daisyui.com/docs/themes/" class="link text-secondary">
+          Learn more about themes
+        </a>
       </div>
     </div>
   </div>
 </div>
 
-<div></div>
-<div class="flex w-full tex-start">
-  <p>
-    As Sara is made with daisyUI, every componente will get instantly <span class="text-primary">themed</span>!
+<div class="xl:hidden 2xl:block"></div>
+<div class="flex flex-col lg:hidden xl:flex 2xl:hidden gap-4 lg:my-4 w-full items-center text-center border border-accent px-4 py-10 md:py-8 rounded-box">
+  <p class="font-medium">
+    As Sara is made with daisyUI, every componente will get instantly 
+    <span class="text-primary">themed</span>!
   </p>
+  <div>
+    <Dropdown label="☀️ Light themes"
+      options={lightThemes} 
+      bind:state={selectedTheme}
+      name="theme"
+    />
+    <Dropdown label="🌙 Dark themes"
+      options={darkThemes} 
+      bind:state={selectedTheme}
+      name="theme"
+    />
+  </div>
+  <a href="https://daisyui.com/docs/themes/" class="link text-secondary">
+    Learn more about themes
+  </a>
 </div>
 
-  <!-- <Button onClick={() => { areLightThemesVisible = true }}>
-    <span>☀️</span>
-    Light theme
-    <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
-  </Button> -->
-  <!-- {#if areLightThemesVisible}
-    <div class="absolute left-0 right-0">
-      <div class="h-1"></div> -->
-      <!-- <ButtonSelector name="theme" placeholder="Select a light theme"
-        options={lightThemeOptions} 
-      /> -->
-      <Dropdown label="☀️ Light themes"
-        options={lightThemeOptions} 
-        bind:state={selectedTheme}
-        name="lightTheme"
-      />
-    <!-- </div>
-  {/if} -->
-
-<div></div>
+<div class="lg:hidden"></div>
 <div class="flex flex-col w-full">
   <h2 id="installation" class="title">
     Installation ☝️<span class="text-2xl">🤓</span>
@@ -168,8 +187,8 @@
     <li>4. Update the tailwind's config file</li>
   </ol>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
-  <div class="mockup-code h-fit">
+<div class="grid grid-cols-1 md:grid-cols-2 w-full gap-4 2xl:gap-8">
+  <div class="mockup-code">
     <pre data-prefix="1." class="text-accent"><code>npx svelte-add@latest tailwindcss</code></pre>
     <pre data-prefix="2." class="text-secondary"><code>npm i -D daisyui</code></pre>
     <pre data-prefix="3." class="text-primary"><code>npm i saraui</code></pre>
@@ -181,20 +200,19 @@
   </div> 
 </div>
 
-<div></div>
 <div class="flex flex-col w-full">
   <h2 class="title">First step</h2>
   <p>Set up the SaraProvider at the root of your application:</p>
 </div>
 <div class="flex w-full">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 2xl:gap-8 w-full">
       <CodeCard title="src/routes/+layout.svelte"
         content={layoutFile}
       />
-      <div class="flex w-full border border-accent rounded-box">
+      <div class="flex w-full border border-info rounded-box">
         <div class="flex flex-col items-center justify-center px-4 py-8 gap-4">
           <p>You can configure Sara by providing a valid config value to its provider.</p>
-          <a href="/provider" class="link text-primary font-medium">
+          <a href="/provider" class="link text-secondary">
             Check SaraProvider
           </a>
         </div>
@@ -202,8 +220,9 @@
     </div>
 </div>
 
+<div class="hidden lg:block"></div>
 <div class="flex w-full">
-  <a href="/components" class="link text-primary font-medium">
+  <a href="/components" class="link text-secondary">
     Check all the provided components
   </a>
 </div>

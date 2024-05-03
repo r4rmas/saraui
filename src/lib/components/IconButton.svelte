@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { buttonColorClass, buttonModifierClass, buttonSizeClass, heightClass, iconButtonShapeClass, textColor, widthClass } from "$lib/constants.js"
-  import type { ButtonModifierString, ButtonTypeString, ColorString, Icon, IconButtonShapeString, IconClassString, OnEvent, SizeString } from "$lib/types.js"
+  import { buttonColorClass, buttonModifierClass, buttonSizeClass, iconButtonShapeClass } from "$lib/constants.js"
+  import type { ButtonModifierString, ButtonTypeString, ColorString, IconButtonShapeString, OnEvent, SizeString } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
   export let tooltip: string
@@ -18,13 +18,13 @@
   async function handleClick(e: Event) {
     if (onClick) {
       isLoading = true
-      await onClick()
+      await onClick(e)
       isLoading = false
     }
   }
 </script>
 
-<button {type} on:click={handleClick}
+<button {type} on:click={e => handleClick(e)}
   title={` ${tooltip} `}
   disabled={isLoading || isDisabled}
   class="

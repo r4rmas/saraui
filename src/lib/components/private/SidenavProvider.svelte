@@ -17,7 +17,7 @@
   })
 </script>
 
-<div class="drawer lg:drawer-open">
+<div class="drawer xl:drawer-open">
   <input id={SIDENAV_ID}
     bind:checked={isOpen}
     type="checkbox" 
@@ -28,7 +28,7 @@
   </div>
   <div class="drawer-side z-50">
     <label for={SIDENAV_ID} class="drawer-overlay"></label> 
-    <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+    <ul class="menu p-4 w-96 min-h-full bg-base-200 text-base-content">
       <slot name="sidenav"></slot>
     </ul>
   </div>

@@ -21,6 +21,8 @@ import Button from "./components/Button.svelte";
 import IconButton from "./components/IconButton.svelte";
 import Scaffold from "./components/Scaffold.svelte";
 import SidenavButton from "./components/SidenavButton.svelte";
+import Dropdown from "./components/Dropdown.svelte";
+import Link from "./components/Link.svelte";
 
 export {
   SaraProvider, type SaraProviderConfig,
@@ -32,5 +34,6 @@ export {
   RadioSelector, type SelectorOption,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationBreakpointDirection as NotificationDirection, type TitledNotificationContent, showNotification,
   Modal, ConfirmationModal, type ConfirmationModalIcons, useModal,
-  Scaffold, SidenavButton, sidenav
+  Scaffold, SidenavButton, sidenav,
+  Dropdown, Link
 }

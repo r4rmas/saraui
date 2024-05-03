@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte"
-  import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL, textColor, widthClass } from "$lib/constants.js"
+  import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL, widthClass } from "$lib/constants.js"
   import type { ButtonModifierString, ButtonTypeString, WidthResponsiveSpacing, ColorString, OnEvent, SizeString } from "$lib/types.js"
   import { getResponsiveClass, sleep } from "$lib/utils.js"
   import type { WidthSpacing } from "$lib/types.js"
@@ -11,7 +11,6 @@
 
   export let type: ButtonTypeString = "button"
   export let isDisabled = false
-  export let isLink = false
   export let isLoading = false
   export let color: ColorString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
@@ -61,9 +60,8 @@
   bind:this={button}
   disabled={isLoading || isDisabled}
   class="
-    flex-shrink
+    btn flex-shrink
     {_getResponsiveClass()}
-    {isLink ? `btn-link font-medium ${textColor[color ? color : "primary"]}` : "btn"}
     {color ? buttonColorClass[color] : ""}
     {size ? buttonSizeClass[size] : ""}
     {modifier ? buttonModifierClass[modifier] : ""}

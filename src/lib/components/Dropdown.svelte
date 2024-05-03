@@ -4,7 +4,6 @@
   export let name: string
   export let label: string
   export let options: SelectorOption[]
-  // export let onClick: OnEvent
   export let state: string | undefined
 
   function check(value: string) {

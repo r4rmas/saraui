@@ -20,7 +20,7 @@
 <SaraProvider config={saraConfig}>
   <Scaffold>
     <svelte:fragment slot="header">
-      <header class="flex w-full items-center justify-between lg:flex-row-reverse p-5 lg:p-6 border-b border-base-200 bg-base-100">
+      <header class="flex w-full items-center justify-between xl:flex-row-reverse p-5 lg:p-6 border-b border-base-200 bg-base-100">
         <SidenavButton tooltip="menu" />
         <div class="flex gap-3 items-center">
           <div class="logo-gradient">

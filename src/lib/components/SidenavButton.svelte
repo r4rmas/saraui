@@ -1,7 +1,7 @@
 <script lang="ts">
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, iconButtonShapeClass } from "$lib/constants.js"
-  import { sidenav } from "$lib/stores.js"
   import type { ButtonModifierString, ColorString, IconButtonShapeString, SizeString } from "$lib/types.js"
+  import { sidenav } from "$lib/stores.js"
 
   export let tooltip: string
   export let shape: IconButtonShapeString = "circle"
@@ -15,7 +15,7 @@
   $: isOpen = $sidenav?.isOpen ?? false
 </script>
 
-<div class="relative lg:hidden">
+<div class="relative xl:hidden">
   <label class="
     btn swap swap-rotate
     {iconButtonShapeClass[shape]}

@@ -17,8 +17,8 @@
   const { position: iconPosition, accept: acceptIcon, cancel: cancelIcon } = icons ?? {}
   const { dialog } = ref
 
-  async function handleClick() {
-    await onAccept()
+  async function handleClick(e: Event) {
+    await onAccept(e)
     closeButton.click()
   }
 </script>
@@ -49,7 +49,7 @@
           {/if}
         </button>
       </form>
-      <Button {color} onClick={handleClick}>
+      <Button {color} onClick={e => handleClick(e)}>
         {#if acceptIcon && iconPosition === "left"}
           <span class={getIconClass(acceptIcon)}></span>
         {/if}
