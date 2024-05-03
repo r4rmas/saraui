@@ -44,6 +44,7 @@
     </main>
 
     <svelte:fragment slot="sidenav">
+      <li><a href="/components">Components</a></li>
     </svelte:fragment>
   </Scaffold>
 </SaraProvider>
