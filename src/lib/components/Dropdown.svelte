@@ -4,7 +4,12 @@
   export let name: string
   export let label: string
   export let options: SelectorOption[]
-  export let onClick: OnEvent
+  // export let onClick: OnEvent
+  export let state: string | undefined
+
+  function check(value: string) {
+    state = value
+  }
 </script>
 
 <div class="dropdown">
@@ -20,13 +25,13 @@
   </div>
   <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
   <ul tabindex="0" class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
-    {#each options as o}
+    {#each options as { label, value }}
       <li>
         <input {name}
-          on:click={onClick}
+          on:click={() => check(value)}
           type="radio" 
-          aria-label={o.label} 
-          value={o.value}
+          aria-label={label} 
+          value={value}
           class="btn btn-sm btn-block btn-ghost justify-start" 
         />
       </li>

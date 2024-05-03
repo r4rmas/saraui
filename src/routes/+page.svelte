@@ -37,15 +37,16 @@
   const { ref, show } = useModal()
 
   let selectedRadio: NotificationCauseString = "success"
-  let areLightThemesVisible = false
+  let selectedTheme: string | undefined = undefined
 
-  function handleDropdown(e: EventTarget | null) {
-    if (e) {
-      const input = <HTMLInputElement>e
-      updateTheme(input.value)
-      areLightThemesVisible = false
-    }
-  }
+  // function handleDropdown(target: EventTarget | null) {
+  //   if (target) {
+  //     const input = <HTMLInputElement>target
+  //     updateTheme(input.value)
+  //   }
+  // }
+  $: selectedTheme ? updateTheme(selectedTheme) : undefined
+
   function updateTheme(selectedTheme: string) {
     document
       .querySelector(":root")
@@ -148,8 +149,8 @@
         options={lightThemeOptions} 
       /> -->
       <Dropdown label="☀️ Light themes"
-        onClick={({ target }) => handleDropdown(target)}
         options={lightThemeOptions} 
+        bind:state={selectedTheme}
         name="lightTheme"
       />
     <!-- </div>
