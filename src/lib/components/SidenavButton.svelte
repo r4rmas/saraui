@@ -8,7 +8,6 @@
   export let modifier: ButtonModifierString = "ghost"
   export let size: SizeString = "md"
   export let color: ColorString = "primary"
-  export let isOutlined = false
 
   let isOpen = false
 
@@ -21,7 +20,6 @@
     {iconButtonShapeClass[shape]}
     {buttonSizeClass[size]}
     {buttonColorClass[color]}
-    {isOutlined ? "btn-outline" : ""}
     {modifier ? buttonModifierClass[modifier] : ""}
   ">
     <input bind:checked={isOpen} type="checkbox">

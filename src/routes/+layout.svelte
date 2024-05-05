@@ -4,21 +4,21 @@
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import SidenavElement from "$lib/components/SidenavElement.svelte"
-  import type { SaraProviderConfig } from "$lib/types.js"
+  import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
   import "../app.pcss"
 
   const saraConfig: SaraProviderConfig = {
     notifications: {
       transition: {
         distance: {
-          sm: { top: "28", right: "6" },
-          lg: { top: "32", right: "8" },
+          sm: { top: "20", right: "4" },
+          md: { top: "24", right: "6" },
         }
       }
     }
   }
 
-  const sidenavElements = [
+  const sidenavElements: { href: string, label: string, icon: IconClassString }[] = [
     { href: "/", label: "Home", icon: "i-mdi-home-outline" },
     { href: "/provider", label: "Provider", icon: "i-mdi-power-plug-outline" },
     { href: "/components", label: "Components", icon: "i-mdi-package-variant" },
@@ -60,13 +60,9 @@
 
     <svelte:fragment slot="sidenav">
       {#each sidenavElements as { href, icon, label }}
-        <SidenavElement {href} isActive={href => href === pathname}>
-          <span slot="icon"
-            title=" {label}" 
-            class="{icon} text-2xl mb-0.5" 
-          ></span>
-          {label}
-        </SidenavElement>  
+        <SidenavElement {href} {icon} {label}
+          isActive={href => href === pathname} 
+        />
         <div class="h-1.5"></div>
       {/each}
     </svelte:fragment>

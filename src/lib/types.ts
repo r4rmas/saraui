@@ -93,6 +93,7 @@ export type NotificationStore = {
 
 export type SidenavStore = {
   isOpen: boolean,
+  isCollapsible: boolean,
   toggle: () => void
 }
 export type SidenavConfig = {

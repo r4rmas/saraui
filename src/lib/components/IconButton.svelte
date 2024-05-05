@@ -8,7 +8,6 @@
   export let shape: IconButtonShapeString = "circle"
   export let size: SizeString = "md"
   export let isDisabled = false
-  export let isOutlined = false
   export let color: ColorString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
   export let onClick: OnEvent | undefined = undefined
@@ -32,7 +31,6 @@
     {iconButtonShapeClass[shape]}
     {buttonSizeClass[size]}
     {color ? buttonColorClass[color]: ""}
-    {isOutlined ? "btn-outline" : ""}
     {modifier ? buttonModifierClass[modifier] : ""}
   "
 >
