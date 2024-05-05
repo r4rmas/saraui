@@ -78,7 +78,7 @@
     <div bind:this={sidenavElement}
       style="--w: {openWidth}px;"
       class="
-        menu h-full
+        p-2 h-full
         {backgroundColor[color]}
         {width ? _getResponsiveClass() : "w-80 xl:w-96"} 
         {!firstTimeUpdated

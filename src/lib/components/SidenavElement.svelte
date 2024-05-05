@@ -39,7 +39,29 @@
   })
 </script>
 
-<li>
+<div>
+  <a {href} 
+    bind:this={anchor} 
+    class="
+      flex gap-2 text-nowrap items-center rounded-btn h-10 px-4
+      {_isActive ? "bg-neutral text-neutral-content" : ""}
+    "
+  >
+    <span class="{icon} text-2xl mb-0.5"></span>
+    {#if $sidenav && $sidenav.isOpen}
+      <span transition:slide={transition}>{label}</span>
+    {/if}
+  </a>
+</div>
+
+<style lang="postcss">
+  div:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    @apply rounded-btn
+  }
+</style>
+
+<!-- <li>
   <a {href} 
     bind:this={anchor} 
     class="flex text-nowrap items-center h-10 {_isActive ? "active" : ""}"
@@ -49,4 +71,4 @@
       <span transition:slide={transition}>{label}</span>
     {/if}
   </a>
-</li>
+</li> -->
