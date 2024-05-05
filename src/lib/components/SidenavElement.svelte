@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte"
   import { sidenav } from "$lib/stores.js"
   import type { IconClassString } from "$lib/types.js"
   import { cubicInOut } from "svelte/easing"
@@ -24,6 +25,18 @@
   $: _isActive = typeof isActive !== "boolean" 
       ? isActive(href) 
       : isActive
+
+  onMount(() => {
+    if (anchor) {
+      anchor.addEventListener("click", () => {
+        if ($sidenav) {
+          if (!$sidenav.isCollapsible) {
+            $sidenav.toggle()
+          }
+        }
+      })
+    }
+  })
 </script>
 
 <li>
