@@ -1,10 +1,11 @@
 import type { Writable } from "svelte/store"
-import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds, TextSizes, IconButtonShapes } from "./enums.js"
+import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors } from "./enums.js"
 
 export type BreakpointString            = `${Breakpoints}`
 export type NotificationCauseString     = `${NotificationCauses}`
 export type NotificationDirectionString = `${TransitionDirections}`
 export type ColorString                 = `${Colors}`
+export type BackgroundColorString       =  ColorString | `${BackgroundColors}`
 export type SizeString                  = `${Sizes}`
 export type ButtonModifierString        = `${ButtonModifiers}`
 export type ButtonTypeString            = `${ButtonTypes}`
@@ -14,6 +15,7 @@ export type HorizontalPositionString    = "right" | "left"
 export type RemString                   = `${number}rem`
 export type SpacingString               = `${Spacings}`
 export type WidthString                 = `${Widths}`
+export type WidthSpacingString          = SpacingString | WidthString
 export type RoundedString               = `${Roundeds}`
 export type TextSizeString              = `${TextSizes}`
 export type IconClassString             = `i-${string}`
@@ -89,20 +91,22 @@ export type NotificationStore = {
   transition: NotificationTransition
 }
 
-export type Sidenav = {
+export type SidenavStore = {
   isOpen: boolean,
-  open  : () => void,
-  close : () => void,
   toggle: () => void
 }
+export type SidenavConfig = {
+  // collapsibleFrom?: "md" | "lg" | "xl", 
+  color?: BackgroundColorString,
+  width?: WidthSpacingString | WidthBreakpointSpacing
+}
 
-type ResponsiveSpacing = {
+type BreakpointSpacing = {
   [k in BreakpointString]?: SpacingString  
 }
 
-export type WidthSpacing = SpacingString | WidthString
-export type WidthResponsiveSpacing = {
-  [k in keyof ResponsiveSpacing]: WidthSpacing
+export type WidthBreakpointSpacing = {
+  [k in keyof BreakpointSpacing]: WidthSpacingString
 }
 
 export type BreakPointClass = {
@@ -113,7 +117,7 @@ export type TextColorClass = {
   [k in ColorString]: `text-${k}`
 }
 export type BackgroundColorClass = {
-  [k in ColorString]: `bg-${k}`
+  [k in BackgroundColorString]: `bg-${k}`
 }
 
 export type RoundedClass = {
@@ -134,7 +138,7 @@ export type HeightSpacingClassXL = {
 }
 
 export type WidthSpacingClass = {
-  [k in WidthSpacing]: `w-${k}`
+  [k in WidthSpacingString]: `w-${k}`
 }
 export type WidthSpacingClassMD = {
   [k in keyof WidthSpacingClass]: `md:w-${k}`

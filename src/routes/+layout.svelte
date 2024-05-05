@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { page } from "$app/stores"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
+  import SidenavElement from "$lib/components/SidenavElement.svelte"
   import type { SaraProviderConfig } from "$lib/types.js"
   import "../app.pcss"
 
@@ -15,36 +17,58 @@
       }
     }
   }
+
+  const sidenavElements = [
+    { href: "/", label: "Home", icon: "i-mdi-home-outline" },
+    { href: "/provider", label: "Provider", icon: "i-mdi-power-plug-outline" },
+    { href: "/components", label: "Components", icon: "i-mdi-package-variant" },
+    { href: "/stores", label: "Stores", icon: "i-mdi-share-variant" },
+    { href: "/whats-next", label: "What's next", icon: "i-mdi-fast-forward" },
+  ]
+  
+  $: ({ url: { pathname } } = $page)
 </script>
 
 <SaraProvider config={saraConfig}>
   <Scaffold>
-    <svelte:fragment slot="header">
-      <header class="flex w-full items-center justify-between xl:flex-row-reverse p-5 lg:p-6 border-b border-base-200 bg-base-100">
-        <SidenavButton tooltip="menu" />
+    <header slot="header" class="
+      flex w-full items-center justify-between border-b border-base-200 bg-base-100
+      py-2 pr-2 md:py-3 md:pr-3 xl:py-4 xl:pr-4
+    ">
+      <SidenavButton tooltip="menu" />
+      <a href="/">
         <div class="flex gap-3 items-center">
           <div class="logo-gradient">
-            <h1 class="flex gap-2 mt-2 text-4xl font-bold text-transparent">
+            <h1 class="flex gap-2 mt-2 text-2xl md:text-3xl font-bold text-transparent">
               <span>Sara</span>
               <span>UI</span>
             </h1>
           </div>
           <img src="https://camo.githubusercontent.com/6002880f7000f37a3046592a0735dcd27f94b2adfb2a29340a255db7f21c6593/68747470733a2f2f63646e2e69636f6e2d69636f6e732e636f6d2f69636f6e73322f313436352f504e472f3132382f3139397072696e63657373325f3130303339352e706e67" 
             alt="logo"
-            class="w-11 h-11"
+            class="w-8 md:w-9 h-8 md:h-9"
           >
         </div>
-      </header>
-    </svelte:fragment>
+      </a>
+    </header>
 
     <main class="flex w-full justify-center">
-      <div class="flex flex-col items-center gap-8 w-full max-w-screen-xl px-4 lg:px-8">
+      <div class="flex flex-col items-center gap-8 w-full max-w-screen-2xl px-4 lg:px-8">
         <slot></slot>
       </div>
     </main>
 
     <svelte:fragment slot="sidenav">
-      <li><a href="/components">Components</a></li>
+      {#each sidenavElements as { href, icon, label }}
+        <SidenavElement {href} isActive={href => href === pathname}>
+          <span slot="icon"
+            title=" {label}" 
+            class="{icon} text-2xl mb-0.5" 
+          ></span>
+          {label}
+        </SidenavElement>  
+        <div class="h-1.5"></div>
+      {/each}
     </svelte:fragment>
   </Scaffold>
 </SaraProvider>

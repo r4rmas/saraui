@@ -1,4 +1,5 @@
-import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, TailwindBreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
+import { Breakpoints } from "./enums.js"
+import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, TailwindBreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
 
 export const SIDENAV_ID = "saraui-sidenav"
 
@@ -8,6 +9,8 @@ export const tailwindBreakpointPixels: TailwindBreakpointPixels = {
   lg: 1024,
   xl: 1280
 }
+
+export const breakpoints: BreakpointString[] = Object.values(Breakpoints)
 
 export const textSize: TextSizeClass = {
   sm   : "text-sm",
@@ -48,7 +51,10 @@ export const backgroundColor: BackgroundColorClass = {
   error      : "bg-error",
   current    : "bg-current",
   inherit    : "bg-inherit",
-  transparent: "bg-transparent"
+  transparent: "bg-transparent",
+  "base-100" : "bg-base-100",
+  "base-200" : "bg-base-200",
+  "base-300" : "bg-base-300"
 }
 
 export const loaderClass = {

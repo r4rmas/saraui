@@ -88,6 +88,11 @@ export enum Colors {
   CURRENT     = "current",
   TRANSPARENT = "transparent"
 }
+export enum BackgroundColors {
+  BASE100 = "base-100",
+  BASE200 = "base-200",
+  BASE300 = "base-300"
+}
 
 export enum Roundeds {
   NONE   = "none",

@@ -18,14 +18,14 @@
 
   const lightThemes: SelectorOption[] = [
     { label: "Bumblebee", value: "bumblebee" }, 
+    { label: "Corporate", value: "corporate" }, 
     { label: "Emerald", value: "emerald" }, 
-    { label: "Cupcake", value: "cupcake" }, 
     { label: "Lemonade", value: "lemonade" }, 
     { label: "Retro", value: "retro" }, 
     { label: "Valentine", value: "valentine" }, 
   ]
   const darkThemes: SelectorOption[] = [
-    { label: "Dark", value: "dark" }, 
+    { label: "Dracula", value: "dracula" }, 
     { label: "Dim", value: "dim" }, 
     { label: "Forest", value: "forest" }, 
     { label: "Night", value: "night" }, 
@@ -78,7 +78,7 @@
 </div>
 
 <div></div>
-<div class="mt-2">
+<div class="mt-2 text-start w-full">
   <div class="logo-gradient">
     <h2 class="title text-transparent">
       Get Sarisfied!
@@ -109,7 +109,9 @@
             class="w-6 h-6 ml-2"
           /> 
         </div>
-        <div class="code-card-body w-full md:h-full lg:h-fit xl:h-full 2xl:h-fit">
+        <div class="code-card-body w-full text-sm
+            md:h-full lg:h-fit xl:h-full 2xl:h-fit
+        ">
           <pre><code>{saraButton}</code></pre>
         </div>
       </div>
@@ -126,7 +128,7 @@
         </div>
       </div>
     </div>
-    <div class="hidden lg:flex xl:hidden 2xl:flex w-full h-full items-center px-20 pb-10">
+    <div class="hidden lg:flex xl:hidden 2xl:flex w-full h-full items-center px-20 py-2">
       <div class="flex flex-col gap-4 w-full h-fit items-center text-center border border-accent px-4 py-10 rounded-box">
         <p class="font-medium">
           As Sara is made with daisyUI, every componente will get instantly 

@@ -2,8 +2,7 @@
   import { fly, type FlyParams } from "svelte/transition"
   import { currentBreakpoint, notificationData } from "$lib/stores.js"
   import type { Icon, IconClassString, NotificationBreakpointDistance, NotificationBreakpointDirection, NotificationDirectionString } from "$lib/types.js"
-  import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/constants.js"
-  import { Breakpoints } from "$lib/enums.js"
+  import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, breakpoints, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/constants.js"
   import { getIconClass } from "$lib/utils.js"
   import SuccessIcon from "./private/notification/SuccessIcon.svelte"
   import InfoIcon from "./private/notification/InfoIcon.svelte"
@@ -50,7 +49,6 @@
              : undefined 
       }
       if (typeof _direction !== "string" && Object.values(_direction).length) {
-        const breakpoints = <`${Breakpoints}`[]>Object.values(Breakpoints)
         const currentBreakpointIndex = breakpoints.indexOf($currentBreakpoint ?? "sm")
         for (let i = currentBreakpointIndex; i >= 0; i--) {
           const _direction_ = _direction[breakpoints[i]]

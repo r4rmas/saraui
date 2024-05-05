@@ -1,6 +1,6 @@
 <script lang="ts">
   import { heightClass, heightClassLG, heightClassMD, heightClassXL, roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
-  import type { ColorString, RoundedString, Icon, IconClassString, WidthSpacing, WidthResponsiveSpacing } from "$lib/types.js"
+  import type { ColorString, RoundedString, Icon, IconClassString, WidthSpacingString, WidthBreakpointSpacing } from "$lib/types.js"
   import { getIconClass, getResponsiveClass } from "$lib/utils.js"
 
   export let color: ColorString  = "secondary"
@@ -9,7 +9,7 @@
   export let isEditable = true
   export let name: string | undefined = undefined
   export let state: File | undefined = undefined
-  export let width: WidthSpacing |  WidthResponsiveSpacing | undefined = undefined
+  export let width: WidthSpacingString |  WidthBreakpointSpacing | undefined = undefined
   export let icon: Icon | IconClassString | undefined = undefined
   
   let inputElement: HTMLInputElement
