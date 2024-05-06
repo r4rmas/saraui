@@ -31,7 +31,7 @@ export const saraButton = `<script>
 <Button onClick={asyncFunction}
   color="primary"
 >
-  Async function
+  Async action
 </Button>`
 
 export const tailwindConfig = `const config = {

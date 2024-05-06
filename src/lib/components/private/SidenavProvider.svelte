@@ -16,7 +16,7 @@
     xl: "xl:w-[85px]",
   }
 
-  let sidenavElement: HTMLDivElement
+  let sidenavSection: HTMLDivElement
   let sidenavOverlay: HTMLLabelElement
   let collapsibleWidthClass = ""
   let firstTimeUpdated = true
@@ -61,10 +61,10 @@
       }
     }
     await sleep(0.3)
-    openWidth = sidenavElement.getBoundingClientRect().width
-    sidenavOverlay.addEventListener("touchmove", e => {
-      e.preventDefault()
-    })
+    openWidth = sidenavSection.getBoundingClientRect().width
+    const sidenavIsOverflown = sidenavSection.scrollHeight > sidenavSection.clientHeight || sidenavSection.scrollWidth > sidenavSection.clientWidth
+    if (!sidenavIsOverflown) sidenavSection.addEventListener("touchmove", e => e.preventDefault())
+    sidenavOverlay.addEventListener("touchmove", e => e.preventDefault())
   })
 </script>
 
@@ -82,7 +82,7 @@
       for={SIDENAV_ID} 
       class="drawer-overlay"
     ></label>
-    <div bind:this={sidenavElement}
+    <div bind:this={sidenavSection}
       style="--w: {openWidth}px;"
       class="
         p-2 h-full text-sm overflow-y-auto

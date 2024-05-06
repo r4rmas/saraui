@@ -191,7 +191,7 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-4 2xl:gap-8">
   <div class="mockup-code text-sm">
-    <pre data-prefix="1." class="text-accent"><code>npx svelte-add@latest tailwindcss</code></pre>
+    <pre data-prefix="1." class="text-accent"><code>npx @svelte-add/tailwindcss@latest</code></pre>
     <pre data-prefix="2." class="text-secondary"><code>npm i -D daisyui</code></pre>
     <pre data-prefix="3." class="text-primary"><code>npm i saraui</code></pre>
   </div>
