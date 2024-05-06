@@ -3,7 +3,8 @@
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
-  import SidenavElement from "$lib/components/SidenavElement.svelte"
+  import SidenavCollapsibleList from "$lib/components/SidenavCollapsibleList.svelte"
+  import SidenavItem from "$lib/components/SidenavItem.svelte"
   import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
   import "../app.pcss"
 
@@ -21,7 +22,6 @@
   const sidenavElements: { href: string, label: string, icon: IconClassString }[] = [
     { href: "/", label: "Home", icon: "i-mdi-home-outline" },
     { href: "/provider", label: "Provider", icon: "i-mdi-power-plug-outline" },
-    { href: "/components", label: "Components", icon: "i-mdi-package-variant" },
     { href: "/stores", label: "Stores", icon: "i-mdi-share-variant" },
     { href: "/whats-next", label: "What's next", icon: "i-mdi-fast-forward" },
   ]
@@ -59,38 +59,25 @@
     </main>
 
     <svelte:fragment slot="sidenav">
-      {#each sidenavElements as { href, icon, label }}
-        <SidenavElement {href} {icon} {label}
+      {#each sidenavElements as { href, icon, label }, i}
+        <SidenavItem {href} {icon} {label}
           isActive={href => href === pathname} 
         />
-        <div class="h-1.5"></div>
+        {#if i < sidenavElements.length - 1}
+          {#if i === 1}
+            <div class="h-1.5"></div>
+            <SidenavCollapsibleList title="Components"
+              icon="i-mdi-package-variant"
+            >
+              <SidenavItem href="/components/buttons" label="Buttons" 
+                isActive={href => href === pathname}
+                icon="i-"
+              />
+            </SidenavCollapsibleList>
+          {/if}
+          <div class="h-1.5"></div>
+        {/if}
       {/each}
-      <!-- <ul class="menu pl-0 pt-0">
-        <li>
-          <details open>
-            <summary class="menu-title flex items-center gap-2">
-              <span class="i-mdi-access-point text-xl text-base-content"></span>
-              {#if $sidenav && $sidenav.isOpen}
-              <div class="w-full">
-                <span>Title</span>
-              </div>
-              {/if}
-            </summary>
-            {#if $sidenav && $sidenav.isOpen}
-              <ul class="ml-6 subtitle-container">
-                <div><a>Item 1</a></div>
-                <div><a>Item 1</a></div>
-              </ul>
-            {/if}
-          </details>
-        </li>
-      </ul> -->
     </svelte:fragment>
   </Scaffold>
 </SaraProvider>
-
-<!-- <style lang="postcss">
-  .subtitle-container div {
-    @apply ml-3;
-  }
-</style> -->

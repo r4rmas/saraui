@@ -5,7 +5,7 @@
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
-  import CodeCard from "$lib/components/private/CodeCard.svelte"
+  import CodeCard from "../lib/components/private/CodeCard.svelte"
   import Button from "$lib/components/Button.svelte"
   import Dropdown from "$lib/components/Dropdown.svelte"
 
@@ -48,8 +48,8 @@
 </script>
 
 <div></div>
-<p class="bg-gradient-to-br from-accent via-primary to-secondary bg-clip-text text-center text-lg">
-  <span class="text-xl">🤖</span>
+<p class="bg-gradient-to-br from-accent via-primary to-secondary bg-clip-text text-center">
+  <span class="text-lg">🤖</span>
   <span>Enhanced</span>
   <span class="font-medium text-transparent">daisyUI</span>
   <span>components for</span>

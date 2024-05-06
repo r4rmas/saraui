@@ -25,7 +25,7 @@
   $: _isActive = typeof isActive !== "boolean" 
       ? isActive(href) 
       : isActive
-
+  
   onMount(() => {
     if (anchor) {
       anchor.addEventListener("click", () => {
@@ -56,19 +56,6 @@
 
 <style lang="postcss">
   div:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    @apply rounded-btn
+    @apply rounded-btn bg-base-content bg-opacity-5
   }
 </style>
-
-<!-- <li>
-  <a {href} 
-    bind:this={anchor} 
-    class="flex text-nowrap items-center h-10 {_isActive ? "active" : ""}"
-  >
-    <span class="{icon} text-2xl mb-0.5"></span>
-    {#if $sidenav && $sidenav.isOpen}
-      <span transition:slide={transition}>{label}</span>
-    {/if}
-  </a>
-</li> -->
