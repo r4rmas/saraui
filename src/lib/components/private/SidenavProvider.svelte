@@ -16,8 +16,9 @@
     xl: "xl:w-[85px]",
   }
 
-  let collapsibleWidthClass = ""
   let sidenavElement: HTMLDivElement
+  let drawer: HTMLDivElement
+  let collapsibleWidthClass = ""
   let firstTimeUpdated = true
   let openWidth: number
 
@@ -61,6 +62,9 @@
     }
     await sleep(0.3)
     openWidth = sidenavElement.getBoundingClientRect().width
+    drawer.addEventListener("touchmove", e => {
+      e.preventDefault()
+    })
   })
 </script>
 
@@ -73,24 +77,24 @@
   <div class="drawer-content">
     <slot></slot>
   </div>
-  <div class="drawer-side z-50">
-      <label for={SIDENAV_ID} class="drawer-overlay"></label>
-        <div bind:this={sidenavElement}
-          style="--w: {openWidth}px;"
-          class="
-            p-2 min-h-full text-sm overflow-y-auto
-            {backgroundColor[color]}
-            {width ? _getResponsiveClass() : "w-80 xl:w-96"} 
-            {!firstTimeUpdated
-              ? isOpen
-                  ? `${$currentBreakpoint && isCollapsible ? "slide-in" : ""}`
-                  : `${collapsibleWidthClass.length ? `${collapsibleWidthClass} slide-out` : ""}` 
-              : ""
-            }
-          "
-        >
-          <slot name="sidenav"></slot>
-        </div>
+  <div bind:this={drawer} class="drawer-side z-50">
+    <label for={SIDENAV_ID} class="drawer-overlay"></label>
+    <div bind:this={sidenavElement}
+      style="--w: {openWidth}px;"
+      class="
+        p-2 min-h-full text-sm overflow-y-auto
+        {backgroundColor[color]}
+        {width ? _getResponsiveClass() : "w-80 xl:w-96"} 
+        {!firstTimeUpdated
+          ? isOpen
+              ? `${$currentBreakpoint && isCollapsible ? "slide-in" : ""}`
+              : `${collapsibleWidthClass.length ? `${collapsibleWidthClass} slide-out` : ""}` 
+          : ""
+        }
+      "
+    >
+      <slot name="sidenav"></slot>
+    </div>
   </div>
 </div>
 

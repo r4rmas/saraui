@@ -90,8 +90,8 @@
   </Scaffold>
 </SaraProvider>
 
-<style lang="postcss">
+<!-- <style lang="postcss">
   .subtitle-container div {
     @apply ml-3;
   }
-</style>
+</style> -->
