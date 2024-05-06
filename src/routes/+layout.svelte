@@ -4,7 +4,6 @@
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import SidenavElement from "$lib/components/SidenavElement.svelte"
-    import { sidenav } from "$lib/stores.js"
   import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
   import "../app.pcss"
 
