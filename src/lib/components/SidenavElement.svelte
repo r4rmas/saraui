@@ -47,7 +47,7 @@
       {_isActive ? "bg-neutral text-neutral-content" : ""}
     "
   >
-    <span class="{icon} text-2xl mb-0.5"></span>
+    <span class="{icon} text-xl mb-0.5"></span>
     {#if $sidenav && $sidenav.isOpen}
       <span transition:slide={transition}>{label}</span>
     {/if}

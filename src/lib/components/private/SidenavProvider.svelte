@@ -11,9 +11,9 @@
   export let width: WidthSpacingString | WidthBreakpointSpacing | undefined = undefined
 
   const _collapsibleWidthClass = {
-    md: "md:w-[90px]",
-    lg: "lg:w-[90px]",
-    xl: "xl:w-[90px]",
+    md: "md:w-[85px]",
+    lg: "lg:w-[85px]",
+    xl: "xl:w-[85px]",
   }
 
   let collapsibleWidthClass = ""
@@ -74,23 +74,23 @@
     <slot></slot>
   </div>
   <div class="drawer-side z-50">
-    <label for={SIDENAV_ID} class="drawer-overlay"></label>
-    <div bind:this={sidenavElement}
-      style="--w: {openWidth}px;"
-      class="
-        p-2 h-full
-        {backgroundColor[color]}
-        {width ? _getResponsiveClass() : "w-80 xl:w-96"} 
-        {!firstTimeUpdated
-          ? isOpen
-              ? `${$currentBreakpoint && isCollapsible ? "slide-in" : ""}`
-              : `${collapsibleWidthClass.length ? `${collapsibleWidthClass} slide-out` : ""}` 
-          : ""
-        }
-      "
-    >
-      <slot name="sidenav"></slot>
-    </div>
+      <label for={SIDENAV_ID} class="drawer-overlay"></label>
+        <div bind:this={sidenavElement}
+          style="--w: {openWidth}px;"
+          class="
+            p-2 min-h-full text-sm overflow-y-auto
+            {backgroundColor[color]}
+            {width ? _getResponsiveClass() : "w-80 xl:w-96"} 
+            {!firstTimeUpdated
+              ? isOpen
+                  ? `${$currentBreakpoint && isCollapsible ? "slide-in" : ""}`
+                  : `${collapsibleWidthClass.length ? `${collapsibleWidthClass} slide-out` : ""}` 
+              : ""
+            }
+          "
+        >
+          <slot name="sidenav"></slot>
+        </div>
   </div>
 </div>
 
@@ -105,7 +105,7 @@
   }
   @keyframes slide-in {
     0% {
-      width: 90px;
+      width: 85px;
     }
     100% {
       width: var(--w);
@@ -116,7 +116,7 @@
       width: var(--w);
     }
     100% {
-      width: 90px;
+      width: 85px;
     }
   }
 </style>

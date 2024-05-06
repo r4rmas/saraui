@@ -4,6 +4,7 @@
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import SidenavElement from "$lib/components/SidenavElement.svelte"
+    import { sidenav } from "$lib/stores.js"
   import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
   import "../app.pcss"
 
@@ -30,7 +31,7 @@
 </script>
 
 <SaraProvider config={saraConfig}>
-  <Scaffold>
+  <Scaffold sidenav={{ width: "80" }}>
     <header slot="header" class="
       flex w-full items-center justify-between border-b border-base-200 bg-base-100
       py-2 pr-2 md:py-3 md:pr-3 xl:py-4 xl:pr-4
@@ -65,6 +66,32 @@
         />
         <div class="h-1.5"></div>
       {/each}
+      <!-- <ul class="menu pl-0 pt-0">
+        <li>
+          <details open>
+            <summary class="menu-title flex items-center gap-2">
+              <span class="i-mdi-access-point text-xl text-base-content"></span>
+              {#if $sidenav && $sidenav.isOpen}
+              <div class="w-full">
+                <span>Title</span>
+              </div>
+              {/if}
+            </summary>
+            {#if $sidenav && $sidenav.isOpen}
+              <ul class="ml-6 subtitle-container">
+                <div><a>Item 1</a></div>
+                <div><a>Item 1</a></div>
+              </ul>
+            {/if}
+          </details>
+        </li>
+      </ul> -->
     </svelte:fragment>
   </Scaffold>
 </SaraProvider>
+
+<style lang="postcss">
+  .subtitle-container div {
+    @apply ml-3;
+  }
+</style>
