@@ -1,8 +1,9 @@
 import { writable } from "svelte/store"
-import { textSize } from "./constants.js"
+import { breakpoints, textSize } from "./constants.js"
 import type { Breakpoints } from "./enums.js"
-import { notificationData } from "./stores.js"
-import type { NotificationCauseString, BreakPointClass, TitledNotificationContent, Icon, SizeString, TextSizeString, ModalRef } from "./types.js"
+import { notificationData } from "$lib/private/stores.js"
+import type { NotificationCauseString, AnyBreakPointType, TitledNotificationContent, Icon, SizeString, TextSizeString, ModalRef, BreakpointString, BreakpointClass } from "./types.js"
+import type { currentBreakpoint } from "./stores.js"
 
 export function showNotification(cause: NotificationCauseString, content: string | TitledNotificationContent) {
   setTimeout(() => notificationData.update(old => ({
@@ -36,15 +37,29 @@ export async function sleep(seconds: number) {
   await timeout(seconds)
 }
 
-export function getResponsiveClass(responsive: BreakPointClass, fromClasses: { [k in Breakpoints]: any }) {
+export function getBreakpointClass(from: BreakpointClass, breakpointClass: { [k in BreakpointString]: { [k: string]: string } }) {
   let responsiveClass = ""
-  const { sm, md, lg, xl } = responsive
-  if (sm) responsiveClass += `${fromClasses.sm[sm]} `
-  if (md) responsiveClass += `${fromClasses.md[md]} `
-  if (lg) responsiveClass += `${fromClasses.lg[lg]} `
-  if (xl) responsiveClass += `${fromClasses.xl[xl]} `
+  const { sm, md, lg, xl } = <{ [k in BreakpointString]: string }>from
+  if (sm) responsiveClass += `${breakpointClass.sm[sm]} `
+  if (md) responsiveClass += `${breakpointClass.md[md]} `
+  if (lg) responsiveClass += `${breakpointClass.lg[lg]} `
+  if (xl) responsiveClass += `${breakpointClass.xl[xl]} `
   return responsiveClass
 }
+/**
+ * @returns the value of the breakpoint if provided in >from<, else the closest one
+ */
+export function getBreakpointValue(from: AnyBreakPointType, breakpoint?: BreakpointString) {
+  if (breakpoint) {
+    const breakpointIndex = breakpoints.indexOf(breakpoint)
+    for (let i = breakpointIndex; i >= 0; i--) {
+      const value = from[breakpoints[i]]
+      if (value) return value
+    }
+  } 
+  return undefined
+}
+
 export function getIconClass(icon : Icon | string | undefined, size?: TextSizeString) {
   if (icon) {
     if (typeof icon !== "string") {

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores"
-    import Button from "$lib/components/Button.svelte"
+  import Button from "$lib/components/Button.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"

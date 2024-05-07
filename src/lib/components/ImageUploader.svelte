@@ -1,7 +1,7 @@
 <script lang="ts">
   import { heightClass, heightClassLG, heightClassMD, heightClassXL, roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
   import type { ColorString, RoundedString, Icon, IconClassString, FullSpacingString, WidthBreakpointSpacing } from "$lib/types.js"
-  import { getIconClass, getResponsiveClass } from "$lib/utils.js"
+  import { getIconClass, getBreakpointClass } from "$lib/utils.js"
 
   export let color: ColorString  = "secondary"
   export let rounded: RoundedString = "full"
@@ -22,13 +22,13 @@
   function _getResponsiveClass() {
     if (width) {
       if (typeof width !== "string") {
-        const _widthClass = getResponsiveClass(width, {
+        const _widthClass = getBreakpointClass(width, {
           sm: widthClass,
           md: widthClassMD,
           lg: widthClassLG,
           xl: widthClassXL
         })
-        const _heightClass = getResponsiveClass(width, {
+        const _heightClass = getBreakpointClass(width, {
           sm: heightClass,
           md: heightClassMD,
           lg: heightClassLG,

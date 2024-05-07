@@ -2,12 +2,12 @@
   import { onMount } from "svelte"
   import { SIDENAV_ID, backgroundColor, breakpoints, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
-  import type { BackgroundColorString, WidthBreakpointSpacing, FullSpacingString, BreakpointSidenavBehavior, SidenavBehavior } from "$lib/types.js"
-  import { getResponsiveClass, sleep } from "$lib/utils.js"
+  import type { BackgroundColorString, WidthBreakpointSpacing, FullSpacingString, SidenavBreakpointBehavior, SidenavBehavior } from "$lib/types.js"
+  import { getBreakpointClass, getBreakpointValue, sleep } from "$lib/utils.js"
 
   export let color: BackgroundColorString = "base-200"
   export let collapsibleFrom: "md" | "lg"  | "xl" | undefined = undefined
-  export let behavior: SidenavBehavior | BreakpointSidenavBehavior | undefined = undefined
+  export let behavior: SidenavBehavior | SidenavBreakpointBehavior | undefined = undefined
   // export let behavior: { 
   //   sm?: {
   //     width: ,
@@ -36,9 +36,28 @@
   $: isCollapsible = $currentBreakpoint && breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf("xl")
   $: isOpen = isCollapsible ?? false
 
+  function getBehavior() {
+    if (behavior) {
+      const keys = Object.keys(behavior)
+      let hasBreakpoints = false
+      for (const b of breakpoints) if (keys.includes(b)) {
+        hasBreakpoints = true
+        break
+      }
+      if (hasBreakpoints) {
+        if ($currentBreakpoint) {
+          const _behavior = getBreakpointValue(<SidenavBreakpointBehavior>behavior, $currentBreakpoint)
+          if (_behavior) return <SidenavBehavior>_behavior
+        }
+        else return undefined
+      }
+      else return <SidenavBehavior>behavior
+    }
+    return undefined
+  }
   function _getResponsiveClass() {
     if (width) {
-      if (typeof width !== "string") return getResponsiveClass(width, {
+      if (typeof width !== "string") return getBreakpointClass(width, {
         sm: widthClass,
         md: widthClassMD,
         lg: widthClassLG,
@@ -49,6 +68,7 @@
   }
 
   onMount(async () => {
+    console.log(getBehavior())
     $sidenav = {
       isOpen,
       isCollapsible: isCollapsible ?? false,

@@ -22,10 +22,6 @@ export type IconClassString             = `i-${string}`
 
 export type OnEvent = ((e: Event) => void) | ((e: Event) => Promise<void>)
 
-export type BreakpointPixels = {
-  [k in BreakpointString]: number
-}
-
 export type SaraProviderConfig = {
   loaders?      : LoaderProps
   notifications?: NotificationConfig
@@ -37,7 +33,7 @@ export type LoaderProps = {
 }
 
 export type Icon = {
-  is   : IconClassString,
+  is   : IconClassString
   size?: TextSizeString
 }
 
@@ -79,11 +75,11 @@ export type NotificationBreakpointDistance = {
   [k in Breakpoints]?: NotificationDistance
 }
 export type NotificationTransition = {
-  direction?: NotificationDirectionString,
+  direction?: NotificationDirectionString
   distance  : NotificationBreakpointDistance
 }
 export type NotificationConfig = {
-  icons?     : NotificationIcons,
+  icons?     : NotificationIcons
   transition?: NotificationTransition
 }
 export type NotificationStore = {
@@ -92,36 +88,42 @@ export type NotificationStore = {
 }
 
 export type SidenavStore = {
-  isOpen: boolean,
-  isCollapsible: boolean,
+  isOpen: boolean
+  isCollapsible: boolean
   toggle: () => void
 }
 export type SidenavConfig = {
   // collapsibleFrom?: "md" | "lg" | "xl", 
-  color?: BackgroundColorString,
+  color?: BackgroundColorString
   width?: FullSpacingString | WidthBreakpointSpacing
 }
 export type SidenavBehavior = {
-  width: SpacingString,
-  collapsedWidth: SpacingString,
+  width: SpacingString
+  collapsedWidth?: SpacingString
 }
-export type BreakpointSidenavBehavior = {
+export type SidenavBreakpointBehavior = {
   [k in BreakpointString]?: SidenavBehavior
 }
 
 export type SpacingRem = {
-  [k in SpacingString]:  `${string}rem`
+  [k in SpacingString]: RemString
 }
 type BreakpointSpacing = {
   [k in BreakpointString]?: SpacingString  
+}
+export type BreakpointPixels = {
+  [k in BreakpointString]: number
+}
+export type BreakpointClass = {
+  [k in BreakpointString]?: string
 }
 
 export type WidthBreakpointSpacing = {
   [k in keyof BreakpointSpacing]: FullSpacingString
 }
 
-export type BreakPointClass = {
-  [k in BreakpointString]?: any
+export type AnyBreakPointType = {
+  [k in BreakpointString]?: Object
 }
 
 export type TextColorClass = {

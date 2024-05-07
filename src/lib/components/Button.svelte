@@ -2,7 +2,7 @@
   import { onMount } from "svelte"
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL, widthClass } from "$lib/constants.js"
   import type { ButtonModifierString, ButtonTypeString, WidthBreakpointSpacing, ColorString, OnEvent, SizeString } from "$lib/types.js"
-  import { getResponsiveClass, sleep } from "$lib/utils.js"
+  import { getBreakpointClass, sleep } from "$lib/utils.js"
   import type { FullSpacingString } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
@@ -31,12 +31,14 @@
     }
   }
   function setButtonWidth() {
-    const { width } = button.getBoundingClientRect()
-    buttonWidth = `width: ${width}px`
+    if (!_buttonWidth) {
+      const { width } = button.getBoundingClientRect()
+      buttonWidth = `width: ${width}px`
+    }
   }
   function _getResponsiveClass() {
     if (width) {
-      if (typeof width !== "string") return getResponsiveClass(width, {
+      if (typeof width !== "string") return getBreakpointClass(width, {
         sm: buttonWidthClass,
         md: buttonWidthClassMD,
         lg: buttonWidthClassLG,

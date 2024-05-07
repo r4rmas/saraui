@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { OnEvent, SelectorOption } from "$lib/types.js"
+  import type { SelectorOption } from "$lib/types.js"
 
   export let name: string
   export let label: string
