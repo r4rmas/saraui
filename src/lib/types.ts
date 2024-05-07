@@ -1,11 +1,11 @@
 import type { Writable } from "svelte/store"
-import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type Widths, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors } from "./enums.js"
+import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type DynamicSpacings, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors } from "./enums.js"
 
 export type BreakpointString            = `${Breakpoints}`
 export type NotificationCauseString     = `${NotificationCauses}`
 export type NotificationDirectionString = `${TransitionDirections}`
 export type ColorString                 = `${Colors}`
-export type BackgroundColorString       =  ColorString | `${BackgroundColors}`
+export type BackgroundColorString       = ColorString | `${BackgroundColors}`
 export type SizeString                  = `${Sizes}`
 export type ButtonModifierString        = `${ButtonModifiers}`
 export type ButtonTypeString            = `${ButtonTypes}`
@@ -14,15 +14,15 @@ export type PositionString              = `${Positions}`
 export type HorizontalPositionString    = "right" | "left"
 export type RemString                   = `${number}rem`
 export type SpacingString               = `${Spacings}`
-export type WidthString                 = `${Widths}`
-export type WidthSpacingString          = SpacingString | WidthString
+export type DynamicSpacingString        = `${DynamicSpacings}`
+export type FullSpacingString           = SpacingString | DynamicSpacingString
 export type RoundedString               = `${Roundeds}`
 export type TextSizeString              = `${TextSizes}`
 export type IconClassString             = `i-${string}`
 
 export type OnEvent = ((e: Event) => void) | ((e: Event) => Promise<void>)
 
-export type TailwindBreakpointPixels = {
+export type BreakpointPixels = {
   [k in BreakpointString]: number
 }
 
@@ -99,15 +99,25 @@ export type SidenavStore = {
 export type SidenavConfig = {
   // collapsibleFrom?: "md" | "lg" | "xl", 
   color?: BackgroundColorString,
-  width?: WidthSpacingString | WidthBreakpointSpacing
+  width?: FullSpacingString | WidthBreakpointSpacing
+}
+export type SidenavBehavior = {
+  width: SpacingString,
+  collapsedWidth: SpacingString,
+}
+export type BreakpointSidenavBehavior = {
+  [k in BreakpointString]?: SidenavBehavior
 }
 
+export type SpacingRem = {
+  [k in SpacingString]:  `${string}rem`
+}
 type BreakpointSpacing = {
   [k in BreakpointString]?: SpacingString  
 }
 
 export type WidthBreakpointSpacing = {
-  [k in keyof BreakpointSpacing]: WidthSpacingString
+  [k in keyof BreakpointSpacing]: FullSpacingString
 }
 
 export type BreakPointClass = {
@@ -126,7 +136,7 @@ export type RoundedClass = {
 }
 
 export type HeightSpacingClass = {
-  [k in SpacingString]: `h-${k}`
+  [k in FullSpacingString]: `h-${k}`
 }
 export type HeightSpacingClassMD = {
   [k in keyof HeightSpacingClass]: `md:h-${k}`
@@ -139,7 +149,7 @@ export type HeightSpacingClassXL = {
 }
 
 export type WidthSpacingClass = {
-  [k in WidthSpacingString]: `w-${k}`
+  [k in FullSpacingString]: `w-${k}`
 }
 export type WidthSpacingClassMD = {
   [k in keyof WidthSpacingClass]: `md:w-${k}`

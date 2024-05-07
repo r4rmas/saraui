@@ -2,13 +2,23 @@
   import { onMount } from "svelte"
   import { SIDENAV_ID, backgroundColor, breakpoints, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
-  import type { BackgroundColorString, WidthBreakpointSpacing, WidthSpacingString } from "$lib/types.js"
+  import type { BackgroundColorString, WidthBreakpointSpacing, FullSpacingString, BreakpointSidenavBehavior } from "$lib/types.js"
   import { getResponsiveClass, sleep } from "$lib/utils.js"
 
   export let color: BackgroundColorString = "base-200"
   export let collapsibleFrom: "md" | "lg"  | "xl" | undefined = undefined
+  export let behavior: BreakpointSidenavBehavior | undefined = undefined
+  // export let behavior: { 
+  //   sm?: {
+  //     width: ,
+  //     collapsedWidth: ,
+  //   }, 
+  //   md?: , 
+  //   lg?:, 
+  //   xl?: 
+  // }
   //TODO: width: { open?: WidthSpacingString | WidthBreakpointSpacing, closedCollapsible?: WidthSpacingString | WidthBreakpointSpacing }
-  export let width: WidthSpacingString | WidthBreakpointSpacing | undefined = undefined
+  export let width: FullSpacingString | WidthBreakpointSpacing | undefined = undefined
 
   const _collapsibleWidthClass = {
     md: "md:w-[85px]",
@@ -112,7 +122,7 @@
   }
   @keyframes slide-in {
     0% {
-      width: 85px;
+      width: 5rem;
     }
     100% {
       width: var(--w);
@@ -123,7 +133,7 @@
       width: var(--w);
     }
     100% {
-      width: 85px;
+      width: 5rem;
     }
   }
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores"
+    import Button from "$lib/components/Button.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
@@ -59,25 +60,37 @@
     </main>
 
     <svelte:fragment slot="sidenav">
-      {#each sidenavElements as { href, icon, label }, i}
-        <SidenavItem {href} {icon} {label}
-          isActive={href => href === pathname} 
-        />
-        {#if i < sidenavElements.length - 1}
-          {#if i === 1}
-            <div class="h-1.5"></div>
-            <SidenavCollapsibleList title="Components"
-              icon="i-mdi-package-variant"
-            >
-              <SidenavItem href="/components/buttons" label="Buttons" 
-                isActive={href => href === pathname}
-                icon="i-"
-              />
-            </SidenavCollapsibleList>
-          {/if}
-          <div class="h-1.5"></div>
-        {/if}
-      {/each}
+      <div class="flex flex-col h-full justify-between">
+        <div>
+          {#each sidenavElements as { href, icon, label }, i}
+            <SidenavItem {href} {icon} {label}
+              isActive={href => href === pathname} 
+            />
+            {#if i < sidenavElements.length - 1}
+              {#if i === 1}
+                <div class="h-1.5"></div>
+                <SidenavCollapsibleList title="Components"
+                  icon="i-mdi-package-variant"
+                >
+                  <div class="h-1.5"></div>
+                  <SidenavItem href="/components/buttons" label="Buttons" 
+                    isActive={href => href === pathname}
+                    icon="i-"
+                  />
+                  <div class="h-1.5"></div>
+                </SidenavCollapsibleList>
+              {/if}
+              <div class="h-1.5"></div>
+            {/if}
+          {/each}
+        </div>
+        <div class="mx-auto">
+          <Button color="primary">
+            Star on GitHub
+            <span class="i-mdi-github mb-0.5 text-lg"></span>
+          </Button>
+        </div>
+      </div>
     </svelte:fragment>
   </Scaffold>
 </SaraProvider>

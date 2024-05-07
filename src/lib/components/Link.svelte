@@ -4,6 +4,7 @@
 
   export let href: string
   export let color: ColorString = "primary"
+  //TODO: OPTIONALLY CAN LOOK LIKE A BUTTON
 </script>
 
 <a {href} class="link font-medium {textColor[color]}">

@@ -1,9 +1,9 @@
 import { Breakpoints } from "./enums.js"
-import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, TailwindBreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
+import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
 
 export const SIDENAV_ID = "saraui-sidenav"
 
-export const tailwindBreakpointPixels: TailwindBreakpointPixels = {
+export const tailwindBreakpointPixels: BreakpointPixels = {
   sm: 640,
   md: 768,
   lg: 1024,
@@ -11,6 +11,43 @@ export const tailwindBreakpointPixels: TailwindBreakpointPixels = {
 }
 
 export const breakpoints: BreakpointString[] = Object.values(Breakpoints)
+
+export const spacingRem: SpacingRem = {
+  0   : "0rem",
+  0.5 : "0.125rem",
+  1   : "0.25rem",
+  1.5 : "0.375rem",
+  2   : "0.5rem",
+  2.5 : "0.625rem",
+  3   : "0.75rem",
+  3.5 : "0.875rem",
+  4   : "1rem",
+  5   : "1.25rem",
+  6   : "1.5rem",
+  7   : "1.75rem",
+  8   : "2rem",
+  9   : "2.25rem",
+  10  : "2.5rem",
+  11  : "2.75rem",
+  12  : "3rem",
+  14  : "3.5rem",
+  16  : "4rem",
+  20  : "5rem",
+  24  : "6rem", 
+  28  : "7rem", 
+  32  : "8rem", 
+  36  : "9rem", 
+  40  : "10rem",
+  44  : "11rem",
+  48  : "12rem",
+  52  : "13rem",
+  56  : "14rem",
+  60  : "15rem",
+  64  : "16rem",
+  72  : "18rem",
+  80  : "20rem",
+  96  : "24rem",
+}
 
 export const textSize: TextSizeClass = {
   sm   : "text-sm",
@@ -288,7 +325,9 @@ export const heightClass: HeightSpacingClass = {
   72  : "h-72",
   80  : "h-80",
   96  : "h-96",
-  auto: "h-auto"
+  auto: "h-auto",
+  full: "h-full",
+  fit : "h-fit"
 }
 export const heightClassMD: HeightSpacingClassMD = {
   0   : "md:h-0",
@@ -325,7 +364,9 @@ export const heightClassMD: HeightSpacingClassMD = {
   72  : "md:h-72",
   80  : "md:h-80",
   96  : "md:h-96",
-  auto: "md:h-auto"
+  auto: "md:h-auto",
+  full: "md:h-full",
+  fit : "md:h-fit"
 }
 export const heightClassLG: HeightSpacingClassLG = {
   0   : "lg:h-0",
@@ -362,7 +403,9 @@ export const heightClassLG: HeightSpacingClassLG = {
   72  : "lg:h-72",
   80  : "lg:h-80",
   96  : "lg:h-96",
-  auto: "lg:h-auto"
+  auto: "lg:h-auto",
+  full: "lg:h-full",
+  fit : "lg:h-fit"
 }
 export const heightClassXL: HeightSpacingClassXL = {
   0   : "xl:h-0",
@@ -399,7 +442,9 @@ export const heightClassXL: HeightSpacingClassXL = {
   72  : "xl:h-72",
   80  : "xl:h-80",
   96  : "xl:h-96",
-  auto: "xl:h-auto"
+  auto: "xl:h-auto",
+  full: "xl:h-full",
+  fit : "xl:h-fit"
 }
 
 export const roundedClass: RoundedClass = {
@@ -473,7 +518,6 @@ export const topPositionClass: TopPositionClass = {
   72  : "top-72",
   80  : "top-80",
   96  : "top-96",
-  auto: "top-auto"
 }
 export const topPositionClassMD: TopPositionClassMD = {
   0   : "md:top-0",
@@ -510,7 +554,6 @@ export const topPositionClassMD: TopPositionClassMD = {
   72  : "md:top-72",
   80  : "md:top-80",
   96  : "md:top-96",
-  auto: "md:top-auto"
 }
 export const topPositionClassLG: TopPositionClassLG = {
   0   : "lg:top-0",
@@ -547,7 +590,6 @@ export const topPositionClassLG: TopPositionClassLG = {
   72  : "lg:top-72",
   80  : "lg:top-80",
   96  : "lg:top-96",
-  auto: "lg:top-auto"
 }
 export const topPositionClassXL: TopPositionClassXL = {
   0   : "xl:top-0",
@@ -584,7 +626,6 @@ export const topPositionClassXL: TopPositionClassXL = {
   72  : "xl:top-72",
   80  : "xl:top-80",
   96  : "xl:top-96",
-  auto: "xl:top-auto"
 }
 
 export const bottomPositionClass: BottomPositionClass = {
@@ -622,7 +663,6 @@ export const bottomPositionClass: BottomPositionClass = {
   72  : "bottom-72",
   80  : "bottom-80",
   96  : "bottom-96",
-  auto: "bottom-auto"
 }
 export const bottomPositionClassMD: BottomPositionClassMD = {
   0   : "md:bottom-0",
@@ -659,7 +699,6 @@ export const bottomPositionClassMD: BottomPositionClassMD = {
   72  : "md:bottom-72",
   80  : "md:bottom-80",
   96  : "md:bottom-96",
-  auto: "md:bottom-auto"
 }
 export const bottomPositionClassLG: BottomPositionClassLG = {
   0   : "lg:bottom-0",
@@ -696,7 +735,6 @@ export const bottomPositionClassLG: BottomPositionClassLG = {
   72  : "lg:bottom-72",
   80  : "lg:bottom-80",
   96  : "lg:bottom-96",
-  auto: "lg:bottom-auto"
 }
 export const bottomPositionClassXL: BottomPositionClassXL = {
   0   : "xl:bottom-0",
@@ -733,7 +771,6 @@ export const bottomPositionClassXL: BottomPositionClassXL = {
   72  : "xl:bottom-72",
   80  : "xl:bottom-80",
   96  : "xl:bottom-96",
-  auto: "xl:bottom-auto"
 }
 
 export const rightPositionClass: RightPositionClass = {
@@ -771,7 +808,6 @@ export const rightPositionClass: RightPositionClass = {
   72  : "right-72",
   80  : "right-80",
   96  : "right-96",
-  auto: "right-auto"
 }
 export const rightPositionClassMD: RightPositionClassMD = {
   0   : "md:right-0",
@@ -808,7 +844,6 @@ export const rightPositionClassMD: RightPositionClassMD = {
   72  : "md:right-72",
   80  : "md:right-80",
   96  : "md:right-96",
-  auto: "md:right-auto"
 }
 export const rightPositionClassLG: RightPositionClassLG = {
   0   : "lg:right-0",
@@ -845,7 +880,6 @@ export const rightPositionClassLG: RightPositionClassLG = {
   72  : "lg:right-72",
   80  : "lg:right-80",
   96  : "lg:right-96",
-  auto: "lg:right-auto"
 }
 export const rightPositionClassXL: RightPositionClassXL = {
   0   : "xl:right-0",
@@ -882,7 +916,6 @@ export const rightPositionClassXL: RightPositionClassXL = {
   72  : "xl:right-72",
   80  : "xl:right-80",
   96  : "xl:right-96",
-  auto: "xl:right-auto"
 }
 
 export const leftPositionClass: LeftPositionClass = {
@@ -920,7 +953,6 @@ export const leftPositionClass: LeftPositionClass = {
   72  : "left-72",
   80  : "left-80",
   96  : "left-96",
-  auto: "left-auto"
 }
 export const leftPositionClassMD: LeftPositionClassMD = {
   0   : "md:left-0",
@@ -957,7 +989,6 @@ export const leftPositionClassMD: LeftPositionClassMD = {
   72  : "md:left-72",
   80  : "md:left-80",
   96  : "md:left-96",
-  auto: "md:left-auto"
 }
 export const leftPositionClassLG: LeftPositionClassLG = {
   0   : "lg:left-0",
@@ -994,7 +1025,6 @@ export const leftPositionClassLG: LeftPositionClassLG = {
   72  : "lg:left-72",
   80  : "lg:left-80",
   96  : "lg:left-96",
-  auto: "lg:left-auto"
 }
 export const leftPositionClassXL: LeftPositionClassXL = {
   0   : "xl:left-0",
@@ -1031,7 +1061,6 @@ export const leftPositionClassXL: LeftPositionClassXL = {
   72  : "xl:left-72",
   80  : "xl:left-80",
   96  : "xl:left-96",
-  auto: "xl:left-auto"
 }
 
 export const radioSizeClass: RadioSizeClass = {

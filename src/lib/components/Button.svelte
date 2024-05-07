@@ -3,7 +3,7 @@
   import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL, widthClass } from "$lib/constants.js"
   import type { ButtonModifierString, ButtonTypeString, WidthBreakpointSpacing, ColorString, OnEvent, SizeString } from "$lib/types.js"
   import { getResponsiveClass, sleep } from "$lib/utils.js"
-  import type { WidthSpacingString } from "$lib/types.js"
+  import type { FullSpacingString } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 
   //If you want to use Button with goto(endpoint), you may provide a valid endpoint destination
@@ -14,7 +14,7 @@
   export let isLoading = false
   export let color: ColorString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
-  export let width: WidthSpacingString |  WidthBreakpointSpacing | undefined = undefined
+  export let width: FullSpacingString |  WidthBreakpointSpacing | undefined = undefined
   export let size: SizeString | undefined = undefined
   export let onClick: OnEvent | undefined = undefined
 

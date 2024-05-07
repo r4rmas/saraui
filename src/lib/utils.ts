@@ -48,9 +48,9 @@ export function getResponsiveClass(responsive: BreakPointClass, fromClasses: { [
 export function getIconClass(icon : Icon | string | undefined, size?: TextSizeString) {
   if (icon) {
     if (typeof icon !== "string") {
-      const { is , size } = icon
+      const { is , size: _size } = icon
       let iconClass = is
-      if (size) iconClass += ` ${textSize[size]}`
+      iconClass += ` ${textSize[_size ? _size : size ? size : "lg"]}`
       return iconClass
     }
     return `${icon} ${textSize[size ?? "lg"]}`

@@ -33,16 +33,12 @@ export enum Spacings {
   SEVENTY_TWO    = 72,
   EIGHTY         = 80,
   NINETY_SIX     = 96,
-  AUTO           = "auto",
 }
 
-export enum Widths {
+export enum DynamicSpacings {
   FULL = "full",
   FIT  = "fit",
-  // "PX"= "px",
-  // "SCREEN" = "screen",
-  // "LVW" = "lvw",
-  // "MIN" = "min",
+  AUTO = "auto",
 }
 
 export enum Breakpoints {
