@@ -49,9 +49,6 @@
 </ul>
 
 <style lang="postcss">
-  .subtitle-container div {
-    @apply ml-3
-  }
   summary:hover {
     @apply bg-base-content bg-opacity-5
   }

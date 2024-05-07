@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fly, type FlyParams } from "svelte/transition"
-  import { currentBreakpoint, notificationData } from "$lib/stores.js"
+  import { currentBreakpoint } from "$lib/stores.js"
+  import { notificationData } from "$lib/private/stores.js"
   import type { Icon, IconClassString, NotificationBreakpointDistance, NotificationBreakpointDirection, NotificationDirectionString } from "$lib/types.js"
   import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, breakpoints, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/constants.js"
   import { getIconClass } from "$lib/utils.js"

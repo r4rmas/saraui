@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { loader } from "$lib/stores.js"
+  import { loader } from "$lib/private/stores.js"
   import { loaderClass, textColor } from "$lib/constants.js";
   import type { Loaders } from "$lib/enums.js"
   import type { ColorString } from "$lib/types.js"

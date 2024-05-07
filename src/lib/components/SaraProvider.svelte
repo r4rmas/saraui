@@ -1,6 +1,7 @@
 <script lang="ts">
   import { tailwindBreakpointPixels } from "$lib/constants.js"
-  import { currentBreakpoint, loader, notificationData } from "$lib/stores.js"
+  import { currentBreakpoint } from "$lib/stores.js"
+  import { loader, notificationData } from "$lib/private/stores.js"
   import type { SaraProviderConfig } from "$lib/types.js"
   import Notification from "./Notification.svelte"
 

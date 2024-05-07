@@ -2,12 +2,12 @@
   import { onMount } from "svelte"
   import { SIDENAV_ID, backgroundColor, breakpoints, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
-  import type { BackgroundColorString, WidthBreakpointSpacing, FullSpacingString, BreakpointSidenavBehavior } from "$lib/types.js"
+  import type { BackgroundColorString, WidthBreakpointSpacing, FullSpacingString, BreakpointSidenavBehavior, SidenavBehavior } from "$lib/types.js"
   import { getResponsiveClass, sleep } from "$lib/utils.js"
 
   export let color: BackgroundColorString = "base-200"
   export let collapsibleFrom: "md" | "lg"  | "xl" | undefined = undefined
-  export let behavior: BreakpointSidenavBehavior | undefined = undefined
+  export let behavior: SidenavBehavior | BreakpointSidenavBehavior | undefined = undefined
   // export let behavior: { 
   //   sm?: {
   //     width: ,
