@@ -117,19 +117,11 @@
     animation-duration: 0.3s;
   }
   @keyframes slide-in {
-    0% {
-      width: var(--c);
-    }
-    100% {
-      width: var(--w);
-    }
+    0% { width: var(--c); }
+    100% { width: var(--w); }
   }
   @keyframes slide-out {
-    0% {
-      width: var(--w);
-    }
-    100% {
-      width: var(--c);
-    }
+    0% { width: var(--w); }
+    100% { width: var(--c); }
   }
 </style>

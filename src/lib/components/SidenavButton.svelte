@@ -14,7 +14,7 @@
   $: isOpen = $sidenav?.isOpen ?? false
 </script>
 
-<div class="relative">
+<div class="relative w-fit h-fit">
   <label class="
     btn swap swap-rotate
     {iconButtonShapeClass[shape]}
@@ -34,5 +34,12 @@
     title={`  ${tooltip} `}
     class="absolute inset-0"
   >
+    <span class="text-transparent">{tooltip}</span>
   </button>
 </div>
+
+<style lang="postcss">
+  label:hover {
+    @apply !bg-transparent;
+  }
+</style>
