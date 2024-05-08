@@ -34,8 +34,10 @@
   $: $sidenav = {
     isOpen, isCollapsible,
     async toggle() {
-      isRecentlyMounted = false
-      if (!isCollapsible) await tick()
+      if (isRecentlyMounted) {
+        isRecentlyMounted = false
+        if (!startCollapsed || !isCollapsible) await tick()
+      }
       isOpen = !isOpen
     }
   }

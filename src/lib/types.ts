@@ -90,7 +90,7 @@ export type NotificationStore = {
 export type SidenavStore = {
   isOpen: boolean
   isCollapsible: boolean
-  toggle: () => void
+  toggle: () => Promise<void>
 }
 export type SidenavConfig = {
   startCollapsed?: boolean
