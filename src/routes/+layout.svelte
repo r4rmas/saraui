@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { page } from "$app/stores"
   import Button from "$lib/components/Button.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
@@ -36,15 +35,14 @@
     { href: "/components/scaffold", label: "Scaffold" },
     { href: "/components/selectors", label: "Selectors" },
   ]
-  
-  $: ({ url: { pathname } } = $page)
 </script>
 
 <SaraProvider config={saraConfig}>
+  <!-- TODO: PROVEER POR DEFECTO UN width collapsed -->
   <Scaffold sidenav={{ 
-    startCollapsed: true,
-    collapsedAt: "xl", 
-    width: { open: "64", collapsed: "20" }
+    collapsedAt: "xl",
+    width: { open: "64", collapsed: "20" },
+    startCollapsed: true
   }}>
     <header slot="header" class="
       flex w-full items-center justify-between border-b border-base-200 bg-base-100
@@ -77,20 +75,16 @@
       <div class="flex flex-col h-full justify-between">
         <div>
           {#each sidenavItems as { href, icon, label }, i}
-            <SidenavItem {href} {icon} {label}
-            />
-            <!-- {#if i === 1}
+            <SidenavItem {href} {icon} {label} />
+            {#if i === 1}
               <SidenavCollapsibleList title="Components"
                 icon="i-mdi-package-variant"
               >
                 {#each componentItems as { href, label }}
-                  <SidenavItem {href} {label}
-                    isActive={href => href === pathname}
-                    icon="i-"
-                  />
+                  <SidenavItem {href} {label} icon="i-" />
                 {/each}
               </SidenavCollapsibleList>
-            {/if} -->
+            {/if}
           {/each}
         </div>
         <!-- <div class="mx-auto">

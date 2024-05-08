@@ -28,15 +28,16 @@
   $: isOpen = isRecentlyMounted && startCollapsed 
     ? false 
     : collapsedAt !== undefined && $currentBreakpoint === collapsedAt
-  $: isCollapsible = $currentBreakpoint 
-    ? breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf(collapsedAt ?? "xl") 
+  $: isCollapsible = $currentBreakpoint && collapsedAt
+    ? breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf(collapsedAt) 
     : false
   $: $sidenav = {
     isOpen, isCollapsible,
     async toggle() {
       if (isRecentlyMounted) {
         isRecentlyMounted = false
-        if (!startCollapsed || !isCollapsible) await tick()
+        if ($currentBreakpoint !== collapsedAt) await tick()
+        if (!startCollapsed) await tick()
       }
       isOpen = !isOpen
     }
