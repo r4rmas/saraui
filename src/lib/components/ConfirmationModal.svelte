@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte"
   import type { ConfirmationModalIcons, OnEvent, ColorString, ModalRef } from "$lib/types.js"
   import Button from "./Button.svelte"
 
@@ -20,6 +21,10 @@
     await onAccept(e)
     closeButton.click()
   }
+
+  onMount(() => {
+    $dialog.addEventListener("touchmove", e => e.preventDefault())
+  })
 </script>
 
 <dialog bind:this={$dialog} class="modal">

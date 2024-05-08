@@ -1,11 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte"
-  import { SIDENAV_ID, backgroundColor,  spacingRem, widthClass } from "$lib/constants.js"
+  import { SIDENAV_ID, backgroundColor,  breakpoints,  spacingRem, widthClass } from "$lib/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
   import type { BackgroundColorString, SidenavWidth, BreakpointString, SpacingString, SidenavWidthClass, SidenavWidthRem } from "$lib/types.js"
-  import { sleep } from "$lib/utils.js"
 
-  const keepOpenClass = {
+  const drawerOpenClass = {
     sm: "drawer-open",
     md: "md:drawer-open",
     lg: "lg:drawer-open",
@@ -15,17 +14,27 @@
   export let color: BackgroundColorString | undefined = undefined
   export let width: SidenavWidth | undefined = { open: "80" }
   export let keepOpenAt: BreakpointString | undefined = undefined
+  
+  const { classes, sizes } = getClassesAndSizes() 
+    ?? { classes: { open: "w-80" }, sizes: { open: "20rem" } }
 
   let sidenavSection: HTMLDivElement
   let sidenavOverlay: HTMLLabelElement
   let isRecentlyMounted = true
 
-  const { classes, sizes } = getClassesAndSizes() 
-    ?? { classes: { open: "w-80" }, sizes: { open: "20rem" } }
 
   $: $sidenav = $sidenav ? { ...$sidenav, isOpen } : undefined
   $: isOpen = keepOpenAt !== undefined && $currentBreakpoint === keepOpenAt
-  // $: isCollapsible = $currentBreakpoint && breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf(keepOpenAt ?? "xl")
+  $: isCollapsible = $currentBreakpoint 
+    ? breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf(keepOpenAt ?? "xl") 
+    : false
+  $: $sidenav = {
+    isOpen, isCollapsible,
+    toggle() {
+      isOpen = !isOpen
+      isRecentlyMounted = false
+    }
+  }
 
   function getClassesAndSizes() {
     if (width) {
@@ -46,26 +55,16 @@
     return undefined
   }
   onMount(async () => {
-    console.log(classes)
-    $sidenav = {
-      isOpen,
-      // isCollapsible: isCollapsible ?? false,
-      toggle() {
-        isOpen = !isOpen
-        isRecentlyMounted = false
-      }
-    }
-    await sleep(0.3)
+    sidenavOverlay.addEventListener("touchmove", e => e.preventDefault())
     const sidenavIsOverflown = (
       sidenavSection.scrollHeight > sidenavSection.clientHeight
       || sidenavSection.scrollWidth > sidenavSection.clientWidth
     )
     if (!sidenavIsOverflown) sidenavSection.addEventListener("touchmove", e => e.preventDefault())
-    sidenavOverlay.addEventListener("touchmove", e => e.preventDefault())
   })
 </script>
 
-<div class="drawer {keepOpenAt ? keepOpenClass[keepOpenAt] : ""}">
+<div class="drawer {keepOpenAt ? drawerOpenClass[keepOpenAt] : ""}">
   <input id={SIDENAV_ID}
     bind:checked={isOpen}
     type="checkbox" 
@@ -87,9 +86,9 @@
         {isRecentlyMounted 
           ? classes.open 
           : isOpen
-            ? `${classes.open} slide-in`
+            ? `${classes.open} ${isCollapsible ? "slide-in" : ""}`
             : classes.collapsed
-              ? `${classes.collapsed} slide-out`
+              ? `${classes.collapsed} ${isCollapsible ? "slide-out" : ""}`
               : classes.open
 
         }
