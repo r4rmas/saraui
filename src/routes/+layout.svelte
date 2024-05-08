@@ -78,9 +78,8 @@
         <div>
           {#each sidenavItems as { href, icon, label }, i}
             <SidenavItem {href} {icon} {label}
-              isActive={href => href === pathname} 
             />
-            {#if i === 1}
+            <!-- {#if i === 1}
               <SidenavCollapsibleList title="Components"
                 icon="i-mdi-package-variant"
               >
@@ -91,7 +90,7 @@
                   />
                 {/each}
               </SidenavCollapsibleList>
-            {/if}
+            {/if} -->
           {/each}
         </div>
         <!-- <div class="mx-auto">

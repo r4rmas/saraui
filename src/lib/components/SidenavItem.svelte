@@ -1,27 +1,44 @@
 <script lang="ts">
+  import { onMount } from "svelte"
+  import { sidenavItemsNeedToUpdate } from "$lib/private/stores.js"
   import { sidenav } from "$lib/stores.js"
   import type {  IconClassString } from "$lib/types.js"
-  import { cubicInOut } from "svelte/easing"
+  import { updateSidenavItems } from "$lib/utils.js"
   import { slide, type SlideParams } from "svelte/transition"
 
   export let href: string
-  export let isActive: boolean | ((href: string) => boolean)
   export let icon: IconClassString
   export let label: string
 
   const transition: SlideParams = { 
     axis: "x", 
-    easing: cubicInOut, 
+    delay: 90,
     duration: 100 
   }
 
-  $: _isActive = typeof isActive !== "boolean" 
-      ? isActive(href) 
-      : isActive
+  let _isActive = false
+  let isMounted = false
+
+  $: $sidenavItemsNeedToUpdate ? _isActive = getIsActive() : undefined
+
+  function getIsActive() {
+    if (isMounted) {
+      let baseURL = document.URL.split("//")[1]
+      baseURL = baseURL.split("/")[0]
+      return document ? document.URL.split("//")[1] === `${baseURL}${href}` : false
+    }
+    return false
+  }
   
   function handleClick() {
     if ($sidenav && !$sidenav.isCollapsible) $sidenav.toggle() 
+    updateSidenavItems()
   }
+
+  onMount(() => {
+    isMounted = true
+    _isActive = getIsActive()
+  })
 </script>
 
 <div>

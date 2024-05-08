@@ -32,7 +32,7 @@
   </label>
   <button on:click={$sidenav?.toggle}
     title={`  ${tooltip} `}
-    class="absolute inset-0"
+    class="absolute inset-0 select-none"
   >
     <span class="text-transparent">{tooltip}</span>
   </button>
