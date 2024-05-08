@@ -42,8 +42,9 @@
 
 <SaraProvider config={saraConfig}>
   <Scaffold sidenav={{ 
-    keepOpenAt: "xl", 
-    width: { open: "72", collapsed: "20" }
+    startCollapsed: true,
+    collapsedAt: "xl", 
+    width: { open: "64", collapsed: "20" }
   }}>
     <header slot="header" class="
       flex w-full items-center justify-between border-b border-base-200 bg-base-100
@@ -93,13 +94,13 @@
             {/if}
           {/each}
         </div>
-        <div class="mx-auto">
+        <!-- <div class="mx-auto">
           <Button color="primary">
             Star on GitHub
             <span class="i-mdi-github mb-0.5 text-lg"></span>
           </Button>
         </div>
-      </div>
+      </div> -->
     </svelte:fragment>
   </Scaffold>
 </SaraProvider>

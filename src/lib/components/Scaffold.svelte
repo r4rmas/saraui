@@ -5,10 +5,10 @@
 
   export let sidenav: SidenavConfig | undefined = undefined
 
-  $: ({ color, width, keepOpenAt } = sidenav ?? {})
+  $: ({ color, width, collapsedAt, startCollapsed } = sidenav ?? {})
 </script>
 
-<SidenavProvider {color} {keepOpenAt} {width}>
+<SidenavProvider {color} {collapsedAt} {width} {startCollapsed}>
   <div class="sticky z-10 top-0 left-0 right-0 xl:left-96">
     <slot name="header">
       <div class="flex justify-between items-center xl:flex-row-reverse w-full py-4 px-7 xl:p-7 text-lg">

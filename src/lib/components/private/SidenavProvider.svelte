@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte"
+  import { onMount, tick } from "svelte"
   import { SIDENAV_ID, backgroundColor,  breakpoints,  spacingRem, widthClass } from "$lib/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
   import type { BackgroundColorString, SidenavWidth, BreakpointString, SpacingString, SidenavWidthClass, SidenavWidthRem } from "$lib/types.js"
@@ -13,8 +13,9 @@
 
   export let color: BackgroundColorString | undefined = undefined
   export let width: SidenavWidth | undefined = { open: "80" }
-  export let keepOpenAt: BreakpointString | undefined = undefined
-  
+  export let collapsedAt: BreakpointString | undefined = undefined
+  export let startCollapsed: boolean | undefined = undefined
+
   const { classes, sizes } = getClassesAndSizes() 
     ?? { classes: { open: "w-80" }, sizes: { open: "20rem" } }
 
@@ -24,15 +25,18 @@
 
 
   $: $sidenav = $sidenav ? { ...$sidenav, isOpen } : undefined
-  $: isOpen = keepOpenAt !== undefined && $currentBreakpoint === keepOpenAt
+  $: isOpen = isRecentlyMounted && startCollapsed 
+    ? false 
+    : collapsedAt !== undefined && $currentBreakpoint === collapsedAt
   $: isCollapsible = $currentBreakpoint 
-    ? breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf(keepOpenAt ?? "xl") 
+    ? breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf(collapsedAt ?? "xl") 
     : false
   $: $sidenav = {
     isOpen, isCollapsible,
-    toggle() {
-      isOpen = !isOpen
+    async toggle() {
       isRecentlyMounted = false
+      if (!isCollapsible) await tick()
+      isOpen = !isOpen
     }
   }
 
@@ -64,7 +68,7 @@
   })
 </script>
 
-<div class="drawer {keepOpenAt ? drawerOpenClass[keepOpenAt] : ""}">
+<div class="drawer {collapsedAt ? drawerOpenClass[collapsedAt] : ""}">
   <input id={SIDENAV_ID}
     bind:checked={isOpen}
     type="checkbox" 
@@ -84,7 +88,9 @@
         p-2 h-full text-sm overflow-y-auto
         {color ? backgroundColor[color] : backgroundColor["base-200"]}
         {isRecentlyMounted 
-          ? classes.open 
+          ? startCollapsed
+            ? classes.collapsed
+            : classes.open 
           : isOpen
             ? `${classes.open} ${isCollapsible ? "slide-in" : ""}`
             : isCollapsible && classes.collapsed

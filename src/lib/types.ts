@@ -93,7 +93,8 @@ export type SidenavStore = {
   toggle: () => void
 }
 export type SidenavConfig = {
-  keepOpenAt?: BreakpointString
+  startCollapsed?: boolean
+  collapsedAt?: BreakpointString
   color?: BackgroundColorString
   width?: SidenavWidth
 }
