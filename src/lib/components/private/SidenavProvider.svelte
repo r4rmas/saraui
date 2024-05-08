@@ -1,104 +1,71 @@
 <script lang="ts">
   import { onMount } from "svelte"
-  import { SIDENAV_ID, backgroundColor, breakpoints, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
+  import { SIDENAV_ID, backgroundColor,  spacingRem, widthClass } from "$lib/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
-  import type { BackgroundColorString, WidthBreakpointSpacing, FullSpacingString, SidenavBreakpointBehavior, SidenavBehavior } from "$lib/types.js"
-  import { getBreakpointClass, getBreakpointValue, sleep } from "$lib/utils.js"
+  import type { BackgroundColorString, SidenavWidth, BreakpointString, SpacingString, SidenavWidthClass, SidenavWidthRem } from "$lib/types.js"
+  import { sleep } from "$lib/utils.js"
 
-  export let color: BackgroundColorString = "base-200"
-  export let collapsibleFrom: "md" | "lg"  | "xl" | undefined = undefined
-  export let behavior: SidenavBehavior | SidenavBreakpointBehavior | undefined = undefined
-  // export let behavior: { 
-  //   sm?: {
-  //     width: ,
-  //     collapsedWidth: ,
-  //   }, 
-  //   md?: , 
-  //   lg?:, 
-  //   xl?: 
-  // }
-  //TODO: width: { open?: WidthSpacingString | WidthBreakpointSpacing, closedCollapsible?: WidthSpacingString | WidthBreakpointSpacing }
-  export let width: FullSpacingString | WidthBreakpointSpacing | undefined = undefined
-
-  const _collapsibleWidthClass = {
-    md: "md:w-[85px]",
-    lg: "lg:w-[85px]",
-    xl: "xl:w-[85px]",
+  const keepOpenClass = {
+    sm: "drawer-open",
+    md: "md:drawer-open",
+    lg: "lg:drawer-open",
+    xl: "xl:drawer-open"
   }
+
+  export let color: BackgroundColorString | undefined = undefined
+  export let width: SidenavWidth | undefined = { open: "80" }
+  export let keepOpenAt: BreakpointString | undefined = undefined
 
   let sidenavSection: HTMLDivElement
   let sidenavOverlay: HTMLLabelElement
-  let collapsibleWidthClass = ""
-  let firstTimeUpdated = true
-  let openWidth: number
+  let isRecentlyMounted = true
+
+  const { classes, sizes } = getClassesAndSizes() 
+    ?? { classes: { open: "w-80" }, sizes: { open: "20rem" } }
 
   $: $sidenav = $sidenav ? { ...$sidenav, isOpen } : undefined
-  $: isCollapsible = $currentBreakpoint && breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf("xl")
-  $: isOpen = isCollapsible ?? false
+  $: isOpen = keepOpenAt !== undefined && $currentBreakpoint === keepOpenAt
+  // $: isCollapsible = $currentBreakpoint && breakpoints.indexOf($currentBreakpoint) >= breakpoints.indexOf(keepOpenAt ?? "xl")
 
-  function getBehavior() {
-    if (behavior) {
-      const keys = Object.keys(behavior)
-      let hasBreakpoints = false
-      for (const b of breakpoints) if (keys.includes(b)) {
-        hasBreakpoints = true
-        break
+  function getClassesAndSizes() {
+    if (width) {
+      const defaultOpenWidth: SpacingString = "80"
+      const { open, collapsed } = width
+      const classes: SidenavWidthClass = { 
+        open: widthClass[open ?? defaultOpenWidth]
       }
-      if (hasBreakpoints) {
-        if ($currentBreakpoint) {
-          const _behavior = getBreakpointValue(<SidenavBreakpointBehavior>behavior, $currentBreakpoint)
-          if (_behavior) return <SidenavBehavior>_behavior
-        }
-        else return undefined
+      const _sizes: SidenavWidthRem = {
+        open: spacingRem[open ?? defaultOpenWidth]
       }
-      else return <SidenavBehavior>behavior
+      if (collapsed) {
+        classes.collapsed = widthClass[collapsed]
+        _sizes.collapsed = spacingRem[collapsed]
+      }
+      return { classes, sizes: _sizes }
     }
     return undefined
   }
-  function _getResponsiveClass() {
-    if (width) {
-      if (typeof width !== "string") return getBreakpointClass(width, {
-        sm: widthClass,
-        md: widthClassMD,
-        lg: widthClassLG,
-        xl: widthClassXL
-      })
-      else return widthClass[width]
-    }
-  }
-
   onMount(async () => {
-    console.log(getBehavior())
+    console.log(classes)
     $sidenav = {
       isOpen,
-      isCollapsible: isCollapsible ?? false,
+      // isCollapsible: isCollapsible ?? false,
       toggle() {
-        if (firstTimeUpdated) firstTimeUpdated = false
-        if (isOpen) {
-          if (collapsibleFrom) {
-            if ($currentBreakpoint) {
-              const currentBreakpointIndex = breakpoints.indexOf($currentBreakpoint)
-              const collapsibleBreakpointIndex = breakpoints.indexOf(collapsibleFrom)
-              if (currentBreakpointIndex >= collapsibleBreakpointIndex) 
-                collapsibleWidthClass = _collapsibleWidthClass[collapsibleFrom]
-            }
-          }
-          isOpen = false 
-        } else {
-          collapsibleWidthClass = ""
-          isOpen = true
-        }
+        isOpen = !isOpen
+        isRecentlyMounted = false
       }
     }
     await sleep(0.3)
-    openWidth = sidenavSection.getBoundingClientRect().width
-    const sidenavIsOverflown = sidenavSection.scrollHeight > sidenavSection.clientHeight || sidenavSection.scrollWidth > sidenavSection.clientWidth
+    const sidenavIsOverflown = (
+      sidenavSection.scrollHeight > sidenavSection.clientHeight
+      || sidenavSection.scrollWidth > sidenavSection.clientWidth
+    )
     if (!sidenavIsOverflown) sidenavSection.addEventListener("touchmove", e => e.preventDefault())
     sidenavOverlay.addEventListener("touchmove", e => e.preventDefault())
   })
 </script>
 
-<div class="drawer xl:drawer-open">
+<div class="drawer {keepOpenAt ? keepOpenClass[keepOpenAt] : ""}">
   <input id={SIDENAV_ID}
     bind:checked={isOpen}
     type="checkbox" 
@@ -113,16 +80,18 @@
       class="drawer-overlay"
     ></label>
     <div bind:this={sidenavSection}
-      style="--w: {openWidth}px;"
+      style="--w: {sizes.open}; --c: {sizes.collapsed ? sizes.collapsed : sizes.open}"
       class="
         p-2 h-full text-sm overflow-y-auto
-        {backgroundColor[color]}
-        {width ? _getResponsiveClass() : "w-80 xl:w-96"} 
-        {!firstTimeUpdated
-          ? isOpen
-              ? `${$currentBreakpoint && isCollapsible ? "slide-in" : ""}`
-              : `${collapsibleWidthClass.length ? `${collapsibleWidthClass} slide-out` : ""}` 
-          : ""
+        {color ? backgroundColor[color] : backgroundColor["base-200"]}
+        {isRecentlyMounted 
+          ? classes.open 
+          : isOpen
+            ? `${classes.open} slide-in`
+            : classes.collapsed
+              ? `${classes.collapsed} slide-out`
+              : classes.open
+
         }
       "
     >
@@ -142,7 +111,7 @@
   }
   @keyframes slide-in {
     0% {
-      width: 5rem;
+      width: var(--c);
     }
     100% {
       width: var(--w);
@@ -153,7 +122,7 @@
       width: var(--w);
     }
     100% {
-      width: 5rem;
+      width: var(--c);
     }
   }
 </style>

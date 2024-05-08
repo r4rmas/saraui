@@ -1,9 +1,7 @@
 import { writable } from "svelte/store"
 import { breakpoints, textSize } from "./constants.js"
-import type { Breakpoints } from "./enums.js"
 import { notificationData } from "$lib/private/stores.js"
 import type { NotificationCauseString, AnyBreakPointType, TitledNotificationContent, Icon, SizeString, TextSizeString, ModalRef, BreakpointString, BreakpointClass } from "./types.js"
-import type { currentBreakpoint } from "./stores.js"
 
 export function showNotification(cause: NotificationCauseString, content: string | TitledNotificationContent) {
   setTimeout(() => notificationData.update(old => ({

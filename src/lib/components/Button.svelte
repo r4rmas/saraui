@@ -31,7 +31,7 @@
     }
   }
   function setButtonWidth() {
-    if (!_buttonWidth) {
+    if (button) {
       const { width } = button.getBoundingClientRect()
       buttonWidth = `width: ${width}px`
     }

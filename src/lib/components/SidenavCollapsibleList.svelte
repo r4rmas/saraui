@@ -56,4 +56,8 @@
     background-color: rgba(0, 0, 0, 0.1) !important;
     @apply !text-base-content !text-opacity-40
   }
+  /* summary::after {
+    width: .4rem !important;
+    height: .4rem !important;
+  } */
 </style>

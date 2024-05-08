@@ -49,8 +49,8 @@ export type ModalRef = {
 }
 export type ConfirmationModalIcons = {
   position?: HorizontalPositionString
-  accept?  : Icon | IconClassString
-  cancel?  : Icon | IconClassString
+  accept?  : IconClassString
+  cancel?  : IconClassString
 }
 
 export type NotificationIcons = {
@@ -89,20 +89,27 @@ export type NotificationStore = {
 
 export type SidenavStore = {
   isOpen: boolean
-  isCollapsible: boolean
+  // isCollapsible: boolean
   toggle: () => void
 }
 export type SidenavConfig = {
-  // collapsibleFrom?: "md" | "lg" | "xl", 
+  keepOpenAt?: BreakpointString
   color?: BackgroundColorString
-  width?: FullSpacingString | WidthBreakpointSpacing
+  width?: SidenavWidth
 }
-export type SidenavBehavior = {
-  width: SpacingString
-  collapsedWidth?: SpacingString
+export type SidenavWidth = {
+  open?: SpacingString
+  collapsed?: SpacingString
 }
-export type SidenavBreakpointBehavior = {
-  [k in BreakpointString]?: SidenavBehavior
+export type SidenavBreakpointWidth = {
+  [k in BreakpointString]?: SidenavWidth
+}
+export type SidenavWidthClass = {
+  open?: string, 
+  collapsed?: string 
+}
+export type SidenavWidthRem = {
+  [k in keyof SidenavWidthClass]: RemString
 }
 
 export type SpacingRem = {

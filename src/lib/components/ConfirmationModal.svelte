@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { ConfirmationModalIcons, OnEvent, ColorString, ModalRef } from "$lib/types.js"
-  import { getIconClass } from "$lib/utils.js"
   import Button from "./Button.svelte"
 
   export let ref: ModalRef
@@ -41,23 +40,29 @@
             active:outline-none
         ">
           {#if cancelIcon && iconPosition === "left"}
-            <span class={getIconClass(cancelIcon)}></span>
+            <span class={cancelIcon}></span>
           {/if}
           {cancelText}
           {#if cancelIcon && iconPosition === "right"}
-            <span class={getIconClass(cancelIcon)}></span>
+            <span class={cancelIcon}></span>
           {/if}
         </button>
       </form>
       <Button {color} onClick={e => handleClick(e)}>
         {#if acceptIcon && iconPosition === "left"}
-          <span class={getIconClass(acceptIcon)}></span>
+          <span class={acceptIcon}></span>
         {/if}
         {acceptText}
         {#if acceptIcon && iconPosition === "right"}
-          <span class={getIconClass(acceptIcon)}></span>
+          <span class={acceptIcon}></span>
         {/if}
       </Button>
     </div>
   </div>
 </dialog>
+
+<style lang="postcss">
+  span {
+    @apply text-lg mb-0.5
+  }
+</style>

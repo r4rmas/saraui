@@ -20,18 +20,31 @@
     }
   }
 
-  const sidenavElements: { href: string, label: string, icon: IconClassString }[] = [
+  const sidenavItems: { href: string, label: string, icon: IconClassString }[] = [
     { href: "/", label: "Home", icon: "i-mdi-home-outline" },
     { href: "/provider", label: "Provider", icon: "i-mdi-power-plug-outline" },
     { href: "/stores", label: "Stores", icon: "i-mdi-share-variant" },
     { href: "/whats-next", label: "What's next", icon: "i-mdi-fast-forward" },
+  ]
+  const componentItems: { href: `/components/${string}`, label: string }[] = [
+    { href: "/components/buttons", label: "Buttons" },
+    { href: "/components/dropdown", label: "Dropdown" },
+    { href: "/components/imageuploader", label: "ImageUploader" },
+    { href: "/components/loader", label: "Loader" },
+    { href: "/components/modals", label: "Modals" },
+    { href: "/components/notification", label: "Notification" },
+    { href: "/components/scaffold", label: "Scaffold" },
+    { href: "/components/selectors", label: "Selectors" },
   ]
   
   $: ({ url: { pathname } } = $page)
 </script>
 
 <SaraProvider config={saraConfig}>
-  <Scaffold sidenav={{ width: "80" }}>
+  <Scaffold sidenav={{ 
+    keepOpenAt: "xl", 
+    width: { open: "72", collapsed: "20" }
+  }}>
     <header slot="header" class="
       flex w-full items-center justify-between border-b border-base-200 bg-base-100
       py-2 pr-2 md:py-3 md:pr-3 xl:py-4 xl:pr-4
@@ -62,25 +75,21 @@
     <svelte:fragment slot="sidenav">
       <div class="flex flex-col h-full justify-between">
         <div>
-          {#each sidenavElements as { href, icon, label }, i}
+          {#each sidenavItems as { href, icon, label }, i}
             <SidenavItem {href} {icon} {label}
               isActive={href => href === pathname} 
             />
-            {#if i < sidenavElements.length - 1}
-              {#if i === 1}
-                <div class="h-1.5"></div>
-                <SidenavCollapsibleList title="Components"
-                  icon="i-mdi-package-variant"
-                >
-                  <div class="h-1.5"></div>
-                  <SidenavItem href="/components/buttons" label="Buttons" 
+            {#if i === 1}
+              <SidenavCollapsibleList title="Components"
+                icon="i-mdi-package-variant"
+              >
+                {#each componentItems as { href, label }}
+                  <SidenavItem {href} {label}
                     isActive={href => href === pathname}
                     icon="i-"
                   />
-                  <div class="h-1.5"></div>
-                </SidenavCollapsibleList>
-              {/if}
-              <div class="h-1.5"></div>
+                {/each}
+              </SidenavCollapsibleList>
             {/if}
           {/each}
         </div>
