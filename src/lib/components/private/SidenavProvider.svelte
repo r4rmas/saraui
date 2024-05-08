@@ -87,8 +87,8 @@
           ? classes.open 
           : isOpen
             ? `${classes.open} ${isCollapsible ? "slide-in" : ""}`
-            : classes.collapsed
-              ? `${classes.collapsed} ${isCollapsible ? "slide-out" : ""}`
+            : isCollapsible && classes.collapsed
+              ? `${classes.collapsed} slide-out`
               : classes.open
 
         }
