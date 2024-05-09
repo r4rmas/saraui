@@ -33,7 +33,7 @@
       </div>
     {/if}
     {#if $sidenav && $sidenav.isOpen}
-      <span transition:slide={transition} class={!icon ? "-ml-1" : ""}>{label}</span>
+      <span transition:slide={transition}>{label}</span>
     {/if}
   </a>
 </div>

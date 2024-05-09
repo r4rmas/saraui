@@ -37,10 +37,10 @@
 </script>
 
 <SaraProvider config={saraConfig}>
-  <!-- TODO: PROVEER POR DEFECTO UN width collapsed -->
   <Scaffold sidenav={{ 
     collapsedAt: "xl",
-    width: { open: "64", collapsed: "20" },
+    width: { open: "64" },
+    startCollapsed: true
   }}>
     <header slot="header" class="
       flex w-full items-center justify-between border-b border-base-200 bg-base-100

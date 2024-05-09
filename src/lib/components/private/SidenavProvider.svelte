@@ -12,12 +12,20 @@
   }
 
   export let color: BackgroundColorString | undefined = undefined
-  export let width: SidenavWidth | undefined = { open: "80" }
+  export let width: SidenavWidth | undefined = undefined
   export let collapsedAt: BreakpointString | undefined = undefined
   export let startCollapsed: boolean | undefined = undefined
 
-  const { classes, sizes } = getClassesAndSizes() 
-    ?? { classes: { open: "w-80" }, sizes: { open: "20rem" } }
+  const { classes, sizes } = getClassesAndSizes() ?? { 
+    classes: { 
+      open: "w-80", 
+      collapsed: startCollapsed ? "w-20" : undefined 
+    }, 
+    sizes: { 
+      open: "20rem",
+      collapsed: startCollapsed ? "5rem" : undefined
+    } 
+  }
 
   let sidenavSection: HTMLDivElement
   let sidenavOverlay: HTMLLabelElement
@@ -46,6 +54,7 @@
   function getClassesAndSizes() {
     if (width) {
       const defaultOpenWidth: SpacingString = "80"
+      const defaultCollapsedWidth: SpacingString = "20"
       const { open, collapsed } = width
       const classes: SidenavWidthClass = { 
         open: widthClass[open ?? defaultOpenWidth]
@@ -56,6 +65,10 @@
       if (collapsed) {
         classes.collapsed = widthClass[collapsed]
         _sizes.collapsed = spacingRem[collapsed]
+      }
+      else {
+        classes.collapsed = widthClass[defaultCollapsedWidth]
+        _sizes.collapsed = spacingRem[defaultCollapsedWidth]
       }
       return { classes, sizes: _sizes }
     }
