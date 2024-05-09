@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Button from "$lib/components/Button.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
@@ -42,7 +41,6 @@
   <Scaffold sidenav={{ 
     collapsedAt: "xl",
     width: { open: "64", collapsed: "20" },
-    startCollapsed: true
   }}>
     <header slot="header" class="
       flex w-full items-center justify-between border-b border-base-200 bg-base-100
@@ -81,7 +79,7 @@
                 icon="i-mdi-package-variant"
               >
                 {#each componentItems as { href, label }}
-                  <SidenavItem {href} {label} icon="i-" />
+                  <SidenavItem {href} {label} />
                 {/each}
               </SidenavCollapsibleList>
             {/if}

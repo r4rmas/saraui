@@ -5,16 +5,26 @@
 
   export let title: string
   export let icon: IconClassString
-  export let startOpen = true
-
-  let summary: HTMLElement
+  //If I want to add a startOpen prop it's neccessary to remake the whole 
+  //componente with JS, else there's a shadow effect when loading the web
+  //it seems like the <datails open> has an open effect that leaves the
+  //shadow effect
   
+  let summary: HTMLElement
+  let open = false
+
+  function handleClick(e: Event) {
+    e.preventDefault()
+    if ($sidenav) {
+      if (!$sidenav.isOpen && open) return
+      else open = !open
+    }
+  }
+
   onMount(() => {
     summary.addEventListener("click", () => {
-      if ($sidenav) {
-        if (!$sidenav.isOpen) {
-          $sidenav.toggle()
-        }
+      if ($sidenav && !$sidenav.isOpen) {
+        $sidenav.toggle()
       }
     })
   })
@@ -22,20 +32,32 @@
 
 <ul class="menu p-0">
   <li>
-    <details bind:open={startOpen}>
+    <details bind:open>
       <summary bind:this={summary} 
+        on:click={handleClick}
         class="
           menu-title select-none flex w-full justify-between 
           items-center gap-2 cursor-pointer rounded-btn h-10 
-          text-base-content text-opacity-40
+          text-base-content pr-3
         "
       >
-        <div class="flex gap-2">
-          <span class="{icon} text-xl text-base-content"></span>
-          {#if $sidenav && $sidenav.isOpen}
-            <span class="text-base-content text-opacity-50 font-medium">
-              {title}
-            </span>
+        <div class="flex justify-between items-center w-full">
+          <div class="flex gap-2">
+            <span class="{icon} text-xl text-base-content"></span>
+            {#if $sidenav && $sidenav.isOpen}
+              <span class="text-base-content font-normal">
+                {title}
+              </span>
+            {/if}
+          </div>
+          {#if open}
+            <svg class="w-6 h-6 {$sidenav?.isOpen ? "" : "ml-1"}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m16 14-4-4-4 4"/>
+            </svg>
+          {:else}
+            <svg class="w-6 h-6 {$sidenav?.isOpen ? "" : "ml-1"}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8 10 4 4 4-4"/>
+            </svg>
           {/if}
         </div>
       </summary>
@@ -56,8 +78,7 @@
     background-color: rgba(0, 0, 0, 0.1) !important;
     @apply !text-base-content !text-opacity-40
   }
-  /* summary::after {
-    width: .4rem !important;
-    height: .4rem !important;
-  } */
+  summary::after {
+    display: none !important;
+  }
 </style>

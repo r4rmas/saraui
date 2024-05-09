@@ -7,13 +7,12 @@
   import { slide, type SlideParams } from "svelte/transition"
 
   export let href: string
-  export let icon: IconClassString
+  export let icon: IconClassString | undefined = undefined
   export let label: string
 
   const transition: SlideParams = { 
-    axis: "x", 
-    delay: 90,
-    duration: 100 
+    axis: "x",
+    duration: 10 
   }
 
   let _isActive = false
@@ -49,9 +48,13 @@
       {_isActive ? "bg-neutral text-neutral-content" : ""}
     "
   >
-    <span class="{icon} text-xl mb-0.5"></span>
+    {#if icon}
+      <div class="w-5 h-5">
+        <span class="{icon} text-xl"></span>
+      </div>
+    {/if}
     {#if $sidenav && $sidenav.isOpen}
-      <span transition:slide={transition}>{label}</span>
+      <span transition:slide={transition} class={!icon ? "-ml-1" : ""}>{label}</span>
     {/if}
   </a>
 </div>
