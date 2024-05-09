@@ -1,9 +1,12 @@
 <script lang="ts">
-  import SaraProvider from "$lib/components/SaraProvider.svelte"
+  import Link from "$lib/components/Link.svelte"
+import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
+    import SidenavAnyContainer from "$lib/components/SidenavCollapsibleContainer.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import SidenavCollapsibleList from "$lib/components/SidenavCollapsibleList.svelte"
   import SidenavItem from "$lib/components/SidenavItem.svelte"
+    import { sidenav } from "$lib/stores.js"
   import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
   import "../app.pcss"
 
@@ -85,6 +88,13 @@
             {/if}
           {/each}
         </div>
+        {#if $sidenav?.isOpen}
+          <SidenavAnyContainer>
+            <Link href="github.com/r4rmas/saraui" target="_blank">
+              Star on GitHub
+            </Link>
+          </SidenavAnyContainer>
+        {/if}
         <!-- <div class="mx-auto">
           <Button color="primary">
             Star on GitHub

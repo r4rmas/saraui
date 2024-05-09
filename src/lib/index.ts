@@ -24,6 +24,7 @@ import Scaffold from "./components/Scaffold.svelte";
 import SidenavButton from "./components/SidenavButton.svelte";
 import SidenavItem from "./components/SidenavItem.svelte";
 import SidenavCollapsibleList from "./components/SidenavCollapsibleList.svelte";
+import SidenavCollapsibleContainer from "./components/SidenavCollapsibleContainer.svelte";
 import Dropdown from "./components/Dropdown.svelte";
 import Link from "./components/Link.svelte";
 
@@ -37,6 +38,6 @@ export {
   RadioSelector, type SelectorOption,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationBreakpointDirection as NotificationDirection, type TitledNotificationContent, showNotification,
   Modal, ConfirmationModal, type ConfirmationModalIcons, useModal,
-  Scaffold, SidenavButton, SidenavItem, SidenavCollapsibleList, type SidenavConfig, type SidenavWidth, sidenav,
+  Scaffold, SidenavButton, SidenavItem, SidenavCollapsibleList, SidenavCollapsibleContainer, type SidenavConfig, type SidenavWidth, sidenav,
   Dropdown
 }

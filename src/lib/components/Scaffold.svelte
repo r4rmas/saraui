@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { SidenavConfig } from "$lib/types.js"
   import SidenavButton from "./SidenavButton.svelte"
-  import SidenavProvider from "./private/SidenavProvider.svelte"
+  import SidenavProvider from "./private/sidenav/Provider.svelte"
 
   export let sidenav: SidenavConfig | undefined = undefined
 
