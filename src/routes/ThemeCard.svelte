@@ -40,7 +40,7 @@
     As Sara is made with daisyUI, every componente will get instantly 
     <p class="text-lg font-semibold m-2 tracking-tighter">t h e m e d !</p>
   </div>
-  <div>
+  <div class="flex flex-col md:flex-row gap-2">
     <Dropdown label="☀️ Light themes"
       options={lightThemes} 
       bind:state={selectedTheme}
