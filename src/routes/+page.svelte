@@ -1,11 +1,11 @@
 <script lang="ts">
   import type { NotificationCauseString, SelectorOption } from "$lib/types.js"
   import { showNotification, sleep, useModal } from "$lib/utils.js"
-  import { daisyButton, saraButton, tailwindConfig, layoutFile } from "./DisplayableCode.js"
+  import { daisyButton, saraButton, tailwindConfig, layoutFile } from "./displayableCodes.js"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
-  import CodeCard from "../lib/components/private/CodeCard.svelte"
+  import CodeCard from "./CodeCard.svelte"
   import Button from "$lib/components/Button.svelte"
   import Dropdown from "$lib/components/Dropdown.svelte"
 

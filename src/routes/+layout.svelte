@@ -1,13 +1,13 @@
 <script lang="ts">
+  import { sidenav } from "$lib/stores.js"
+  import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
   import Link from "$lib/components/Link.svelte"
-import SaraProvider from "$lib/components/SaraProvider.svelte"
+  import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
-    import SidenavAnyContainer from "$lib/components/SidenavCollapsibleContainer.svelte"
+  import SidenavAnyContainer from "$lib/components/SidenavCollapsibleContainer.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import SidenavCollapsibleList from "$lib/components/SidenavCollapsibleList.svelte"
   import SidenavItem from "$lib/components/SidenavItem.svelte"
-    import { sidenav } from "$lib/stores.js"
-  import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
   import "../app.pcss"
 
   const saraConfig: SaraProviderConfig = {
@@ -43,7 +43,6 @@ import SaraProvider from "$lib/components/SaraProvider.svelte"
   <Scaffold sidenav={{ 
     collapsedAt: "xl",
     width: { open: "64" },
-    startCollapsed: true
   }}>
     <header slot="header" class="
       flex w-full items-center justify-between border-b border-base-200 bg-base-100
@@ -90,18 +89,16 @@ import SaraProvider from "$lib/components/SaraProvider.svelte"
         </div>
         {#if $sidenav?.isOpen}
           <SidenavAnyContainer>
-            <Link href="github.com/r4rmas/saraui" target="_blank">
+            <Link href="https://github.com/r4rmas/saraui" 
+              target="_blank"
+              modifier="glass"
+              color="primary"
+              isUnderlined={false}
+            >
               Star on GitHub
             </Link>
           </SidenavAnyContainer>
         {/if}
-        <!-- <div class="mx-auto">
-          <Button color="primary">
-            Star on GitHub
-            <span class="i-mdi-github mb-0.5 text-lg"></span>
-          </Button>
-        </div>
-      </div> -->
     </svelte:fragment>
   </Scaffold>
 </SaraProvider>
