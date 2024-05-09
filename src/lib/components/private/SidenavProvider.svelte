@@ -77,8 +77,7 @@
   onMount(async () => {
     sidenavOverlay.addEventListener("touchmove", e => e.preventDefault())
     const sidenavIsOverflown = (
-      sidenavSection.scrollHeight >= sidenavSection.clientHeight
-      || sidenavSection.scrollWidth > sidenavSection.clientWidth
+      sidenavSection.scrollHeight > sidenavSection.clientHeight
     )
     if (!sidenavIsOverflown) sidenavSection.addEventListener("touchmove", e => e.preventDefault())
   })
