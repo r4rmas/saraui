@@ -12,7 +12,10 @@
 </script>
 
 <div class="dropdown">
-  <div tabindex="0" role="button" class="btn m-1">
+  <div tabindex="0" 
+    role="button" 
+    class="btn btn-outline"
+  >
     {label}
     <svg xmlns="http://www.w3.org/2000/svg" 
       class="h-3 w-3 ml-1 fill-current opacity-60 inline-block" 
@@ -23,7 +26,7 @@
     </svg>
   </div>
   <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-  <ul tabindex="0" class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
+  <ul tabindex="0" class="dropdown-content z-[1] p-2 shadow-2xl bg-base-100 rounded-box w-52 m-1">
     {#each options as { label, value }}
       <li>
         <input {name}

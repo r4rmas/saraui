@@ -7,7 +7,7 @@
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
   import CodeCard from "./CodeCard.svelte"
   import Button from "$lib/components/Button.svelte"
-  import Dropdown from "$lib/components/Dropdown.svelte"
+  import ThemeCard from "./ThemeCard.svelte"
 
   const notificationCauses: SelectorOption[] = [
     { label: "success", value: "success", isSelected: true }, 
@@ -16,35 +16,9 @@
     { label: "error", value: "error" }
   ]
 
-  const lightThemes: SelectorOption[] = [
-    { label: "Bumblebee", value: "bumblebee" }, 
-    { label: "Corporate", value: "corporate" }, 
-    { label: "Emerald", value: "emerald" }, 
-    { label: "Lemonade", value: "lemonade" }, 
-    { label: "Retro", value: "retro" }, 
-    { label: "Valentine", value: "valentine" }, 
-  ]
-  const darkThemes: SelectorOption[] = [
-    { label: "Dracula", value: "dracula" }, 
-    { label: "Dim", value: "dim" }, 
-    { label: "Forest", value: "forest" }, 
-    { label: "Night", value: "night" }, 
-    { label: "Sunset", value: "sunset" }, 
-    { label: "Synthwave", value: "synthwave" }, 
-  ]
-
   const { ref, show } = useModal()
 
   let selectedRadio: NotificationCauseString = "success"
-  let selectedTheme: string | undefined = undefined
-
-  $: selectedTheme ? updateTheme(selectedTheme) : undefined
-
-  function updateTheme(selectedTheme: string) {
-    document
-      .querySelector(":root")
-      ?.setAttribute("data-theme", selectedTheme)
-  }
 </script>
 
 <div></div>
@@ -56,7 +30,6 @@
   <span class="svelte">Svelte</span>/<span class="svelte">Svelte</span>Kit
 </p>
 
-<div class="hidden md:block"></div>
 <ImageUploader />
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
   <RadioSelector name="notification" 
@@ -79,7 +52,7 @@
 
 <div></div>
 <div class="mt-2 text-start w-full">
-  <div class="logo-gradient">
+  <div class="logo-gradient-text">
     <h2 class="title text-transparent">
       Get Sarisfied!
     </h2>
@@ -128,53 +101,20 @@
         </div>
       </div>
     </div>
-    <div class="hidden lg:flex xl:hidden 2xl:flex w-full h-full items-center px-20 py-2">
-      <div class="flex flex-col gap-4 w-full h-fit items-center text-center border border-accent px-4 py-10 rounded-box">
-        <p class="font-medium">
-          As Sara is made with daisyUI, every componente will get instantly 
-          <span class="text-primary">themed</span>!
-        </p>
-        <div>
-          <Dropdown label="☀️ Light themes"
-            options={lightThemes} 
-            bind:state={selectedTheme}
-            name="theme"
-          />
-          <Dropdown label="🌙 Dark themes"
-            options={darkThemes} 
-            bind:state={selectedTheme}
-            name="theme"
-          />
-        </div>
-        <a href="https://daisyui.com/docs/themes/" class="link text-secondary">
-          Learn more about themes
-        </a>
-      </div>
+    <div class="
+      hidden lg:flex xl:hidden 2xl:flex 
+      w-full h-full 
+      items-center 
+      px-10 py-2
+    ">
+      <ThemeCard />
     </div>
   </div>
 </div>
 
 <div class="xl:hidden 2xl:block"></div>
-<div class="flex flex-col lg:hidden xl:flex 2xl:hidden gap-4 lg:my-4 w-full items-center text-center border border-accent px-4 py-10 md:py-8 rounded-box">
-  <p class="font-medium">
-    As Sara is made with daisyUI, every componente will get instantly 
-    <span class="text-primary">themed</span>!
-  </p>
-  <div>
-    <Dropdown label="☀️ Light themes"
-      options={lightThemes} 
-      bind:state={selectedTheme}
-      name="theme"
-    />
-    <Dropdown label="🌙 Dark themes"
-      options={darkThemes} 
-      bind:state={selectedTheme}
-      name="theme"
-    />
-  </div>
-  <a href="https://daisyui.com/docs/themes/" class="link text-secondary">
-    Learn more about themes
-  </a>
+<div class="lg:hidden xl:block 2xl:hidden">
+  <ThemeCard />
 </div>
 
 <div class="lg:hidden"></div>

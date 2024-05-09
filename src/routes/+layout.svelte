@@ -43,15 +43,16 @@
   <Scaffold sidenav={{ 
     collapsedAt: "xl",
     width: { open: "64" },
+    startCollapsed: true
   }}>
     <header slot="header" class="
-      flex w-full items-center justify-between border-b border-base-200 bg-base-100
+      flex w-full items-center justify-between border-b border-base-300 bg-base-100
       py-2 pr-2 md:py-3 md:pr-3 xl:py-4 xl:pr-4
     ">
       <SidenavButton tooltip=" Menu " />
       <a href="/">
         <div class="flex gap-3 items-center">
-          <div class="logo-gradient">
+          <div class="logo-gradient-text">
             <h1 class="flex gap-2 mt-2 text-2xl md:text-3xl font-bold text-transparent">
               <span>Sara</span>
               <span>UI</span>
@@ -72,7 +73,7 @@
     </main>
 
     <svelte:fragment slot="sidenav">
-      <div class="flex flex-col h-full justify-between">
+      <div class="flex flex-col h-full justify-between border-r border-r-base-300 p-2">
         <div>
           {#each sidenavItems as { href, icon, label }, i}
             <SidenavItem {href} {icon} {label} />
@@ -88,16 +89,19 @@
           {/each}
         </div>
         {#if $sidenav?.isOpen}
-          <SidenavAnyContainer>
-            <Link href="https://github.com/r4rmas/saraui" 
-              target="_blank"
-              modifier="glass"
-              color="primary"
-              isUnderlined={false}
-            >
-              Star on GitHub
-            </Link>
-          </SidenavAnyContainer>
+          <div class="mx-auto">
+            <SidenavAnyContainer>
+              <Link href="https://github.com/r4rmas/saraui" 
+                target="_blank"
+                modifier="glass"
+                color="primary"
+                isUnderlined={false}
+              >
+                Star on GitHub
+                <span class="i-mdi-github text-lg mb-0.5"></span>
+              </Link>
+            </SidenavAnyContainer>
+          </div>
         {/if}
     </svelte:fragment>
   </Scaffold>

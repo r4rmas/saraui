@@ -100,8 +100,8 @@
     <div bind:this={sidenavSection}
       style="--w: {sizes.open}; --c: {sizes.collapsed ? sizes.collapsed : sizes.open}"
       class="
-        p-2 h-full text-sm overflow-y-auto
-        {color ? backgroundColor[color] : backgroundColor["base-200"]}
+        h-full text-sm overflow-y-auto
+        {color ? backgroundColor[color] : backgroundColor["base-100"]}
         {isRecentlyMounted 
           ? startCollapsed
             ? classes.collapsed
