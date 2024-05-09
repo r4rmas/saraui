@@ -1,6 +1,6 @@
 import { writable } from "svelte/store"
 import { breakpoints, textSize } from "./constants.js"
-import { notificationData, sidenavItemsNeedToUpdate } from "$lib/private/stores.js"
+import { notificationData } from "$lib/private/stores.js"
 import type { NotificationCauseString, AnyBreakPointType, TitledNotificationContent, Icon, SizeString, TextSizeString, ModalRef, BreakpointString, BreakpointClass } from "./types.js"
 
 export function showNotification(cause: NotificationCauseString, content: string | TitledNotificationContent) {
@@ -87,7 +87,3 @@ export function getIconClass(icon : Icon | string | undefined, size?: TextSizeSt
   //     }
   //   })
   // }
-export function updateSidenavItems() {
-  setTimeout(() => sidenavItemsNeedToUpdate.update(old => !old))
-  sidenavItemsNeedToUpdate.set(false) 
-}

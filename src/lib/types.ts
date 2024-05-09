@@ -102,9 +102,6 @@ export type SidenavWidth = {
   open?: SpacingString
   collapsed?: SpacingString
 }
-export type SidenavBreakpointWidth = {
-  [k in BreakpointString]?: SidenavWidth
-}
 export type SidenavWidthClass = {
   open?: string, 
   collapsed?: string 

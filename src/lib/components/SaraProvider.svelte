@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { page } from "$app/stores"
   import { tailwindBreakpointPixels } from "$lib/constants.js"
-  import { currentBreakpoint } from "$lib/stores.js"
+  import { currentBreakpoint, currentPathname } from "$lib/stores.js"
   import { loader, notificationData } from "$lib/private/stores.js"
   import type { SaraProviderConfig } from "$lib/types.js"
   import Notification from "./Notification.svelte"
@@ -15,6 +16,8 @@
 
   $loader = _loader ?? $loader
   $: ({ visible, cause } = $notificationData)
+  $: ({ url: { pathname } } = $page)
+  $: $currentPathname = pathname
   $: $currentBreakpoint = getCurrentBreakpoint(width)
 
   function getCurrentBreakpoint (width: number) {
