@@ -34,11 +34,12 @@
   <li>
     <details bind:open>
       <summary bind:this={summary} 
+        title={!$sidenav?.isOpen ? ` ${title} ` : ""}
         on:click={handleClick}
         class="
           menu-title select-none flex w-full justify-between 
           items-center gap-2 cursor-pointer rounded-btn h-10 
-          text-base-content pr-3
+          text-base-content {$sidenav && !$sidenav.isOpen ? "pr-0" : "pr-3"}
         "
       >
         <div class="flex justify-between items-center w-full">
@@ -51,11 +52,11 @@
             {/if}
           </div>
           {#if open}
-            <svg class="w-6 h-6 {$sidenav?.isOpen ? "" : "ml-1"}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-base-content text-opacity-55 {!$sidenav?.isOpen ? "mt-0.5" : "mb-0.5"}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m16 14-4-4-4 4"/>
             </svg>
           {:else}
-            <svg class="w-6 h-6 {$sidenav?.isOpen ? "" : "ml-1"}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-base-content text-opacity-55 {!$sidenav?.isOpen ? "mt-0.5" : "mb-0.5"}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8 10 4 4 4-4"/>
             </svg>
           {/if}

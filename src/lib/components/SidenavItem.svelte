@@ -19,7 +19,7 @@
   }
 </script>
 
-<div>
+<div title={icon && !$sidenav?.isOpen ? ` ${label} ` : ""}>
   <a {href} 
     on:click={handleClick}
     class="
