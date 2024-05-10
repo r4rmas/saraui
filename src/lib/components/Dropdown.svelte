@@ -14,7 +14,7 @@
 <div class="dropdown">
   <div tabindex="0" 
     role="button" 
-    class="btn btn-outline"
+    class="btn"
   >
     {label}
     <svg xmlns="http://www.w3.org/2000/svg" 

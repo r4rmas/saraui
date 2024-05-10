@@ -1,7 +1,6 @@
 <script lang="ts">
   import { sidenav } from "$lib/stores.js"
   import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
-  import Link from "$lib/components/Link.svelte"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
   import SidenavAnyContainer from "$lib/components/SidenavCollapsibleContainer.svelte"
@@ -46,7 +45,7 @@
     startCollapsed: true
   }}>
     <header slot="header" class="
-      flex w-full items-center justify-between border-b border-base-300 bg-base-100
+      flex w-full items-center justify-between border-b border-base-200 bg-base-100
       py-2 pr-2 md:py-3 md:pr-3 xl:py-4 xl:pr-4
     ">
       <SidenavButton tooltip=" Menu " />
@@ -73,7 +72,7 @@
     </main>
 
     <svelte:fragment slot="sidenav">
-      <div class="flex flex-col h-full justify-between border-r border-r-base-300 p-2">
+      <div class="flex flex-col h-full justify-between border-r border-r-base-200 p-2">
         <div>
           {#each sidenavItems as { href, icon, label }, i}
             <SidenavItem {href} {icon} {label} />
@@ -91,15 +90,10 @@
         {#if $sidenav?.isOpen}
           <div class="mx-auto">
             <SidenavAnyContainer>
-              <Link href="https://github.com/r4rmas/saraui" 
-                target="_blank"
-                modifier="glass"
-                color="primary"
-                isUnderlined={false}
-              >
+              <a href="https://github.com/r4rmas/saraui" class="btn btn-primary">
                 Star on GitHub
                 <span class="i-mdi-github text-lg mb-0.5"></span>
-              </Link>
+              </a>
             </SidenavAnyContainer>
           </div>
         {/if}

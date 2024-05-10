@@ -26,14 +26,13 @@ import SidenavItem from "./components/SidenavItem.svelte";
 import SidenavCollapsibleList from "./components/SidenavCollapsibleList.svelte";
 import SidenavCollapsibleContainer from "./components/SidenavCollapsibleContainer.svelte";
 import Dropdown from "./components/Dropdown.svelte";
-import Link from "./components/Link.svelte";
 
 export {
   SaraProvider, type SaraProviderConfig,
   currentBreakpoint, currentPathname, sleep, type OnEvent,
   type WidthBreakpointSpacing as WidthResponsiveSpacing,
   Loader, type LoaderProps,
-  Link, Button, IconButton, type Icon,
+  Button, IconButton, type Icon,
   ImageUploader,
   RadioSelector, type SelectorOption,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationBreakpointDirection as NotificationDirection, type TitledNotificationContent, showNotification,
