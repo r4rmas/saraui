@@ -77,9 +77,9 @@
       <div class="flex flex-col w-full md:h-full lg:h-fit xl:h-full 2xl:h-fit">
         <div class="code-card-title flex justify-center items-center">
           Sara UI 
-          <img src="https://cdn.icon-icons.com/icons2/1465/PNG/32/199princess2_100395.png" 
+          <img src="https://cdn.icon-icons.com/icons2/1465/PNG/64/199princess2_100395.png" 
             alt="logo"
-            class="w-6 h-6 ml-2"
+            class="w-5 h-5 ml-2 mb-0.5"
           /> 
         </div>
         <div class="code-card-body w-full text-sm
