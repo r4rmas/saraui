@@ -23,8 +23,8 @@ export type IconClassString             = `i-${string}`
 export type OnEvent = ((e: Event) => void) | ((e: Event) => Promise<void>)
 
 export type SaraProviderConfig = {
-  loaders?      : LoaderProps
-  notifications?: NotificationConfig
+  loader?      : LoaderProps
+  notification?: NotificationConfig
 }
 
 export type LoaderProps = {
@@ -75,7 +75,7 @@ export type NotificationBreakpointDistance = {
   [k in Breakpoints]?: NotificationDistance
 }
 export type NotificationTransition = {
-  direction?: NotificationDirectionString
+  direction?: NotificationDirectionString | NotificationBreakpointDirection
   distance  : NotificationBreakpointDistance
 }
 export type NotificationConfig = {

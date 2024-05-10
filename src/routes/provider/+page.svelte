@@ -1,16 +1,16 @@
 <script lang="ts">
-  import CodeCard from "../CodeCard.svelte"
-  import { layoutFile } from "../displayableCodes.js"
+  import CodeCard from "../lib/CodeCard.svelte"
+  import { provider } from "./displayableCode.js"
 </script>
 
-<div></div>
 <div class="flex flex-col">
-  <h2 class="title">Provider</h2>
-  <p>To use Sara UI correctly you must set up the Provider at the root of your application:</p>
+  <h2 class="title mt-4">Provider</h2>
+  <p>To correctly use Sara UI you must set up the Provider at the root of your application:</p>
   <div class="h-4"></div>
-  <CodeCard title="src/routes/+layout.svelte"
-    content={layoutFile}
-  />
+  <CodeCard title="+src/routes/+layout.svelte" content={provider} />
   <div class="h-4"></div>
-  <p>Optionally, you can configure Sara by providing a valid config value:</p>
+  <div class="border border-warning border-2 rounded-box p-4">
+    Sara is ment to work with the Tailwind's default config. You can extend it, but Sara won't 
+    get the new classes. If you're using your own complete new config, this won't work.
+  </div>
 </div>

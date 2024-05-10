@@ -8,7 +8,7 @@
 
   export let config: SaraProviderConfig | undefined = undefined
 
-  const { loaders: _loader, notifications: notification } = config ?? {}
+  const { loader: _loader, notification: notification } = config ?? {}
   const { icons, transition } = notification ?? {}
   const { direction, distance } = transition ?? {}
 

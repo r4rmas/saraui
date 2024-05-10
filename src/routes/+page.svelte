@@ -5,7 +5,7 @@
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
-  import CodeCard from "./CodeCard.svelte"
+  import CodeCard from "./lib/CodeCard.svelte"
   import Button from "$lib/components/Button.svelte"
   import ThemeCard from "./ThemeCard.svelte"
 
@@ -68,12 +68,12 @@
 
 <div class="
   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_2fr] xl:grid-cols-2 2xl:grid-cols-[1fr_2fr]
-  gap-2 md:gap-4
+  gap-2 md:gap-4 xl:gap-6
   w-full
 ">
   <CodeCard title="daiysUI" content={daisyButton} />
   <div class="grid grid-cols-1 xl:grid-rows-1 2xl:grid-rows-2 gap-2">
-    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-2 md:gap-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-2 md:gap-4 2xl:gap-6">
       <div class="flex flex-col w-full md:h-full lg:h-fit xl:h-full 2xl:h-fit">
         <div class="code-card-title flex justify-center items-center">
           Sara UI 

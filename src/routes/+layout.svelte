@@ -10,7 +10,7 @@
   import "../app.pcss"
 
   const saraConfig: SaraProviderConfig = {
-    notifications: {
+    notification: {
       transition: {
         distance: {
           sm: { top: "20", right: "4" },
@@ -45,8 +45,8 @@
     startCollapsed: true
   }}>
     <header slot="header" class="
-      flex w-full items-center justify-between border-b border-base-200 bg-base-100
-      py-2 pr-2 md:py-3 md:pr-3 xl:py-4 xl:pr-4
+      flex w-full items-center justify-between border-b border-base-200 bg-base-100 h-20
+      pr-2 md:pr-3 xl:pr-4
     ">
       <SidenavButton tooltip=" Menu " />
       <a href="/">
