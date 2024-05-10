@@ -62,7 +62,7 @@
     mission is to provide new
     <span class="text-accent font-medium">enhanced-by-javascript</span>
     <span class="text-secondary link font-medium"><a href="https://daisyui.com">daisyUI</a></span>
-    components & make them easy to use, so you can ship faster 🚀.
+    components, It's not intended to replace daisyUI but to complement it.
   </p>
 </div>
 

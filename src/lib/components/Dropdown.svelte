@@ -26,7 +26,7 @@
     </svg>
   </div>
   <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-  <ul tabindex="0" class="dropdown-content z-[1] p-2 shadow-2xl bg-base-100 rounded-box w-52 m-1">
+  <ul tabindex="0" class="dropdown-content z-[1] p-2 shadow-md bg-base-200 rounded-box w-52 m-1">
     {#each options as { label, value }}
       <li>
         <input {name}
