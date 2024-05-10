@@ -1,15 +1,17 @@
+import { Colors, Loaders } from "$lib/enums.js"
+import type { ColorString } from "$lib/types.js"
+
+const loaders: `${Loaders}`[] = Object.values(Loaders)
+const colors: ColorString[] = Object.values(Colors)
+
 export const provider = `<script lang="ts">
   import { SaraProvider, type SaraProviderConfig } from "saraui"
 
   //optionally you can configure Sara by providing a valid config value:
 
   const config: SaraProviderConfig = {
-    loader: {
-      ...
-    },
-    notification: {
-      ...
-    }
+    loader: //LoaderProps
+    notification: //NotificationConfig
   }
 </script>
 
@@ -23,8 +25,8 @@ export const providerConfig = `{
 }`
 
 export const loaderProps = `{
-  option: "spinner" | "dots" | "ring" | "ball" | "bars" | "infinity"  
-  color?: "primary" | "secondary" | "accent" | "neutral" | "info" | "success" | "warning" | "error"
+  option: "${loaders.join('" | "')}"
+  color?: "${colors.join('" | "')}"
 }`
 
 export const notificationConfig = `{

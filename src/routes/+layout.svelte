@@ -45,7 +45,7 @@
     startCollapsed: true
   }}>
     <header slot="header" class="
-      flex w-full items-center justify-between border-b border-base-200 bg-base-100 h-20
+      flex w-full items-center justify-between border-b border-base-200 bg-base-100 h-16 md:h-20
       pr-2 md:pr-3 xl:pr-4
     ">
       <SidenavButton tooltip=" Menu " />
