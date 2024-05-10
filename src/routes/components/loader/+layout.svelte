@@ -1,8 +1,9 @@
 <script lang="ts">
   import { Loaders, Colors} from "$lib/enums.js"
+  import type { ColorString, LoaderString } from "$lib/types.js"
   import Layout from "../../lib/Layout.svelte"
 
-  const loaders: `${Loaders}`[] = Object.values(Loaders)
+  const loaders: LoaderString[] = Object.values(Loaders)
   const colors: ColorString[] = Object.values(Colors)
 </script>
 

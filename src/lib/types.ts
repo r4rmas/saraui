@@ -1,5 +1,5 @@
 import type { Writable } from "svelte/store"
-import { type Colors, type Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type DynamicSpacings, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors } from "./enums.js"
+import { type Colors, Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type DynamicSpacings, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors } from "./enums.js"
 
 export type BreakpointString            = `${Breakpoints}`
 export type NotificationCauseString     = `${NotificationCauses}`
@@ -19,6 +19,7 @@ export type FullSpacingString           = SpacingString | DynamicSpacingString
 export type RoundedString               = `${Roundeds}`
 export type TextSizeString              = `${TextSizes}`
 export type IconClassString             = `i-${string}`
+export type LoaderString                = `${Loaders}`
 
 export type OnEvent = ((e: Event) => void) | ((e: Event) => Promise<void>)
 
@@ -28,7 +29,7 @@ export type SaraProviderConfig = {
 }
 
 export type LoaderProps = {
-  option: `${Loaders}`
+  option: LoaderString
   color?: ColorString
 }
 

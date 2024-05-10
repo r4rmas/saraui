@@ -1,7 +1,7 @@
 import { Colors, Loaders } from "$lib/enums.js"
-import type { ColorString } from "$lib/types.js"
+import type { ColorString, LoaderString } from "$lib/types.js"
 
-const loaders: `${Loaders}`[] = Object.values(Loaders)
+const loaders: LoaderString[] = Object.values(Loaders)
 const colors: ColorString[] = Object.values(Colors)
 
 export const provider = `<script lang="ts">

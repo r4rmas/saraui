@@ -1,5 +1,5 @@
 <div class="flex w-full container">
-  <div class="flex flex-col gap-4 xl:flex-row w-full overflow-hidden">
+  <div class="flex flex-col gap-2 xl:flex-row w-full overflow-hidden">
     <div class="flex flex-col w-full overflow-y-auto">
       <slot></slot>
     </div>

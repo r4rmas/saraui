@@ -80,7 +80,7 @@
   </div>
   <div class="flex flex-col md:ml-12 xl:m-0 2xl:ml-12 2xl:mt-10 md:mt-8">
     <h2 class="title mt-4">Example</h2>
-    <div class="w-full xl:w-96 mb-4">
+    <div class="w-full xl:w-96">
       <CodeCard title="Example.svelte" content={loader} />
     </div>
   </div>
