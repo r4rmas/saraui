@@ -1,7 +1,7 @@
 import { writable } from "svelte/store"
 import { breakpoints, textSize } from "./constants.js"
 import { notificationData } from "$lib/private/stores.js"
-import type { NotificationCauseString, AnyBreakPointType, TitledNotificationContent, Icon, SizeString, TextSizeString, ModalRef, BreakpointString, BreakpointClass } from "./types.js"
+import type { NotificationCauseString, AnyBreakPointType, TitledNotificationContent, SizedIcon, SizeString, TextSizeString, ModalRef, BreakpointString, BreakpointClass } from "./types.js"
 
 export function showNotification(cause: NotificationCauseString, content: string | TitledNotificationContent) {
   setTimeout(() => notificationData.update(old => ({
@@ -58,7 +58,7 @@ export function getBreakpointValue(from: AnyBreakPointType, breakpoint?: Breakpo
   return undefined
 }
 
-export function getIconClass(icon : Icon | string | undefined, size?: TextSizeString) {
+export function getIconClass(icon : SizedIcon | string | undefined, size?: TextSizeString) {
   if (icon) {
     if (typeof icon !== "string") {
       const { is , size: _size } = icon

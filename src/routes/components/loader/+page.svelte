@@ -6,8 +6,10 @@
 
 <h2 class="title mt-4">Loader</h2>
 <p>Equivalent to <a href="https://daisyui.com/components/loading/" class="link link-secondary">daisyUI's loading component</a>.</p>
-<p>As this component is ment to be re-used, it can be configured through the <a href="/provider" class="link link-secondary">Provider</a>.</p>
-<p>This will sync all the Loader components to have the selected style.</p>
+<p>
+  As this component is ment to be re-used, it can be configured through the <a href="/provider" class="link link-secondary">Provider</a>.
+  This will sync all the Loader components to have the selected style.
+</p>
 
 <div class="flex flex-col md:flex-row xl:flex-col 2xl:flex-row">
   <div>

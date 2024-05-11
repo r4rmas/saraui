@@ -1,6 +1,6 @@
 <div class="flex w-full container">
-  <div class="flex flex-col gap-2 xl:flex-row w-full overflow-hidden">
-    <div class="flex flex-col w-full overflow-y-auto">
+  <div class="grid grid-cols-1 xl:grid-cols-[3fr_1fr]">
+    <div class="flex flex-col w-full overflow-y-auto pr-4">
       <slot></slot>
     </div>
     <div class="flex flex-col xl:border-l xl:border-l-base-200 xl:px-4 gap-2 overflow-y-auto mb-4">

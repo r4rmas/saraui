@@ -20,6 +20,11 @@
     <div class="w-full">
       <CodeCard title="NotificationIcons" content={notificationIcons} />
     </div>
+    <a href="https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale" 
+      class="mx-auto link link-secondary mb-1"
+    >
+      Check Icon section
+    </a> 
     <div class="w-full">
       <CodeCard title="NotificationTransition" content={notificationTransition} />
     </div>

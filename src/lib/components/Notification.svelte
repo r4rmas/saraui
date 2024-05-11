@@ -2,7 +2,7 @@
   import { fly, type FlyParams } from "svelte/transition"
   import { currentBreakpoint } from "$lib/stores.js"
   import { notificationData } from "$lib/private/stores.js"
-  import type { Icon, IconClassString, NotificationBreakpointDistance, NotificationBreakpointDirection, NotificationDirectionString } from "$lib/types.js"
+  import type { SizedIcon, IconClassString, NotificationBreakpointDistance, NotificationBreakpointDirection, NotificationDirectionString } from "$lib/types.js"
   import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, breakpoints, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/constants.js"
   import { getIconClass } from "$lib/utils.js"
   import SuccessIcon from "./private/notification/SuccessIcon.svelte"
@@ -10,7 +10,7 @@
   import WarningIcon from "./private/notification/WarningIcon.svelte"
   import ErrorIcon from "./private/notification/ErrorIcon.svelte"
 
-  export let icon: Icon | IconClassString | undefined = undefined
+  export let icon: SizedIcon | IconClassString | undefined = undefined
   export let direction: NotificationDirectionString | NotificationBreakpointDirection | undefined = undefined
   export let distance: NotificationBreakpointDistance | undefined = undefined
 

@@ -59,10 +59,11 @@
   </div>
   <p>
     <span class="text-primary font-medium">Sara UI</span>'s 
-    mission is to provide new
-    <span class="text-accent font-medium">enhanced-by-javascript</span>
-    <span class="text-secondary link font-medium"><a href="https://daisyui.com">daisyUI</a></span>
-    components, It's not intended to replace daisyUI but to complement it.
+    mission is to provide new advanced components that only would be possible thanks to 
+    <span class="text-accent font-medium">javascript</span> 
+    capabilities. It's not intended to replace 
+    <span class="text-secondary link font-medium"><a href="https://daisyui.com">daisyUI</a></span> 
+    but to complement it.
   </p>
 </div>
 

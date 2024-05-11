@@ -1,6 +1,6 @@
 <script lang="ts">
   import { heightClass, heightClassLG, heightClassMD, heightClassXL, roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
-  import type { ColorString, RoundedString, Icon, IconClassString, FullSpacingString, WidthBreakpointSpacing } from "$lib/types.js"
+  import type { ColorString, RoundedString, SizedIcon, IconClassString, FullSpacingString, WidthBreakpointSpacing } from "$lib/types.js"
   import { getIconClass, getBreakpointClass } from "$lib/utils.js"
 
   export let color: ColorString  = "secondary"
@@ -10,7 +10,7 @@
   export let name: string | undefined = undefined
   export let state: File | undefined = undefined
   export let width: FullSpacingString |  WidthBreakpointSpacing | undefined = undefined
-  export let icon: Icon | IconClassString | undefined = undefined
+  export let icon: SizedIcon | IconClassString | undefined = undefined
   
   let inputElement: HTMLInputElement
   let files: FileList

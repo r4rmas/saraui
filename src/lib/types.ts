@@ -33,7 +33,7 @@ export type LoaderProps = {
   color?: ColorString
 }
 
-export type Icon = {
+export type SizedIcon = {
   is   : IconClassString
   size?: TextSizeString
 }
@@ -55,7 +55,7 @@ export type ConfirmationModalIcons = {
 }
 
 export type NotificationIcons = {
-  [k in NotificationCauseString] : Icon | IconClassString
+  [k in NotificationCauseString] : SizedIcon | IconClassString
 }
 export type NotificationDistance = {
   [k in PositionString]?: SpacingString

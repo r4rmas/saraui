@@ -35,10 +35,10 @@ export const notificationConfig = `{
 }`
 
 export const notificationIcons = `{
-  success: Icon | string
-  info: Icon | string
-  warning: Icon | string
-  error: Icon | string
+  success: SizedIcon | IconClassString
+  info: SizedIcon | IconClassString
+  warning: SizedIcon | IconClassString
+  error: SizedIcon | IconClassString
 }`
 
 export const notificationTransition = `{
