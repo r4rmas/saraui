@@ -1,6 +1,6 @@
 <script lang="ts">
   import { heightClass, heightClassLG, heightClassMD, heightClassXL, roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/constants.js"
-  import type { ColorString, RoundedString, SizedIcon, IconClassString, FullSpacingString, WidthBreakpointSpacing } from "$lib/types.js"
+  import type { ColorString, RoundedString, SizedIcon, IconClassString, SpacingString, BreakpointSpacing } from "$lib/types.js"
   import { getIconClass, getBreakpointClass } from "$lib/utils.js"
 
   export let color: ColorString  = "secondary"
@@ -9,15 +9,14 @@
   export let isEditable = true
   export let name: string | undefined = undefined
   export let state: File | undefined = undefined
-  export let width: FullSpacingString |  WidthBreakpointSpacing | undefined = undefined
+  export let width: SpacingString |  BreakpointSpacing | undefined = undefined
   export let icon: SizedIcon | IconClassString | undefined = undefined
   
   let inputElement: HTMLInputElement
   let files: FileList
 
-  $: [ file ] = files ?? []
+  $: [ file ] = files ? files : state ? [ state ] : []
   $: isImaged = file !== undefined
-  $: if (state) state = file
 
   function _getResponsiveClass() {
     if (width) {
@@ -36,7 +35,7 @@
         })
         return `${_widthClass} ${_heightClass}`
       }
-      else return widthClass[width]
+      else return `${widthClass[width]} ${heightClass[width]}`
     }
     return "w-28 h-28"
   }

@@ -114,7 +114,8 @@ export type SidenavWidthRem = {
 export type SpacingRem = {
   [k in SpacingString]: RemString
 }
-type BreakpointSpacing = {
+
+export type BreakpointSpacing = {
   [k in BreakpointString]?: SpacingString  
 }
 export type BreakpointPixels = {

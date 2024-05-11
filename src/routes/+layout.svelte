@@ -23,7 +23,9 @@
   const sidenavItems: { href: string, label: string, icon: IconClassString }[] = [
     { href: "/", label: "Home", icon: "i-mdi-home-outline" },
     { href: "/provider", label: "Provider", icon: "i-mdi-power-plug-outline" },
-    { href: "/stores", label: "Stores", icon: "i-mdi-share-variant" },
+    { href: "/icons", label: "Icons", icon: "i-mdi-image-filter-center-focus-strong" },
+    { href: "/utilities", label: "Utilities", icon: "i-mdi-tools" },
+    { href: "/stores", label: "Stores", icon: "i-mdi-local-area-network" },
     { href: "/whats-next", label: "What's next", icon: "i-mdi-fast-forward" },
   ]
   const componentItems: { href: `/components/${string}`, label: string }[] = [

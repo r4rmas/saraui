@@ -11,13 +11,15 @@
   <slot></slot>
   <svelte:fragment slot="types">
     <h2 class="title mt-4">Props</h2>
-    <div class="flex flex-col gap-2 w-96">
-      <p class="md:text-nowrap">
-        <span class="prop">color?:</span>
-        <span>"{colors.join('" | "')}"</span>
+    <div class="prop-container">
+      <span class="prop">color?:</span>
+      <p class="prop-value">
+        "{colors.join('" | "')}"
       </p>
-      <p class="md:text-nowrap">
-        <span class="prop">option?:</span>
+    </div>
+    <div class="prop-container">
+      <span class="prop">option?:</span>
+      <p class="prop-value">
         <span>"{loaders.join('" | "')}"</span>
       </p>
     </div>

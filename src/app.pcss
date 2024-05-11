@@ -37,6 +37,7 @@ html {
   px-2
   text-center
   text-sm
+  overflow-x-auto
 }
 .code-card-body {
   @apply
@@ -57,5 +58,18 @@ html {
 .prop {
   @apply
   text-primary 
-  font-medium
+  font-semibold
+}
+.prop-value {
+  @apply 
+  overflow-x-auto 
+  text-nowrap 
+  pb-3
+}
+.prop-container {
+  @apply 
+  flex 
+  flex-wrap
+  gap-2
+  text-sm
 }

@@ -8,36 +8,44 @@
   <slot></slot>
   <svelte:fragment slot="types">
     <h2 class="title mt-4">Types</h2>
-    <div class="w-full">
-      <CodeCard title="SaraProviderConfig" content={providerConfig} />
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-2">
+      <div>
+        <CodeCard title="SaraProviderConfig" content={providerConfig} />
+      </div>
+      <div>
+        <CodeCard title="LoaderProps" content={loaderProps} />
+      </div>
+      <div>
+        <CodeCard title="NotificationConfig" content={notificationConfig} />
+      </div>
+      <div class="flex flex-col">
+        <CodeCard title="NotificationIcons" content={notificationIcons} />
+        <a href="/icons" 
+          class="mx-auto link link-secondary mb-4 text-xs"
+        >
+          Check Icons section
+        </a> 
+      </div>
+      <div>
+        <CodeCard title="NotificationTransition" content={notificationTransition} />
+      </div>
+      <div>
+        <CodeCard title="NotificationBreakpointDirection" content={notificationBreakpointDirection} />
+      </div>
+      <div class="flex flex-col">
+        <CodeCard title="NotificationBreakpointDistance" content={notificationBreakpointDistance} />
+        <a href="https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale" 
+          class="mx-auto link link-secondary mb-4 text-center text-xs"
+        >
+          Check Tailwind's default spacing scale
+        </a>
+      </div>
     </div>
-    <div class="w-full">
-      <CodeCard title="LoaderProps" content={loaderProps} />
-    </div>
-    <div class="w-full">
-      <CodeCard title="NotificationConfig" content={notificationConfig} />
-    </div>
-    <div class="w-full">
-      <CodeCard title="NotificationIcons" content={notificationIcons} />
-    </div>
-    <a href="https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale" 
-      class="mx-auto link link-secondary mb-1"
-    >
-      Check Icon section
-    </a> 
-    <div class="w-full">
-      <CodeCard title="NotificationTransition" content={notificationTransition} />
-    </div>
-    <div class="w-full">
-      <CodeCard title="NotificationBreakpointDirection" content={notificationBreakpointDirection} />
-    </div>
-    <div class="w-full">
-      <CodeCard title="NotificationBreakpointDistance" content={notificationBreakpointDistance} />
-    </div>
-    <a href="https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale" 
-      class="mx-auto link link-secondary mb-4"
-    >
-      Check Tailwind's default spacing scale
-    </a>
   </svelte:fragment>
 </Layout>
+
+<style lang="postcss">
+  div {
+    @apply w-full
+  }
+</style>

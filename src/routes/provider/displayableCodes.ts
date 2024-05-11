@@ -54,8 +54,8 @@ export const notificationBreakpointDirection = `{
 }`
 
 export const notificationBreakpointDistance = `{
-  sm?: //every posible default spacing value from Tailwind
-  md?: //every posible default spacing value from Tailwind
-  lg?: //every posible default spacing value from Tailwind
-  xl?: //every posible default spacing value from Tailwind
+  sm?: //any posible default spacing value from Tailwind
+  md?: //any posible default spacing value from Tailwind
+  lg?: //any posible default spacing value from Tailwind
+  xl?: //any posible default spacing value from Tailwind
 }`
