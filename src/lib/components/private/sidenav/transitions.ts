@@ -1,5 +1,5 @@
 import { cubicInOut } from "svelte/easing";
-import type { FadeParams, SlideParams } from "svelte/transition";
+import type { FadeParams } from "svelte/transition";
 
 export const transitionIn: FadeParams = { 
   easing: cubicInOut,

@@ -8,11 +8,10 @@
   export let shape: IconButtonShapeString = "circle"
   export let size: SizeString = "md"
   export let isDisabled = false
+  export let isLoading = false
   export let color: ColorString | undefined = undefined
   export let modifier: ButtonModifierString | undefined = undefined
   export let onClick: OnEvent | undefined = undefined
-
-  let isLoading = false
 
   async function handleClick(e: Event) {
     if (onClick) {
