@@ -18,9 +18,7 @@ export const example = `<script>
   <IconButton tooltip="?">
     <span class="i-mdi-help"></span>
   </IconButton>
-  <svelte:fragment slot="content">
-    <div class="card p-2 shadow-md">
-      Hello, world! 👋🏼
-    </div>
-  </svelte:fragment>
+  <div slot="content" class="card p-2 shadow-md">
+    Hello, world! 👋🏼
+  </div>
 </Dropdown>`

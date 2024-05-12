@@ -1,6 +1,7 @@
 <script lang="ts">
+  import Button from "$lib/components/Button.svelte"
+  import { Dropdown } from "$lib/index.js"
   import type { SelectorOption } from "$lib/types.js"
-  // import Dropdown from "$lib/components/Dropdown.svelte"
   
   const lightThemes: SelectorOption[] = [
     { label: "Bumblebee", value: "bumblebee" }, 
@@ -41,16 +42,46 @@
     <p class="text-lg font-semibold m-2 tracking-widest">✨ themed ✨</p>
   </div>
   <div class="flex flex-col md:flex-row gap-2">
-    <!-- <Dropdown label="☀️ Light themes"
-      options={lightThemes} 
-      bind:state={selectedTheme}
-      name="theme"
-    />
-    <Dropdown label="🌙 Dark themes"
-      options={darkThemes} 
-      bind:state={selectedTheme}
-      name="theme"
-    /> -->
+    <Dropdown>
+      <Button>
+        ☀️ Light themes
+        <span class="i-mdi-chevron-down text-lg"></span>
+      </Button>
+      <div slot="content">
+        <ul class="menu bg-base-200 rounded-box shadow-md mt-1">
+          {#each lightThemes as { label, value }}
+            <li>
+              <input type="radio" 
+                name="theme" 
+                aria-label={label}
+                {value}
+                class="theme-controller btn btn-sm btn-block btn-ghost justify-start" 
+              >
+            </li>
+          {/each}
+        </ul>
+      </div>
+    </Dropdown>
+    <Dropdown>
+      <Button>
+        🌙 Dark themes
+        <span class="i-mdi-chevron-down text-lg"></span>
+      </Button>
+      <div slot="content">
+        <ul class="menu bg-base-200 rounded-box shadow-md mt-1">
+          {#each darkThemes as { label, value }}
+            <li>
+              <input type="radio" 
+                name="theme" 
+                aria-label={label}
+                {value}
+                class="theme-controller btn btn-sm btn-block btn-ghost justify-start" 
+              >
+            </li>
+          {/each}
+        </ul>
+      </div>
+    </Dropdown>
   </div>
   <a href="https://daisyui.com/docs/themes/" class="link">
     Learn more about themes

@@ -22,16 +22,14 @@
 <h2 class="title mt-4">Dropdown</h2>
 <p class="mb-4">Shows an element after click or hover (depends of given props)</p>
 <Dropdown position="right-end">
-  <svelte:fragment slot="content">
-    <div class="card p-4 bg-base-200 shadow-md ml-2 w-fit">
-      <p class="text-nowrap">
-        Hello, world! 👋🏼
-      </p>
-    </div>
-  </svelte:fragment>
   <IconButton tooltip="?" color="primary">
     <span class="i-mdi-help"></span>
   </IconButton>
+  <div slot="content" class="card p-4 bg-base-200 shadow-md ml-2 w-fit">
+    <p class="text-nowrap">
+      Hello, world! 👋🏼
+    </p>
+  </div>
 </Dropdown>
 <h2 class="title mt-8">Example</h2>
 <div class="w-full md:w-fit">

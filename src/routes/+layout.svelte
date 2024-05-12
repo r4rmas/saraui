@@ -33,7 +33,6 @@
     { href: "/components/dropdown", label: "Dropdown" },
     { href: "/components/imageuploader", label: "ImageUploader" },
     { href: "/components/loader", label: "Loader" },
-    { href: "/components/menu", label: "Menu" },
     { href: "/components/modals", label: "Modals" },
     { href: "/components/notification", label: "Notification" },
     { href: "/components/scaffold", label: "Scaffold" },

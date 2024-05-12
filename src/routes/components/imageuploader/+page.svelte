@@ -21,7 +21,7 @@
   <ImageUploader color="secondary" rounded="3xl" />
   <ImageUploader color="accent" />
 </div>
-<h2 class="title mt-4">Example</h2>
+<h2 class="title mt-8">Example</h2>
 <div class="w-full md:w-fit">
   <CodeCard title="Example.svelte" content={withPlaceholder} />
 </div>

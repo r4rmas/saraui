@@ -31,7 +31,7 @@
     <slot></slot>
   </div>
   <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-  <ul tabindex="0" class="dropdown-content z-[1]">
+  <ul tabindex="0" class="dropdown-content z-[1] w-full">
     <slot name="content"></slot>
   </ul>
 </div>
