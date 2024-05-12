@@ -2,6 +2,8 @@
   import Dropdown from "$lib/components/Dropdown.svelte"
   import IconButton from "$lib/components/IconButton.svelte"
   import type { SelectorOption } from "$lib/types.js"
+    import CodeCard from "../../lib/CodeCard.svelte"
+    import { example } from "./displayableCodes.js"
 
   let state: string
 
@@ -31,3 +33,7 @@
     <span class="i-mdi-help"></span>
   </IconButton>
 </Dropdown>
+<h2 class="title mt-8">Example</h2>
+<div class="w-full md:w-fit">
+  <CodeCard title="Example.svelte" content={example} />
+</div>

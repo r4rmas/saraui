@@ -1,5 +1,5 @@
 <div class="flex w-full container">
-  <div class="grid grid-cols-1 xl:grid-cols-[3fr_1fr] w-full">
+  <div class="flex flex-col xl:flex-row w-full">
     <div class="flex flex-col w-full xl:overflow-y-auto xl:pr-4">
       <slot></slot>
     </div>

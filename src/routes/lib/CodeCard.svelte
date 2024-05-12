@@ -7,7 +7,7 @@
   <div class="code-card-title">
     {title}
   </div>
-  <div class="code-card-body w-full text-sm">
+  <div class="code-card-body">
     <pre><code>{content}</code></pre>
   </div>
 </div>

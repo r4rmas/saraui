@@ -9,3 +9,18 @@ export const dropdownBreakpointPosition = `{
   lg?: "${positions.join('" | "')}"
   xl?: "${positions.join('" | "')}"
 }`
+
+export const example = `<script>
+  import { Dropdown } from "saraui"
+</script>
+
+<Dropdown>
+  <IconButton tooltip="?">
+    <span class="i-mdi-help"></span>
+  </IconButton>
+  <svelte:fragment slot="content">
+    <div class="card p-2 shadow-md">
+      Hello, world! 👋🏼
+    </div>
+  </svelte:fragment>
+</Dropdown>`
