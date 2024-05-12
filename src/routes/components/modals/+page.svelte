@@ -11,6 +11,9 @@
 </script>
 
 <h2 class="title mt-4">Modal</h2>
+<a href="/utilities#useModal" class="link link-secondary mb-2">
+  Check useModal
+</a>
 <p class="mb-4">Used to shows a dialog element when clicked.</p>
 <Button onClick={emptyModal.show} color="primary">
   Show empty modal

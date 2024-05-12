@@ -6,7 +6,7 @@
 <h2 class="title mt-4">Provider</h2>
 <p>To correctly use Sara UI you must set up the Provider at the root of your application:</p>
 <div class="h-4"></div>
-<div class="md:w-fit">
+<div class="w-full">
   <CodeCard title="+src/routes/+layout.svelte" content={provider} />
 </div>
 <div class="h-4"></div>

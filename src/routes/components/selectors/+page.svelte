@@ -21,7 +21,10 @@
 <h2 class="title mt-4">RadioSelector</h2>
 <p>Allows to select one option of many.</p>
 <div class="grid grid-cols-3 gap-4 mt-4 w-fit">
-  <RadioSelector bind:state={seleted} name="favourite" {options} />
+  <RadioSelector {options} 
+    bind:state={seleted} 
+    name="favourite" 
+  />
 </div>
 <h2 class="title mt-8">Example</h2>
 <div class="w-full md:w-fit">
