@@ -43,7 +43,7 @@
 <SaraProvider config={saraConfig}>
   <Scaffold sidenav={{ 
     collapsedAt: "xl",
-    width: { open: "64" },
+    width: { open: "60" },
     startCollapsed: true
   }}>
     <header slot="header" class="

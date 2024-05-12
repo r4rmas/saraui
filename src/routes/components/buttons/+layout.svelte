@@ -45,7 +45,7 @@
     <div class="prop-container">
       <span class="prop">(Button) width?:</span>
       <p class="prop-value">any posible fixed width value from Tailwind's default config</p>
-      <a href="https://tailwindcss.com/docs/width" class="link link-secondary text-sm text-center mx-auto">
+      <a href="https://tailwindcss.com/docs/width" class="link link-secondary text-xs text-center mx-auto">
         Check Tailwind's width values
       </a>
     </div>
