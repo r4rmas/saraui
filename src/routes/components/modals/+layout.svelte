@@ -56,5 +56,10 @@
     <div class="w-full md:w-fit">
       <CodeCard title="ConfirmationModalIcons" content={confirmationModalIcons} />
     </div>
+    <a href="/icons"
+      class="link link-secondary text-sm text-center mx-auto mt-2 mb-4"
+    >
+      Check Icons section
+    </a>
   </svelte:fragment>
 </Layout>

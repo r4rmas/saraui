@@ -54,6 +54,17 @@
         you can use this prop to add a placeholder or bind:state to get the file when selected 
       </p>
       <div class="prop-container">
+        <span class="prop">icon?:</span>
+        <p class="prop-value">
+          IconClassString
+        </p>
+      </div>
+      <a href="/icons" 
+        class="link link-secondary text-center mx-auto text-xs mb-4"
+      >
+        Check Icons section
+      </a>
+      <div class="prop-container">
         <span class="prop">width?:</span>
         <p class="prop-value">
           any posible default spacing value from Tailwind
