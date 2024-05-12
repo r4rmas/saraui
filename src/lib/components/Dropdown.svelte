@@ -9,11 +9,11 @@
 
   function _getResponsiveClass() {
     if (typeof position !== "string") return getBreakpointClass(position, {
-        sm: dropdownPositionClass,
-        md: dropdownPositionClassMD,
-        lg: dropdownPositionClassLG,
-        xl: dropdownPositionClassXL,
-      })
+      sm: dropdownPositionClass,
+      md: dropdownPositionClassMD,
+      lg: dropdownPositionClassLG,
+      xl: dropdownPositionClassXL,
+    })
     else return dropdownPositionClass[position]
   }
 </script>
