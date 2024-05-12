@@ -143,3 +143,14 @@ export enum IconButtonShapes {
   CIRCLE = "circle",
   SQUARE = "square"
 }
+
+export enum DropdownPositions {
+  TOP = "top",
+  BOTTOM = "bottom",
+  RIGHT = "right",
+  LEFT = "left",
+  TOP_END = "top-end",
+  BOTTOM_END = "bottom-end",
+  RIGHT_END = "right-end",
+  LEFT_END = "left-end",
+}

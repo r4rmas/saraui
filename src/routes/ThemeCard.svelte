@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { SelectorOption } from "$lib/types.js"
-  import Dropdown from "$lib/components/Dropdown.svelte"
+  // import Dropdown from "$lib/components/Dropdown.svelte"
   
   const lightThemes: SelectorOption[] = [
     { label: "Bumblebee", value: "bumblebee" }, 
@@ -41,7 +41,7 @@
     <p class="text-lg font-semibold m-2 tracking-widest">✨ themed ✨</p>
   </div>
   <div class="flex flex-col md:flex-row gap-2">
-    <Dropdown label="☀️ Light themes"
+    <!-- <Dropdown label="☀️ Light themes"
       options={lightThemes} 
       bind:state={selectedTheme}
       name="theme"
@@ -50,7 +50,7 @@
       options={darkThemes} 
       bind:state={selectedTheme}
       name="theme"
-    />
+    /> -->
   </div>
   <a href="https://daisyui.com/docs/themes/" class="link">
     Learn more about themes

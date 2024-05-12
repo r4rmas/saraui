@@ -1,4 +1,4 @@
-export const loader = `<script lang="ts">
+export const loader = `<script>
   import { Loader } from "saraui"
 
   const color = "primary"

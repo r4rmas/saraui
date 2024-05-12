@@ -1,5 +1,5 @@
 import type { Writable } from "svelte/store"
-import { type Colors, Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type DynamicSpacings, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors } from "./enums.js"
+import { type Colors, Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type DynamicSpacings, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors, DropdownPositions } from "./enums.js"
 
 export type BreakpointString            = `${Breakpoints}`
 export type NotificationCauseString     = `${NotificationCauses}`
@@ -20,6 +20,7 @@ export type RoundedString               = `${Roundeds}`
 export type TextSizeString              = `${TextSizes}`
 export type IconClassString             = `i-${string}`
 export type LoaderString                = `${Loaders}`
+export type DropdownPositionString      = `${DropdownPositions}`
 
 export type OnEvent = ((e: Event) => void) | ((e: Event) => Promise<void>)
 
@@ -133,6 +134,10 @@ export type AnyBreakPointType = {
   [k in BreakpointString]?: Object
 }
 
+export type DropdownBreakpointPosition = {
+  [k in BreakpointString]?: DropdownPositionString
+}
+
 export type TextColorClass = {
   [k in ColorString]: `text-${k}`
 }
@@ -244,4 +249,17 @@ export type RadioColorClass = {
 
 export type TextSizeClass = {
   [k in TextSizeString]: `text-${k}`
+}
+
+export type DropdownPositionClass = {
+  [k in DropdownPositionString]: `dropdown-${string}` | `dropdown-${string} dropdown-${string}`
+}
+export type DropdownPositionClassMD = {
+  [k in DropdownPositionString]: `md:dropdown-${string}` | `md:dropdown-${string} md:dropdown-${string}`
+}
+export type DropdownPositionClassLG = {
+  [k in DropdownPositionString]: `lg:dropdown-${string}` | `lg:dropdown-${string} lg:dropdown-${string}`
+}
+export type DropdownPositionClassXL = {
+  [k in DropdownPositionString]: `xl:dropdown-${string}` | `xl:dropdown-${string} xl:dropdown-${string}`
 }

@@ -1,5 +1,5 @@
 import { Breakpoints } from "./enums.js"
-import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL } from "./types.js"
+import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL, DropdownPositionClass, DropdownPositionClassMD, DropdownPositionClassLG, DropdownPositionClassXL } from "./types.js"
 
 export const SIDENAV_ID = "saraui-sidenav"
 
@@ -1081,4 +1081,45 @@ export const radioColorClass: RadioColorClass = {
   inherit    : "radio-inherit",
   current    : "radio-current",
   transparent: "radio-transparent"
+}
+
+export const dropdownPositionClass: DropdownPositionClass = {
+  top         : "dropdown-top",
+  bottom      : "dropdown-bottom",
+  right       : "dropdown-right",
+  left        : "dropdown-left",
+  "top-end"   : "dropdown-top dropdown-end",
+  "bottom-end": "dropdown-bottom dropdown-end",
+  "right-end" : "dropdown-right dropdown-end",
+  "left-end"  : "dropdown-left dropdown-end"
+}
+export const dropdownPositionClassMD: DropdownPositionClassMD = {
+  top         : "md:dropdown-top",
+  bottom      : "md:dropdown-bottom",
+  right       : "md:dropdown-right",
+  left        : "md:dropdown-left",
+  "top-end"   : "md:dropdown-top md:dropdown-end",
+  "bottom-end": "md:dropdown-bottom md:dropdown-end",
+  "right-end" : "md:dropdown-right md:dropdown-end",
+  "left-end"  : "md:dropdown-left md:dropdown-end"
+}
+export const dropdownPositionClassLG: DropdownPositionClassLG = {
+  top         : "lg:dropdown-top",
+  bottom      : "lg:dropdown-bottom",
+  right       : "lg:dropdown-right",
+  left        : "lg:dropdown-left",
+  "top-end"   : "lg:dropdown-top lg:dropdown-end",
+  "bottom-end": "lg:dropdown-bottom lg:dropdown-end",
+  "right-end" : "lg:dropdown-right lg:dropdown-end",
+  "left-end"  : "lg:dropdown-left lg:dropdown-end"
+}
+export const dropdownPositionClassXL: DropdownPositionClassXL = {
+  top         : "xl:dropdown-top",
+  bottom      : "xl:dropdown-bottom",
+  right       : "xl:dropdown-right",
+  left        : "xl:dropdown-left",
+  "top-end"   : "xl:dropdown-top xl:dropdown-end",
+  "bottom-end": "xl:dropdown-bottom xl:dropdown-end",
+  "right-end" : "xl:dropdown-right xl:dropdown-end",
+  "left-end"  : "xl:dropdown-left xl:dropdown-end"
 }

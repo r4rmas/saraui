@@ -21,7 +21,7 @@
       <div class="flex flex-col">
         <CodeCard title="NotificationIcons" content={notificationIcons} />
         <a href="/icons" 
-          class="mx-auto link link-secondary mb-4 text-xs"
+          class="mx-auto link link-secondary mt-1 mb-4 text-xs"
         >
           Check Icons section
         </a> 
@@ -35,7 +35,7 @@
       <div class="flex flex-col">
         <CodeCard title="NotificationBreakpointDistance" content={notificationBreakpointDistance} />
         <a href="https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale" 
-          class="mx-auto link link-secondary mb-4 text-center text-xs"
+          class="mx-auto link link-secondary mt-1 mb-4 text-center text-xs"
         >
           Check Tailwind's default spacing scale
         </a>

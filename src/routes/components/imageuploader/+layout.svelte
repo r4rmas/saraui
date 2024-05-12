@@ -41,12 +41,6 @@
           string
         </p>
       </div>
-      <div class="prop-container">
-        <span class="prop">name?:</span>
-        <p class="prop-value">
-          string
-        </p>
-      </div>
       <p class="text-xs mb-4">
         name is used to identify the file in a FormData value
       </p>
@@ -70,12 +64,5 @@
       >
         Check Tailwind's default spacing scale
       </a>
-  <!--
-    export let acceptedFileExtensions = ".jpeg, .jpg, .png, .heic, .wepb, .avif"
-    export let isEditable = true
-    export let name: string | undefined = undefined
-    export let state: File | undefined = undefined
-    export let width: FullSpacingString |  WidthBreakpointSpacing | undefined = undefined 
-  -->
   </svelte:fragment>
 </Layout>
