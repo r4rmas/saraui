@@ -89,14 +89,18 @@
         {/each}
       </div>
       {#if $sidenav?.isOpen}
-        <div class="mx-auto">
-          <SidenavCollapsibleContainer>
+        <SidenavCollapsibleContainer>
+          <div class="flex flex-col gap-1">
             <a href="https://github.com/r4rmas/saraui" class="btn btn-primary">
-              Star on GitHub
+              Star in GitHub
               <span class="i-mdi-github text-lg mb-0.5"></span>
             </a>
-          </SidenavCollapsibleContainer>
-        </div>
+            <a href="https://github.com/r4rmas/saraui/issues" class="btn">
+              Report issue
+              <span class="i-mdi-github text-lg mb-0.5"></span>
+            </a>
+          </div>
+        </SidenavCollapsibleContainer>
       {/if}
     </div>
   </Scaffold>

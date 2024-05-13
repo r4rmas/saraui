@@ -3,7 +3,7 @@ import type { FadeParams } from "svelte/transition";
 
 export const transitionIn: FadeParams = { 
   easing: cubicInOut,
-  duration: 300 
+  duration: 400 
 }
 export const transitionOut: FadeParams = { 
   easing: cubicInOut,

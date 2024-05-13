@@ -5,6 +5,7 @@
   export let name: string
   export let options: SelectorOption[]
   export let isRequired = false
+  export let isDisabled = false
   export let size: SizeString = "md"
   export let color: ColorString | undefined = undefined
   export let state: string | undefined = undefined
@@ -17,10 +18,12 @@
 {#if options.length}
   {#each options as o}
     <div class="flex">
-      <input {name} required={isRequired}
+      <input {name} 
         on:click={() => check(o.value)}
         checked={state !== undefined && state === o.value}
         value={o.value}
+        required={isRequired}
+        disabled={isDisabled}
         type="radio"
         class="
           radio mr-3
