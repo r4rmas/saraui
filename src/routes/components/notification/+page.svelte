@@ -6,7 +6,7 @@
 </script>
 
 <h2 class="title mt-4">Notification</h2>
-<a href="/utilities#showNotification"
+<a href="/utils#showNotification"
   class="link link-secondary mb-2">
   Check showNotification
 </a>
