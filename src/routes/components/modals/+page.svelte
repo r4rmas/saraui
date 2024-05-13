@@ -21,6 +21,12 @@
 <Modal ref={emptyModal.ref}>
   <p>Modals are empty by default.</p>
 </Modal>
+<h2 class="title mt-8">Example</h2>
+<div>
+  <CodeCard title="ModalExample.svelte" 
+    content={modalExample} 
+  />
+</div>
 <h2 class="title mt-8">ConfirmationModal</h2>
 <p>
   Quickly build confirmation modals to confirm sensible (or not) actions.
@@ -34,12 +40,7 @@
   content="Are you sure? ☠️"
   onAccept={() => {}}
 />
-<h2 class="title mt-8">Examples</h2>
-<div>
-  <CodeCard title="ModalExample.svelte" 
-    content={modalExample} 
-  />
-</div>
+<h2 class="title mt-8">Example</h2>
 <div>
   <CodeCard title="ConfirmationModalExample.svelte" 
     content={confirmationModalExample} 

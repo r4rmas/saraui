@@ -3,9 +3,9 @@
   import SidenavButton from "./SidenavButton.svelte"
   import SidenavProvider from "./private/sidenav/Provider.svelte"
 
-  export let sidenav: SidenavConfig | undefined = undefined
+  export let sidenavConfig: SidenavConfig | undefined = undefined
 
-  $: ({ color, width, collapsedAt, startCollapsed } = sidenav ?? {})
+  $: ({ color, width, collapsedAt, startCollapsed } = sidenavConfig ?? {})
 </script>
 
 <SidenavProvider {color} {collapsedAt} {width} {startCollapsed}>

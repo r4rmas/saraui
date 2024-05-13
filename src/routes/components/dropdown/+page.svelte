@@ -20,7 +20,7 @@
 </script>
 
 <h2 class="title mt-4">Dropdown</h2>
-<p class="mb-4">Shows an element after click or hover (depends of given props)</p>
+<p class="mb-4">Shows an element after click or hover (depends on given props).</p>
 <Dropdown position="right-end">
   <IconButton tooltip="?" color="primary">
     <span class="i-mdi-help"></span>

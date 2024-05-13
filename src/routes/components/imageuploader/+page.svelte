@@ -14,7 +14,7 @@
 </script>
 
 <h2 class="title mt-4">ImageUploader</h2>
-<p class="mb-4">Allows to upload and represent images:</p>
+<p class="mb-4">Allows to upload and represent images.</p>
 <div class="flex gap-4 flex-wrap justify-center md:justify-start">
   <ImageUploader color="neutral" rounded="none" />
   <ImageUploader color="primary" rounded="xl" />

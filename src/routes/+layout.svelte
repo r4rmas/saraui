@@ -3,7 +3,7 @@
   import type { IconClassString, SaraProviderConfig } from "$lib/types.js"
   import SaraProvider from "$lib/components/SaraProvider.svelte"
   import Scaffold from "$lib/components/Scaffold.svelte"
-  import SidenavAnyContainer from "$lib/components/SidenavCollapsibleContainer.svelte"
+  import SidenavCollapsibleContainer from "$lib/components/SidenavCollapsibleContainer.svelte"
   import SidenavButton from "$lib/components/SidenavButton.svelte"
   import SidenavCollapsibleList from "$lib/components/SidenavCollapsibleList.svelte"
   import SidenavItem from "$lib/components/SidenavItem.svelte"
@@ -41,7 +41,7 @@
 </script>
 
 <SaraProvider config={saraConfig}>
-  <Scaffold sidenav={{ 
+  <Scaffold sidenavConfig={{ 
     collapsedAt: "xl",
     width: { open: "60" },
     startCollapsed: true
@@ -73,32 +73,31 @@
       </div>
     </main>
 
-    <svelte:fragment slot="sidenav">
-      <div class="flex flex-col h-full justify-between border-r border-r-base-200 p-2">
-        <div>
-          {#each sidenavItems as { href, icon, label }, i}
-            <SidenavItem {href} {icon} {label} />
-            {#if i === 1}
-              <SidenavCollapsibleList title="Components"
-                icon="i-mdi-package-variant"
-              >
-                {#each componentItems as { href, label }}
-                  <SidenavItem {href} {label} />
-                {/each}
-              </SidenavCollapsibleList>
-            {/if}
-          {/each}
+    <div slot="sidenav" class="flex flex-col h-full justify-between border-r border-r-base-200 p-2">
+      <div>
+        {#each sidenavItems as { href, icon, label }, i}
+          <SidenavItem {href} {icon} {label} />
+          {#if i === 1}
+            <SidenavCollapsibleList title="Components"
+              icon="i-mdi-package-variant"
+            >
+              {#each componentItems as { href, label }}
+                <SidenavItem {href} {label} />
+              {/each}
+            </SidenavCollapsibleList>
+          {/if}
+        {/each}
+      </div>
+      {#if $sidenav?.isOpen}
+        <div class="mx-auto">
+          <SidenavCollapsibleContainer>
+            <a href="https://github.com/r4rmas/saraui" class="btn btn-primary">
+              Star on GitHub
+              <span class="i-mdi-github text-lg mb-0.5"></span>
+            </a>
+          </SidenavCollapsibleContainer>
         </div>
-        {#if $sidenav?.isOpen}
-          <div class="mx-auto">
-            <SidenavAnyContainer>
-              <a href="https://github.com/r4rmas/saraui" class="btn btn-primary">
-                Star on GitHub
-                <span class="i-mdi-github text-lg mb-0.5"></span>
-              </a>
-            </SidenavAnyContainer>
-          </div>
-        {/if}
-    </svelte:fragment>
+      {/if}
+    </div>
   </Scaffold>
 </SaraProvider>

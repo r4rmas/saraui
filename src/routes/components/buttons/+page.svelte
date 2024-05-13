@@ -7,9 +7,9 @@
 </script>
 
 <h2 class="title mt-4">Button</h2>
-<p>Similar to <a href="https://daisyui.com/components/button/" class="link link-primary">daisyUI's button component</a>.</p>
+<p>Equivalent to <a href="https://daisyui.com/components/button/" class="link link-primary">daisyUI's button component</a>.</p>
 <p class="mb-4">
-  The difference is that Sara's button shows a loading feedback when it's handling an async function.
+  Sara's version shows a loading feedback when it's handling an async function.
 </p>
 <Button color="primary" onClick={() => sleep(3)}>
   Async action

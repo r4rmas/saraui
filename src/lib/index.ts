@@ -10,7 +10,7 @@ import type {
   SizedIcon,
   SidenavConfig, SidenavWidth
 } from "$lib/types.js"
-import { showNotification, useModal, sleep } from "./utils.js";
+import { showNotification, useModal } from "./utils.js";
 import { currentBreakpoint, currentPathname, sidenav } from "./stores.js";
 import SaraProvider from "./components/SaraProvider.svelte"
 import ImageUploader from "./components/ImageUploader.svelte";
@@ -29,7 +29,7 @@ import Dropdown from "./components/Dropdown.svelte";
 
 export {
   SaraProvider, type SaraProviderConfig,
-  currentBreakpoint, currentPathname, sleep, type OnEvent,
+  currentBreakpoint, currentPathname, type OnEvent,
   type WidthBreakpointSpacing as WidthResponsiveSpacing,
   Loader, type LoaderProps,
   Button, IconButton, type SizedIcon as Icon,
