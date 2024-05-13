@@ -95,7 +95,7 @@
               Star in GitHub
               <span class="i-mdi-github text-lg mb-0.5"></span>
             </a>
-            <a href="https://github.com/r4rmas/saraui/issues" class="btn">
+            <a href="https://github.com/r4rmas/saraui/issues" class="btn btn-outline">
               Report issue
               <span class="i-mdi-github text-lg mb-0.5"></span>
             </a>

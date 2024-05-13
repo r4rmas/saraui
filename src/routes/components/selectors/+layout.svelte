@@ -23,6 +23,10 @@
     <p class="prop-value">boolean</p>
   </div>
   <div class="prop-container">
+    <span class="prop">isDisabled?:</span>
+    <p class="prop-value">boolean</p>
+  </div>
+  <div class="prop-container">
     <span class="prop">state?:</span>
     <p class="prop-value">string</p>
   </div>

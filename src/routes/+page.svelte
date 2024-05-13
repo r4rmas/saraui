@@ -8,6 +8,8 @@
   import CodeCard from "./lib/CodeCard.svelte"
   import Button from "$lib/components/Button.svelte"
   import ThemeCard from "./ThemeCard.svelte"
+    import IconButton from "$lib/components/IconButton.svelte"
+    import Dropdown from "$lib/components/Dropdown.svelte"
 
   const notificationCauses: SelectorOption[] = [
     { label: "success", value: "success", isSelected: true }, 
@@ -30,7 +32,32 @@
   <span class="svelte">SvelteKit</span>
 </p>
 
-<ImageUploader />
+<div class="grid grid-cols-3 md:grid-cols-[1fr_2fr_1fr] md:gap-6 mt-4">
+  <a href="/components/scaffold" class="ml-4 md:ml-0 md:mt-2">
+    <p class="line-through text-error">Drawer</p>
+    <p class="font-semibold">Scaffold</p>
+  </a>
+  <div class="flex justify-center">
+    <ImageUploader />
+  </div>
+  <div class="ml-8 md:ml-0 md:mt-2"> 
+    <Dropdown position={{
+      sm: "bottom-end",
+      md: "right-end"
+    }}>
+      <div class="m-1">
+        <IconButton tooltip="Dropdown" color="primary" modifier="outline">
+          <span class="i-mdi-help"></span>
+        </IconButton>
+      </div>
+      <div slot="content" 
+        class="bg-base-200 p-4 shadow-md rounded-box w-fit text-sm"
+      >
+        This is a Dropdown.
+      </div>
+    </Dropdown>
+  </div>
+</div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
   <RadioSelector name="notification" 
     options={notificationCauses} 
