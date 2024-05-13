@@ -67,10 +67,7 @@
 </div>
 <div class="flex gap-2">
   <Button color="secondary"
-    onClick={() => showNotification(selectedRadio, {
-      title: selectedRadio,
-      content: "Hello, world! 👋🏼"
-  })}>
+    onClick={() => showNotification(selectedRadio, "Hello, world! 👋🏼", selectedRadio)}>
     Show notification
   </Button>
   <Button onClick={show} color="accent">

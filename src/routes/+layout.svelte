@@ -24,7 +24,7 @@
     { href: "/", label: "Home", icon: "i-mdi-home-outline" },
     { href: "/provider", label: "Provider", icon: "i-mdi-power-plug-outline" },
     { href: "/icons", label: "Icons", icon: "i-mdi-image-filter-center-focus-strong" },
-    { href: "/utilities", label: "Utilities", icon: "i-mdi-tools" },
+    { href: "/utils", label: "Utils", icon: "i-mdi-tools" },
     { href: "/stores", label: "Stores", icon: "i-mdi-local-area-network" },
     { href: "/whats-next", label: "What's next", icon: "i-mdi-fast-forward" },
   ]

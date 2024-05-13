@@ -17,7 +17,7 @@ export const sidenav = `<script>
     Toggle sidenav
   </Button>
 
-  <div slot="sidenav">
+  <nav slot="sidenav">
     ...
-  </div>
+  </nav>
 </Scaffold>`

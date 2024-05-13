@@ -11,7 +11,7 @@
 <SidenavProvider {color} {collapsedAt} {width} {startCollapsed}>
   <div class="sticky z-10 top-0 left-0 right-0 xl:left-96">
     <slot name="header">
-      <div class="flex justify-between items-center xl:flex-row-reverse w-full py-4 px-7 xl:p-7 text-lg">
+      <div class="flex justify-between items-center w-full py-4 px-7 xl:p-7 text-lg">
         <SidenavButton tooltip="Menu" />
         <span>
           {"> Header < "}
@@ -26,9 +26,9 @@
   </slot>
   <svelte:fragment slot="sidenav">
     <slot name="sidenav">
-      <nav class="flex w-full justify-center text-lg">
+      <div class="flex w-full justify-center text-lg">
         {"> Sidenav <"}
-      </nav>
+      </div>
     </slot>
   </svelte:fragment>
 </SidenavProvider>

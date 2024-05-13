@@ -3,7 +3,7 @@
   import IconButton from "$lib/components/IconButton.svelte"
   import CodeCard from "../../lib/CodeCard.svelte"
   import { example } from "./displayableCodes.js"
-  import { sleep } from "$lib/utils.js"
+  import { sleep } from "$lib/private/utils.js"
 </script>
 
 <h2 class="title mt-4">Button</h2>

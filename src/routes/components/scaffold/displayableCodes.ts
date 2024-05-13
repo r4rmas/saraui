@@ -15,9 +15,9 @@ export const scaffold = `<script>
 
   <!-- page content here (slot if it's a layout)  -->
 
-  <div slot="sidenav" class="p-2 border-r">
+  <nav slot="sidenav" class="p-2 border-r">
     <!-- sidenav content here  -->
-  </div>
+  </nav>
 </Scaffold>`
 
 export const sidenavConfig = `{
@@ -47,12 +47,12 @@ export const sidenavItem =`<script>
 
 <Scaffold>
   ...
-  <div slot="sidenav" class="p-2">
+  <nav slot="sidenav" class="p-2">
     <SidenavItem href="/provider" 
       icon="i-mdi-power-plug-outline" 
       label="Provider" 
     />
-  </div>
+  </nav>
 </Scaffold>`
 
 export const collapsibleList = `<script>
@@ -67,7 +67,7 @@ export const collapsibleList = `<script>
 
 <Scaffold>
   ...
-  <div slot="sidenav" class="p-2">
+  <nav slot="sidenav" class="p-2">
     <SidenavCollapsibleList 
       title="Components" 
       icon="i-mdi-package-variant"
@@ -76,7 +76,7 @@ export const collapsibleList = `<script>
         <SidenavItem {href} {label} />
       {/each}
     </SidenavCollapsibleList>
-  </div>
+  </nav>
 </Scaffold>`
 export const collapsibleContainer = `<script>
   import { Scaffold, SidenavCollapsibleContainer } from "saraui"
@@ -84,9 +84,9 @@ export const collapsibleContainer = `<script>
 
 <Scaffold>
   ...
-  <div slot="sidenav" class="p-2">
+  <nav slot="sidenav" class="p-2">
     <SidenavCollapsibleContainer>
       <!-- anything here  -->
     </SidenavCollapsibleContainer>
-  </div>
+  </nav>
 </Scaffold>`

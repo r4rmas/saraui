@@ -48,6 +48,8 @@ Set up the SaraProvider at the root of your application:
 </SaraProvider>
 ```
 
+[How to configure Sara UI](https://saraui.com/provider)
+
 ## Components
 
 - [**Buttons**](https://saraui.com/components/buttons)
