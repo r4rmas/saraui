@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DropdownPositions } from "$lib/enums.js"
+  import { DropdownPositions } from "$lib/private/enums.js"
   import type { DropdownPositionString } from "$lib/types.js"
   import { dropdownBreakpointPosition } from "./displayableCodes.js"
   import CodeCard from "../../lib/CodeCard.svelte"

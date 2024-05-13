@@ -1,4 +1,4 @@
-import { Sizes } from "$lib/enums.js";
+import { Sizes } from "$lib/private/enums.js";
 
 export const sizedIcon = `{
   is: IconClassString

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { radioColorClass, radioSizeClass } from "$lib/constants.js"
+  import { radioColorClass, radioSizeClass } from "$lib/private/constants.js"
   import type { ColorString, SelectorOption, SizeString } from "$lib/types.js"
 
   export let name: string

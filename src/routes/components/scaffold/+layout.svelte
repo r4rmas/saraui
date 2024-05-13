@@ -1,7 +1,7 @@
 <script lang="ts">
   import CodeCard from "../../lib/CodeCard.svelte"
   import Layout from "../../lib/Layout.svelte"
-  import { ButtonModifiers, Colors, IconButtonShapes, Sizes } from "$lib/enums.js"
+  import { ButtonModifiers, Colors, IconButtonShapes, Sizes } from "$lib/private/enums.js"
   import { sidenavConfig, sidenavWidth } from "./displayableCodes.js"
 
   const shapes = Object.values(IconButtonShapes)

@@ -1,4 +1,4 @@
-import { BackgroundColors, Breakpoints, Colors } from "$lib/enums.js"
+import { BackgroundColors, Breakpoints, Colors } from "$lib/private/enums.js"
 
 const breakpoints = Object.values(Breakpoints)
 const bgColors = Object.values(BackgroundColors)

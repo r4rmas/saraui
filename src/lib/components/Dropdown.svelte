@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { dropdownPositionClass, dropdownPositionClassMD, dropdownPositionClassLG, dropdownPositionClassXL } from "$lib/constants.js"
+  import { dropdownPositionClass, dropdownPositionClassMD, dropdownPositionClassLG, dropdownPositionClassXL } from "$lib/private/constants.js"
   import type { DropdownBreakpointPosition, DropdownPositionString } from "$lib/types.js"
   import { getBreakpointClass } from "$lib/utils.js"
 

@@ -1,5 +1,5 @@
 import type { Writable } from "svelte/store"
-import { type Colors, Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type DynamicSpacings, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors, DropdownPositions } from "./enums.js"
+import { type Colors, Loaders, type NotificationCauses, type Breakpoints, type TransitionDirections, Spacings, type ButtonModifiers, type ButtonTypes, type Positions, type DynamicSpacings, type Sizes, type Roundeds, TextSizes, IconButtonShapes, BackgroundColors, DropdownPositions } from "./private/enums.js"
 
 export type BreakpointString            = `${Breakpoints}`
 export type NotificationCauseString     = `${NotificationCauses}`

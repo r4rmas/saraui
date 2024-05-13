@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Colors, Roundeds } from "$lib/enums.js"
+  import { Colors, Roundeds } from "$lib/private/enums.js"
   import type { ColorString, RoundedString } from "$lib/types.js";
   import Layout from "../../lib/Layout.svelte";
 

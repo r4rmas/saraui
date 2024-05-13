@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores"
-  import { tailwindBreakpointPixels } from "$lib/constants.js"
+  import { tailwindBreakpointPixels } from "$lib/private/constants.js"
   import { currentBreakpoint, currentPathname } from "$lib/stores.js"
   import { loader, notificationData } from "$lib/private/stores.js"
   import type { SaraProviderConfig } from "$lib/types.js"

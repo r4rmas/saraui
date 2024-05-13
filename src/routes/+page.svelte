@@ -189,13 +189,6 @@
       </div>
     </div>
 </div>
-
-<div class="hidden lg:block"></div>
-<div class="flex w-full">
-  <a href="/components" class="link text-secondary">
-    Check all the provided components
-  </a>
-</div>
 <div></div>
 
 <ConfirmationModal {ref} onAccept={() => {}} 

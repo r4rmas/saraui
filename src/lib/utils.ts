@@ -1,5 +1,5 @@
 import { writable } from "svelte/store"
-import { breakpoints, textSize } from "./constants.js"
+import { breakpoints, textSize } from "./private/constants.js"
 import { notificationData } from "$lib/private/stores.js"
 import type { NotificationCauseString, AnyBreakPointType, TitledNotificationContent, SizedIcon, SizeString, TextSizeString, ModalRef, BreakpointString, BreakpointClass } from "./types.js"
 

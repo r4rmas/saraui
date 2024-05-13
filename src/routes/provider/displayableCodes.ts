@@ -1,4 +1,4 @@
-import { Colors, Loaders } from "$lib/enums.js"
+import { Colors, Loaders } from "$lib/private/enums.js"
 import type { ColorString, LoaderString } from "$lib/types.js"
 
 const loaders: LoaderString[] = Object.values(Loaders)

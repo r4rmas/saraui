@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte"
-  import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL, widthClass } from "$lib/constants.js"
+  import { buttonColorClass, buttonModifierClass, buttonSizeClass, buttonWidthClass, buttonWidthClassLG, buttonWidthClassMD, buttonWidthClassXL, widthClass } from "$lib/private/constants.js"
   import type { ButtonModifierString, ButtonTypeString, WidthBreakpointSpacing, ColorString, OnEvent, SizeString } from "$lib/types.js"
   import { getBreakpointClass, sleep } from "$lib/utils.js"
   import type { FullSpacingString } from "$lib/types.js"

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { buttonColorClass, buttonModifierClass, buttonSizeClass, iconButtonShapeClass } from "$lib/constants.js"
+  import { buttonColorClass, buttonModifierClass, buttonSizeClass, iconButtonShapeClass } from "$lib/private/constants.js"
   import type { ButtonModifierString, ColorString, IconButtonShapeString, SizeString } from "$lib/types.js"
   import { sidenav } from "$lib/stores.js"
 

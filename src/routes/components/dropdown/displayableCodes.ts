@@ -1,4 +1,4 @@
-import { DropdownPositions } from "$lib/enums.js"
+import { DropdownPositions } from "$lib/private/enums.js"
 import type { DropdownPositionString } from "$lib/types.js"
 
 const positions: DropdownPositionString[] = Object.values(DropdownPositions)

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Colors, Sizes } from "$lib/enums.js"
+  import { Colors, Sizes } from "$lib/private/enums.js"
   import Layout from "../../lib/Layout.svelte"
 
   const colors = Object.values(Colors)

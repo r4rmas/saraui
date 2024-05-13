@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ButtonModifiers, ButtonTypes, Colors, IconButtonShapes, Sizes } from "$lib/enums.js"
+  import { ButtonModifiers, ButtonTypes, Colors, IconButtonShapes, Sizes } from "$lib/private/enums.js"
   import Layout from "../../lib/Layout.svelte"
 
   const types = Object.values(ButtonTypes)

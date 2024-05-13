@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, tick } from "svelte"
-  import { SIDENAV_ID, backgroundColor,  breakpoints,  spacingRem, widthClass } from "$lib/constants.js"
+  import { SIDENAV_ID, backgroundColor,  breakpoints,  spacingRem, widthClass } from "$lib/private/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
   import type { BackgroundColorString, SidenavWidth, BreakpointString, SpacingString, SidenavWidthClass, SidenavWidthRem } from "$lib/types.js"
 

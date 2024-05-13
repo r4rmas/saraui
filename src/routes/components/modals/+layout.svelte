@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Loaders, Colors} from "$lib/enums.js"
+  import { Loaders, Colors} from "$lib/private/enums.js"
   import type { ColorString, LoaderString } from "$lib/types.js"
     import CodeCard from "../../lib/CodeCard.svelte"
   import Layout from "../../lib/Layout.svelte"
