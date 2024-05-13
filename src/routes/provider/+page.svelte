@@ -10,7 +10,7 @@
 <div class="w-full mb-4">
   <CodeCard title="+src/routes/+layout.svelte" content={provider} />
 </div>
-<div class="border-warning border-2 rounded-box p-4">
+<div class="border-warning border-2 rounded-box p-4 mb-4">
   Sara is built on top of the Tailwind's default config. You can extend it, but Sara won't 
   get the new classes.
 </div>

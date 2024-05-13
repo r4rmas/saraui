@@ -27,6 +27,6 @@
   />
 </div>
 <h2 class="title mt-8">Example</h2>
-<div class="w-full md:w-fit">
+<div class="w-full md:w-fit mb-4">
   <CodeCard title="Example.svelte" content={example} />
 </div>
