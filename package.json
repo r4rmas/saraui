@@ -1,8 +1,8 @@
 {
   "name": "saraui",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "author": "Raul Armas",
-  "description": "Enhanced daisyUI components for Svelte/Sveltekit",
+  "description": "Enhanced daisyUI components for Sveltekit",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/r4rmas/saraui.git"
@@ -44,13 +44,13 @@
   "peerDependencies": {
     "daisyui": "^4.10.2",
     "svelte": "^4.0.0",
+    "@sveltejs/kit": "^2.0.0",
     "tailwindcss": "^3.3.6"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.7.4",
     "@iconify-json/mdi": "^1.1.66",
     "@sveltejs/adapter-auto": "^3.0.0",
-    "@sveltejs/kit": "^2.0.0",
     "@sveltejs/package": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/uuid": "^9.0.8",

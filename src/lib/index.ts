@@ -11,7 +11,7 @@ import type {
   SidenavConfig, SidenavWidth
 } from "$lib/types.js"
 import { showNotification, useModal } from "./utils.js";
-import { currentBreakpoint, currentPathname, sidenav } from "./stores.js";
+import { currentPathname, sidenav } from "./stores.js";
 import SaraProvider from "./components/SaraProvider.svelte"
 import ImageUploader from "./components/ImageUploader.svelte";
 import RadioSelector from "./components/RadioSelector.svelte";
@@ -29,7 +29,7 @@ import Dropdown from "./components/Dropdown.svelte";
 
 export {
   SaraProvider, type SaraProviderConfig,
-  currentBreakpoint, currentPathname, type OnEvent,
+  currentPathname, type OnEvent,
   type WidthBreakpointSpacing as WidthResponsiveSpacing,
   Loader, type LoaderProps,
   Button, IconButton, type SizedIcon as Icon,

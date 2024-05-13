@@ -27,7 +27,7 @@
   <span>Enhanced</span>
   <span class="font-medium text-transparent">daisyUI</span>
   <span>components for</span>
-  <span class="svelte">Svelte</span>/<span class="svelte">Svelte</span>Kit
+  <span class="svelte">SvelteKit</span>
 </p>
 
 <ImageUploader />
