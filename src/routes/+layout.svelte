@@ -78,7 +78,7 @@
         {#each sidenavItems as { href, icon, label }, i}
           <SidenavItem {href} {icon} {label} />
           {#if i === 1}
-            <SidenavCollapsibleList title="Components"
+            <SidenavCollapsibleList label="Components"
               icon="i-mdi-package-variant"
             >
               {#each componentItems as { href, label }}

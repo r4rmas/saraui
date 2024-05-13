@@ -80,14 +80,12 @@ export enum Colors {
   SUCCESS     = "success",
   WARNING     = "warning",
   ERROR       = "error",
-  INHERIT     = "inherit",
-  CURRENT     = "current",
-  TRANSPARENT = "transparent"
 }
 export enum BackgroundColors {
-  BASE100 = "base-100",
-  BASE200 = "base-200",
-  BASE300 = "base-300"
+  TRANSPARENT = "transparent",
+  BASE100     = "base-100",
+  BASE200     = "base-200",
+  BASE300     = "base-300"
 }
 
 export enum Roundeds {

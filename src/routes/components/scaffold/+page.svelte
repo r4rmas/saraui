@@ -25,6 +25,7 @@
 <CodeCard title="Example.svelte" content={sidenavButton} />
 <h2 class="title mt-8">SidenavItem</h2>
 <p>Allows to represent an item in the sidenav.</p>
+<p>If the sidenav is collapsed it'll show only the given icon through its props.</p>
 <h2 class="title mt-4">Example</h2>
 <CodeCard title="Example.svelte" content={sidenavItem} />
 <h2 class="title mt-8">SidenavCollapsibleList</h2>

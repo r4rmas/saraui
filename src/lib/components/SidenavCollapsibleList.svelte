@@ -3,7 +3,7 @@
   import { sidenav } from "$lib/stores.js"
   import type { IconClassString } from "$lib/types.js"
 
-  export let title: string
+  export let label: string
   export let icon: IconClassString
   //If I want to add a startOpen prop it's neccessary to remake the whole 
   //componente with JS, else there's a shadow effect when loading the web
@@ -34,7 +34,7 @@
   <li>
     <details bind:open>
       <summary bind:this={summary} 
-        title={!$sidenav?.isOpen ? ` ${title} ` : ""}
+        title={!$sidenav?.isOpen ? ` ${label} ` : ""}
         on:click={handleClick}
         class="
           menu-title select-none flex w-full justify-between 
@@ -47,7 +47,7 @@
             <span class="{icon} text-xl text-base-content"></span>
             {#if $sidenav && $sidenav.isOpen}
               <span class="text-base-content font-normal">
-                {title}
+                {label}
               </span>
             {/if}
           </div>

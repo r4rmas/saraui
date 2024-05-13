@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { Loaders, Colors} from "$lib/private/enums.js"
-  import type { ColorString, LoaderString } from "$lib/types.js"
-    import CodeCard from "../../lib/CodeCard.svelte"
+  import { Colors} from "$lib/private/enums.js"
+  import CodeCard from "../../lib/CodeCard.svelte"
   import Layout from "../../lib/Layout.svelte"
-    import { confirmationModalIcons } from "./displayableCodes.js"
+  import { confirmationModalIcons } from "./displayableCodes.js"
 
   const colors = Object.values(Colors)
 </script>

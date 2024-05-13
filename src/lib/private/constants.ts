@@ -73,9 +73,6 @@ export const textColor: TextColorClass = {
   info       : "text-info",
   warning    : "text-warning",
   error      : "text-error",
-  current    : "text-current",
-  inherit    : "text-inherit",
-  transparent: "text-transparent"
 }
 export const backgroundColor: BackgroundColorClass = {
   primary    : "bg-primary",
@@ -86,8 +83,6 @@ export const backgroundColor: BackgroundColorClass = {
   info       : "bg-info",
   warning    : "bg-warning",
   error      : "bg-error",
-  current    : "bg-current",
-  inherit    : "bg-inherit",
   transparent: "bg-transparent",
   "base-100" : "bg-base-100",
   "base-200" : "bg-base-200",
@@ -118,9 +113,6 @@ export const buttonColorClass: ButtonColorClass = {
   info       : "btn-info",
   warning    : "btn-warning",
   error      : "btn-error",
-  inherit    : "btn-inherit",
-  current    : "btn-current",
-  transparent: "btn-transparent"
 }
 export const buttonModifierClass: ButtonModifierClass = {
   outline: "btn-outline",
@@ -1078,9 +1070,6 @@ export const radioColorClass: RadioColorClass = {
   info       : "radio-info",
   warning    : "radio-warning",
   error      : "radio-error",
-  inherit    : "radio-inherit",
-  current    : "radio-current",
-  transparent: "radio-transparent"
 }
 
 export const dropdownPositionClass: DropdownPositionClass = {
