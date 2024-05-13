@@ -56,7 +56,7 @@
       <div class="prop-container">
         <span class="prop">icon?:</span>
         <p class="prop-value">
-          IconClassString
+          IconClassString | SizedIcon
         </p>
       </div>
       <a href="/icons" 

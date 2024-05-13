@@ -25,7 +25,7 @@
     md: { top: "10", right: "8" },
     lg: { top: "14", right: "20" }
   }
-  const defaultDirection: NotificationDirectionString = "right-to-left" 
+  const defaultDirection: NotificationDirectionString = "left-to-right" 
 
   const baseClass = "flex fixed z-[49] shadow-xl alert w-fit "
   const alertClass = {
@@ -45,8 +45,8 @@
   function getResponsiveDirection(_direction: typeof direction) {
     if (_direction) {
       const getDirection = (_direction: NotificationDirectionString) => {
-        return _direction === "left-to-right" ? -400
-             : _direction === "right-to-left" ? 400
+        return _direction === "left-to-right" ? 400
+             : _direction === "right-to-left" ? -400
              : undefined 
       }
       if (typeof _direction !== "string" && Object.values(_direction).length) {

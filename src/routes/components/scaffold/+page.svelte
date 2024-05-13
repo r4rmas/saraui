@@ -5,7 +5,12 @@
 </script>
 
 <h2 class="title mt-4">Scaffold</h2>
-<p class="mb-4">Add a layout that includes a sidenav and a header.</p>
+<p>Add a layout that includes a sidenav and a header.</p>
+<p class="mb-4">
+  The sidenav is equivalent to 
+  <a href="https://daisyui.com/components/drawer" class="link link-secondary">daisyUI's drawer</a> 
+  but the Sara's version can be collapsible if the sidenavConfig prop gets an collapsedAt value.
+</p>
 <h2 class="title mt-4">Example</h2>
 <CodeCard title="src/routes/+layout.svelte" content={scaffold} />
 <h2 class="title mt-8">SidenavButton</h2>

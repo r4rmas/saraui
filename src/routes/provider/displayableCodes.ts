@@ -8,10 +8,22 @@ export const provider = `<script lang="ts">
   import { SaraProvider, type SaraProviderConfig } from "saraui"
 
   //optionally you can configure Sara by providing a valid config value:
-
   const config: SaraProviderConfig = {
-    loader: //LoaderProps
-    notification: //NotificationConfig
+    loader: "ring",
+    notification: {
+      icons: {
+        success: "i-mdi-check-circle-outline",
+        info: "i-mdi-information-slap-circle-outline",
+        warning: "i-mdi-warning",
+        error: "i-mdi-close-circle-outline"
+      },
+      transition: {
+        direction: "left-to-right",
+        distance: {
+          sm: { right: "2", top: "4" }
+        }
+      }
+    }
   }
 </script>
 

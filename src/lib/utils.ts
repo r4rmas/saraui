@@ -63,10 +63,10 @@ export function getIconClass(icon : SizedIcon | string | undefined, size?: TextS
     if (typeof icon !== "string") {
       const { is , size: _size } = icon
       let iconClass = is
-      iconClass += ` ${textSize[_size ? _size : size ? size : "lg"]}`
+      iconClass += ` ${textSize[_size ? _size : size ? size : "xl"]}`
       return iconClass
     }
-    return `${icon} ${textSize[size ?? "lg"]}`
+    return `${icon} ${textSize[size ?? "xl"]}`
   }
   return ""
 }

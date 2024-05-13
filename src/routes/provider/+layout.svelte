@@ -7,6 +7,11 @@
 <Layout>
   <slot></slot>
   <svelte:fragment slot="types">
+    <h2 class="title mt-4">Props</h2>
+    <div class="prop-container">
+      <span class="prop">config?:</span>
+      <p class="prop-value">SaraProviderConfig</p>
+    </div>
     <h2 class="title mt-4">Types</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-2">
       <div>
