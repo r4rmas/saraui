@@ -1,7 +1,7 @@
 <script lang="ts">
   import { heightClass, heightClassLG, heightClassMD, heightClassXL, roundedClass, textColor, widthClass, widthClassLG, widthClassMD, widthClassXL } from "$lib/private/constants.js"
   import type { ColorString, RoundedString, SizedIcon, IconClassString, SpacingString, BreakpointSpacing } from "$lib/types.js"
-  import { getIconClass, getBreakpointClass } from "$lib/utils.js"
+  import { getIconClass, getBreakpointClass } from "$lib/private/utils.js"
 
   export let color: ColorString  = "secondary"
   export let rounded: RoundedString = "full"

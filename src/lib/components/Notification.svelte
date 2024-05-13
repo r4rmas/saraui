@@ -4,7 +4,7 @@
   import { notificationData } from "$lib/private/stores.js"
   import type { SizedIcon, IconClassString, NotificationBreakpointDistance, NotificationBreakpointDirection, NotificationDirectionString } from "$lib/types.js"
   import { bottomPositionClass, bottomPositionClassLG, bottomPositionClassMD, bottomPositionClassXL, breakpoints, leftPositionClass, leftPositionClassLG, leftPositionClassMD, leftPositionClassXL, rightPositionClass, rightPositionClassLG, rightPositionClassMD, rightPositionClassXL, topPositionClass, topPositionClassLG, topPositionClassMD, topPositionClassXL } from "$lib/private/constants.js"
-  import { getIconClass } from "$lib/utils.js"
+  import { getIconClass } from "$lib/private/utils.js"
   import SuccessIcon from "./private/notification/SuccessIcon.svelte"
   import InfoIcon from "./private/notification/InfoIcon.svelte"
   import WarningIcon from "./private/notification/WarningIcon.svelte"

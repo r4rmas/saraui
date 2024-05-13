@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { NotificationCauseString, SelectorOption } from "$lib/types.js"
-  import { showNotification, sleep, useModal } from "$lib/utils.js"
+  import { showNotification, useModal } from "$lib/utils.js"
+  import { sleep } from "$lib/private/utils.js"
   import { daisyButton, saraButton, tailwindConfig, layoutFile } from "./displayableCodes.js"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
   import RadioSelector from "$lib/components/RadioSelector.svelte"
@@ -8,8 +9,8 @@
   import CodeCard from "./lib/CodeCard.svelte"
   import Button from "$lib/components/Button.svelte"
   import ThemeCard from "./ThemeCard.svelte"
-    import IconButton from "$lib/components/IconButton.svelte"
-    import Dropdown from "$lib/components/Dropdown.svelte"
+  import IconButton from "$lib/components/IconButton.svelte"
+  import Dropdown from "$lib/components/Dropdown.svelte"
 
   const notificationCauses: SelectorOption[] = [
     { label: "success", value: "success", isSelected: true }, 
