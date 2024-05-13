@@ -3,7 +3,7 @@
     <div class="flex flex-col w-full xl:overflow-y-auto xl:pr-4">
       <slot></slot>
     </div>
-    <div class="flex flex-col xl:border-l xl:border-l-base-200 xl:px-4 overflow-y-auto mb-4">
+    <div class="flex flex-col xl:border-l w-full xl:border-l-base-200 xl:px-4 overflow-y-auto mb-4">
       <slot name="types"></slot>
     </div>
   </div>
