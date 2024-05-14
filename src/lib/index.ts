@@ -10,7 +10,7 @@ import type {
   SizedIcon,
   SidenavConfig, SidenavWidth
 } from "$lib/types.js"
-import { showNotification, useModal } from "./utils.js";
+import { showNotification } from "./utils.js";
 import { currentPathname, sidenav } from "./stores.js";
 import SaraProvider from "./components/SaraProvider.svelte"
 import ImageUploader from "./components/ImageUploader.svelte";
@@ -36,7 +36,7 @@ export {
   ImageUploader,
   RadioSelector, type SelectorOption,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationBreakpointDirection as NotificationDirection, type TitledNotificationContent, showNotification,
-  Modal, ConfirmationModal, type ConfirmationModalIcons, useModal,
+  Modal, ConfirmationModal, type ConfirmationModalIcons,
   Scaffold, SidenavButton, SidenavItem, SidenavCollapsibleList, SidenavCollapsibleContainer, type SidenavConfig, type SidenavWidth, sidenav,
   Dropdown
 }

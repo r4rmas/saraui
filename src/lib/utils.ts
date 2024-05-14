@@ -12,21 +12,3 @@ export function showNotification(cause: NotificationCauseString, content: string
     content: title ? { title, content } : content
   })
 }
-
-export function useModal() {
-  const dialog = writable<HTMLDialogElement>()
-  const closeButton = writable<HTMLButtonElement>()
-  return { 
-    ref: <ModalRef>{ dialog, closeButton },
-    show: () => dialog.subscribe(el => { 
-      if (el) el.showModal() 
-    }), 
-    close: () => closeButton.subscribe(el => {
-      if (el) {
-        el.disabled = false
-        el.click()
-        el.disabled = true
-      }
-    })
-  }
-}

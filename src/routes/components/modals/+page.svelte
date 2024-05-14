@@ -3,22 +3,18 @@
   import ConfirmationModal from "$lib/components/ConfirmationModal.svelte"
   import CodeCard from "../../lib/CodeCard.svelte"
   import Modal from "$lib/components/Modal.svelte"
-  import { useModal } from "$lib/utils.js"
   import { modalExample, confirmationModalExample } from "./displayableCodes.js"
 
-  const emptyModal = useModal()
-  const confirmationModal = useModal()
+  let isModalOpened = false
+  let isConfirmationModalOpened = false
 </script>
 
 <h2 class="title mt-4">Modal</h2>
-<a href="/utils#useModal" class="link link-secondary mb-2">
-  Check useModal
-</a>
 <p class="mb-4">Used to shows a dialog element when clicked.</p>
-<Button onClick={emptyModal.show} color="primary">
+<Button onClick={() => isModalOpened = true} color="primary">
   Show empty modal
 </Button>
-<Modal ref={emptyModal.ref}>
+<Modal bind:isOpen={isModalOpened}>
   <p>Modals are empty by default.</p>
 </Modal>
 <h2 class="title mt-8">Example</h2>
@@ -32,10 +28,10 @@
   Quickly build confirmation modals to confirm sensible (or not) actions.
 </p>
 <p class="mb-4">By default confirmation modal will have an error-like button Accept. You can change the color through the color prop.</p>
-<Button onClick={confirmationModal.show} color="secondary">
+<Button onClick={() => isConfirmationModalOpened = true} color="secondary">
   Show confirmation modal
 </Button>
-<ConfirmationModal ref={confirmationModal.ref} 
+<ConfirmationModal bind:isOpen={isConfirmationModalOpened}
   title="Confirmation Modal"
   content="Are you sure? ☠️"
   onAccept={() => {}}

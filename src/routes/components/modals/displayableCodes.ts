@@ -1,30 +1,30 @@
 export const modalExample = `<script>
-  import { Button, Modal, useModal } from "saraui"
+  import { Button, Modal } from "saraui"
 
-  const { ref, open } = useModal
+  let isOpen = false
 <script>
 
-<Button onClick={open}>
+<Button onClick={() => isOpen = true}>
   Open modal
 </Button>
-<Modal {ref}>
+<Modal bind:isOpen>
   <!-- build your custom modal here -->
 </Modal>`
 
 export const confirmationModalExample = `<script>
-  import { Button, ConfirmationModal, useModal } from "saraui"
+  import { Button, ConfirmationModal } from "saraui"
 
-  const { ref, open } = useModal
+  let isOpen = false
 
   function acceptSensibleAction() {
     ...
   }
 </script>
 
-<Button onClick={open}>
+<Button onClick={() => isOpen = true}>
   Open confirmation modal
 </Button>
-<ConfirmationModal {ref} 
+<ConfirmationModal bind:isOpen
   onAccept={acceptSensibleAction}
   title="Leaving"
   content="Are you sure you want to leave?"

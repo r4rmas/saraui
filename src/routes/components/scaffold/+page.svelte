@@ -9,7 +9,7 @@
 <p class="mb-4">
   The sidenav is equivalent to 
   <a href="https://daisyui.com/components/drawer" class="link link-secondary">daisyUI's drawer</a> 
-  but the Sara's version can be collapsible if the sidenavConfig prop gets an width.collapased value through its props.
+  but the Sara's version can be collapsible if the sidenavConfig prop gets an width.collapsed value through its props.
 </p>
 <h2 class="title mt-4">Example</h2>
 <CodeCard title="src/routes/+layout.svelte" content={scaffold} />

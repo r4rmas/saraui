@@ -12,12 +12,9 @@
   <svelte:fragment slot="types">
     <h2 class="title mt-4">Props</h2>
     <div class="prop-container">
-      <span class="prop">ref:</span>
-      <p class="prop-value">ModalRef</p>
+      <span class="prop">isOpen:</span>
+      <p class="prop-value">boolean</p>
     </div>
-    <p class="text-xs mb-4">
-      The only way to get a ModalRef is through useModal utility
-    </p>
     <div class="prop-container">
       <span class="prop">(Modal) isClosable?:</span>
       <p class="prop-value">boolean</p>

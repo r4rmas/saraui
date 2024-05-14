@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { NotificationCauseString, SelectorOption } from "$lib/types.js"
-  import { showNotification, useModal } from "$lib/utils.js"
+  import { showNotification } from "$lib/utils.js"
   import { sleep } from "$lib/private/utils.js"
   import { daisyButton, saraButton, tailwindConfig, layoutFile } from "./displayableCodes.js"
   import ImageUploader from "$lib/components/ImageUploader.svelte"
@@ -19,9 +19,10 @@
     { label: "error", value: "error" }
   ]
 
-  const { ref, show } = useModal()
-
   let selectedRadio: NotificationCauseString = "success"
+  let isModalOpen = false
+
+  $: console.log(isModalOpen)
 </script>
 
 <div></div>
@@ -70,7 +71,7 @@
     onClick={() => showNotification(selectedRadio, "Hello, world! 👋🏼", selectedRadio)}>
     Show notification
   </Button>
-  <Button onClick={show} color="accent">
+  <Button onClick={() => isModalOpen = true} color="accent">
     Show modal
   </Button>
 </div>
@@ -189,7 +190,8 @@
 </div>
 <div></div>
 
-<ConfirmationModal {ref} onAccept={() => {}} 
+<ConfirmationModal bind:isOpen={isModalOpen}
+  onAccept={() => {}} 
   title="This is a Confirmation Modal"  
   content="Quickly build confirmation modals to confirm sensible actions"
 />
