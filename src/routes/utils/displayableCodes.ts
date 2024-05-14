@@ -9,3 +9,11 @@ export const notification = `<script>
 <Button onClick={handleClick}>
   Show notification
 </Button>`
+
+export const theme = `<script>
+  import { Button, updateTheme } from "saraui"
+</script>
+
+<Button onClick={() => udpateTheme("dracula")}>
+  Set dark mode
+</Button>`

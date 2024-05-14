@@ -6,7 +6,7 @@
   
   const lightThemes: SelectorOption[] = [
     { label: "Bumblebee", value: "bumblebee" }, 
-    { label: "Corporate", value: "corporate" }, 
+    { label: "Cupcake", value: "cupcake" }, 
     { label: "Emerald", value: "emerald" }, 
     { label: "Lemonade", value: "lemonade" }, 
     { label: "Retro", value: "retro" }, 

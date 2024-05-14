@@ -12,8 +12,4 @@
     <li>InputSelector</li>
     <li>Table</li>
   </ul>
-  <h2 class="title mt-4">Utilities</h2>
-  <ul>
-    <li>updateTheme</li>
-  </ul>
 </div>

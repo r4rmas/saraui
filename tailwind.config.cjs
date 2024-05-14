@@ -11,8 +11,8 @@ const config = {
     require("daisyui"),
   ],
   daisyui: {
-    themes: [ 
-      "cupcake", "valentine", "retro", "lemonade", "bumblebee", "emerald", "corporate", //lights
+    themes: [ "cupcake", //default
+      "valentine", "retro", "lemonade", "bumblebee", "emerald", //lights
       "dracula", "dim", "night", "sunset", "forest", "synthwave",  //darks
     ]
   },
