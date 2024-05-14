@@ -28,7 +28,7 @@ export const config = `<script lang="ts">
       transition: {
         direction: "left-to-right",
         distance: {
-          sm: { bottom: 6, right: 6 },
+          sm: { bottom: "6", right: "6" },
           md: ...,
           lg: ...,
           xl: ...
