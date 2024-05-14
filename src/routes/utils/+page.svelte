@@ -12,7 +12,7 @@
     "success" | "info" | "warning" | "error", 
     <span class="font-medium">content</span>: 
     string, 
-    <span class="font-medium">title?</span> 
+    <span class="font-medium">title?</span>:
     string) => void
   </p>
   <h2 class="title mt-4">Example</h2>

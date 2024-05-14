@@ -19,11 +19,11 @@
   const { classes, sizes } = getClassesAndSizes() ?? { 
     classes: { 
       open: "w-80", 
-      collapsed: startCollapsed ? "w-20" : undefined 
+      collapsed: collapsedAt !== undefined || startCollapsed ? "w-20" : undefined 
     }, 
     sizes: { 
       open: "20rem",
-      collapsed: startCollapsed ? "5rem" : undefined
+      collapsed: collapsedAt !== undefined || startCollapsed ? "5rem" : undefined
     } 
   }
 

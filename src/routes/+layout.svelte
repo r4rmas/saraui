@@ -43,7 +43,7 @@
 <SaraProvider config={saraConfig}>
   <Scaffold sidenavConfig={{ 
     collapsedAt: "xl",
-    width: { open: "60" },
+    width: { open: "60"},
     startCollapsed: true
   }}>
     <header slot="header" class="
@@ -90,7 +90,7 @@
       </div>
       {#if $sidenav?.isOpen}
         <SidenavCollapsibleContainer>
-          <div class="flex flex-col gap-1">
+          <div class="flex flex-col gap-2">
             <a href="https://github.com/r4rmas/saraui" class="btn btn-primary">
               Star in GitHub
               <span class="i-mdi-github text-lg mb-0.5"></span>
