@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte"
   import { page } from "$app/stores"
   import { tailwindBreakpointPixels } from "$lib/private/constants.js"
   import { currentBreakpoint, currentPathname } from "$lib/stores.js"
@@ -26,7 +27,13 @@
     if (width >= tailwindBreakpointPixels.md) return "md"
     if (width >= tailwindBreakpointPixels.sm) return "sm"
     if (width >= 0) return "sm"
-  } 
+  }
+
+  onMount(() => {
+    const baseURL = document.URL.split("://")[1].split("/")[0]
+    const theme = localStorage.getItem(`${baseURL}/theme`)
+    document.querySelector(":root")?.setAttribute("data-theme", theme ?? "")
+  })
 </script>
 
 <div bind:clientWidth={width}>

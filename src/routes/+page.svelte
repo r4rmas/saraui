@@ -21,8 +21,6 @@
 
   let selectedRadio: NotificationCauseString = "success"
   let isModalOpen = false
-
-  $: console.log(isModalOpen)
 </script>
 
 <div></div>

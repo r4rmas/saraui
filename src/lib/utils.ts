@@ -12,3 +12,9 @@ export function showNotification(cause: NotificationCauseString, content: string
     content: title ? { title, content } : content
   })
 }
+
+export function updateTheme(theme: string) {
+  const baseURL = document.URL.split("://")[1].split("/")[0]
+  localStorage.setItem(`${baseURL}/theme`, theme)
+  document.querySelector(":root")?.setAttribute("data-theme", theme)
+}

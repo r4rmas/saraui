@@ -2,6 +2,7 @@
   import Button from "$lib/components/Button.svelte"
   import { Dropdown } from "$lib/index.js"
   import type { SelectorOption } from "$lib/types.js"
+  import { updateTheme } from "$lib/utils.js"
   
   const lightThemes: SelectorOption[] = [
     { label: "Bumblebee", value: "bumblebee" }, 
@@ -23,12 +24,6 @@
   let selectedTheme: string | undefined = undefined
 
   $: selectedTheme ? updateTheme(selectedTheme) : undefined
-
-  function updateTheme(selectedTheme: string) {
-    document
-      .querySelector(":root")
-      ?.setAttribute("data-theme", selectedTheme)
-  }
 </script>
 
 <div class="
@@ -51,11 +46,12 @@
         <ul class="menu bg-base-200 rounded-box shadow-md mt-1">
           {#each lightThemes as { label, value }}
             <li>
-              <input type="radio" 
+              <input type="radio"
+                on:click={() => selectedTheme = value}
                 name="theme" 
                 aria-label={label}
                 {value}
-                class="theme-controller btn btn-sm btn-block btn-ghost justify-start" 
+                class="btn btn-sm btn-block btn-ghost justify-start" 
               >
             </li>
           {/each}
@@ -71,11 +67,12 @@
         <ul class="menu bg-base-200 rounded-box shadow-md mt-1">
           {#each darkThemes as { label, value }}
             <li>
-              <input type="radio" 
+              <input type="radio"
+                on:click={() => selectedTheme = value}
                 name="theme" 
                 aria-label={label}
                 {value}
-                class="theme-controller btn btn-sm btn-block btn-ghost justify-start" 
+                class="btn btn-sm btn-block btn-ghost justify-start" 
               >
             </li>
           {/each}
