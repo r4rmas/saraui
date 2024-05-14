@@ -42,7 +42,6 @@ export type SizedIcon = {
 export type SelectorOption = {
   value      : string
   label      : string
-  isSelected?: boolean
 }
 
 export type ModalRef = {
@@ -262,4 +261,11 @@ export type DropdownPositionClassLG = {
 }
 export type DropdownPositionClassXL = {
   [k in DropdownPositionString]: `xl:dropdown-${string}` | `xl:dropdown-${string} xl:dropdown-${string}`
+}
+
+export type CheckboxColorClass = {
+  [k in ColorString] : `checkbox-${k}`
+}
+export type CheckboxSizeClass = {
+  [k in SizeString] : `checkbox-${k}`
 }

@@ -8,7 +8,7 @@
   </p>
   <h2 class="title">Components</h2>
   <ul>
-    <li>CheckboxSelector</li>
+    <li>CheckboxSelector (added in v1.3)</li>
     <li>InputSelector</li>
     <li>Table</li>
   </ul>

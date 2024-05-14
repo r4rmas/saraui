@@ -11,10 +11,11 @@ import type {
   SidenavConfig, SidenavWidth
 } from "$lib/types.js"
 import { showNotification, updateTheme } from "./utils.js";
-import { currentPathname, sidenav } from "./stores.js";
+import { currentBreakpoint, sidenav } from "./stores.js";
 import SaraProvider from "./components/SaraProvider.svelte"
 import ImageUploader from "./components/ImageUploader.svelte";
 import RadioSelector from "./components/RadioSelector.svelte";
+import CheckboxSelector from "./components/CheckboxSelector.svelte";
 import Loader from "./components/Loader.svelte";
 import ConfirmationModal from "./components/ConfirmationModal.svelte";
 import Modal from "./components/Modal.svelte";
@@ -29,12 +30,12 @@ import Dropdown from "./components/Dropdown.svelte";
 
 export {
   SaraProvider, type SaraProviderConfig,
-  currentPathname, type OnEvent,
+  currentBreakpoint, type OnEvent,
   type WidthBreakpointSpacing as WidthResponsiveSpacing,
   Loader, type LoaderProps,
   Button, IconButton, type SizedIcon as Icon,
   ImageUploader,
-  RadioSelector, type SelectorOption,
+  RadioSelector, type SelectorOption, CheckboxSelector,
   type NotificationDistance, type NotificationIcons, type NotificationConfig, type NotificationTransition, type NotificationBreakpointDistance, type NotificationBreakpointDirection as NotificationDirection, type TitledNotificationContent, showNotification,
   Modal, ConfirmationModal, type ConfirmationModalIcons,
   Scaffold, SidenavButton, SidenavItem, SidenavCollapsibleList, SidenavCollapsibleContainer, type SidenavConfig, type SidenavWidth, sidenav,

@@ -13,7 +13,7 @@
   import Dropdown from "$lib/components/Dropdown.svelte"
 
   const notificationCauses: SelectorOption[] = [
-    { label: "success", value: "success", isSelected: true }, 
+    { label: "success", value: "success" }, 
     { label: "info", value: "info" }, 
     { label: "warning", value: "warning" }, 
     { label: "error", value: "error" }

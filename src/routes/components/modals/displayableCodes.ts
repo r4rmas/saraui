@@ -14,6 +14,7 @@ export const modalExample = `<script>
 export const confirmationModalExample = `<script>
   import { Button, ConfirmationModal } from "saraui"
 
+  //close by default
   let isOpen = false
 
   function acceptSensibleAction() {

@@ -4,8 +4,8 @@
 </script>
 
 <div class="flex flex-col w-full">
-  <h2 class="title mt-4">$currentPathname</h2>
-  <p>Returns the current pathname.</p>
+  <h2 class="title mt-4">$currentBreakpoint</h2>
+  <p>Returns the current breakpoint.</p>
   <h2 class="title mt-4">Type</h2>
   <p>{"Writable<string> | undefined"}</p>
   <h2 class="title mt-4">Example</h2>

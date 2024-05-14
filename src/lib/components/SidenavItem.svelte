@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation"
-  import { currentPathname, sidenav } from "$lib/stores.js"
+  import { currentPathname } from "$lib/private/stores.js"
+  import { sidenav } from "$lib/stores.js"
   import type {  IconClassString } from "$lib/types.js"
   import Loader from "./Loader.svelte"
 

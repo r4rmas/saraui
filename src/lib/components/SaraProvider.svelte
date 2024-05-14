@@ -2,8 +2,8 @@
   import { onMount } from "svelte"
   import { page } from "$app/stores"
   import { tailwindBreakpointPixels } from "$lib/private/constants.js"
-  import { currentBreakpoint, currentPathname } from "$lib/stores.js"
-  import { loader, notificationData } from "$lib/private/stores.js"
+  import { currentBreakpoint } from "$lib/stores.js"
+  import { currentPathname, loader, notificationData } from "$lib/private/stores.js"
   import type { SaraProviderConfig } from "$lib/types.js"
   import Notification from "./Notification.svelte"
 

@@ -1,7 +1,7 @@
 export const pathname = `<script>
-  import { currentPathname } from "saraui"
+  import { currentBreakpoint } from "saraui"
 
-  $: console.log($currentPathname)
+  $: console.log($currentBreakpoint)
 </script>`
 
 export const sidenav = `<script>

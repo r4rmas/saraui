@@ -1,5 +1,5 @@
 import { Breakpoints } from "./enums.js"
-import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL, DropdownPositionClass, DropdownPositionClassMD, DropdownPositionClassLG, DropdownPositionClassXL } from "../types.js"
+import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL, DropdownPositionClass, DropdownPositionClassMD, DropdownPositionClassLG, DropdownPositionClassXL, CheckboxColorClass, CheckboxSizeClass } from "../types.js"
 
 export const SIDENAV_ID = "saraui-sidenav"
 
@@ -1111,4 +1111,21 @@ export const dropdownPositionClassXL: DropdownPositionClassXL = {
   "bottom-end": "xl:dropdown-bottom xl:dropdown-end",
   "right-end" : "xl:dropdown-right xl:dropdown-end",
   "left-end"  : "xl:dropdown-left xl:dropdown-end"
+}
+
+export const checkboxColorClass: CheckboxColorClass = {
+  primary  : "checkbox-primary",
+  secondary: "checkbox-secondary",
+  accent   : "checkbox-accent",
+  neutral  : "checkbox-neutral",
+  info     : "checkbox-info",
+  success  : "checkbox-success",
+  warning  : "checkbox-warning",
+  error    : "checkbox-error"
+}
+export const checkboxSizeClass: CheckboxSizeClass = {
+  xs: "checkbox-xs",
+  sm: "checkbox-sm",
+  md: "checkbox-md",
+  lg: "checkbox-lg"
 }

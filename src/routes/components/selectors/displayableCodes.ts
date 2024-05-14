@@ -1,4 +1,4 @@
-export const example = `<script lang="ts">
+export const checkboxExample = `<script lang="ts">
   import { RadioSelector, type SelectorOption } from "saraui"
 
   const options: SelectorOption[] = [{
@@ -22,3 +22,26 @@ export const example = `<script lang="ts">
     bind:state={selected} 
   />
 </div>`
+
+export const radioExample = `<script lang="ts">
+  import { CheckboxSelector, type SelectorOption } from "saraui"
+
+  let selectedOptions: string[]
+
+  const options: SelectorOption[] = [{
+    label: "Blue",
+    value: "blue",
+  }, {
+    label: "Orange",
+    value: "orange"
+  }, {
+    label: "purple",
+    value: "purple"
+  }]
+</script>
+
+<CheckboxSelector {options} 
+  bind:state={selectedOptions}
+  min={1} max={2} 
+  isRequired 
+/>`

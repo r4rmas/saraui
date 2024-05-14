@@ -9,34 +9,42 @@
 <Layout>
   <slot></slot>
   <svelte:fragment slot="types">
-  <h2 class="title mt-4">Props</h2>
-  <div class="prop-container">
-    <span class="prop">name:</span>
-    <p class="prop-value">string</p>
-  </div>
-  <div class="prop-container">
-    <span class="prop">options:</span>
-    <p class="prop-value">SelectorOption[]</p>
-  </div>
-  <div class="prop-container">
-    <span class="prop">isRequired?:</span>
-    <p class="prop-value">boolean</p>
-  </div>
-  <div class="prop-container">
-    <span class="prop">isDisabled?:</span>
-    <p class="prop-value">boolean</p>
-  </div>
-  <div class="prop-container">
-    <span class="prop">state?:</span>
-    <p class="prop-value">string</p>
-  </div>
-  <div class="prop-container">
-    <span class="prop">size?:</span>
-    <p class="prop-value">"{sizes.join('" | "')}"</p>
-  </div>
-  <div class="prop-container">
-    <span class="prop">color?:</span>
-    <p class="prop-value">"{colors.join('" | "')}"</p>
-  </div>
+    <h2 class="title mt-4">Props</h2>
+    <div class="prop-container">
+      <span class="prop">options:</span>
+      <p class="prop-value">SelectorOption[]</p>
+    </div>
+    <div class="prop-container">
+      <span class="prop">isRequired?:</span>
+      <p class="prop-value">boolean</p>
+    </div>
+    <div class="prop-container">
+      <span class="prop">isDisabled?:</span>
+      <p class="prop-value">boolean</p>
+    </div>
+    <div class="prop-container">
+      <span class="prop">state?:</span>
+      <p class="prop-value">string</p>
+    </div>
+    <div class="prop-container">
+      <span class="prop">size?:</span>
+      <p class="prop-value">"{sizes.join('" | "')}"</p>
+    </div>
+    <div class="prop-container">
+      <span class="prop">color?:</span>
+      <p class="prop-value">"{colors.join('" | "')}"</p>
+    </div>
+    <div class="prop-container">
+      <span class="prop">(RadioSelector) name:</span>
+      <p class="prop-value">string</p>
+    </div>
+    <div class="prop-container">
+      <span class="prop">(CheckboxSelector) min?:</span>
+      <p class="prop-value">number</p>
+    </div>
+    <div class="prop-container">
+      <span class="prop">(CheckboxSelector) max?:</span>
+      <p class="prop-value">number</p>
+    </div>
   </svelte:fragment>
 </Layout>

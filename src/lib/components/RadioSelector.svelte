@@ -4,11 +4,11 @@
 
   export let name: string
   export let options: SelectorOption[]
-  export let isRequired = false
-  export let isDisabled = false
   export let size: SizeString = "md"
   export let color: ColorString | undefined = undefined
   export let state: string | undefined = undefined
+  export let isRequired = false
+  export let isDisabled = false
 
   function check(value: string) {
     state = value
@@ -17,7 +17,7 @@
 
 {#if options.length}
   {#each options as o}
-    <div class="flex">
+    <div class="flex gap-3 items-center">
       <input {name} 
         on:click={() => check(o.value)}
         checked={state !== undefined && state === o.value}
@@ -26,12 +26,12 @@
         disabled={isDisabled}
         type="radio"
         class="
-          radio mr-3
+          radio
           {radioSizeClass[size]}
           {color ? radioColorClass[color] : ""}
         "
       >
-      <span class="text-start">
+      <span class="text-start label-text">
         {o.label}
       </span>
     </div>
