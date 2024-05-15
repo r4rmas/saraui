@@ -1,5 +1,5 @@
 export const example = `<script>
-  import { showNotification } from "saraui"
+  import { showNotification, Button } from "saraui"
 
   function handleClick() {
     showNotification("success", "Hello, world! 👋🏼")

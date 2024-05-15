@@ -11,7 +11,7 @@ export const dropdownBreakpointPosition = `{
 }`
 
 export const example = `<script>
-  import { Dropdown } from "saraui"
+  import { Dropdown, IconButton } from "saraui"
 </script>
 
 <Dropdown>

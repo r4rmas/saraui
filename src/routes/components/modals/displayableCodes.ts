@@ -1,6 +1,7 @@
 export const modalExample = `<script>
   import { Button, Modal } from "saraui"
 
+  //closed by default
   let isOpen = false
 <script>
 
@@ -14,7 +15,7 @@ export const modalExample = `<script>
 export const confirmationModalExample = `<script>
   import { Button, ConfirmationModal } from "saraui"
 
-  //close by default
+  //closed by default
   let isOpen = false
 
   function acceptSensibleAction() {

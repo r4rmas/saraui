@@ -69,7 +69,7 @@ export const collapsibleList = `<script>
   ...
   <nav slot="sidenav" class="p-2">
     <SidenavCollapsibleList 
-      title="Components" 
+      label="Components" 
       icon="i-mdi-package-variant"
     >
       {#each items as { href, label }}
