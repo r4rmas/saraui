@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, tick } from "svelte"
+  import { tick } from "svelte"
   import { SIDENAV_ID, backgroundColor,  breakpoints,  spacingRem, widthClass } from "$lib/private/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
   import type { BackgroundColorString, SidenavWidth, BreakpointString, SpacingString, SidenavWidthClass, SidenavWidthRem } from "$lib/types.js"
@@ -74,13 +74,6 @@
     }
     return undefined
   }
-  onMount(async () => {
-    sidenavOverlay.addEventListener("touchmove", e => e.preventDefault())
-    const sidenavIsOverflown = (
-      sidenavSection.scrollHeight > sidenavSection.clientHeight
-    )
-    if (!sidenavIsOverflown) sidenavSection.addEventListener("touchmove", e => e.preventDefault())
-  })
 </script>
 
 <div class="drawer {collapsedAt ? drawerOpenClass[collapsedAt] : ""}">

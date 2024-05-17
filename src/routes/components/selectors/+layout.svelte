@@ -35,9 +35,12 @@
       <p class="prop-value">"{colors.join('" | "')}"</p>
     </div>
     <div class="prop-container">
-      <span class="prop">(RadioSelector) name:</span>
+      <span class="prop">(RadioSelector & InputSelector) name:</span>
       <p class="prop-value">string</p>
     </div>
+    <p class="text-xs mb-4">
+      name is used to identify the value in a FormData, in case of CheckboxSelector you'll have to validate every checkbox in the backend or send the selected values gotten through bind:state
+    </p>
     <div class="prop-container">
       <span class="prop">(CheckboxSelector) min?:</span>
       <p class="prop-value">number</p>

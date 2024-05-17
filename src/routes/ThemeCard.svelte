@@ -33,7 +33,7 @@
   logo-gradient
 ">
   <div class="font-medium">
-    As Sara is made with daisyUI, every componente will get instantly 
+    As Sara is made with daisyUI, every component will get instantly 
     <p class="text-lg font-semibold m-2 tracking-widest">✨ themed ✨</p>
   </div>
   <div class="flex flex-col md:flex-row gap-2">

@@ -1,5 +1,5 @@
 import { Breakpoints } from "./enums.js"
-import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL, DropdownPositionClass, DropdownPositionClassMD, DropdownPositionClassLG, DropdownPositionClassXL, CheckboxColorClass, CheckboxSizeClass } from "../types.js"
+import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL, DropdownPositionClass, DropdownPositionClassMD, DropdownPositionClassLG, DropdownPositionClassXL, CheckboxColorClass, CheckboxSizeClass, InputColorClass, InputSizeClass, SelectColorClass, SelectSizeClass } from "../types.js"
 
 export const SIDENAV_ID = "saraui-sidenav"
 
@@ -1128,4 +1128,38 @@ export const checkboxSizeClass: CheckboxSizeClass = {
   sm: "checkbox-sm",
   md: "checkbox-md",
   lg: "checkbox-lg"
+}
+
+export const inputColorClass: InputColorClass = {
+  primary  : "input-primary",
+  secondary: "input-secondary",
+  accent   : "input-accent",
+  neutral  : "input-neutral",
+  info     : "input-info",
+  success  : "input-success",
+  warning  : "input-warning",
+  error    : "input-error"
+}
+export const inputSizeClass: InputSizeClass = {
+  xs: "input-xs",
+  sm: "input-sm",
+  md: "input-md",
+  lg: "input-lg"
+}
+
+export const selectColorClass: SelectColorClass = {
+  primary  : "select-primary",
+  secondary: "select-secondary",
+  accent   : "select-accent",
+  neutral  : "select-neutral",
+  info     : "select-info",
+  success  : "select-success",
+  warning  : "select-warning",
+  error    : "select-error"
+}
+export const selectSizeClass: SelectSizeClass = {
+  xs: "select-xs",
+  sm: "select-sm",
+  md: "select-md",
+  lg: "select-lg"
 }

@@ -76,8 +76,10 @@
     @apply bg-base-content bg-opacity-5
   }
   summary:active {
-    background-color: rgba(0, 0, 0, 0.1) !important;
     @apply !text-base-content !text-opacity-40
+  }
+  summary:focus {
+    @apply !bg-transparent
   }
   summary::after {
     display: none !important;

@@ -24,14 +24,11 @@
   {openOnHover ? "dropdown-hover" : ""} 
   {!isClosable ? "dropdown-open" : ""}
 ">
-  <div tabindex="0" 
-    role="button" 
-    class="w-fit"
-  >
+  <div tabindex="0" role="button">
     <slot></slot>
   </div>
   <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-  <ul tabindex="0" class="dropdown-content z-[1]">
+  <ul tabindex="0" class="dropdown-content absolute right-0 min-w-full z-[1]">
     <slot name="content"></slot>
   </ul>
 </div>

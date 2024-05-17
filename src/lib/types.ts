@@ -269,3 +269,17 @@ export type CheckboxColorClass = {
 export type CheckboxSizeClass = {
   [k in SizeString] : `checkbox-${k}`
 }
+
+export type InputColorClass = {
+  [k in ColorString] : `input-${k}`
+}
+export type InputSizeClass = {
+  [k in SizeString] : `input-${k}`
+}
+
+export type SelectColorClass = {
+  [k in ColorString] : `select-${k}`
+}
+export type SelectSizeClass = {
+  [k in SizeString] : `select-${k}`
+}

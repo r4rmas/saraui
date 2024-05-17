@@ -9,7 +9,9 @@
   <h2 class="title">Components</h2>
   <ul>
     <li>CheckboxSelector (added in v1.3)</li>
-    <li>InputSelector</li>
+    <li>InputSelector (added in v1.4)</li>
     <li>Table</li>
+    <li>Skeleton</li>
+    <li>Tooltip</li>
   </ul>
 </div>

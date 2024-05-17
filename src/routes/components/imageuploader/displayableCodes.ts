@@ -5,4 +5,7 @@ export const withPlaceholder = `<script lang="ts">
   //or you can init the state and you'll have an image placeholder
 </script>
 
-<ImageUploader name="profilePicture" bind:state />`
+<ImageUploader bind:state
+  name="profilePicture" 
+  acceptedFileExtensions=".jpg, .png, .heic, .avif"
+/>`
