@@ -8,26 +8,14 @@ on:
     types: [created]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: bun install --frozen-lockfile
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
       - run: bun test
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: bun install --frozen-lockfile
+      - run: bun build
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
