@@ -37,7 +37,7 @@
     { href: "/components/notification", label: "Notification" },
     { href: "/components/scaffold", label: "Scaffold" },
     { href: "/components/selectors", label: "Selectors" },
-    { href: "/components/table", label: "Table" },
+    // { href: "/components/table", label: "Table" },
   ]
 </script>
 
