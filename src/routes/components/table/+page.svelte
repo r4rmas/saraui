@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import Table from "$lib/components/Table.svelte"
 
   const cols = [{
@@ -12,11 +12,11 @@
   const rows = [{
     name: "Raul",
     lastname: "Armas",
-    onClick: (data: ) => console.log(data)
+    onClick: (data) => console.log(data)
   }, {
     name: "Dayra",
     lastname: "Gomez"
   }]
 </script>
 
-<Table {cols} {rows} />
+<Table {cols} {rows} /> -->

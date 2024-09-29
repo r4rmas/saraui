@@ -18,7 +18,7 @@
   </thead> 
   <tbody>
     {#each rows as r, i}
-      <tr on:click={r.onClick ? () => r.onClick(r) : undefined} class={r.onClick ? "cursor-pointer" : "cursor-default"}> 
+      <tr on:click={() => r.onClick ? r.onClick(r) : undefined} class={r.onClick ? "cursor-pointer" : "cursor-default"}> 
         <th>{i + 1}</th>
         {#each cols as { name }}
           <td>{r[name] ?? "-"}</td>
