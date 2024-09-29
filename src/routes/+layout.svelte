@@ -37,6 +37,7 @@
     { href: "/components/notification", label: "Notification" },
     { href: "/components/scaffold", label: "Scaffold" },
     { href: "/components/selectors", label: "Selectors" },
+    { href: "/components/table", label: "Table" },
   ]
 </script>
 
@@ -59,7 +60,7 @@
               <span>UI</span>
             </h1>
           </div>
-          <img src="https://camo.githubusercontent.com/6002880f7000f37a3046592a0735dcd27f94b2adfb2a29340a255db7f21c6593/68747470733a2f2f63646e2e69636f6e2d69636f6e732e636f6d2f69636f6e73322f313436352f504e472f3132382f3139397072696e63657373325f3130303339352e706e67" 
+          <img src="https://cdn.icon-icons.com/icons2/1465/PNG/64/199princess2_100395.png" 
             alt="logo"
             class="w-8 md:w-9 h-8 md:h-9"
           >

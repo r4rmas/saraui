@@ -1,5 +1,5 @@
 import { Breakpoints } from "./enums.js"
-import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL, DropdownPositionClass, DropdownPositionClassMD, DropdownPositionClassLG, DropdownPositionClassXL, CheckboxColorClass, CheckboxSizeClass, InputColorClass, InputSizeClass, SelectColorClass, SelectSizeClass } from "../types.js"
+import type { BackgroundColorClass, BottomPositionClass, BottomPositionClassLG, BottomPositionClassMD, BottomPositionClassXL, BreakpointString, ButtonColorClass, ButtonModifierClass, ButtonSizeClass, HeightSpacingClass, HeightSpacingClassLG, HeightSpacingClassMD, HeightSpacingClassXL, IconButtonShapeClass, LeftPositionClass, LeftPositionClassLG, LeftPositionClassMD, LeftPositionClassXL, RadioColorClass, RadioSizeClass, RightPositionClass, RightPositionClassLG, RightPositionClassMD, RightPositionClassXL, RoundedClass, SpacingRem, BreakpointPixels, TextColorClass, TextSizeClass, TopPositionClass, TopPositionClassLG, TopPositionClassMD, TopPositionClassXL, WidthSpacingClass, WidthSpacingClassLG, WidthSpacingClassMD, WidthSpacingClassXL, DropdownPositionClass, DropdownPositionClassMD, DropdownPositionClassLG, DropdownPositionClassXL, CheckboxColorClass, CheckboxSizeClass, InputColorClass, InputSizeClass, SelectColorClass, SelectSizeClass, TableSizeClass } from "../types.js"
 
 export const SIDENAV_ID = "saraui-sidenav"
 
@@ -1162,4 +1162,11 @@ export const selectSizeClass: SelectSizeClass = {
   sm: "select-sm",
   md: "select-md",
   lg: "select-lg"
+}
+
+export const tableSizeClass: TableSizeClass = {
+  xs: "table-xs",
+  sm: "table-sm",
+  md: "table-md",
+  lg: "table-lg"
 }

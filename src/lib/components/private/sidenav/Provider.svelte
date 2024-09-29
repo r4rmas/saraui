@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tick } from "svelte"
+  import { onMount, tick } from "svelte"
   import { SIDENAV_ID, backgroundColor,  breakpoints,  spacingRem, widthClass } from "$lib/private/constants.js"
   import { currentBreakpoint, sidenav } from "$lib/stores.js"
   import type { BackgroundColorString, SidenavWidth, BreakpointString, SpacingString, SidenavWidthClass, SidenavWidthRem } from "$lib/types.js"
@@ -27,7 +27,6 @@
     } 
   }
 
-  let sidenavSection: HTMLDivElement
   let sidenavOverlay: HTMLLabelElement
   let isRecentlyMounted = true
 
@@ -74,6 +73,10 @@
     }
     return undefined
   }
+
+  onMount(() => {
+    sidenavOverlay.addEventListener("touchmove", e => e.preventDefault())
+  })
 </script>
 
 <div class="drawer {collapsedAt ? drawerOpenClass[collapsedAt] : ""}">
@@ -90,8 +93,7 @@
       for={SIDENAV_ID} 
       class="drawer-overlay"
     ></label>
-    <div bind:this={sidenavSection}
-      style="--w: {sizes.open}; --c: {sizes.collapsed ? sizes.collapsed : sizes.open}"
+    <div style="--w: {sizes.open}; --c: {sizes.collapsed ? sizes.collapsed : sizes.open}"
       class="
         h-full text-sm overflow-y-auto
         {color ? backgroundColor[color] : backgroundColor["base-100"]}

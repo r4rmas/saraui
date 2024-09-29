@@ -10,6 +10,7 @@
 
   function handleVisibility() {
     if (isOpen) dialog.showModal()
+    else dialog.close()
   }
   function handleClick() {
     if (onClose) onClose()

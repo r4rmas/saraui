@@ -264,22 +264,36 @@ export type DropdownPositionClassXL = {
 }
 
 export type CheckboxColorClass = {
-  [k in ColorString] : `checkbox-${k}`
+  [k in ColorString]: `checkbox-${k}`
 }
 export type CheckboxSizeClass = {
-  [k in SizeString] : `checkbox-${k}`
+  [k in SizeString]: `checkbox-${k}`
 }
 
 export type InputColorClass = {
-  [k in ColorString] : `input-${k}`
+  [k in ColorString]: `input-${k}`
 }
 export type InputSizeClass = {
-  [k in SizeString] : `input-${k}`
+  [k in SizeString]: `input-${k}`
 }
 
 export type SelectColorClass = {
-  [k in ColorString] : `select-${k}`
+  [k in ColorString]: `select-${k}`
 }
 export type SelectSizeClass = {
-  [k in SizeString] : `select-${k}`
+  [k in SizeString]: `select-${k}`
+}
+
+export type TableSizeClass = {
+  [k in SizeString]: `table-${k}`
+}
+
+export type TableColsProp = {
+  name: string
+  label: string
+}
+export type TableRowsProp = {
+  [k: string]: string | number | ((data: TableRowsProp) => void) | undefined
+  id: string | number
+  onClick?: (data: TableRowsProp) => void
 }

@@ -13,8 +13,8 @@
     { label: "Valentine", value: "valentine" }, 
   ]
   const darkThemes: SelectorOption[] = [
-    { label: "Dracula", value: "dracula" }, 
     { label: "Dim", value: "dim" }, 
+    { label: "Dracula", value: "dracula" }, 
     { label: "Forest", value: "forest" }, 
     { label: "Night", value: "night" }, 
     { label: "Sunset", value: "sunset" }, 

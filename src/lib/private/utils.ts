@@ -43,20 +43,3 @@ export function getIconClass(icon : SizedIcon | string | undefined, size?: TextS
   }
   return ""
 }
-  // function getBreakpointValue(width: WidthBreakpointSpacing, currentBreakpoint: Writable<typeof $currentBreakpoint>) {
-  //   const breakpoints: BreakpointString[] = ["sm", "md", "lg", "xl"]
-  //   const keys = <typeof breakpoints>Object.keys(width)
-  //   currentBreakpoint.subscribe(cb => {
-  //     if (cb) {
-  //       if (keys.includes(cb)) { //si el usuario ha mandado un breakpoint equivalente al que estamos actualmente 
-  //         return width[cb]
-  //       } else { //el usuario no ha mandado un breakpoint equivalente al que estamos
-  //         const currentBreakpointIndex = breakpoints.indexOf(cb)
-  //         const keyBreakpoints = keys.map(k => breakpoints.indexOf(k))
-  //           .filter(k => k)
-  //           .sort()
-  //         console.log(keyBreakpoints)
-  //       }
-  //     }
-  //   })
-  // }
