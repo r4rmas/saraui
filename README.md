@@ -48,15 +48,15 @@ Set up the SaraProvider at the root of your application:
 </SaraProvider>
 ```
 
-[How to configure Sara UI](https://saraui.com/provider)
+[How to configure Sara UI](https://saraui.dev/provider)
 
 ## Components
 
-- [**Buttons**](https://saraui.com/components/buttons)
-- [**Dropdown**](https://saraui.com/components/dropdown)
-- [**ImageUploader**](https://saraui.com/components/imageuploader)
-- [**Loader**](https://saraui.com/components/loader)
-- [**Modals**](https://saraui.com/components/modals)
-- [**Notification**](https://saraui.com/components/notification)
-- [**Scaffold**](https://saraui.com/components/scaffold)
-- [**Selectors**](https://saraui.com/components/selectors)
+- [**Buttons**](https://saraui.dev/components/buttons)
+- [**Dropdown**](https://saraui.dev/components/dropdown)
+- [**ImageUploader**](https://saraui.dev/components/imageuploader)
+- [**Loader**](https://saraui.dev/components/loader)
+- [**Modals**](https://saraui.dev/components/modals)
+- [**Notification**](https://saraui.dev/components/notification)
+- [**Scaffold**](https://saraui.dev/components/scaffold)
+- [**Selectors**](https://saraui.dev/components/selectors)
